@@ -1,0 +1,3522 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23001]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Monogram Camo Fleece Jacket]]></itemname>
+		<about><![CDATA[The high-tech fleece jacket features an original Monogram Camo pattern.]]></about>
+		<details><![CDATA[55% polyester, 45% wool]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[green]]></colour>
+		<image_name><![CDATA[Monogram Camo Fleece Jacket 1.PNG Monogram Camo Fleece Jacket 2.PNG Monogram Camo Fleece Jacket 3.PNG Monogram Camo Fleece Jacket 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23002]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Monogram Camo Jacquard Fleece Jacket]]></itemname>
+		<about><![CDATA[The stylish jacket embodies a new interpretation of the legendary symbol of the House.]]></about>
+		<details><![CDATA[87% polyester, 13% wool
+A color scheme
+Loose fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[multicolor]]></colour>
+		<image_name><![CDATA[Monogram Camo Jacquard Fleece Jacket 1.PNG Monogram Camo Jacquard Fleece Jacket 2.PNG Monogram Camo Jacquard Fleece Jacket 3.PNG Monogram Camo Jacquard Fleece Jacket 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23003]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Snow down jacket with Vuitton pattern]]></itemname>
+		<about><![CDATA[A high-tech down jacket with a water-repellent effect is a stylish and practical piece of clothing.]]></about>
+		<details><![CDATA[100% Polyester Black color Loose fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23004]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Padded hooded denim jacket]]></itemname>
+		<about><![CDATA[A hooded denim jacket with a bold graphic design in a trekking style. ]]></about>
+		<details><![CDATA[100% cotton light brown color Standard Fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[Padded hooded denim jacket 1.PNG Padded hooded denim jacket 2.PNG Padded hooded denim jacket 3.PNG Padded hooded denim jacket 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23005]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Monogram Gradient Mesh Jacket]]></itemname>
+		<about><![CDATA[
+The graphic design of this classic-cut jacket is a tribute to the iconic Monogram pattern with a contemporary twist.]]></about>
+		<details><![CDATA[100% Polyester Dark blue color Classic fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[blue]]></colour>
+		<image_name><![CDATA[Monogram Gradient Mesh Jacket 1.PNG Monogram Gradient Mesh Jacket 2.PNG Monogram Gradient Mesh Jacket 3.PNG Monogram Gradient Mesh Jacket 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23006]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[LV Spray Denim Jacket]]></itemname>
+		<about><![CDATA[The denim jacket features a contrasting combination of bright green LV Spray graphics with a Tie & Dye effect and a white Monogram pattern.]]></about>
+		<details><![CDATA[100% cotton A color scheme Loose fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[white]]></colour>
+		<image_name><![CDATA[]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23007]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Destroyed utility denim jacket]]></itemname>
+		<about><![CDATA[The unique design of the utilitarian denim jacket combines tradition of impeccable craftsmanship with a contemporary deconstructivist aesthetic.]]></about>
+		<details><![CDATA[100% cotton Indigo Standard Fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[blue]]></colour>
+		<image_name><![CDATA[Destroyed utility denim jacket 1.PNG Destroyed utility denim jacket 2.PNG Destroyed utility denim jacket 3.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23008]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Velvet windbreaker with innovative trim]]></itemname>
+		<about><![CDATA[The unique design of the utilitarian denim jacket combines tradition of impeccable craftsmanship with a contemporary deconstructivist aesthetic.]]></about>
+		<details><![CDATA[100% cotton Dark green color Loose fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[green]]></colour>
+		<image_name><![CDATA[]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23009]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[LV Graffiti zipped bomber jacket]]></itemname>
+		<about><![CDATA[Monogram jacquard adds an elegant touch to the bomber jacket's striking design.]]></about>
+		<details><![CDATA[100% cotton Combination of black and gray Standard Fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[LV Graffiti zipped bomber jacket 1.PNG LV Graffiti zipped bomber jacket 2.PNG LV Graffiti zipped bomber jacket 3.PNG LV Graffiti zipped bomber jacket 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23010]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Monogram embossed wool and leather jacket]]></itemname>
+		<about><![CDATA[A classic varsity jacket made from sustainable wool.]]></about>
+		<details><![CDATA[50% calfskin, 50% wool Black color Standard Fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Monogram embossed wool and leather jacket 1.PNG Monogram embossed wool and leather jacket 2.PNG Monogram embossed wool and leather jacket 3.PNG Monogram embossed wool and leather jacket 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23011]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Varsity jacket in leather and wool with appliqués]]></itemname>
+		<about><![CDATA[The trendy Varsity jacket is crafted from LWG-certified wool and grained calfskin.]]></about>
+		<details><![CDATA[100% calfskin Certification LWG Milky white color Loose fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[white]]></colour>
+		<image_name><![CDATA[Varsity jacket in leather and wool with appliqués 1.PNG Varsity jacket in leather and wool with appliqués 2.PNG Varsity jacket in leather and wool with appliqués 3.PNG Varsity jacket in leather and wool with appliqués 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23012]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Varsity jacket in leather and wool with appliqués]]></itemname>
+		<about><![CDATA[The new Varsity Wool Jacket features LWG-certified grained calfskin contrast sleeves.]]></about>
+		<details><![CDATA[100% calfskin Certification LWG Purple Loose fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[purple]]></colour>
+		<image_name><![CDATA[Varsity jacket in leather and wool with appliquéss 1.PNG Varsity jacket in leather and wool with appliquéss 2.PNG Varsity jacket in leather and wool with appliquéss 3.PNG Varsity jacket in leather and wool with appliquéss 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23013]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Bomber jacket in leather and textile]]></itemname>
+		<about><![CDATA[The striking bomber jacket features a combination of yellow leather and black cotton.]]></about>
+		<details><![CDATA[50% calfskin, 50% cotton yellow-orange color Loose fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black yellow]]></colour>
+		<image_name><![CDATA[Bomber jacket in leather and textile 1.PNG Bomber jacket in leather and textile 2.PNG Bomber jacket in leather and textile 3.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23014]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Leather Stadium Jacket]]></itemname>
+		<about><![CDATA[A motorsport-inspired zip-up jacket in a unique color scheme. Light blue cowhide]]></about>
+		<details><![CDATA[100% cowhide Certification LWG Black brown Standard Fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Куртка Stadium из кожи 4.PNG Куртка Stadium из кожи 2.PNG Куртка Stadium из кожи 3.PNG Куртка Stadium из кожи 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23015]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Sports jacket]]></itemname>
+		<about><![CDATA[he striking jacket features a bold hybrid design, crafted from wool suiting for a sporty, contemporary style.]]></about>
+		<details><![CDATA[100% wool Grey colour checkered pattern Standard Fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[gray]]></colour>
+		<image_name><![CDATA[Sports jacket 1.PNG Sports jacket 2.PNG Sports jacket 3.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23016]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Sports jacket]]></itemname>
+		<about><![CDATA[Crafted from high-tech material, this regular-fit jacket is a bold take on a classic athletic style.]]></about>
+		<details><![CDATA[100% polyamide Bright blue color Standard Fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[]]></colour>
+		<image_name><![CDATA[]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23017]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Padded jacket with Monogram pattern]]></itemname>
+		<about><![CDATA[A quilted take on the iconic Monogram pattern, this insulated jacket is crafted from high-tech fabric with a matte finish.]]></about>
+		<details><![CDATA[100% polyamide Black]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[]]></colour>
+		<image_name><![CDATA[]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23018]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Reversible Monogram windbreaker]]></itemname>
+		<about><![CDATA[This seasonal blue reversible windbreaker embodies the idea of ​​a dynamic lifestyle.]]></about>
+		<details><![CDATA[100% polyamide Blue color Standard Fit
+
+ ]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[blue]]></colour>
+		<image_name><![CDATA[Reversible Monogram windbreakers 1.PNG Reversible Monogram windbreakers 1.PNG Reversible Monogram windbreakers 1.PNG Reversible Monogram windbreakers 1.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23019]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[LV Multi-Tools Embroidered Jacket]]></itemname>
+		<about><![CDATA[With a utilitarian aesthetic, the jacket is adorned with embroidered details in black and white, reflecting the key themes of the Spring-Summer 2023 collection.]]></about>
+		<details><![CDATA[100% organic cotton GOTS Certification Dark gray color Standard Fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[gray]]></colour>
+		<image_name><![CDATA[LV Multi-Tools Embroidered Jacket 1.PNG LV Multi-Tools Embroidered Jacket 2.PNG LV Multi-Tools Embroidered Jacket 3.PNG LV Multi-Tools Embroidered Jacket 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23020]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Varsity Jacket]]></itemname>
+		<about><![CDATA[A varsity-style jacket crafted from cowhide with wool sleeves.]]></about>
+		<details><![CDATA[100% cowhide Black color Standard Fit
+
+ ]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Varsity Jacket 1.PNG Varsity Jacket 2.PNG Varsity Jacket 3.PNG Varsity Jacket 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23021]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Boyhood Monogram Fringed Denim Jacket ]]></itemname>
+		<about><![CDATA[This lavender denim jacket features bold, vintage-effect trim. ]]></about>
+		<details><![CDATA[100% cotton
+Loose fit
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[pink]]></colour>
+		<image_name><![CDATA[Boyhood Monogram Fringed Denim Jacket 1.PNG Boyhood Monogram Fringed Denim Jacket 2.PNG Boyhood Monogram Fringed Denim Jacket 3.PNG Boyhood Monogram Fringed Denim Jacket 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23022]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Monogram Tailored Denim Jacket]]></itemname>
+		<about><![CDATA[The Monogram Star embossed denim jacket gets a vintage-inspired edge with handcrafted trim. ]]></about>
+		<details><![CDATA[99% cotton, 1% elastodiene]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[grey]]></colour>
+		<image_name><![CDATA[Monogram Tailored Denim Jacket 1.PNG Monogram Tailored Denim Jacket 2.PNG Monogram Tailored Denim Jacket 3.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[outwear]]></undefined0>
+		<undefined1><![CDATA[LV23023]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Hybrid Hoodie Denim Jacket]]></itemname>
+		<about><![CDATA[  This hybrid blouson splices a washed denim hood and sleeves onto the compact cotton felpa]]></about>
+		<details><![CDATA[100% Cotton]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[green]]></colour>
+		<image_name><![CDATA[Hybrid Hoodie 1AAGP81                  Hybrid Hoodie 1AAGP82                  Hybrid Hoodie 1AAGP83                  Hybrid Hoodie 1AAGP84]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[pants]]></undefined0>
+		<undefined1><![CDATA[LV23031]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Utility Carpenter Jeans]]></itemname>
+		<about><![CDATA[Indigo Carpenter jeans are utilitarian. ]]></about>
+		<details><![CDATA[Regular Fit Carpenter]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[blue]]></colour>
+		<image_name><![CDATA[Utility Carpenter Jeans.1 Utility Carpenter Jeans.2Utility Carpenter Jeans.3 Utility Carpenter Jeans.4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[pants]]></undefined0>
+		<undefined1><![CDATA[LV23032]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Loose fit cargo trousers
+]]></itemname>
+		<about><![CDATA[These trendy charcoal cotton cargo pants make for an eye-catching look for the weekend.]]></about>
+		<details><![CDATA[100% organic cotton]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[gray]]></colour>
+		<image_name><![CDATA[Loose fit cargo trousers 1.PNG Loose fit cargo trousers 2.PNG Loose fit cargo trousers 3.PNG Loose fit cargo trousers 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[pants]]></undefined0>
+		<undefined1><![CDATA[LV23033]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Wide-leg Carpenter jeans with fringes]]></itemname>
+		<about><![CDATA[Striking work-style jeans with bold details.]]></about>
+		<details><![CDATA[100% cotton]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[pink]]></colour>
+		<image_name><![CDATA[Wide-leg Carpenter jeans with fringes 1.PNG Wide-leg Carpenter jeans with fringes 2.PNG Wide-leg Carpenter jeans with fringes 3.PNG Wide-leg Carpenter jeans with fringes 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[pants]]></undefined0>
+		<undefined1><![CDATA[LV23034]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[LV x YK Monogram Painted Dots Cargo Pants]]></itemname>
+		<about><![CDATA[The Louis Vuitton x Yayoi Kusama collection cargo pants feature a combination of Monogram jacquard and a dot print by acclaimed artist Yayoi Kusama. ]]></about>
+		<details><![CDATA[71% recycled ECONYL® nylon, 29% cotton]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[LV x YK Monogram Painted Dots Cargo Pants 1.PNG
+ LV x YK Monogram Painted Dots Cargo Pants 2.PNG 
+LV x YK Monogram Painted Dots Cargo Pants 3.PNG 
+LV x YK Monogram Painted Dots Cargo Pants 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[pants]]></undefined0>
+		<undefined1><![CDATA[LV23035]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Joggers in high-tech fabric]]></itemname>
+		<about><![CDATA[Crafted from high-tech fabric with a soft sheen effect, these joggers feature contrasting panel panels with a graphic monochrome LV Dove Houndstooth print. ]]></about>
+		<details><![CDATA[88% polyamide, 12% polyester]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Joggers in high-tech fabric 1 Joggers in high-tech fabric 2 Joggers in high-tech fabric 3]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[pants]]></undefined0>
+		<undefined1><![CDATA[LV23036]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Monogram Tailored Jeans]]></itemname>
+		<about><![CDATA[The jeans feature a luxurious embossed Monogram pattern. ]]></about>
+		<details><![CDATA[99% cotton, 1% elastodiene]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[grey]]></colour>
+		<image_name><![CDATA[Monogram Tailored Jeans 1.PNG Monogram Tailored Jeans 2.PNG Monogram Tailored Jeans 3.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[pants]]></undefined0>
+		<undefined1><![CDATA[LV23037]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Jeans Baggy]]></itemname>
+		<about><![CDATA[These trendy loose-fit jeans are trimmed with a contrasting Monogram jacquard pattern.]]></about>
+		<details><![CDATA[100% cotton Black color Croy buggy
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Jeans LV 1.PNG Jeans LV 2.PNG Jeans LV 3.PNG Jeans LV 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[pants]]></undefined0>
+		<undefined1><![CDATA[LV23038]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Vintage-effect wave-cut jeans]]></itemname>
+		<about><![CDATA[A favorite of the Spring-Summer 2023 show, these trendy loose-fit jeans feature a distinctive wavy silhouette. ]]></about>
+		<details><![CDATA[100% cotton
+Loose fit
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[blue]]></colour>
+		<image_name><![CDATA[Vintage-effect wave-cut jeans 1.PNG Vintage-effect wave-cut jeans 2.PNG Vintage-effect wave-cut jeans 3.PNG Vintage-effect wave-cut jeans 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[pants]]></undefined0>
+		<undefined1><![CDATA[LV23039]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Monogram jeans]]></itemname>
+		<about><![CDATA[Classic casual jeans with Monogram Pointillism characteristic of the new collection. ]]></about>
+		<details><![CDATA[Standard Fit Monogram Pointillism Pattern
+
+Classic back pockets 
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[blue]]></colour>
+		<image_name><![CDATA[Monogram jeans 1.PNG Monogram jeans 2.PNG Monogram jeans 3.PNG Monogram jeans 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23040]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA["Monogram Gradient T-shirt
+"]]></itemname>
+		<about><![CDATA[Crafted from lightweight cotton jersey, this T-shirt features a bold interpretation of the iconic Monogram Gradient pattern in a contrasting white palette.]]></about>
+		<details><![CDATA[Standard Fit
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Monogram Gradient LVSE T-shirt 1.PNG Monogram Gradient LVSE T-shirt 2.PNG Monogram Gradient LVSE T-shirt 3.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23041]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA["Monogram Gradient T-shirt
+"]]></itemname>
+		<about><![CDATA[Crafted from lightweight cotton jersey, this T-shirt features a bold interpretation of the iconic Monogram Gradient pattern in a contrasting white palette.]]></about>
+		<details><![CDATA[Standard Fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[blue]]></colour>
+		<image_name><![CDATA[Monogram Gradient LVSE T-shirt Blue 1.PNG Monogram Gradient LVSE T-shirt Blue 2.PNG Monogram Gradient LVSE T-shirt Blue 3.PNG Monogram Gradient LVSE T-shirt Blue 2.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23042]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Monogram Gradient T-shirt
+]]></itemname>
+		<about><![CDATA[Crafted from lightweight cotton jersey, this T-shirt features a bold interpretation of the iconic Monogram Gradient pattern in a contrasting white palette.]]></about>
+		<details><![CDATA[Standard Fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[green]]></colour>
+		<image_name><![CDATA[Monogram Gradient T-shirt Green 1.PNG Monogram Gradient T-shirt Green 2.PNG Monogram Gradient T-shirt Green 3.PNG Monogram Gradient T-shirt Green 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23043]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Monogram Sporty V-neck T-shirt
+]]></itemname>
+		<about><![CDATA[An American football-inspired T-shirt crafted from lightweight piqué cotton with a Monogram jacquard pattern.]]></about>
+		<details><![CDATA[55% cotton, 45% polyester]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Monogram Sporty V-neck T-shirt 1.PNG Monogram Sporty V-neck T-shirt 2.PNG Monogram Sporty V-neck T-shirt 3.PNG Monogram Sporty V-neck T-shirt 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23044]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Organic cotton T-shirt]]></itemname>
+		<about><![CDATA[This stylish organic cotton T-shirt will add originality to your everyday look. ]]></about>
+		<details><![CDATA[Standard Fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[white]]></colour>
+		<image_name><![CDATA[Organic cotton T-shirt 1.PNG Organic cotton T-shirt 2.PNG Organic cotton T-shirt 3.PNG Organic cotton T-shirt 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23045]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[LV Jazz Flyers T-shirt
+]]></itemname>
+		<about><![CDATA[The graphic tee features a silk-screened LV Jazz Flyer print. The spectacular pattern is based on bright concert posters, complemented by symbols of the House.]]></about>
+		<details><![CDATA[]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[white]]></colour>
+		<image_name><![CDATA[LV Jazz Flyers T-shirt 1.PNG LV Jazz Flyers T-shirt 2.PNG LV Jazz Flyers T-shirt 3.PNG LV Jazz Flyers T-shirt 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23046]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[T-shirt with LV Spread embroidery]]></itemname>
+		<about><![CDATA[The classic T-shirt is embroidered with contrasting miniature initials L and V, recreating the contours of the iconic large LV initials. ]]></about>
+		<details><![CDATA[ 100% cotton Standart Fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[T-shirt with LV Spread embroidery 1.PNG T-shirt with LV Spread embroidery 2.PNG T-shirt with LV Spread embroidery 3.PNG T-shirt with LV Spread embroidery 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23047]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[T-shirt with LV Concert print]]></itemname>
+		<about><![CDATA[A soft black t-shirt with a relaxed shoulder line is decorated with a monochrome silkscreen print. ]]></about>
+		<details><![CDATA[100% cotton Standart Fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[T-shirt with LV Concert print 1.PNG T-shirt with LV Concert print 2.PNG T-shirt with LV Concert print 3.PNG T-shirt with LV Concert print 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23048]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[T-shirt with LV Pendant embroidery
+]]></itemname>
+		<about><![CDATA[Embroidered initials LV in a unique interpretation this season is the main decoration of a stylish T-shirt. ]]></about>
+		<details><![CDATA[Loose fit 100% cotton
+
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[white]]></colour>
+		<image_name><![CDATA[T-shirt with LV Pendant embroidery 1.PNG T-shirt with LV Pendant embroidery 2.PNG T-shirt with LV Pendant embroidery 3.PNG T-shirt with LV Pendant embroidery 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23049]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[T-shirt with print
+]]></itemname>
+		<about><![CDATA[A classic T-shirt with a regular fit, made from lightweight cotton. ]]></about>
+		<details><![CDATA[ "Loose fit 100% cotton
+
+"]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[white]]></colour>
+		<image_name><![CDATA[T-shirt with print 1.PNG T-shirt with print 2.PNG T-shirt with print 3.PNG T-shirt with print 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23050]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[T-shirt with print and embroidery
+]]></itemname>
+		<about><![CDATA[Introduced by Virgil Abloh, a simple cotton T-shirt is a tribute to the Maison of Louis Vuitton. ]]></about>
+		<details><![CDATA[100% cotton Standard Fit
+
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[white]]></colour>
+		<image_name><![CDATA[T-shirt with print and embroidery 1.PNG T-shirt with print and embroidery 2.PNG T-shirt with print and embroidery 3.PNG T-shirt with print and embroidery 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23051]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[T-shirt with Rainbow print
+]]></itemname>
+		<about><![CDATA[A loose-fitting T-shirt with a ribbed finish is a must-have for a carefree summer look. ]]></about>
+		<details><![CDATA[100% cotton]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[white]]></colour>
+		<image_name><![CDATA[T-shirt with Rainbow print 1.PNG T-shirt with Rainbow print 2.PNG T-shirt with Rainbow print 3.PNG T-shirt with Rainbow print 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23052]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[LV x YK Psychedelic Flower Tee
+]]></itemname>
+		<about><![CDATA[A collaboration between the Maison and Japanese artist Yayoi Kusama, this classic Louis Vuitton t-shirt is uniquely reimagined]]></about>
+		<details><![CDATA[100% cotton Standard Fit
+
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[white]]></colour>
+		<image_name><![CDATA[LV x YK Psychedelic Flower Tee 1.PNG LV x YK Psychedelic Flower Tee 2.PNG LV x YK Psychedelic Flower Tee 3.PNG LV x YK Psychedelic Flower Tee 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23053]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[T-shirt with LV Frequency embroidery]]></itemname>
+		<about><![CDATA[Both sides of the stylish black T-shirt are decorated with a contrasting LV Frequency pattern, which has become a symbol of the new collection. ]]></about>
+		<details><![CDATA[100% cotton Standart Fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[T-shirt with LV Frequency embroidery 1.PNG T-shirt with LV Frequency embroidery 2.PNG T-shirt with LV Frequency embroidery 3.PNG T-shirt with LV Frequency embroidery 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23054]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[T-shirt with intarsia]]></itemname>
+		<about><![CDATA[Inspired by the cinematography of the Fall/Winter 2023 runway collection, this soft cotton t-shirt features a white graphic with a Louis Vuitton Studios ]]></about>
+		<details><![CDATA[Standard Fit
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[T-shirt with intarsia 1.PNG T-shirt with intarsia 2.PNG T-shirt with intarsia 3.PNG T-shirt with intarsia 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23055]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[T-shirt with beaded embroidery
+
+]]></itemname>
+		<about><![CDATA[The black T-shirt continues the key theme of the Fall-Winter 2023 show. ]]></about>
+		<details><![CDATA[Classic fit]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[T-shirt with beaded embroidery 1.PNG T-shirt with beaded embroidery 2.PNG T-shirt with beaded embroidery 3.PNG T-shirt with beaded embroidery 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23056]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[Vuitton Snow T-shirt in hi-tech jersey
+]]></itemname>
+		<about><![CDATA[Crafted from breathable, high-tech jersey, this slim-fit t-shirt features a striking pattern of Vuitton signatures and Monogram colors. ]]></about>
+		<details><![CDATA[80% polyester, 20% elastane]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[blue]]></colour>
+		<image_name><![CDATA[Vuitton Snow T-shirt in hi-tech jersey 1.PNG Vuitton Snow T-shirt in hi-tech jersey 2.PNG Vuitton Snow T-shirt in hi-tech jersey 3.PNG Vuitton Snow T-shirt in hi-tech jersey 2.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23057]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[T-shirt signed Louis Vuitton 1854
+]]></itemname>
+		<about><![CDATA[A lightweight cotton T-shirt with a contrasting intarsia pattern made from high-tech neon-effect yarns. The date 1854 and the Louis Vuitton signature are the hallmarks of the Maison. ]]></about>
+		<details><![CDATA[89% cotton, 11% polyamide
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[T-shirt signed Louis Vuitton 1854 1.PNG T-shirt signed Louis Vuitton 1854 2.PNG T-shirt signed Louis Vuitton 1854 3.PNG T-shirt signed Louis Vuitton 1854 4.PNG]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23058]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[T-shirt with embroidered signature 1]]></itemname>
+		<about><![CDATA[A stylized Louis Vuitton signature embroidered with beads adorns the milky white T-shirt. 
+
+]]></about>
+		<details><![CDATA[Standard Fit
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[white]]></colour>
+		<image_name><![CDATA[T-shirt with embroidered signature 1 T-shirt with embroidered signature 2 T-shirt with embroidered signature 3 T-shirt with embroidered signature 4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23059]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[T-shirt with embossed LV initials]]></itemname>
+		<about><![CDATA[The basic wardrobe item is presented in a new original interpretation. ]]></about>
+		<details><![CDATA[100% cotton Standard Fit
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[blue]]></colour>
+		<image_name><![CDATA[T-shirt with embossed LV initials blue 1 T-shirt with embossed LV initials blue 2 T-shirt with embossed LV initials blue 3 T-shirt with embossed LV initials blue 4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23060]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[T-shirt with embossed LV initials]]></itemname>
+		<about><![CDATA[The basic wardrobe item is presented in a new original interpretation. ]]></about>
+		<details><![CDATA[100% cotton Standard Fit
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[T-shirt with embossed LV initials white black 1 T-shirt with embossed LV initials white black 2 T-shirt with embossed LV initials white black 3 T-shirt with embossed LV initials white black 4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23061]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[T-shirt with embossed LV initials
+]]></itemname>
+		<about><![CDATA[The basic wardrobe item is presented in a new original interpretation. ]]></about>
+		<details><![CDATA["100% cotton Standard Fit
+"]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[white]]></colour>
+		<image_name><![CDATA[T-shirt with embossed LV initials white 1 T-shirt with embossed LV initials white 2 T-shirt with embossed LV initials white 3 T-shirt with embossed LV initials white 4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[t-shirt]]></undefined0>
+		<undefined1><![CDATA[LV23062]]></undefined1>
+		<sex><![CDATA[men]]></sex>
+		<itemname><![CDATA[T-shirt with embossed LV initials
+]]></itemname>
+		<about><![CDATA[The basic wardrobe item is presented in a new original interpretation. ]]></about>
+		<details><![CDATA[100% cotton Standard Fit
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[blue]]></colour>
+		<image_name><![CDATA[T-shirt with embossed LV initials dark 1 T-shirt with embossed LV initials dark 2 T-shirt with embossed LV initials dark 3 T-shirt with embossed LV initials dark 4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[knitwear]]></undefined0>
+		<undefined1><![CDATA[31]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Fair Isle Macro LV Pullover
+]]></itemname>
+		<about><![CDATA[This luxurious pullover is made from sustainable merino wool. ]]></about>
+		<details><![CDATA[100% wool
+
+Standard Fit
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[multicolour]]></colour>
+		<image_name><![CDATA[Fair Isle Macro LV Pullover 1 Fair Isle Macro LV Pullover 2 Fair Isle Macro LV Pullover 3 Fair Isle Macro LV Pullover 4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Jazz logo hoodie
+]]></itemname>
+		<about><![CDATA[Stylish hoodie made of cotton fleece with a zip fastening and classic voluminous pockets. ]]></about>
+		<details><![CDATA[100% cotton Classic fit
+
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[LV Jazz logo hoodie 1 LV Jazz logo hoodie 2 LV Jazz logo hoodie 3 LV Jazz logo hoodie 4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Louis Vuitton cuffed cashmere pullover
+]]></itemname>
+		<about><![CDATA[This classic round neck pullover is crafted from soft cashmere. ]]></about>
+		<details><![CDATA[100% cashmere
+Standard Fit
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Louis Vuitton cuffed cashmere pullover b1 Louis Vuitton cuffed cashmere pullover b2 Louis Vuitton cuffed cashmere pullover b3 Louis Vuitton cuffed cashmere pullover b4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Louis Vuitton cuffed cashmere pullover
+]]></itemname>
+		<about><![CDATA[This classic round neck pullover is crafted from soft cashmere. ]]></about>
+		<details><![CDATA[100% cashmere
+Standard Fit
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[gray]]></colour>
+		<image_name><![CDATA[Louis Vuitton cuffed cashmere pullover 1 Louis Vuitton cuffed cashmere pullover 2 Louis Vuitton cuffed cashmere pullover 3 Louis Vuitton cuffed cashmere pullover 4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Louis Vuitton cuffed cashmere pullover
+]]></itemname>
+		<about><![CDATA[This classic round neck pullover is crafted from soft cashmere. ]]></about>
+		<details><![CDATA[100% cashmere
+Standard Fit
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[green]]></colour>
+		<image_name><![CDATA[Louis Vuitton cuffed cashmere pullover g1 Louis Vuitton cuffed cashmere pullover g2 Louis Vuitton cuffed cashmere pullover g3 Louis Vuitton cuffed cashmere pullover g4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Fair Isle Stripes Track Jacket
+]]></itemname>
+		<about><![CDATA[The trendy blazer features brightly colored sleeve panels in a shimmering LV Fair Isle Stripes jacquard pattern. ]]></about>
+		<details><![CDATA[]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[]]></colour>
+		<image_name><![CDATA[LV Fair Isle Stripes Track Jacket 1 LV Fair Isle Stripes Track Jacket 2 LV Fair Isle Stripes Track Jacket 3 LV Fair Isle Stripes Track Jacket 4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Zipped hoodie with embroidered LV initials
+]]></itemname>
+		<about><![CDATA[A vibrant jacquard hoodie delights with a Tie & Dye gradient effect. Cotton drawstring hood lined with lightweight jersey.]]></about>
+		<details><![CDATA[50% cotton, 50% polyamide Standard Fit
+
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[blue]]></colour>
+		<image_name><![CDATA[Zipped hoodie with embroidered LV initials1 Zipped hoodie with embroidered LV initials2 Zipped hoodie with embroidered LV initials3 Zipped hoodie with embroidered LV initials4
+
+
+
+
+]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Sweatshirt with LV Comics Owl logo
+
+]]></itemname>
+		<about><![CDATA[Cozy organic cotton sweatshirt with exceptional softness.]]></about>
+		<details><![CDATA[100% cotton Standard Fit
+
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Sweatshirt with LV Comics Owl logo1 Sweatshirt with LV Comics Owl logo2 Sweatshirt with LV Comics Owl logo3 Sweatshirt with LV Comics Owl logo4
+
+
+
+
+
+
+ ]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV x YK Psychedelic Flower Pattern Zip Hoodie
+]]></itemname>
+		<about><![CDATA[Exclusive to Louis Vuitton x Yayoi Kusama, this zip-up hoodie features the signature Psychedelic Flower pattern. ]]></about>
+		<details><![CDATA[95% wool, 5% polyamide Standard Fit
+
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[LV x YK Psychedelic Flower Pattern Zip Hoodie1 LV x YK Psychedelic Flower Pattern Zip Hoodie2 LV x YK Psychedelic Flower Pattern Zip Hoodie3 LV x YK Psychedelic Flower Pattern Zip Hoodie4
+
+
+
+
+
+]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Monogram Gradient Textured Sweatshirt
+]]></itemname>
+		<about><![CDATA[A classic cotton fleece sweatshirt is accented with a textured Monogram pattern with a gradient effect. ]]></about>
+		<details><![CDATA[100% cotton Classic fit
+
+]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Снимок.PNGMonogram Gradient Textured Sweatshirt 1 Снимок.PNGMonogram Gradient Textured Sweatshirt 2 Снимок.PNGMonogram Gradient Textured Sweatshirt 3 Снимок.PNGMonogram Gradient Textured Sweatshirt 4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Hybrid Cotton Cardigan]]></itemname>
+		<about><![CDATA[This sporty cardigan from this collection’s desert bike race can be worn as light outer layer]]></about>
+		<details><![CDATA[82% Cotton, 18% Polyamide]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Cardigan1ABJ1G1                       Cardigan1ABJ1G2                       Cardigan1ABJ1G3                       Cardigan1ABJ1G4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[32]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[]]></itemname>
+		<about><![CDATA[]]></about>
+		<details><![CDATA[]]></details>
+		<sizes><![CDATA[]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[]]></colour>
+		<image_name><![CDATA[]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[33]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[]]></itemname>
+		<about><![CDATA[]]></about>
+		<details><![CDATA[]]></details>
+		<sizes><![CDATA[]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[]]></colour>
+		<image_name><![CDATA[]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[34]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[]]></itemname>
+		<about><![CDATA[]]></about>
+		<details><![CDATA[]]></details>
+		<sizes><![CDATA[]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[]]></colour>
+		<image_name><![CDATA[]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[35]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[]]></itemname>
+		<about><![CDATA[]]></about>
+		<details><![CDATA[]]></details>
+		<sizes><![CDATA[]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[]]></colour>
+		<image_name><![CDATA[]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[36]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[]]></itemname>
+		<about><![CDATA[]]></about>
+		<details><![CDATA[]]></details>
+		<sizes><![CDATA[]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[]]></colour>
+		<image_name><![CDATA[]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[37]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[]]></itemname>
+		<about><![CDATA[]]></about>
+		<details><![CDATA[]]></details>
+		<sizes><![CDATA[]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[]]></colour>
+		<image_name><![CDATA[]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[38]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[]]></itemname>
+		<about><![CDATA[]]></about>
+		<details><![CDATA[]]></details>
+		<sizes><![CDATA[]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[]]></colour>
+		<image_name><![CDATA[]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[39]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[]]></itemname>
+		<about><![CDATA[]]></about>
+		<details><![CDATA[]]></details>
+		<sizes><![CDATA[]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[]]></colour>
+		<image_name><![CDATA[]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[40]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[]]></itemname>
+		<about><![CDATA[]]></about>
+		<details><![CDATA[]]></details>
+		<sizes><![CDATA[]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[]]></colour>
+		<image_name><![CDATA[]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[footwear]]></undefined0>
+		<undefined1><![CDATA[41]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Skate sneakers ]]></itemname>
+		<about><![CDATA[First seen at the Fall Winter 2022 show]]></about>
+		<details><![CDATA[Grained Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Blue]]></colour>
+		<image_name><![CDATA[LV Skate 1ABZ6X1                      LV Skate 1ABZ6X2                      LV Skate 1ABZ6X3                      LV Skate 1ABZ6X4                      LV Skate 1ABZ6X5]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Skate sneakers]]></itemname>
+		<about><![CDATA[First seen at the Fall Winter 2022 show]]></about>
+		<details><![CDATA[Grained Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[
+red]]></colour>
+		<image_name><![CDATA[LV Skate 1ABZ6E1                      LV Skate 1ABZ6E2                      LV Skate 1ABZ6E3                      LV Skate 1ABZ6E4                      LV Skate 1ABZ6E5]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Skate sneakers]]></itemname>
+		<about><![CDATA[First seen at the Fall Winter 2022 show]]></about>
+		<details><![CDATA[Grained Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[White]]></colour>
+		<image_name><![CDATA[LV Skate 1ABZ5U1                      LV Skate 1ABZ5U2                      LV Skate 1ABZ5U3                      LV Skate 1ABZ5U4                      LV Skate 1ABZ5U5]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[ ]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Skate sneakers]]></itemname>
+		<about><![CDATA[First seen at the Fall Winter 2022 show]]></about>
+		<details><![CDATA[Grained Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Black]]></colour>
+		<image_name><![CDATA[LV Skate 1ABZ581                      LV Skate 1ABZ582                      LV Skate 1ABZ583                      LV Skate 1ABZ584                      LV Skate 1ABZ585]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Trainer sneakers]]></itemname>
+		<about><![CDATA[The new version of the LV Trainer features a combination of smooth and grained calfskin.]]></about>
+		<details><![CDATA[Grained Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[White]]></colour>
+		<image_name><![CDATA[LV Trainer 1A8WAX1                      LV Trainer 1A8WAX2                     LV Trainer 1A8WAX3                     LV Trainer 1A8WAX4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Trainer sneakers]]></itemname>
+		<about><![CDATA[For the new season, the iconic LV ]]></about>
+		<details><![CDATA[Grained Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Black ]]></colour>
+		<image_name><![CDATA[LV Trainer 1A9JG91                       LV Trainer 1A9JG92                      LV Trainer  1A9JG93                       LV Trainer  1A9JG94]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Trainer sneakers]]></itemname>
+		<about><![CDATA[In supple leather, the LV Trainer sneaker is featured in the Rainbow ]]></about>
+		<details><![CDATA[Grained Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[White]]></colour>
+		<image_name><![CDATA[LV Trainer 1A9G511                       LV Trainer 1A9G512                       LV Trainer 1A9G513                       LV Trainer 1A9G514]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[42]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Trainer sneakers]]></itemname>
+		<about><![CDATA[The two-tone grained calfskin LV Trainer]]></about>
+		<details><![CDATA[Grained Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[blue]]></colour>
+		<image_name><![CDATA[LV Trainer 1ABFA81                       LV Trainer 1ABFA82                       LV Trainer 1ABFA83                       LV Trainer 1ABFA84]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[43]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Trainer sneakers]]></itemname>
+		<about><![CDATA[The two-tone grained calfskin LV Trainer]]></about>
+		<details><![CDATA[Grained Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Green]]></colour>
+		<image_name><![CDATA[LV Trainer 1ABFAS1                       LV Trainer 1ABFAS2                       LV Trainer 1ABFAS3                       LV Trainer 1ABFAS4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[44]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Trainer sneakers]]></itemname>
+		<about><![CDATA[The two-tone grained calfskin LV Trainer]]></about>
+		<details><![CDATA[Grained Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Red]]></colour>
+		<image_name><![CDATA[LV Trainer 1ABFBE1                       LV Trainer 1ABFBE2                       LV Trainer 1ABFBE3                       LV Trainer 1ABFBE4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[45]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Trainer sneakers]]></itemname>
+		<about><![CDATA[The two-tone grained calfskin LV Trainer]]></about>
+		<details><![CDATA[Grained Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Blue]]></colour>
+		<image_name><![CDATA[LV Trainer 1A9JGT1                       LV Trainer 1A9JGT2                       LV Trainer 1A9JGT3                       LV Trainer 1A9JGT4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[46]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Trainer sneakers]]></itemname>
+		<about><![CDATA[The current version of the LV Trainer]]></about>
+		<details><![CDATA[Grained Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[green]]></colour>
+		<image_name><![CDATA[LV Trainer 1ABLVU1                       LV Trainer 1ABLVU2                       LV Trainer 1ABLVU3                       LV Trainer 1ABLVU4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[47]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Trainer sneakers]]></itemname>
+		<about><![CDATA[The current version of the LV Trainer]]></about>
+		<details><![CDATA[Grained Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[LV Trainer 1ABLV81                        LV Trainer 1ABLV82                        LV Trainer 1ABLV83                       LV Trainer 1ABLV84]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[48]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Trainer sneakers]]></itemname>
+		<about><![CDATA[The current version of the LV Trainer]]></about>
+		<details><![CDATA[Grained Calfnski]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Blue]]></colour>
+		<image_name><![CDATA[LV Trainer 1ABLUO1                        LV Trainer 1ABLUO2                        LV Trainer 1ABLUO3                        LV Trainer 1ABLUO4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[49]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Skate sneakers ]]></itemname>
+		<about><![CDATA[The LV Skate sneakers are presented in a new exclusive version of grained leather]]></about>
+		<details><![CDATA[Grained Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Grey]]></colour>
+		<image_name><![CDATA[LV Skate 1ABZ4Q1                      LV Skate 1ABZ4Q2                      LV Skate 1ABZ4Q3                      LV Skate 1ABZ4Q4                      LV Skate 1ABZ4Q5]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[50]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Skate sneakers ]]></itemname>
+		<about><![CDATA[The LV Skate sneakers are presented in a new exclusive version of grained leather]]></about>
+		<details><![CDATA[Grained Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Anthracite]]></colour>
+		<image_name><![CDATA[LV Skate 1ABZ461                      LV Skate 1ABZ462                      LV Skate 1ABZ463                      LV Skate 1ABZ464                      LV Skate 1ABZ465]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV Trainer Maxi]]></itemname>
+		<about><![CDATA[Showcased at the Men's Spring/Summer 2023 Fashion Show]]></about>
+		<details><![CDATA[Combination of materials]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Black]]></colour>
+		<image_name><![CDATA[LV Trainer Maxi 1ABZQ91         LV Trainer Maxi 1ABZQ92         LV Trainer Maxi 1ABZQ93         LV Trainer Maxi 1ABZQ94]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                           LV Trainer Maxi]]></itemname>
+		<about><![CDATA[Showcased at the Men's Spring/Summer 2023 Fashion Show, ]]></about>
+		<details><![CDATA[Combination of materials]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[blue]]></colour>
+		<image_name><![CDATA[LV Trainer Maxi 1ABZPU1         LV Trainer Maxi 1ABZPU2         LV Trainer Maxi 1ABZPU3         LV Trainer Maxi41ABZPU4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                               LV Trainer Maxi]]></itemname>
+		<about><![CDATA[Showcased at the Spring Summer 2023 show]]></about>
+		<details><![CDATA[Combination of materials]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[orange]]></colour>
+		<image_name><![CDATA[LV Trainer Maxi 1AB8SX1         LV Trainer Maxi 1AB8SX2         LV Trainer Maxi 1AB8SX3         LV Trainer Maxi 1AB8SX4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                            LV Trainer Maxi]]></itemname>
+		<about><![CDATA[Showcased at the Spring Summer 2023 show]]></about>
+		<details><![CDATA[Combination of materials]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[white]]></colour>
+		<image_name><![CDATA[LV Trainer Maxi 1AB8RO1         LV Trainer Maxi 1AB8RO2         LV Trainer Maxi 1AB8RO3]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                              LV Trainer sneakers ]]></itemname>
+		<about><![CDATA[The Monogram denim LV Trainer sneakers are a colorful take on vintage basketball shoes. ]]></about>
+		<details><![CDATA[Denim]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[green]]></colour>
+		<image_name><![CDATA[LV Trainer 1ABLY21                  LV Trainer 1ABLY22                  LV Trainer 1ABLY23                  LV Trainer 1ABLY24]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                               LV Trainer sneakers ]]></itemname>
+		<about><![CDATA[The Monogram denim LV Trainer sneakers are a colorful take on vintage basketball shoes. ]]></about>
+		<details><![CDATA[Denim]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[red]]></colour>
+		<image_name><![CDATA[LV Trainer 1ABLXJ1                  LV Trainer 1ABLXJ2                  LV Trainer 1ABLXJ3                  LV Trainer 1ABLXJ4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                               LV Trainer sneakers ]]></itemname>
+		<about><![CDATA[A summery take on the LV Trainer]]></about>
+		<details><![CDATA[Textile]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[beige]]></colour>
+		<image_name><![CDATA[LV Trainer 1ABG0H1                  LV Trainer 1ABG0H2                  LV Trainer 1ABG0H3                  LV Trainer 1ABG0H4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                              LV Trainer sneakers ]]></itemname>
+		<about><![CDATA[A summery take on the LV Trainer]]></about>
+		<details><![CDATA[Textile]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[blue]]></colour>
+		<image_name><![CDATA[LV Trainer 1ABG1L1                  LV Trainer 1ABG1L2                  LV Trainer 1ABG1L3                  LV Trainer 1ABG1L4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[             LV x YK sneakers  LV Trainer]]></itemname>
+		<about><![CDATA[The LV Trainer LV x YK sneakers ]]></about>
+		<details><![CDATA[Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[
+blue]]></colour>
+		<image_name><![CDATA[LV x YK Trainer 1ABD1G1         LV x YK Trainer 1ABD1G2         LV x YK Trainer 1ABD1G3         LV x YK Trainer 1ABD1G4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                       LV Runner Tatic]]></itemname>
+		<about><![CDATA[First seen at the Spring/Summer 2022 show]]></about>
+		<details><![CDATA[Combination of materials]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Black]]></colour>
+		<image_name><![CDATA[LV Runner Tatic 1ABFQO1        LV Runner Tatic 1ABFQO2        LV Runner Tatic 1ABFQO3        LV Runner Tatic 1ABFQO4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                        LV Runner Tatic]]></itemname>
+		<about><![CDATA[Inspired by running shoes]]></about>
+		<details><![CDATA[Mix of materials]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Grey]]></colour>
+		<image_name><![CDATA[LV Runner Tatic 1ABLZ71        LV Runner Tatic 1ABLZ72        LV Runner Tatic 1ABLZ73        LV Runner Tatic 1ABLZ74]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                          LV Trainer]]></itemname>
+		<about><![CDATA[Louis Vuitton introduces the iconic LV Trainer in a new sustainable version]]></about>
+		<details><![CDATA[Combination of sustainable materials]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Grey]]></colour>
+		<image_name><![CDATA[LV Trainer 1AAGXF1                LV Trainer 1AAGXF2               LV Trainer 1AAGXF3               LV Trainer 1AAGXF4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                    LV Trainer LV x YK]]></itemname>
+		<about><![CDATA[The LV Trainer LV x YK sneakers from the Louis Vuitton x Yayoi ]]></about>
+		<details><![CDATA[Grained Calfskin
+print]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Black]]></colour>
+		<image_name><![CDATA[LV x YK LV Trainer trainers 1ABD2W1                                LV x YK LV Trainer trainers 1ABD2W2                                LV x YK LV Trainer trainers 1ABD2W3                                LV x YK LV Trainer trainers 1ABD2W4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                           LV Trainer]]></itemname>
+		<about><![CDATA[Louis Vuitton Creative Director ]]></about>
+		<details><![CDATA[Monogram Canvas]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[
+black]]></colour>
+		<image_name><![CDATA[LV Trainer 1A8PU71                  LV Trainer 1A8PU72                  LV Trainer 1A8PU73                  LV Trainer 1A8PU74]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                        LV Trainer LV x YK]]></itemname>
+		<about><![CDATA[The Louis Vuitton x Yayoi Kusama collection features an exclusive version of the LV Trainer]]></about>
+		<details><![CDATA[Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Red]]></colour>
+		<image_name><![CDATA[LV x YK LV Trainer trainers 1AB8J1                                      LV x YK LV Trainer trainers 1AB8J2                                                                             LV x YK LV Trainer trainers 1AB8J3                                                                                                               LV x YK LV Trainer trainers 1AB8J4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                           LV Trainer]]></itemname>
+		<about><![CDATA[The new version of the LV Trainer combines]]></about>
+		<details><![CDATA[Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Orange]]></colour>
+		<image_name><![CDATA[LV Trainer 1ABOIL1                LV Trainer 1ABOIL2                LV Trainer 1ABOIL3                LV Trainer 1ABOIL4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                           LV Trainer]]></itemname>
+		<about><![CDATA[The new version of the LV Trainer combines]]></about>
+		<details><![CDATA[Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Black]]></colour>
+		<image_name><![CDATA[LV Trainer 1ABOGD1                LV Trainer 1ABOGD2                LV Trainer 1ABOGD3                LV Trainer 1ABOGD4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                            LV Skate]]></itemname>
+		<about><![CDATA[The 90s-inspired LV Skate sneaker ]]></about>
+		<details><![CDATA[Combination of materials]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[beige]]></colour>
+		<image_name><![CDATA[LV Skate 1AARQG1                      LV Skate 1AARQG2                      LV Skate 1AARQG3                      LV Skate 1AARQG4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                             LV Skate]]></itemname>
+		<about><![CDATA[The 90s-inspired LV Skate sneaker ]]></about>
+		<details><![CDATA[Combination of materials]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Dark blue]]></colour>
+		<image_name><![CDATA[LV Skate 1AARRK1                      LV Skate 1AARRK2                      LV Skate 1AARRK3                      LV Skate 1AARRK4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                   LV Trainer         ]]></itemname>
+		<about><![CDATA[The new version of the LV Trainer ]]></about>
+		<details><![CDATA[Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Yellow]]></colour>
+		<image_name><![CDATA[LV Trainer 1ABOI11                LV Trainer 1ABOI12                LV Trainer 1ABOI13                LV Trainer 1ABOI14]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                   LV Trainer         ]]></itemname>
+		<about><![CDATA[The new version of the LV Trainer ]]></about>
+		<details><![CDATA[Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Green]]></colour>
+		<image_name><![CDATA[LV Trainer 1ABOJJ1                LV Trainer 1ABOJJ2                LV Trainer 1ABOJJ3]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                      LV Trainer LV x YK]]></itemname>
+		<about><![CDATA[Introduced in the Louis Vuitton x Yayoi Kusama collection]]></about>
+		<details><![CDATA[Grained Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[White]]></colour>
+		<image_name><![CDATA[LV x YK LV Trainer trainers 1ABD3G1                                      LV x YK LV Trainer trainers 1ABD3G2                                      LV x YK LV Trainer trainers 1ABD3G3                                      LV x YK LV Trainer trainers 1ABD3G4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[                           LV Trainer         ]]></itemname>
+		<about><![CDATA[First seen at the Louis Vuitton ]]></about>
+		<details><![CDATA[Suede Calfskin]]></details>
+		<sizes><![CDATA[39-46]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Dark brown]]></colour>
+		<image_name><![CDATA[LV Trainer 1A5UR31                LV Trainer 1A5UR32                LV Trainer 1A5UR33]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[bags & accessories]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[sex]]></sex>
+		<itemname><![CDATA[item name]]></itemname>
+		<about><![CDATA[about]]></about>
+		<details><![CDATA[details]]></details>
+		<sizes><![CDATA[sizes]]></sizes>
+		<price><![CDATA[price,$]]></price>
+		<colour><![CDATA[color]]></colour>
+		<image_name><![CDATA[]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[ Keepall Bandoulière 50]]></itemname>
+		<about><![CDATA[The Keepall Bandoulière 50 
+]]></about>
+		<details><![CDATA[Monogram Eclipse coated canvas ]]></details>
+		<sizes><![CDATA[50 x 29 x 23 cm ]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[grey]]></colour>
+		<image_name><![CDATA[Keepall 50 1 M45392 Keepall 50 2 M45392 Keepall 50 3 M45392 Keepall 50 4 M45392]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[2]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall Bandoulière 60]]></itemname>
+		<about><![CDATA[An icon since the appearance in 1930]]></about>
+		<details><![CDATA[Golden brass pieces]]></details>
+		<sizes><![CDATA[60 x 34 x 27 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[Keepall 60 1 M41412 Keepall 60 2 M41412 Keepall 60 3 M41412 Keepall 60 4 M41412]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[3]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall Bandoulière 55]]></itemname>
+		<about><![CDATA[The beloved Keepall 55]]></about>
+		<details><![CDATA[Coated Canvas]]></details>
+		<sizes><![CDATA[55 x 31 x 26 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Keepall 55 1 M40605 Keepall 55 2 M40605 Keepall 55 3 M40605 Keepall 55 4 M40605]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[55]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[LV x YK Bandoulière Keepall 55]]></itemname>
+		<about><![CDATA[The LVxYK Keepall 55]]></about>
+		<details><![CDATA[Monogram Eclipse coated ]]></details>
+		<sizes><![CDATA[55 x 31 x 26 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[grey]]></colour>
+		<image_name><![CDATA[Keepall 55 1 M46401  Keepall 55 2 M46401  Keepall 55 3 M46401  Keepall 55 4 M46401]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[56]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall Bandoulière 55]]></itemname>
+		<about><![CDATA[With side bands in 
+]]></about>
+		<details><![CDATA[Radiant Sun
+Monogram 
+
+]]></details>
+		<sizes><![CDATA[55 x 31 x 26 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[Keepall 55 1 M46702 Keepall 55 2 M46702]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[57]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall Bandoulière 35]]></itemname>
+		<about><![CDATA[A smaller version of the House’s ]]></about>
+		<details><![CDATA[Embossed Taurillon Monogram 
+
+]]></details>
+		<sizes><![CDATA[34 x 21 x 16 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Keepall 35 1 M22765 Keepall 35 2 M22765 Keepall 35 3 M22765]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[58]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall Bandouliere 50]]></itemname>
+		<about><![CDATA[Inspired by the original design of the padded travel bag]]></about>
+		<details><![CDATA[Exceptionally soft Taiga leather]]></details>
+		<sizes><![CDATA[50 x 29 x 23 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Bandouliere 50 M334001 Bandouliere 50 M334002 Bandouliere 50 M334003 Bandouliere 50 M334004]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[59]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 50 Shoulder Bag]]></itemname>
+		<about><![CDATA[The iconic Keepall travel bag, which has graced Louis Vuitton ]]></about>
+		<details><![CDATA[Embossed Monogram Shadow leather
+Cowhide leather trim]]></details>
+		<sizes><![CDATA[50 x 29 x 23 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[50 Shoulder M448101                  50 Shoulder M448102                  50 Shoulder M448103                  50 Shoulder M448104]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[60]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 45 with shoulder strap]]></itemname>
+		<about><![CDATA[The iconic Keepall 45 with shoulder strap is crafted from new Monogram]]></about>
+		<details><![CDATA[Genuine cowhide leather trim]]></details>
+		<sizes><![CDATA[45 x 27 x 20 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[with shoulder M405691                  with shoulder M405692                  with shoulder M405693                  with shoulder M405694]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 50 Shoulder Bag]]></itemname>
+		<about><![CDATA[The iconic Keepall is re-imagined in ultra-thin LV ]]></about>
+		<details><![CDATA[cowhide leather]]></details>
+		<sizes><![CDATA[50 x 29 x 23 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Keepall 50 M214201                  Keepall 50 M214202                  Keepall 50 M214203                  Keepall 50 M214204]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 45 with shoulder strap]]></itemname>
+		<about><![CDATA[Always travel with ease and style.]]></about>
+		<details><![CDATA[Genuine cowhide leather trim]]></details>
+		<sizes><![CDATA[45 x 27 x 20 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Monogram Canvas]]></colour>
+		<image_name><![CDATA[Keepall 45 M414181                  Keepall 45 M414182                  Keepall 45 M414183                  Keepall 45 M414184]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 55 with shoulder strap]]></itemname>
+		<about><![CDATA[Roomy and multifunctional]]></about>
+		<details><![CDATA[Genuine cowhide leather trim]]></details>
+		<sizes><![CDATA[55 x 31 x 26 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Anwa Monogram]]></colour>
+		<image_name><![CDATA[Keepall 55 M567141                  Keepall 55 M567142                  Keepall 55 M567143                  Keepall 55 M567144]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 50 with shoulder strap]]></itemname>
+		<about><![CDATA[Introduced in 1930, the iconic Keepall epitomizes the spirit of modern travel. ]]></about>
+		<details><![CDATA[Genuine cowhide leather trim]]></details>
+		<sizes><![CDATA[50 x 29 x 23 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Anwa Monogram]]></colour>
+		<image_name><![CDATA[Keepall 50 M414161                  Keepall 50 M414162                  Keepall 50 M414163                  Keepall 50 M414164]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 55 with shoulder strap]]></itemname>
+		<about><![CDATA[Introduced in 1930, the iconic Keepall epitomizes the spirit of modern travel. ]]></about>
+		<details><![CDATA[Genuine cowhide leather trim]]></details>
+		<sizes><![CDATA[55 x 31 x 26 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Canvas]]></colour>
+		<image_name><![CDATA[Keepall 50 N414141                  Keepall 50 N414142                  Keepall 50 N414143]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 55 with shoulder strap]]></itemname>
+		<about><![CDATA[This urban duffel bag in Damier Graphite canvas reinterprets a classic design.]]></about>
+		<details><![CDATA[Genuine cowhide leather trim]]></details>
+		<sizes><![CDATA[55 x 31 x 26 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Canvas]]></colour>
+		<image_name><![CDATA[Keepall 55 N414131                  Keepall 55 N414132                  Keepall 55 N414133                  Keepall 55 N414134]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 45 with shoulder strap]]></itemname>
+		<about><![CDATA[An elegant travel bag in Damier Graphite canvas.]]></about>
+		<details><![CDATA[Genuine cowhide leather trim]]></details>
+		<sizes><![CDATA[45 x 27 x 20 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Canvas]]></colour>
+		<image_name><![CDATA[Keepall 45 N414181                  Keepall 45 N414182                  Keepall 45 N414183                  Keepall 45 N414184]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 50 with shoulder strap]]></itemname>
+		<about><![CDATA[Keepall 50 Shoulder Bag]]></about>
+		<details><![CDATA[Cotton textile lining]]></details>
+		<sizes><![CDATA[50 x 29 x 23 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Canvas]]></colour>
+		<image_name><![CDATA[Keepall 50 M453921                  Keepall 50 M453922                  Keepall 50 M453923                  Keepall 50 M453924]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 25 with shoulder strap]]></itemname>
+		<about><![CDATA[The Keepall 25 in black Taurillon leather with ]]></about>
+		<details><![CDATA[Cowhide Taurillon Leather]]></details>
+		<sizes><![CDATA[25 x 15 x 11 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Black color]]></colour>
+		<image_name><![CDATA[Keepall 25 M209001                  Keepall 25 M209002                  Keepall 25 M209003                  Keepall 25 M209004]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 50 with shoulder strap]]></itemname>
+		<about><![CDATA[The new shoulder strap version of the Keepall 50 ]]></about>
+		<details><![CDATA[Taurillon leather]]></details>
+		<sizes><![CDATA[50 x 29 x 23 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Black color]]></colour>
+		<image_name><![CDATA[Keepall 50 M590251                  Keepall 50 M590252                  Keepall 50 M590253                  Keepall 50 M590254]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 25 with shoulder strap]]></itemname>
+		<about><![CDATA[The new version of the Keepall 25 ]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[25 x 15 x 11 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Monogram Eclipse]]></colour>
+		<image_name><![CDATA[Keepall 25 M462711                  Keepall 25 M462712                  Keepall 25 M462713                  Keepall 25 M462714]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 50 with shoulder strap]]></itemname>
+		<about><![CDATA[The Keepall 50 bag with shoulder strap comes in an innovative combination. ]]></about>
+		<details><![CDATA[Waxed canvas ]]></details>
+		<sizes><![CDATA[50 x 29 x 23 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Pale blue color]]></colour>
+		<image_name><![CDATA[Keepall 50 M225701                  Keepall 50 M225702                  Keepall 50 M225703                  Keepall 50 M225704]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 25 with shoulder strap]]></itemname>
+		<about><![CDATA[The Keepall 25 in Monogram Aquagarden]]></about>
+		<details><![CDATA[Waxed canvas ]]></details>
+		<sizes><![CDATA[25 x 15 x 11 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Pale blue color]]></colour>
+		<image_name><![CDATA[Keepall 25 M225271                 Keepall 25 M225272                 Keepall 25 M225273                 Keepall 25 M225274]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 50 with shoulder strap]]></itemname>
+		<about><![CDATA[The classic Keepall 50 ]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[50 x 29 x 23 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Monogram Washed ]]></colour>
+		<image_name><![CDATA[Keepall 50 M225321                 Keepall 50 M225322                 Keepall 50 M225323                 Keepall 50 M225324]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 25 with shoulder strap]]></itemname>
+		<about><![CDATA[The new Keepall 25]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[25 x 15 x 11 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Monogram Washed ]]></colour>
+		<image_name><![CDATA[Keepall 25 M227621               Keepall 25 M227622               Keepall 25 M227623               Keepall 25 M227624]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 25 with shoulder strap]]></itemname>
+		<about><![CDATA[The compact Keepall 25]]></about>
+		<details><![CDATA[Waxed canvas Monogram]]></details>
+		<sizes><![CDATA[25 x 15 x 11 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Orange color]]></colour>
+		<image_name><![CDATA[Keepall 25 M466871               Keepall 25 M466872               Keepall 25 M466873               Keepall 25 M466874]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 45 with shoulder strap]]></itemname>
+		<about><![CDATA[The iconic Keepall 45]]></about>
+		<details><![CDATA[Waxed canvas Monogram ]]></details>
+		<sizes><![CDATA[45 x 27 x 20 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Orange-beige color]]></colour>
+		<image_name><![CDATA[Keepall 45 M467031               Keepall 45 M467032               Keepall 45 M467033               Keepall 45 M467034]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 55 with shoulder strap]]></itemname>
+		<about><![CDATA[The House's classic short-haul travel accessory]]></about>
+		<details><![CDATA[Waxed canvas Monogram ]]></details>
+		<sizes><![CDATA[55 x 31 x 26 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Orange color]]></colour>
+		<image_name><![CDATA[Keepall 55 M467021          Keepall 55 M467022]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Keepall 55 with shoulder strap]]></itemname>
+		<about><![CDATA[Introduced in 1930, the iconic Keepall epitomizes the spirit of modern travel. ]]></about>
+		<details><![CDATA[Genuine cowhide leather trim]]></details>
+		<sizes><![CDATA[55 x 31 x 26 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Canvas]]></colour>
+		<image_name><![CDATA[Keepall 55 M414141          Keepall 55 M414142          Keepall 55 M414143          Keepall 55 M414144]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Mini Soft Trunk]]></itemname>
+		<about><![CDATA[Designed by Virgil Abloh for the Spring/Summer 2019 collection]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[18.5 x 13 x 8 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Soft Trunk M447351                  Soft Trunk M447352                  Soft Trunk M447353                  Soft Trunk M447354]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Handle Soft Trunk]]></itemname>
+		<about><![CDATA[The Handle Soft Trunk messenger bag is crafted from iconic ]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[21.5 x 15 x 7 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Handle M459351                  Handle M459352                  Handle M459353                  Handle M459354]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Handle Soft Trunk Bag]]></itemname>
+		<about><![CDATA[Crafted from taurillon leather and embossed with Monogram]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[21.5 x 15 x 7 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Trunk Bag M591631                  Trunk Bag M591632                  Trunk Bag M591633                  Trunk Bag M591634]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[
+Wallet Trunk]]></itemname>
+		<about><![CDATA[The eye-catching Trunk Wallet is a miniature version of the iconic Soft Trunk]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[22.5 x 14 x 5 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Wallet Trunk M698381                  Wallet Trunk M698382                  Wallet Trunk M698383                  Wallet Trunk M698384]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[
+Trunk messenger bag]]></itemname>
+		<about><![CDATA[A rectangular Trunk messenger bag in Monogram]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[24 x 18 x 5.5 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[messenger bag M457271                  messenger bag M457272                  messenger bag M457273                  messenger bag M457274]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Trunk messenger bag]]></itemname>
+		<about><![CDATA[The compact Trunk messenger bag is crafted from Taurillon]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[24 x 18 x 5.5 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Trunk messenger M577261                  Trunk messenger M577262                  Trunk messenger M577263                  Trunk messenger M577264]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Handle Soft Trunk Bag]]></itemname>
+		<about><![CDATA[A compact Handle Soft Trunk bag in luxe crocodile leather embodies Virgil Abloh's timeless design]]></about>
+		<details><![CDATA[
+Crocodile skin]]></details>
+		<sizes><![CDATA[
+21.5 x 15 x 7 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Handle Soft N802421                  Handle Soft N802422                  Handle Soft N802423                  Handle Soft N802424]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Backpack Christopher MM]]></itemname>
+		<about><![CDATA[The Christopher MM backpack in Monogram Macassar ]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[38 x 44 x 21 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Orange-beige ]]></colour>
+		<image_name><![CDATA[MM M466861                                MM M466862                                MM M466863                                MM M466864]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Backpack Christopher PM]]></itemname>
+		<about><![CDATA[The dynamic design of the Cristopher backpack was inspired by the romance of backpacking.]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[38 x 44 x 21 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Damier Graphite]]></colour>
+		<image_name><![CDATA[PM N413791                                PM N413792                                PM N413793                                PM N413794]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Backpack Christopher MM]]></itemname>
+		<about><![CDATA[The Christopher MM backpack is a practical accessory with numerous pockets]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[38 x 44 x 21 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[MM M556991                                MM M556992                                MM M556993                                MM M556994]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Christopher Wearable Wallet]]></itemname>
+		<about><![CDATA[The functional Christopher wallet is the perfect accessory for the modern man.]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[15 x 17 x 8 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Canvas]]></colour>
+		<image_name><![CDATA[Wearable Wallet M694041                  Wearable Wallet M694042                  Wearable Wallet M694043                  Wearable Wallet M694044]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[
+Keepall 25 Blown Up Shoulder Bag]]></itemname>
+		<about><![CDATA[The new collection's charming Keepall 25 Blown Up crossbody bag is crafted from iconic Monogram canvas]]></about>
+		<details><![CDATA[VVN cowhide leather trim]]></details>
+		<sizes><![CDATA[25 x 15 x 11 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Canvas]]></colour>
+		<image_name><![CDATA[Shoulder Bag M231061                  Shoulder Bag M231062                  Shoulder Bag M231063                  Shoulder Bag M231064]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Backpack Discovery MM]]></itemname>
+		<about><![CDATA[The iconic Discovery backpack is now available in a new MM version.]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[31 x 42 x 17 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[MM M225451                                MM M225452                                MM M225453                                MM M225454]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Backpack Discovery PM]]></itemname>
+		<about><![CDATA[The iconic Discovery backpack is now available in a new MM version. ]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[29 x 38 x 20 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[PM M225581                                PM M225582                                PM M225583                                PM M225584]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Backpack Discovery PM]]></itemname>
+		<about><![CDATA[The combination of Monogram Macassar canvas, black cowhide]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[29 x 38 x 20 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Canvas]]></colour>
+		<image_name><![CDATA[PM M466841                                PM M466842                                PM M466843]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Sling Noe Maxi]]></itemname>
+		<about><![CDATA[The Noe Maxi bag in Monogram Eclipse canvas is a fusion of modern style and function. ]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[34 x 48 x 18 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Noe Maxi M466931                 Noe Maxi M466932                 Noe Maxi M466933                 Noe Maxi M466934]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Backpack Steamer]]></itemname>
+		<about><![CDATA[In soft Monogram Eclipse canvas, the Steamer Backpack is inspired by Louis Vuitton's]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[32 x 45 x 16 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Steamer M440521                 Steamer M440522                 Steamer M440523                 Steamer M440524]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Trio Messenger]]></itemname>
+		<about><![CDATA[The men's Trio Messenger is crafted from Monogram Eclipse and Monogram Eclipse Reverse canvas]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[25 x 18.5 x 7 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Messenger M694431                 Messenger M694432                 Messenger M694433                 Messenger M694434]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Discovery PM Belt Bag]]></itemname>
+		<about><![CDATA[The Discovery fanny pack in Monogram Eclipse canvas is the perfect combination of modern]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[44 x 15 x 9 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Belt Bag M460351                  Belt Bag M460352                  Belt Bag M460353                  Belt Bag M460354]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Messenger S-Lock]]></itemname>
+		<about><![CDATA[A sophisticated interpretation of Monogram Macassar canvas]]></about>
+		<details><![CDATA[VVN cowhide leather trim]]></details>
+		<sizes><![CDATA[22 x 18 x 8 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[orange]]></colour>
+		<image_name><![CDATA[S-Lock M466881                  S-Lock M466882                  S-Lock M466883                  S-Lock M466884]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Mini Soft Trunk Bag]]></itemname>
+		<about><![CDATA[Designed by Virgil Abloh for the Spring/Summer 2019 collection]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[18.5 x 13 x 8 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Mini Soft M447351                  Mini Soft M447352                  Mini Soft M447353                  Mini Soft M447354]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[District PM bag]]></itemname>
+		<about><![CDATA[A new version of the District messenger in PM is crafted in Monogram Eclipse canvas]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[26 x 20 x 7 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[PM bag M462551                  PM bag M462552                  PM bag M462553                  PM bag M462554]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Messenger District PM]]></itemname>
+		<about><![CDATA[The PM District messenger bag is crafted from Damier Infini cowhide leather]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[26 x 20 x 7 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[District PM N427111                  District PM N427112                  District PM N427113                  District PM N427114]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Speedy 20 Shoulder Bag
+]]></itemname>
+		<about><![CDATA[The Speedy 20 bag is a compact version of the legendary Speedy 20 bag. ]]></about>
+		<details><![CDATA[]]></details>
+		<sizes><![CDATA[20.5 x 13.5 x 12 см
+]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[]]></colour>
+		<image_name><![CDATA[]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Backpack Discovery]]></itemname>
+		<about><![CDATA[The Taigarama Discovery Backpack is crafted from authentic Taiga ]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[30 x 40 x 20 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[white]]></colour>
+		<image_name><![CDATA[Backpack M309531                  Backpack M309532                  Backpack M309533]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Voyage PM]]></itemname>
+		<about><![CDATA[The classic monochrome palette of Monogram Eclipse]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[36.5 x 27.5 x 6 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Voyage PM M464571                  Voyage PM M464572                  Voyage PM M464573                  Voyage PM M464574]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Outdoor ]]></itemname>
+		<about><![CDATA[The elegant Spring/Summer 2019 Outdoor messenger ]]></about>
+		<details><![CDATA[Cowhide Taiga]]></details>
+		<sizes><![CDATA[26 x 20 x 10.5 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Outdoor M302331                  Outdoor M302332                  Outdoor M302333]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Wallet Fastline ]]></itemname>
+		<about><![CDATA[The cowhide Fastline]]></about>
+		<details><![CDATA[cowhide leather]]></details>
+		<sizes><![CDATA[17.3 x 12 x 7 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Black]]></colour>
+		<image_name><![CDATA[Wallet Fastline M820851                  Wallet Fastline M820852                  Wallet Fastline M820853]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Wallet S-Lock Vertical]]></itemname>
+		<about><![CDATA[The elegant S-Lock Vertical]]></about>
+		<details><![CDATA[Taurillon leather]]></details>
+		<sizes><![CDATA[12 x 19 x 7 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Black]]></colour>
+		<image_name><![CDATA[Wallet S-Lock Vertical M815241                  Wallet S-Lock Vertical M815242                  Wallet S-Lock Vertical M815243]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Voyager PM ]]></itemname>
+		<about><![CDATA[Made from soft Monogram Eclipse canvas]]></about>
+		<details><![CDATA[Textile lining]]></details>
+		<sizes><![CDATA[33 x 22.5 x 11 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Voyager PM M405111                  Voyager PM M405112                  Voyager PM M405113]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Michael NV2 ]]></itemname>
+		<about><![CDATA[Stylish and functional]]></about>
+		<details><![CDATA[Cowhide leather Damier Infini Onyx]]></details>
+		<sizes><![CDATA[29 x 42 x 13 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Michael NV2 N452871                 Michael NV2 N452872                 Michael NV2 N452873                 Michael NV2 N452874]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[ Pochette Metis East West]]></itemname>
+		<about><![CDATA[
+Made from Monogram ]]></about>
+		<details><![CDATA[Monogram coated canvas
+
+]]></details>
+		<sizes><![CDATA[21.5 x 13.5 x 6 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[Pochette Metis East West 1 M46279 Pochette Metis East West 2 M46279 Pochette Metis East West 3 M46279 Pochette Metis East West 4 M46279]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[
+Nano Noé]]></itemname>
+		<about><![CDATA[The Nano Noé
+]]></about>
+		<details><![CDATA[Monogram coated canvas
+
+]]></details>
+		<sizes><![CDATA[13 x 16 x 10 cm ]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[Nano Noé 1 M81266 Nano Noé 2 M81266 Nano Noé 3 M81266 Nano Noé 4 M81266]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Neverfull GM ]]></itemname>
+		<about><![CDATA[The Neverfull GM ]]></about>
+		<details><![CDATA[Beige
+Monogram ]]></details>
+		<sizes><![CDATA[39 x 32 x 19 cm ]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[Neverfull GM 1 M40990 Neverfull GM 2 M40990 Neverfull GM 3 M40990 Neverfull GM 4 M40990]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Neverfull GM ]]></itemname>
+		<about><![CDATA[The Neverfull GM tote 
+]]></about>
+		<details><![CDATA[Cerise Red
+Damier 
+]]></details>
+		<sizes><![CDATA[39 x 32 x 19 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[ Neverfull GM 1 N41357 Neverfull GM 2 N41357 Neverfull GM 3 N41357 Neverfull GM 4 N41357]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[nTheGo PM ]]></itemname>
+		<about><![CDATA[Both fashionable and functional
+]]></about>
+		<details><![CDATA[Monogram and Monogram]]></details>
+		<sizes><![CDATA[25 x 19 x 11.5 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[nTheGo PM 1 M46373 nTheGo PM 2 M46373 nTheGo PM 3 M46373 nTheGo PM 4 M46373]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Sac Plat BB]]></itemname>
+		<about><![CDATA[A revamp of the House’s Sac Plat from 
+]]></about>
+		<details><![CDATA[Monogram coated canvas
+Natural ]]></details>
+		<sizes><![CDATA[21.5 x 22 x 9 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[Sac Plat BB 1 M46265 Sac Plat BB 2 M46265 Sac Plat BB 3 M46265 Sac Plat BB 4 M46265]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Vendôme MM ]]></itemname>
+		<about><![CDATA[Evocative of the Louis Vuitton
+]]></about>
+		<details><![CDATA[Black
+Monogram coated 
+]]></details>
+		<sizes><![CDATA[36 x 22 x 18 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[ Vendôme MM 1 M46508 Vendôme MM 2 M46508 Vendôme MM 3 M46508 Vendôme MM 4 M46508]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[OnTheGo MM]]></itemname>
+		<about><![CDATA[The name says it all: OnTheGo MM takes care]]></about>
+		<details><![CDATA[Monogram and Monogram 
+]]></details>
+		<sizes><![CDATA[35 x 27 x 14 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[OnTheGo MM 1 M45321 OnTheGo MM 2 M45321 OnTheGo MM 3 M45321 OnTheGo MM 4 M45321]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Mini Bumbag ]]></itemname>
+		<about><![CDATA[The Mini Bumbag in Monogram canvas is 
+]]></about>
+		<details><![CDATA[Monogram coated canvas
+Natural ]]></details>
+		<sizes><![CDATA[17 x 12 x 9.5 cm ]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[Mini Bumbag 1 M82335 Mini Bumbag 2 M82335 Mini Bumbag 3 M82335 Mini Bumbag 4 M82335]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Petit Sac Plat ]]></itemname>
+		<about><![CDATA[Crafted from Monogram canvas, the Petit
+]]></about>
+		<details><![CDATA[Monogram coated canvas
+Aged
+]]></details>
+		<sizes><![CDATA[14 x 17 x 5 cm ]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[Petit Sac Plat 1 M81295 Petit Sac Plat 2 M81295 Petit Sac Plat 3 M81295 Petit Sac Plat 4 M81295]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Wallet on Chain Ivy]]></itemname>
+		<about><![CDATA[Inspired by the Sac Recoleta 
+]]></about>
+		<details><![CDATA[Monogram coated canvas
+Aged 
+]]></details>
+		<sizes><![CDATA[23.5 x 12 x 4.3 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[Wallet on Chain Ivy 1 M81911 Wallet on Chain Ivy 2 M81911 Wallet on Chain Ivy 3 M81911 Wallet on Chain Ivy 4 M81911]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Mini Boite Chapeau ]]></itemname>
+		<about><![CDATA[Fashioned from Monogram canvas
+]]></about>
+		<details><![CDATA[Monogram coated canvas
+
+]]></details>
+		<sizes><![CDATA[13 x 12 x 6.5 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[Mini Boite Chapeau 1 M44699 Mini Boite Chapeau 2 M44699 Mini Boite Chapeau 3 M44699 Mini Boite Chapeau 4 M44699]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Loop ]]></itemname>
+		<about><![CDATA[Created by Nicolas 
+]]></about>
+		<details><![CDATA[Monogram coated canvas
+
+]]></details>
+		<sizes><![CDATA[23 x 13 x 6 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[Loop 1 M81098 Loop 2 M81098 Loop 3 M81098 Loop 4 M81098]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Dauphine MM ]]></itemname>
+		<about><![CDATA[This Louis Vuitton 
+]]></about>
+		<details><![CDATA[Monogram and Monogram ]]></details>
+		<sizes><![CDATA[25 x 17 x 10.5 cm ]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[Dauphine MM 1 M45958 Dauphine MM 2 M45958 Dauphine MM 3 M45958 Dauphine MM 4 M45958]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Dauphine Chain Wallet]]></itemname>
+		<about><![CDATA[Combining Monogram 
+]]></about>
+		<details><![CDATA[Monogram and Monogram Reverse ]]></details>
+		<sizes><![CDATA[18.5 x 12 x 5 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[Dauphine Chain Wallet 1 M68746 Dauphine Chain Wallet 2 M68746 Dauphine Chain Wallet 3 M68746 Dauphine Chain Wallet 4 M68746]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Pochette Metis]]></itemname>
+		<about><![CDATA[The small Pochette Metis clutch is the epitome of elegance. The bag is crafted from soft ]]></about>
+		<details><![CDATA[Genuine calfskin trim]]></details>
+		<sizes><![CDATA[25 x 19 x 7 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[canvas]]></colour>
+		<image_name><![CDATA[MetisM448751                                MetisM448752                                MetisM448753                                MetisM448754]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Bag Neverfull MM]]></itemname>
+		<about><![CDATA[The Neverfull MM tote combines classic design with iconic Louis Vuitton elements.]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[31 x 28 x 14 сm
+]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[red]]></colour>
+		<image_name><![CDATA[MMM411771                                MMM411772                                MMM411773                                MMM411774]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Accessory Multi Pochette]]></itemname>
+		<about><![CDATA[
+The unique Multi Pochette accessory is an original cross-body ]]></about>
+		<details><![CDATA[VVN cowhide leather trim]]></details>
+		<sizes><![CDATA[24 x 13.5 x 4 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[pink]]></colour>
+		<image_name><![CDATA[PochetteM448401                                PochetteM448402                                PochetteM448403                                PochetteM448404]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Clutch Pochette Metis]]></itemname>
+		<about><![CDATA[The stylish Pochette Metis clutch gets an ultra-fashion touch with the iconic Monogram]]></about>
+		<details><![CDATA[Smooth calfskin trim]]></details>
+		<sizes><![CDATA[25 x 19 x 7 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[canvas]]></colour>
+		<image_name><![CDATA[MetisM448761                                MetisM448762                                MetisM448763                                MetisM448764]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Speedy Bandoulière 25]]></itemname>
+		<about><![CDATA[The Speedy Bandoulière 25 in graphic Damier Ebène canvas is an ideal city bag for every day]]></about>
+		<details><![CDATA[Smooth cowhide leather trim]]></details>
+		<sizes><![CDATA[25 x 19 x 15 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[canvas]]></colour>
+		<image_name><![CDATA[SpeedyN413681                                SpeedyN413682                                SpeedyN413683                                SpeedyN413684]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Alma BB]]></itemname>
+		<about><![CDATA[The Alma BB handbag traces its pedigree to an Art Deco original, introduced in 1934]]></about>
+		<details><![CDATA[Smooth cowhide leather trim]]></details>
+		<sizes><![CDATA[23.5 x 17.5 x 11.5 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[canvas]]></colour>
+		<image_name><![CDATA[BBM531521                                BBM531522                                BBM531523                                BBM531524]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Passy Bag]]></itemname>
+		<about><![CDATA[The compact Passy Bag in Monogram canvas with a sliding chain is the quintessence of casual chic.]]></about>
+		<details><![CDATA[Smooth cowhide leather trim]]></details>
+		<sizes><![CDATA[23 x 17 x 9 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[PassyM455921                                PassyM455922                                PassyM455923                                PassyM455924]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Tilsitt]]></itemname>
+		<about><![CDATA[The Tilsitt handbag in Monogram and Monogram Reverse canvas is an ideal city bag]]></about>
+		<details><![CDATA[Cowhide-leather trim]]></details>
+		<sizes><![CDATA[24 x 18 x 7 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[canvas]]></colour>
+		<image_name><![CDATA[TilsittM465481                                TilsittM465482                                TilsittM465483                                TilsittM465484]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[NéoNoé MM]]></itemname>
+		<about><![CDATA[A true House icon, the NéoNoé bucket bag revisits a 1932 design by Gaston-Louis Vuitton]]></about>
+		<details><![CDATA[Smooth cowhide-leather trim]]></details>
+		<sizes><![CDATA[26 x 26 x 17.5 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[MMM448871                                MMM448872                                MMM448873                                MMM448874]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Cluny Mini]]></itemname>
+		<about><![CDATA[The adorable Cluny Mini handbag in iconic Monogram canvas is designed to delight LV lovers]]></about>
+		<details><![CDATA[Cowhide-leather trim]]></details>
+		<sizes><![CDATA[20 x 16 x 7.5 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[brown]]></colour>
+		<image_name><![CDATA[MiniM460551                                MiniM460552                                MiniM460553                                MiniM460554]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Pochette Félicie]]></itemname>
+		<about><![CDATA[Louis Vuitton's emblematic Epi leather complements the simple yet elegant design of the Pochette Félicie]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[21 x 12 x 3 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[FélicieM818761                                FélicieM818762                                FélicieM818763                                ]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Pochette Métis East West]]></itemname>
+		<about><![CDATA[Crafted from Monogram Empreinte leather, with its embossed Monogram pattern]]></about>
+		<details><![CDATA[Cowhide-leather trim]]></details>
+		<sizes><![CDATA[21.5 x 13.5 x 6 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[creme]]></colour>
+		<image_name><![CDATA[PochetteM230811                                PochetteM230812                                PochetteM230813                                PochetteM230814]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Diane]]></itemname>
+		<about><![CDATA[There’s a vintage 90s feel to this Diane satchel bag made from two-tone embossed Monogram Empreinte leather.]]></about>
+		<details><![CDATA[Cowhide-leather trim]]></details>
+		<sizes><![CDATA[]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[creme]]></colour>
+		<image_name><![CDATA[DianeM465831                                DianeM465832                                DianeM465833                                DianeM465834]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Twist MM]]></itemname>
+		<about><![CDATA[The Twist MM handbag is made from Epi leather, with its distinctive embossing]]></about>
+		<details><![CDATA[Smooth cowhide-leather trim]]></details>
+		<sizes><![CDATA[23 x 17 x 9.5 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Honey Gold]]></colour>
+		<image_name><![CDATA[MMM222291                                MMM222292                                MMM222293                                MMM222294]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Twist MM]]></itemname>
+		<about><![CDATA[The Twist MM handbag is made from Epi leather, with its distinctive embossing]]></about>
+		<details><![CDATA[Smooth cowhide-leather trim]]></details>
+		<sizes><![CDATA[23 x 17 x 9.5 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[quartz]]></colour>
+		<image_name><![CDATA[MMM222361                                MMM222362                                MMM222363                                MMM222364]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Cluny BB]]></itemname>
+		<about><![CDATA[A textile strap lends a lively twist to this Cluny BB handbag]]></about>
+		<details><![CDATA[Natural cowhide-leather trim]]></details>
+		<sizes><![CDATA[28 x 20 x 10 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[canvas]]></colour>
+		<image_name><![CDATA[BBM463721                                BBM463722                                BBM463723                                BBM463724]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[New Wave Chain Bag GM]]></itemname>
+		<about><![CDATA[The quilted Chain Bag New Wave now comes in glamourous XL proportions]]></about>
+		<details><![CDATA[Smooth calf-leather trim]]></details>
+		<sizes><![CDATA[30 x 20 x 11 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[GMM216151                                GMM216152                                GMM216153                                GMM216154]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Madeleine BB Bag]]></itemname>
+		<about><![CDATA[Made from Monogram Empreinte leather with an oversized]]></about>
+		<details><![CDATA[Grained cowhide trim]]></details>
+		<sizes><![CDATA[24 x 17 x 8.5 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[BBM459771                                BBM459772                                BBM459773                                BBM459774]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Twist MM]]></itemname>
+		<about><![CDATA[This summery version of the Twist MM handbag features a wide embroidered textile strap]]></about>
+		<details><![CDATA[Cowhide-leather lining]]></details>
+		<sizes><![CDATA[23 x 17 x 9.5 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[MMM220361                                MMM220362                                MMM220363                                MMM220364]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Loop Hobo Bag]]></itemname>
+		<about><![CDATA[A supple and roomy bag, the Loop Hobo bag is made from a mix of Monogram and Monogram Reverse ]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[38 x 26 x 10 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[canvas]]></colour>
+		<image_name><![CDATA[HoboM463111                                HoboM463112                                HoboM463113                                HoboM463114]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Petit Sac Plat Bag]]></itemname>
+		<about><![CDATA[The Petit Sac Plat bag is a miniature replica of the Sac Plat, one of Louis Vuitton's iconic bags]]></about>
+		<details><![CDATA[Monogram Empreinte embossed supple grained cowhide leather]]></details>
+		<sizes><![CDATA[14 x 17 x 5 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[BLACK]]></colour>
+		<image_name><![CDATA[PetitM814171                                PetitM814172                                PetitM814173                                PetitM814174]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Marceau Bag]]></itemname>
+		<about><![CDATA[The elegant Marceau chain bag, with its emblematic S-lock and gold-colour chain]]></about>
+		<details><![CDATA[Embossed grained cowhide leather]]></details>
+		<sizes><![CDATA[24.5 x 15 x 6.5 cm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[MarceauM462001                                MarceauM462002                                MarceauM462003                                MarceauM462004]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Vanity Case PM]]></itemname>
+		<about><![CDATA[The iconic Petite Malle inspired the Vanity Case baguette in Monogram canvas]]></about>
+		<details><![CDATA[Cowhide leather and metal trim]]></details>
+		<sizes><![CDATA[18.5 x 10.2 x 5 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[canvas]]></colour>
+		<image_name><![CDATA[PMM467581                                PMM467582                                PMM467583                                ]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Petite Malle Souple]]></itemname>
+		<about><![CDATA[The expressive Petite Malle Souple is a reflection of the Maison's rich heritage]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[20 x 14 x 7.5 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[canvas]]></colour>
+		<image_name><![CDATA[SoupleM455711                                SoupleM455712                                SoupleM455713                                SoupleM455714]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Neo Alma PM]]></itemname>
+		<about><![CDATA[Louis Vuitton's Neo Alma bag in size PM is an example of exquisite craftsmanship]]></about>
+		<details><![CDATA[Embossed Cowhide Monogram Empreinte]]></details>
+		<sizes><![CDATA[35 x 23 x 15 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[PMM448321                                PMM448322                                PMM448323                                PMM448324]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Palm Springs Mini]]></itemname>
+		<about><![CDATA[A functional Monogram canvas Palm Spring Mini backpack]]></about>
+		<details><![CDATA[Soft cowhide leather trim]]></details>
+		<sizes><![CDATA[17 x 22 x 10 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[canvas]]></colour>
+		<image_name><![CDATA[MiniM448731                                MiniM448732                                MiniM448733                                MiniM448734]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Tambourin]]></itemname>
+		<about><![CDATA[For the Fall/Winter 2019 collection]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[18 x 15 x 8 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[canvas]]></colour>
+		<image_name><![CDATA[TambourinM448601                                TambourinM448602                                TambourinM448603                                TambourinM448604]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[
+Speedy 25 Shoulder Bag]]></itemname>
+		<about><![CDATA[The trendy Speedy Bandouliere 25 bag with detachable shoulder strap is crafted from classic ]]></about>
+		<details><![CDATA[Smooth cowhide leather trim]]></details>
+		<sizes><![CDATA[25 x 19 x 15 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[canvas]]></colour>
+		<image_name><![CDATA[BagM411131                                BagM411132                                BagM411133                                BagM411134]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Noe BB]]></itemname>
+		<about><![CDATA[The Noe shoulder bag is based on an archival model from 1932, originally designed to carry champagne]]></about>
+		<details><![CDATA[Cowhide leather trim]]></details>
+		<sizes><![CDATA[22 x 24 x 15 сm]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[canvas]]></colour>
+		<image_name><![CDATA[BBM408171                                BBM408172                                BBM408173                                BBM408174]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[
+Denim shirt with short sleeves]]></itemname>
+		<about><![CDATA[A utilitarian short-sleeved shirt will effectively complete a layered look.]]></about>
+		<details><![CDATA[100% cotton]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Indigo]]></colour>
+		<image_name><![CDATA[Denim shirt 1ABLDH1                  Denim shirt 1ABLDH2                  Denim shirt 1ABLDH3                  Denim shirt 1ABLDH4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[Shirt Baseball]]></itemname>
+		<about><![CDATA[A baseball-style shirt is a great choice for sports fans.]]></about>
+		<details><![CDATA[73% polyester, 22% cotton, 4%]]></details>
+		<sizes><![CDATA[ s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Black]]></colour>
+		<image_name><![CDATA[Shirt Baseball 1AB5KX1                  Shirt Baseball 1AB5KX2                  Shirt Baseball 1AB5KX3                  Shirt Baseball 1AB5KX4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[Overshort in cotton with Monogram pattern]]></itemname>
+		<about><![CDATA[The cotton overshort features a flocked Monogram pattern with a velvety effect. ]]></about>
+		<details><![CDATA[98% cotton, 2% elastane]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Khaki]]></colour>
+		<image_name><![CDATA[Overshort Monogram 1ABNP81                  Overshort Monogram 1ABNP82                  Overshort Monogram 1ABNP83                  Overshort Monogram 1ABNP84]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[Regular fit shirt with graphics]]></itemname>
+		<about><![CDATA[The classic shirt of the Spring-Summer 2023 season appears in a sophisticated blue-gray]]></about>
+		<details><![CDATA[100% cotton]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Grey-blue]]></colour>
+		<image_name><![CDATA[fit shirt 1AB5L71                              fit shirt 1AB5L72                              fit shirt 1AB5L73                              fit shirt 1AB5L74]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[Short Sleeve Monogram Rainbow Denim Shirt]]></itemname>
+		<about><![CDATA[This short-sleeved denim shirt features Monogram Rainbow jacquard in a pastel color scheme.]]></about>
+		<details><![CDATA[100% cotton]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Indigo]]></colour>
+		<image_name><![CDATA[Rainbow Denim 1AB91X1                  Rainbow Denim 1AB91X2                  Rainbow Denim 1AB91X3                  Rainbow Denim 1AB91X4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[Regular Fit Signature Long Sleeve Shirt]]></itemname>
+		<about><![CDATA[This eye-catching long-sleeved cotton shirt is decorated with a seasonal silk-screened print. ]]></about>
+		<details><![CDATA[100% cotton]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Indigo]]></colour>
+		<image_name><![CDATA[Long Sleeve 1AATK91                  Long Sleeve 1AATK92                  Long Sleeve 1AATK93                  Long Sleeve 1AATK94]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[Classic Shirt]]></itemname>
+		<about><![CDATA[This embossed LV Monogram shirt]]></about>
+		<details><![CDATA[100% Polyester]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Purple]]></colour>
+		<image_name><![CDATA[Classic Shirt 1AAIGG1                  Classic Shirt 1AAIGG2                  Classic Shirt 1AAIGG3]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[Classic Shirt]]></itemname>
+		<about><![CDATA[This soft velvet shirt is the perfect complement to your stylish look. ]]></about>
+		<details><![CDATA[100% cotton]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[White]]></colour>
+		<image_name><![CDATA[Classic Shirt 1AAGIP1                  Classic Shirt 1AAGIP2                  Classic Shirt 1AAGIP3                  Classic Shirt 1AAGIP4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[Monogram Long Sleeve Shirt]]></itemname>
+		<about><![CDATA[The key feature of this long-sleeved cotton shirt is the Monogram Sand print in a warm]]></about>
+		<details><![CDATA[100% cotton]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[White]]></colour>
+		<image_name><![CDATA[Long Sleeve Shirt 1ABJLM1                  Long Sleeve Shirt 1ABJLM2                  Long Sleeve Shirt 1ABJLM3                  Long Sleeve Shirt 1ABJLM4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[LV x YK Infinity Dots denim shirt]]></itemname>
+		<about><![CDATA[This short-sleeved denim shirt is part of the second exclusive]]></about>
+		<details><![CDATA[100% cotton]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Indigo]]></colour>
+		<image_name><![CDATA[LV x YK shirt 1AB6O51                  LV x YK shirt 1AB6O52                  LV x YK shirt 1AB6O53                  LV x YK shirt 1AB6O54]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[Short Sleeve Multi Buttonholes Pajama Shirt]]></itemname>
+		<about><![CDATA[This flowy silk shirt features a loose fit and flowing shoulders.]]></about>
+		<details><![CDATA[100% silk]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Dark-Grey]]></colour>
+		<image_name><![CDATA[Pajama Shirt 1AB6CE1                  Pajama Shirt 1AB6CE2                  Pajama Shirt 1AB6CE3                  Pajama Shirt 1AB6CE4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[
+Short sleeve shirt]]></itemname>
+		<about><![CDATA[This short-sleeved silk shirt features a bold Jazzman print ]]></about>
+		<details><![CDATA[100% silk]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[anthracite]]></colour>
+		<image_name><![CDATA[sleeve shirt 1AATPF1                  sleeve shirt 1AATPF2                  sleeve shirt 1AATPF3]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Monogram Short-Sleeved Denim Shirt]]></itemname>
+		<about><![CDATA[This sporty black denim shirt, which can also be worn open as an overshirt]]></about>
+		<details><![CDATA[100% Cotton]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Sleeved1ABJDT]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[Carpenter denim shorts]]></itemname>
+		<about><![CDATA[Light indigo denim shorts are a multifaceted element of your summer wardrobe]]></about>
+		<details><![CDATA[100% cotton]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Indigo]]></colour>
+		<image_name><![CDATA[Carpenter denim 1ABJ7E1                  Carpenter denim 1ABJ7E2                  Carpenter denim 1ABJ7E3                  Carpenter denim 1ABJ7E4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[Evening shorts with drawstring waist]]></itemname>
+		<about><![CDATA[Spectacular shorts with a drawstring waist are distinguished by elegant creases.]]></about>
+		<details><![CDATA[100% silk]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Dark-blue]]></colour>
+		<image_name><![CDATA[Evening shorts 1AA5AQ1                  Evening shorts 1AA5AQ2                  Evening shorts 1AA5AQ3                  Evening shorts 1AA5AQ4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[LV Multi Tools Embroidered Shorts]]></itemname>
+		<about><![CDATA[Crafted from cotton jersey, these shorts are embroidered with the LV ]]></about>
+		<details><![CDATA[100% cotton]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Black]]></colour>
+		<image_name><![CDATA[Embroidered Shorts 1AB6EM1                  Embroidered Shorts 1AB6EM2                  Embroidered Shorts 1AB6EM3                  Embroidered Shorts 1AB6EM4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[LV x YK Monogram Faces Swimshorts]]></itemname>
+		<about><![CDATA[These elegant swim shorts are from the second exclusive Louis Vuitton x Yayoi Kusama ]]></about>
+		<details><![CDATA[100% Polyamide]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Blue]]></colour>
+		<image_name><![CDATA[Faces Swimshorts 1AB79T1                  Faces Swimshorts 1AB79T2                  Faces Swimshorts 1AB79T3                  Faces Swimshorts 1AB79T4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[Rainbow Monogram Denim Shorts]]></itemname>
+		<about><![CDATA[These trendy indigo denim shorts are twisted with a jacquard weave featuring an allover ]]></about>
+		<details><![CDATA[100% Cotton]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Indigo]]></colour>
+		<image_name><![CDATA[Denim Shorts 1AB9261                  Denim Shorts 1AB9262                  Denim Shorts 1AB9263                  Denim Shorts 1AB9264]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[Shorts LV Graffiti]]></itemname>
+		<about><![CDATA[Featuring the iconic Monogram jacquard pattern, these shorts are detailed with eye-catching ]]></about>
+		<details><![CDATA[100% cotton]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Black]]></colour>
+		<image_name><![CDATA[LV Graffiti 1AA4Y01                  LV Graffiti 1AA4Y02                  LV Graffiti 1AA4Y03                  LV Graffiti 1AA4Y04]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[Monogram sweatshirt shorts]]></itemname>
+		<about><![CDATA[Lightweight shorts with an adjustable drawstring waist, made from soft fleece]]></about>
+		<details><![CDATA[83% cotton, 17% nylon]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Black]]></colour>
+		<image_name><![CDATA[sweatshirt shorts 1ABJ9W1                  sweatshirt shorts 1ABJ9W2                  sweatshirt shorts 1ABJ9W3                  sweatshirt shorts 1ABJ9W4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[man]]></sex>
+		<itemname><![CDATA[Cotton shorts with Monogram pattern]]></itemname>
+		<about><![CDATA[Made from soft cotton jersey, the Monogram Pointillism pattern]]></about>
+		<details><![CDATA[100% cotton]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[Mix]]></colour>
+		<image_name><![CDATA[Cotton shorts 1ABJ9H1                  Cotton shorts 1ABJ9H2                  Cotton shorts 1ABJ9H3                  Cotton shorts 1ABJ9H4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+	<node>
+		<undefined0><![CDATA[]]></undefined0>
+		<undefined1><![CDATA[]]></undefined1>
+		<sex><![CDATA[]]></sex>
+		<itemname><![CDATA[Hybrid Cotton Shorts]]></itemname>
+		<about><![CDATA[These sporty shorts are inspired by the collection’s desert bike race]]></about>
+		<details><![CDATA[82% Cotton, 18% Polyamide]]></details>
+		<sizes><![CDATA[s, m, l, xl]]></sizes>
+		<price><![CDATA[]]></price>
+		<colour><![CDATA[black]]></colour>
+		<image_name><![CDATA[Hybrid1ABJ1N1                  Hybrid1ABJ1N2                  Hybrid1ABJ1N3                  Hybrid1ABJ1N4]]></image_name>
+		<undefined10><![CDATA[]]></undefined10>
+		<undefined11><![CDATA[]]></undefined11>
+	</node>
+</data>
