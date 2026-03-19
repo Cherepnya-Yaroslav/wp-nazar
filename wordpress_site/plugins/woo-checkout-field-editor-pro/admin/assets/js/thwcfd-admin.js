@@ -523,12 +523,12 @@ var thwcfd_settings_field = (function($, window, document) {
 	var _nx = _wp$i18n._nx;	
 
 	var MSG_INVALID_NAME = __('NAME/ID must begin with a lowercase letter ([a-z]) or underscores ("_") and may be followed by any number of lowercase letters, digits ([0-9]) and underscores ("_")', 'woo-checkout-field-editor-pro');
-	var SPECIAL_FIELD_TYPES = ["country", "state", "city"];
+	var SPECIAL_FIELD_TYPES = ["country", "state", "city", "tel"];
 
 	var FIELD_FORM_PROPS = {
 		name  : {name : 'name', type : 'text'},
 		type  : {name : 'type', type : 'select'},
-
+		title          : {name : 'title', type : 'text'},
 		label       : {name : 'label', type : 'text'},
 		default     : {name : 'default', type : 'text'},
 		placeholder : {name : 'placeholder', type : 'text'},
@@ -546,35 +546,64 @@ var thwcfd_settings_field = (function($, window, document) {
 		show_in_order : {name : 'show_in_order', type : 'checkbox'},
 	};
 
+	var BLOCK_FIELD_FORM_PROPS = {
+		name  : {name : 'name', type : 'text'},
+		type  : {name : 'type', type : 'select'},
+
+		value : {name : 'value', type : 'text'},
+		placeholder : {name : 'placeholder', type : 'text'},
+		description : {name : 'description', type : 'text'},
+		validate    : {name : 'validate', type : 'select' },
+		cssclass    : {name : 'cssclass', type : 'text'},
+
+		title          : {name : 'title', type : 'text'},
+
+		order_meta : {name : 'order_meta', type : 'checkbox'},
+		user_meta  : {name : 'user_meta', type : 'checkbox'},
+
+		checked  : {name : 'checked', type : 'checkbox'},
+		required : {name : 'required', type : 'checkbox'},
+		clear 	 : {name : 'clear', type : 'checkbox'},
+		enabled  : {name : 'enabled', type : 'checkbox'},
+
+		show_in_email : {name : 'show_in_email', type : 'checkbox'},
+		show_in_email_customer : {name : 'show_in_email_customer', type : 'checkbox'},
+		show_in_order : {name : 'show_in_order', type : 'checkbox'},
+		show_in_thank_you_page : {name : 'show_in_thank_you_page', type : 'checkbox'},
+		show_in_my_account_page : {name : 'show_in_my_account_page', type : 'checkbox'},
+
+	};
+
 	var FIELDS_TO_HIDE = {
 		radio : ['placeholder', 'validate'],
 		select : ['validate'],
 		password: ['default'],
 	};	
 
-	function open_new_field_form(sname){
-		open_field_form('new', false, sname);
+	function open_new_field_form(sname, checkout_type){
+		open_field_form('new', false, sname, checkout_type);
 	}
 
-	function open_edit_field_form(elm, rowId){
-		open_field_form('edit', elm, false);
+	function open_edit_field_form(elm, rowId, checkout_type){
+		open_field_form('edit', elm, false, checkout_type);
 	}
 
-	function open_copy_field_form(elm, rowId){
-		open_field_form('copy', elm, false);
+	function open_copy_field_form(elm, rowId, checkout_type){
+		open_field_form('copy', elm, false, checkout_type);
 	}
 
-	function open_field_form(type, elm, sname){
+	function open_field_form(type, elm, sname, checkout_type){
 		var popup = $("#thwcfd_field_form_pp");
 		var form  = $("#thwcfd_field_form");
 
-		populate_field_form(popup, form, type, elm, sname);
+		populate_field_form(popup, form, type, elm, sname, checkout_type);
 
 		thwcfd_base.form_wizard_open(popup);
 		//thwcfd_base.setup_color_pick_preview(form);
 	}
 
-	function populate_field_form(popup, form, action, elm, sname){
+	function populate_field_form(popup, form, action, elm, sname, checkout_type){
+
 		var title = action === 'edit' ? __('Edit Field', 'woo-checkout-field-editor-pro') : __('New Field', 'woo-checkout-field-editor-pro');
 		popup.find('.wizard-title').text(title);
 
@@ -584,6 +613,8 @@ var thwcfd_settings_field = (function($, window, document) {
 		if(action === 'new'){
 			if(sname == 'billing' || sname == 'shipping' || sname == 'additional'){
 				sname = sname+'_';
+			}else{
+				sname = '';
 			}
 
 			clear_field_form_general(form);
@@ -600,7 +631,7 @@ var thwcfd_settings_field = (function($, window, document) {
 
 			populate_field_form_general(action, form, props);
 			form.find("select[name=i_type]").change();
-			populate_field_form_props(form, row, props);
+			populate_field_form_props(form, row, props, checkout_type);
 		}
 	}
 
@@ -655,6 +686,7 @@ var thwcfd_settings_field = (function($, window, document) {
 
 		thwcfd_base.set_property_field_value(form, 'select', 'type', type, 0);
 		thwcfd_base.set_property_field_value(form, 'text', 'name', name, 0);
+		thwcfd_base.set_property_field_value(form, 'hidden', 'name_old', name, 0);
 
 		// if(type == "country" || type == "state" || type == "city"){
 		// 	form.find("select[name=i_type]").prop('disabled', true);
@@ -663,11 +695,11 @@ var thwcfd_settings_field = (function($, window, document) {
 		// }
 	}
 
-	function populate_field_form_props(form, row, props){
+	function populate_field_form_props(form, row, props, checkout_type){
 		var ftype  = props.type;
 		var custom = props['custom'] ? props['custom'] : '';
-
-		$.each( FIELD_FORM_PROPS, function( name, field ) {
+		var current_section_form_fields = checkout_type === 'block' ? BLOCK_FIELD_FORM_PROPS : FIELD_FORM_PROPS;
+		$.each( current_section_form_fields, function( name, field ) {
 			if(name == 'name' || name == 'type') {
 				return true;
 			}
@@ -705,6 +737,8 @@ var thwcfd_settings_field = (function($, window, document) {
 		}else{
 			thwcfd_base.set_property_field_value(form, 'checkbox', 'show_in_email', true, 0);
 			thwcfd_base.set_property_field_value(form, 'checkbox', 'show_in_order', true, 0);
+			thwcfd_base.set_property_field_value(form, 'checkbox', 'order_meta', true, 0);
+			thwcfd_base.set_property_field_value(form, 'checkbox', 'user_meta', true, 0);
 
 			form.find("input[name=i_name]").prop('disabled', true);
 			form.find("select[name=i_type]").prop('disabled', true);
@@ -718,7 +752,6 @@ var thwcfd_settings_field = (function($, window, document) {
 		var popup = $("#thwcfd_field_form_pp");
 		var form = $(elm).closest('form');
 		var type = $(elm).val();
-
 		type = type == null ? 'text' : type;
 		form.find('.thwcfd_field_form_tab_general_placeholder').html($('#thwcfd_field_form_id_'+type).html());
 
@@ -813,7 +846,6 @@ var thwcfd_settings_field = (function($, window, document) {
 		var fvalue = thwcfd_base.get_property_field_value(form, 'text', 'default');
 		var option_values = form.find("input[name='i_options_key[]']").map(function(){ return $(this).val(); }).get();
 
-
 		if(ftype == '' && ($.inArray(fotype, SPECIAL_FIELD_TYPES) == -1) ){
 			err_msgs = 'Type is required';
 
@@ -858,6 +890,7 @@ var thwcfd_settings_field = (function($, window, document) {
 	function prepare_field_form(form){
 		var options_json = get_options(form);
 		thwcfd_base.set_property_field_value(form, 'hidden', 'options_json', options_json, 0);
+		thwcfd_base.set_property_field_value(form, 'hidden', 'options', options_json, 0); //Replaced `options_json` with `options` for block-based checkout inorder to make identical code base.
 	}
    /*------------------------------------
 	*---- PRODUCT FIELDS - END ----------
@@ -967,16 +1000,19 @@ var thwcfd_settings_field = (function($, window, document) {
    	};
 }(window.jQuery, window, document));
 
-function thwcfdOpenNewFieldForm(sectionName){
-	thwcfd_settings_field.openNewFieldForm(sectionName);
+function thwcfdOpenNewFieldForm(sectionName, checkout_type){
+	checkout_type = typeof checkout_type !== 'undefined' ? checkout_type : 'classic';
+	thwcfd_settings_field.openNewFieldForm(sectionName, checkout_type);
 }
 
-function thwcfdOpenEditFieldForm(elm, rowId){
-	thwcfd_settings_field.openEditFieldForm(elm, rowId);
+function thwcfdOpenEditFieldForm(elm, rowId, checkout_type){
+	checkout_type = typeof checkout_type !== 'undefined' ? checkout_type : 'classic';
+	thwcfd_settings_field.openEditFieldForm(elm, rowId, checkout_type);
 }
 
-function thwcfdOpenCopyFieldForm(elm, rowId){
-	thwcfd_settings_field.openCopyFieldForm(elm, rowId);
+function thwcfdOpenCopyFieldForm(elm, rowId, checkout_type){
+	checkout_type = typeof checkout_type !== 'undefined' ? checkout_type : 'classic';
+	thwcfd_settings_field.openCopyFieldForm(elm, rowId, checkout_type);
 }
 
 function thwcfdFieldTypeChangeListner(elm){
@@ -993,6 +1029,158 @@ function thwcfdRemoveOptionRow(elm){
 function thwcfdSaveField(elm){
 	thwcfd_settings_field.save_field(elm);
 }
+
+var thwcfd_settings_section = (function($, window, document) {
+	'use strict';
+
+	var MSG_INVALID_NAME = 'NAME/ID must begin with a lowercase letter ([a-z]) and may be followed by any number of lowercase letters, digits ([0-9]) and underscores ("_")';
+
+	var BLOCK_SECTION_FORM_FIELDS = {
+		name 	   : {name : 'name', label : 'Name/ID', type : 'text', required : 1},
+		position   : {name : 'position', label : 'Display Position', type : 'hidden', value: 'set_from_block'},
+		cssclass   : {name : 'cssclass', label : 'CSS Class', type : 'text'},
+        show_title : {name : 'show_title', label : 'Show section title in checkout page.', type : 'checkbox', value : 'yes', checked : true},
+		
+		title 		: {name : 'title', label : 'Title', type : 'text'},
+		title_class : {name : 'title_class', label : 'Title Class', type : 'text'},
+
+		subtitle 	   : {name : 'subtitle', label : 'Subtitle', type : 'text'},	
+	};
+	var RESERVED_SECTION_NAMES = ['address', 'contact', 'order'];
+	
+	function open_edit_section_form(valueJson, checkout_type){
+		open_section_form(checkout_type, 'edit', valueJson);
+	}
+
+	function open_section_form(checkout_type, type, valueJson){
+		var popup = $("#thwcfd_section_form_pp");
+		var form  = $("#thwcfd_section_form");
+
+		populate_section_form( checkout_type,popup, form, type, valueJson);
+		
+		thwcfd_base.form_wizard_open(popup);
+	}
+
+	function populate_section_form(checkout_type, popup, form, type, valueJson){
+		var title = type === 'edit' ? 'Edit Section' : 'New Section';
+		popup.find('.wizard-title').text(title);
+
+		form.find('.err_msgs').html('');
+		form.find("input[name=i_name]").prop("readonly", false);
+
+		form.find("input[name=s_action]").val(type);
+		form.find("input[name=s_name]").val('');
+		form.find("input[name=s_name_copy]").val('');
+		form.find("input[name=i_position_old]").val('');
+		form.find("input[name=i_rules]").val('');
+		form.find("input[name=i_rules_ajax]").val('');
+		form.find("input[name=i_repeat_rules]").val('');
+		//var current_section_form_fields = checkout_type === 'block' ? BLOCK_SECTION_FORM_FIELDS : SECTION_FORM_FIELDS;
+		var current_section_form_fields = BLOCK_SECTION_FORM_FIELDS;
+		if(type === 'new'){
+			set_form_field_values(form, current_section_form_fields, false);
+
+		}else{
+			set_form_field_values(form, current_section_form_fields, valueJson);
+
+			if(type === 'copy'){
+				var sNameCopy = valueJson ? valueJson['name'] : '';
+				form.find("input[name=i_name]").val("");
+				form.find("input[name=s_name_copy]").val(sNameCopy);
+			}else{
+				form.find("input[name=i_name]").prop("readonly", true);
+			}
+
+			form.find("select[name=i_position_old]").val(valueJson.position);
+			setTimeout(function(){form.find("select[name=i_position]").focus();}, 1);
+		}
+	}
+	
+	function set_form_field_values(form, fields, valuesJson){
+		var sname = valuesJson && valuesJson['name'] ? valuesJson['name'] : '';
+		$.each( fields, function( name, field ) {
+			var type = field['type'];
+			if(valuesJson){
+				var value = valuesJson[name] ? valuesJson[name] : '';
+			}else{
+				var value = valuesJson[name] ? valuesJson[name] : field['value'];
+			}
+
+			var multiple = field['multiple'] ? field['multiple'] : 0;
+
+			if(type === 'checkbox'){
+				if(!valuesJson && field['checked']){
+					value = field['checked'];
+				}
+			}
+
+			thwcfd_base.set_property_field_value(form, type, name, value, multiple);
+		});
+		
+		var prop_form = $('#section_prop_form_'+sname);
+		
+		var rulesAction = valuesJson && valuesJson['rules_action'] ? valuesJson['rules_action'] : 'show';
+		var rulesActionAjax = valuesJson && valuesJson['rules_action_ajax'] ? valuesJson['rules_action_ajax'] : 'show';
+		var conditionalRules = prop_form.find(".f_rules").val();
+		var conditionalRulesAjax = prop_form.find(".f_rules_ajax").val();
+	}
+	
+	function save_section(elm){
+		var popup = $("#thwcfd_section_form_pp");
+		var form  = $("#thwcfd_section_form");
+		var result = validate_section(form, popup);
+
+		if(result){
+			form.submit();
+		}
+	}
+	
+	function validate_section(form, popup){
+		var name  = form.find("input[name=i_name]").val();
+		var title = form.find("input[name=i_title]").val();
+		var positionElement = form.find("select[name=i_position]");
+    	var position = positionElement.length ? positionElement.val() : form.find("input[name=i_position]").val() || '';
+
+		name = name ? name : '';
+		position = position ? position : '';
+		
+		var err_msgs = '';
+		if(name.trim() == ''){
+			err_msgs = 'Name/ID is required';
+		}else if(!thwcfd_base.isHtmlIdValid(name)){
+			err_msgs = MSG_INVALID_NAME;
+		}else if(RESERVED_SECTION_NAMES.indexOf(name) !== -1){
+			err_msgs = 'The provided Name/ID is already used for the default section. Please use a different name.';
+		}else if(title.trim() == ''){
+			err_msgs = 'Title is required';
+		}
+		
+		if(err_msgs != ''){
+			form.find('.err_msgs').html(err_msgs);
+			thwcfd_base.form_wizard_start(popup);
+			return false;
+		}		
+		return true;
+	}
+	
+	   				
+	return {
+		openEditSectionForm : open_edit_section_form,
+		save_section : save_section,
+   	};
+}(window.jQuery, window, document));
+
+
+function thwcfdOpenEditSectionForm(section, checkout_type){
+	checkout_type = typeof checkout_type !== 'undefined' ? checkout_type : 'classic';
+	thwcfd_settings_section.openEditSectionForm(section, checkout_type);		
+}
+
+function thwcfdSaveSection(elm){
+	thwcfd_settings_section.save_section(elm);	
+}
+
+
 
 var thwcfd_settings = (function($, window, document) {
 	'use strict';
@@ -1025,6 +1213,40 @@ var thwcfd_settings = (function($, window, document) {
 	    	$('body').css('overflow','hidden');
 	        feature_popup[0].style.display = "flex";
 	    }
+	});
+
+	$(document).ready(function(){
+
+		const referrerUrl = document.referrer;
+		var clicked = false; 
+		if (referrerUrl.includes('thwcfd-welcome')) {
+			$("#infoBox").show();
+			clicked = true;
+		}else{
+			clicked = false;
+			$("#infoBox").hide();
+		}
+		$("#th_info_container").on("click", function(){
+			if (!clicked) {
+				$("#infoBox").show();
+			} else {
+				$("#infoBox").hide();
+			}
+			clicked = !clicked;
+		});
+		
+		$("#th_info_container").on("mouseenter", function(){
+			if (!clicked) {
+				$("#infoBox").show();
+			}
+		});
+		// Hide on mouseleave only if not clicked
+		$("#th_info_container").on("mouseleave", function(){
+			if (!clicked) {
+				$("#infoBox").hide();
+			}
+		});
+		
 	});
    
 	function select_all_fields(elm){

@@ -105,7 +105,7 @@ class UpdraftPlus_Semaphore {
 				INSERT INTO $wpdb->options (option_name, option_value, autoload)
 				VALUES
 				('updraftplus_unlocked_$semaphore', '1', 'no'),
-				('updraftplus_last_lock_time_$semaphore', '%s', 'no'),
+				('updraftplus_last_lock_time_$semaphore', %s, 'no'),
 				('updraftplus_semaphore_$semaphore', '0', 'no')
 			", current_time('mysql', 1)));
 		}
@@ -220,5 +220,15 @@ class UpdraftPlus_Semaphore {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Remove a given lock from the options table in the database
+	 *
+	 * @return Boolean True if the lock has successfully been removed, false otherwise
+	 */
+	public function delete_lock() {
+		global $wpdb;
+		return (bool) $wpdb->query($wpdb->prepare("DELETE FROM {$wpdb->options} WHERE option_name = %s", $this->lock_name));
 	}
 } // End UpdraftPlus_Semaphore

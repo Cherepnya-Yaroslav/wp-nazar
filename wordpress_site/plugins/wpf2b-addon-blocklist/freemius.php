@@ -1,6 +1,6 @@
 <?php
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 /**
  * Freemius integration.
  *
@@ -19,17 +19,14 @@ if ( !function_exists( __NAMESPACE__ . '\\wpf2b_addon_blocklist_fs' ) ) {
      *
      * @return  \Freemius|null
      */
-    function wpf2b_addon_blocklist_fs() : ?\Freemius
-    {
-        global  $wpf2b_addon_blocklist_fs ;
-        
+    function wpf2b_addon_blocklist_fs() : ?\Freemius {
+        global $wpf2b_addon_blocklist_fs;
         if ( !isset( $wpf2b_addon_blocklist_fs ) ) {
             // Activate multisite network integration.
             if ( !defined( 'WP_FS__PRODUCT_6750_MULTISITE' ) ) {
                 define( 'WP_FS__PRODUCT_6750_MULTISITE', true );
             }
             // Include Freemius SDK.
-            
             if ( file_exists( dirname( __DIR__ ) . '/wp-fail2ban/vendor/freemius/wordpress-sdk/start.php' ) ) {
                 // Try to load SDK from parent plugin folder.
                 require_once dirname( __DIR__ ) . '/wp-fail2ban/vendor/freemius/wordpress-sdk/start.php';
@@ -39,7 +36,6 @@ if ( !function_exists( __NAMESPACE__ . '\\wpf2b_addon_blocklist_fs' ) ) {
             } else {
                 return null;
             }
-            
             $wpf2b_addon_blocklist_fs = fs_dynamic_init( array(
                 'id'               => '6750',
                 'slug'             => 'wpf2b-addon-blocklist',
@@ -49,27 +45,26 @@ if ( !function_exists( __NAMESPACE__ . '\\wpf2b_addon_blocklist_fs' ) ) {
                 'is_premium'       => false,
                 'has_paid_plans'   => true,
                 'trial'            => array(
-                'days'               => 14,
-                'is_require_payment' => false,
-            ),
+                    'days'               => 14,
+                    'is_require_payment' => false,
+                ),
                 'parent'           => array(
-                'id'         => '3072',
-                'slug'       => 'wp-fail2ban',
-                'public_key' => 'pk_146d2c2a5bee3b157e43501ef8682',
-                'name'       => 'WP fail2ban',
-            ),
+                    'id'         => '3072',
+                    'slug'       => 'wp-fail2ban',
+                    'public_key' => 'pk_146d2c2a5bee3b157e43501ef8682',
+                    'name'       => 'WP fail2ban',
+                ),
                 'menu'             => array(
-                'slug'    => 'wp-fail2ban_addon_blocklist',
-                'support' => false,
-                'parent'  => array(
-                'slug' => 'wp-fail2ban-menu',
-            ),
-            ),
+                    'slug'    => 'wp-fail2ban_addon_blocklist',
+                    'support' => false,
+                    'parent'  => array(
+                        'slug' => 'wp-fail2ban-menu',
+                    ),
+                ),
                 'enable_anonymous' => false,
                 'is_live'          => true,
             ) );
         }
-        
         return $wpf2b_addon_blocklist_fs;
     }
 
@@ -81,8 +76,7 @@ if ( !function_exists( __NAMESPACE__ . '\\wpf2b_addon_blocklist_fs' ) ) {
  *
  * @return  bool
  */
-function wpf2b_addon_blocklist_fs_is_parent_active_and_loaded() : bool
-{
+function wpf2b_addon_blocklist_fs_is_parent_active_and_loaded() : bool {
     // Check if the parent's init SDK method exists.
     return function_exists( 'org\\lecklider\\charles\\wordpress\\wp_fail2ban\\wf_fs' );
 }
@@ -94,15 +88,12 @@ function wpf2b_addon_blocklist_fs_is_parent_active_and_loaded() : bool
  *
  * @return  bool
  */
-function wpf2b_addon_blocklist_fs_is_parent_active() : bool
-{
+function wpf2b_addon_blocklist_fs_is_parent_active() : bool {
     $active_plugins = get_option( 'active_plugins', [] );
-    
     if ( is_multisite() ) {
         $network_active_plugins = get_site_option( 'active_sitewide_plugins', [] );
         $active_plugins = array_merge( $active_plugins, array_keys( $network_active_plugins ) );
     }
-    
     foreach ( $active_plugins as $basename ) {
         if ( 0 === strpos( $basename, 'wp-fail2ban/' ) || 0 === strpos( $basename, 'wp-fail2ban-premium/' ) ) {
             return true;
@@ -118,14 +109,12 @@ function wpf2b_addon_blocklist_fs_is_parent_active() : bool
  *
  * @return  void
  */
-function wpf2b_addon_blocklist_fs_init() : void
-{
-    
+function wpf2b_addon_blocklist_fs_init() : void {
     if ( wpf2b_addon_blocklist_fs_is_parent_active_and_loaded() ) {
-        global  $wf_fs ;
+        global $wf_fs;
         // Set the permissions on the parent
         $wf_fs->add_filter( 'permission_list', function ( $permissions ) {
-            global  $wf_fs ;
+            global $wf_fs;
             $permissions['wpf2b-blocklist'] = [
                 'icon-class' => 'dashicons dashicons-share',
                 'label'      => $wf_fs->get_text_inline( 'Share WP fail2ban Events', 'wpf2b-blocklist' ),
@@ -135,7 +124,6 @@ function wpf2b_addon_blocklist_fs_init() : void
             return $permissions;
         } );
         // Init Freemius.
-        
         if ( null === ($fs = wpf2b_addon_blocklist_fs()) ) {
             // parent lives somewhere weird
             // TODO: nice error message
@@ -165,7 +153,6 @@ function wpf2b_addon_blocklist_fs_init() : void
              */
             add_filter( 'site_status_tests', WP_FAIL2BAN_ADDON_BLOCKLIST_NS . '\\SiteHealth::get_tests' );
             // phpcs:disable Generic.Functions.FunctionCallArgumentSpacing
-            
             if ( is_multisite() && !is_main_site() ) {
                 add_action( 'rest_api_init', WP_FAIL2BAN_ADDON_BLOCKLIST_NS . '\\rest_api_init_teapot' );
             } elseif ( $fs->can_use_premium_code() || $fs->is_registered() && $fs->is_tracking_allowed() ) {
@@ -174,16 +161,12 @@ function wpf2b_addon_blocklist_fs_init() : void
             } else {
                 // noop
             }
-            
             // phpcs:enable
         }
-    
     } else {
         // Parent is inactive, add your error handling here.
     }
-
 }
-
 
 if ( wpf2b_addon_blocklist_fs_is_parent_active_and_loaded() ) {
     // If parent already included, init add-on.

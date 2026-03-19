@@ -2,9 +2,9 @@
 /*
  * Plugin Name: WP fail2ban Blocklist
  * Plugin URI: https://addons.wp-fail2ban.com/blocklist/
- * Description: A collaborative preemptive blocklist.
+ * Description: A collaborative preemptive blocklist. Stop 'bots before they attack.
  * Text Domain: wpf2b-addon-blocklist
- * Version: 2.2.1
+ * Version: 2.2.2
  * Author: Charles Lecklider
  * Author URI: https://invis.net/
  * License: GPLv3
@@ -15,7 +15,7 @@
   */
 
 /*
- *  Copyright 2020-23  Charles Lecklider  (email : wordpress@invis.net)
+ *  Copyright 2020-25  Charles Lecklider  (email : wordpress@invis.net)
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

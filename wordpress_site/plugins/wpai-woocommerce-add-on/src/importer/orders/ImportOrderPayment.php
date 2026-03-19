@@ -25,11 +25,12 @@ class ImportOrderPayment extends ImportOrderBase {
 
         if ($this->isNewOrder() || $this->getImport()->options['update_all_data'] == 'yes' || $this->getImport()->options['is_update_payment']) {
             $payment_method = $this->getValue('payment_method');
-
+            $payment_date = $this->getValue('payment_date');
+            $this->getOrder()->set_date_paid($payment_date);
             if (!empty($payment_method)) {
                 if (!empty($this->payment_gateways[$payment_method])) {
-                    update_post_meta($this->getOrderID(), '_payment_method', $payment_method);
-                    update_post_meta($this->getOrderID(), '_payment_method_title', $this->payment_gateways[$payment_method]->title);
+                    $this->getOrder()->set_payment_method($payment_method);
+                    $this->getOrder()->set_payment_method_title($this->payment_gateways[$payment_method]->title);
                 } else {
                     $method = FALSE;
                     if (!empty($this->payment_gateways)) {
@@ -41,14 +42,14 @@ class ImportOrderPayment extends ImportOrderBase {
                         }
                     }
                     if ($method) {
-                        update_post_meta($this->getOrderID(), '_payment_method', $payment_method);
-                        update_post_meta($this->getOrderID(), '_payment_method_title', $method->method_title);
+                        $this->getOrder()->set_payment_method($payment_method);
+                        $this->getOrder()->set_payment_method_title($method->method_title);
                     }
                 }
             } else {
-                update_post_meta($this->getOrderID(), '_payment_method', 'N/A');
+                $this->getOrder()->set_payment_method('N/A');
             }
-            update_post_meta($this->getOrderID(), '_transaction_id', $this->getValue('transaction_id'));
+            $this->getOrder()->set_transaction_id($this->getValue('transaction_id'));
         }
     }
 }

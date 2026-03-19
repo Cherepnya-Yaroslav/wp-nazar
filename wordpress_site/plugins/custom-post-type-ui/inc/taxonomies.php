@@ -23,11 +23,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @internal
  */
-function cptui_taxonomies_enqueue_scripts() {
+function cptui_taxonomies_enqueue_scripts( $hook ) {
 
-	$current_screen = get_current_screen();
-
-	if ( ! is_object( $current_screen ) || 'cpt-ui_page_cptui_manage_taxonomies' !== $current_screen->base ) {
+	if ( 'cpt-ui_page_cptui_manage_taxonomies' !== $hook ) {
 		return;
 	}
 
@@ -326,7 +324,7 @@ function cptui_manage_taxonomies() {
 							$link_text = ( 'new' === $tab ) ?
 									esc_html__( 'Populate additional labels based on chosen labels', 'custom-post-type-ui' ) :
 									esc_html__( 'Populate missing labels based on chosen labels', 'custom-post-type-ui' );
-							echo $ui->get_tr_end(); // phpcs:ignore.
+							echo $ui->get_tr_start( [ 'id' => 'autolabels', 'style' => 'display:none;' ] ); // phpcs:ignore.
 							echo $ui->get_th_start() . esc_html__( 'Auto-populate labels', 'custom-post-type-ui' ) . $ui->get_th_end(); // phpcs:ignore.
 							echo $ui->get_td_start(); // phpcs:ignore.
 
@@ -379,9 +377,9 @@ function cptui_manage_taxonomies() {
 										],
 										true
 									) ? esc_html__( '(WP Core)', 'custom-post-type-ui' ) : '';
-									echo $ui->get_check_input( // phpcs:ignore.
+									echo $ui->get_check_input( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 										[
-											'checkvalue' => $post_type->name,
+											'checkvalue' => esc_attr( $post_type->name ),
 											'checked'    => ( ! empty( $current['object_types'] ) && is_array( $current['object_types'] ) && in_array( $post_type->name, $current['object_types'], true ) ) ? 'true' : 'false', // phpcs:ignore.
 											'name'       => esc_attr( $post_type->name ),
 											'namearray'  => 'cpt_post_types',
@@ -841,6 +839,23 @@ function cptui_manage_taxonomies() {
 										/* translators: Used for autofill */
 										'label'     => sprintf( esc_attr__( 'The description is not prominent by default; however, some themes may show it.', 'custom-post-type-ui' ), 'item' ),
 										'plurality' => 'plural',
+									],
+								]
+							);
+
+							echo $ui->get_text_input( // phpcs:ignore.
+								[
+									'namearray' => 'cpt_tax_labels',
+									'name'      => 'template_name',
+									'textvalue' => isset( $current['labels']['template_name'] ) ? esc_attr( $current['labels']['template_name'] ) : null,
+									// phpcs:ignore.
+									'aftertext' => esc_html__( '(e.g. "Category Archives")', 'custom-post-type-ui' ),
+									'labeltext' => esc_html__( 'Template name', 'custom-post-type-ui' ),
+									'helptext'  => esc_attr__( 'Use by the site editor to display on the templates/add new template screens.', 'custom-post-type-ui' ),
+									'data'      => [
+										/* translators: Used for autofill */
+										'label'     => sprintf( esc_attr__( '%s Archives', 'custom-post-type-ui' ), 'item' ),
+										'plurality' => 'singular',
 									],
 								]
 							);
@@ -1817,6 +1832,7 @@ function cptui_reserved_taxonomies() {
 		'robots',
 		's',
 		'search',
+		'search_terms',
 		'second',
 		'sentence',
 		'showposts',
@@ -1966,6 +1982,10 @@ add_filter( 'cptui_taxonomy_slug_exists', 'cptui_check_existing_taxonomy_slugs',
  * @since 1.4.0
  */
 function cptui_process_taxonomy() {
+
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
 
 	if ( wp_doing_ajax() ) {
 		return;

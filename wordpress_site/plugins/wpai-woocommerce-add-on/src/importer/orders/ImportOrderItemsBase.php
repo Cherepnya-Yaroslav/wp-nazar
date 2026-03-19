@@ -2,6 +2,9 @@
 
 namespace wpai_woocommerce_add_on\importer\orders;
 
+use wpai_woocommerce_add_on\helpers\ImporterOptions;
+use wpai_woocommerce_add_on\importer\ImporterIndex;
+
 /**
  *
  * Import Order items
@@ -10,6 +13,99 @@ namespace wpai_woocommerce_add_on\importer\orders;
  * @package wpai_woocommerce_add_on\importer
  */
 abstract class ImportOrderItemsBase extends ImportOrderBase {
+
+    /**
+     * @var int
+     */
+    public $prices_include_tax = 0;
+
+    /**
+     * @var array
+     */
+    public $tax_rates = array();
+
+    public function __construct(ImporterIndex $index, ImporterOptions $options, $order, $data = array()) {
+
+        parent::__construct($index, $options, $order, $data);
+
+        $this->prices_include_tax = ('yes' === get_option('woocommerce_prices_include_tax', 'no'));
+
+        $tax_classes = \WC_Tax::get_tax_classes();
+
+        if ($tax_classes) {
+            // Add Standard tax class
+            if (!in_array('', $tax_classes)) {
+                $tax_classes[] = '';
+            }
+
+            foreach ($tax_classes as $class) {
+                foreach (\WC_Tax::get_rates_for_tax_class(sanitize_title($class)) as $rate_key => $rate) {
+                    $this->tax_rates[$rate->tax_rate_id] = $rate;
+                }
+            }
+        }
+    }
+
+    protected function calculateItemTaxes($item, $type) {
+        $item_taxes = [
+            'item_tax_class' => '',
+            'item_subtotal_tax' => 0,
+            'line_taxes' => [],
+        ];
+        if (!empty($item['tax_rates'])) {
+            foreach ($item['tax_rates'] as $key => $tax_rate) {
+                if (empty($tax_rate['code'])) {
+                    continue;
+                }
+
+				// Trim values.
+	            $tax_rate = array_map('trim', $tax_rate);
+
+                $taxes_delimiter = $this->getImport()->options['pmwi_order'][$type . '_repeater_mode_item_separator'] ?? '#';
+                $codes = explode($taxes_delimiter, $tax_rate['code']);
+                if (!empty($codes)) {
+                    $amounts = explode($taxes_delimiter, $tax_rate['amount_per_unit']);
+                    foreach ($codes as $i => $code) {
+                        $tax_class = FALSE;
+                        if (!empty($this->tax_rates[$code])) {
+                            $tax_class = $this->tax_rates[$code];
+                        } else {
+                            foreach ($this->tax_rates as $rate_id => $rate) {
+                                if (strtolower($rate->tax_rate_name) == strtolower($code) || strtolower($rate->tax_rate_class) == strtolower($code)) {
+                                    $tax_class = $rate;
+                                    break;
+                                }
+                            }
+                        }
+                        if (!empty($amounts[$i])) {
+                            $line_tax = \WC_Tax::round($amounts[$i]);
+                            $item_taxes['item_subtotal_tax'] += $line_tax;
+                            if ($tax_class) {
+                                $item_taxes['item_tax_class'] = $tax_class->tax_rate_class;
+                                $item_taxes['line_taxes'][$tax_class->tax_rate_id] = $line_tax;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return $item_taxes;
+    }
+
+    protected function getTaxClassFromTaxData($item_taxes) {
+        $tax_class = '';
+        if (!empty($item_taxes['line_taxes'])) {
+            $rate_ids = array_keys($item_taxes['line_taxes']);
+            if (!empty($rate_ids)) {
+                $rate_id = array_shift($rate_ids);
+                $rate = \WC_Tax::_get_tax_rate($rate_id);
+                if (!empty($rate)) {
+                    $tax_class = $rate['tax_rate_class'];
+                }
+            }
+        }
+        return $tax_class;
+    }
 
     /**
      * @return bool
@@ -56,7 +152,7 @@ abstract class ImportOrderItemsBase extends ImportOrderBase {
             $line_total = isset($item['line_total']) ? $item['line_total'] : 0;
             $line_subtotal = isset($item['line_subtotal']) ? $item['line_subtotal'] : 0;
             $tax_class = $item['tax_class'];
-            $item_tax_status = $item->get_tax_status();;
+            $item_tax_status = $item->get_tax_status();
 
             if ('0' !== $tax_class && 'taxable' === $item_tax_status) {
 

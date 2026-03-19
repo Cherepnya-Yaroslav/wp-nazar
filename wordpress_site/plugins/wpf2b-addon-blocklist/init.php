@@ -39,7 +39,7 @@ function plugins_loaded(): void
     /**
      * Only hook events if Premium isn't
      */
-    if (!class_exists('\\'.WP_FAIL2BAN_NS.'\premium\WPf2b') || !WPf2b::can_use_premium_code()) {
+    if (!class_exists('\org\lecklider\charles\wordpress\wp_fail2ban\premium\WPf2b') || !WPf2b::can_use_premium_code()) {
         add_action(WP_FAIL2BAN_NS.'\core\authenticate', __NAMESPACE__.'\core\authenticate', 10, 3);
         // Ignore soft fails for now
         //add_action(WP_FAIL2BAN_NS.'\core\wp_login_failed', __NAMESPACE__.'\core\wp_login_failed');
@@ -83,7 +83,7 @@ function init(): void
     /**
      * Only hook events if Premium isn't
      */
-    if (!class_exists('\\'.WP_FAIL2BAN_NS.'\premium\WPf2b') || !WPf2b::can_use_premium_code()) {
+    if (!class_exists('\org\lecklider\charles\wordpress\wp_fail2ban\premium\WPf2b') || !WPf2b::can_use_premium_code()) {
         add_action(WP_FAIL2BAN_NS.'\feature\xmlrpc_login_error', __NAMESPACE__.'\feature\xmlrpc_login_error', 10, 2);
         add_filter(WP_FAIL2BAN_NS.'\feature\xmlrpc_pingback_error', __NAMESPACE__.'\feature\xmlrpc_pingback_error', 5);
     }

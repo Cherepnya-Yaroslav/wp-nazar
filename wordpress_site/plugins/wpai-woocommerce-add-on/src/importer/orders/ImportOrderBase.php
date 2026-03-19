@@ -2,7 +2,9 @@
 
 namespace wpai_woocommerce_add_on\importer\orders;
 
+use wpai_woocommerce_add_on\helpers\ImporterOptions;
 use wpai_woocommerce_add_on\importer\ImportBase;
+use wpai_woocommerce_add_on\importer\ImporterIndex;
 use wpai_woocommerce_add_on\parser\ParserInterface;
 
 /**
@@ -14,9 +16,19 @@ use wpai_woocommerce_add_on\parser\ParserInterface;
 abstract class ImportOrderBase extends ImportBase {
 
     /**
+     * @var \WC_Order
+     */
+    public $order;
+
+    /**
      * @var
      */
     public $order_data;
+
+    public function __construct(ImporterIndex $index, ImporterOptions $options, $order, $data = array()) {
+        parent::__construct($index, $options, $data);
+        $this->order = $order;
+    }
 
     /**
      * @return mixed
@@ -29,7 +41,7 @@ abstract class ImportOrderBase extends ImportBase {
      * @return bool|\WC_Order
      */
     public function getOrder() {
-        return wc_get_order($this->getOrderID());
+        return $this->order;
     }
 
     /**

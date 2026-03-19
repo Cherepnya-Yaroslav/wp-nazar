@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped, WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- using the native PHP fclose() function instead of the WP Filesystem API.
 /**
  * Dropbox API base class
  * @author Ben Tadiar <ben@handcraftedbyben.co.uk>
@@ -294,6 +294,7 @@ class UpdraftPlus_Dropbox_API {
             'query' => $query,
             'options' => array(
                 'path' => $path,
+                'filename_only' => true,
                 'max_results' => ($limit < 1) ? 1 : (($limit > 1000) ? 1000 : (int) $limit),
             ),
             'api_v2' => true,
@@ -408,3 +409,4 @@ class UpdraftPlus_Dropbox_API {
         return $this->normalisePath($path);
     }
 }
+// phpcs:enable

@@ -3,9 +3,9 @@
 Plugin Name: WP All Import - WooCommerce Import Add-On Pro
 Plugin URI: http://www.wpallimport.com/
 Description: Import to WooCommerce. Adds a section to WP All Import that looks just like WooCommerce. Requires WP All Import.
-Version: 3.3.7
+Version: 4.0.6
 Author: Soflyy
-WC tested up to: 6.2
+WC tested up to: 8.0
 */
 
 if ( ! function_exists( 'is_plugin_active' ) ) {
@@ -20,7 +20,7 @@ if ( is_plugin_active('woocommerce-xml-csv-product-import/plugin.php') ) {
 }
 else {
 
-    define('PMWI_VERSION', '3.3.7');
+  define('PMWI_VERSION', '4.0.6');
 
 	define('PMWI_EDITION', 'paid');
 
@@ -329,6 +329,76 @@ else {
 					}
 				}
 			}
+            if ( version_compare($version, '4.0.0-beta-1.0') < 0  ) {
+                if (!empty($options['pmwi_order']['order_refund_reason'])) {
+                    $options['pmwi_order']['refunds'] = [];
+                    $options['pmwi_order']['refunds'][] = [
+                        'full_reason' => $options['pmwi_order']['order_refund_reason'],
+                        'full_date' => $options['pmwi_order']['order_refund_date']
+                    ];
+                }
+                if (!empty($options['pmwi_order']['order_total_xpath'])) {
+                    $options['pmwi_order']['order_total_amount'] = $options['pmwi_order']['order_total_xpath'];
+                }
+                if (!empty($options['pmwi_order']['taxes'][0]['tax_amount'])) {
+                    $options['pmwi_order']['order_total_tax_amount'] = $options['pmwi_order']['taxes'][0]['tax_amount'];
+                }
+                if (!empty($options['pmwi_order']['taxes'][0]['shipping_tax_amount'])) {
+                    if ($options['pmwi_order']['taxes'][0]['tax_code'] == 'xpath') {
+                        $options['pmwi_order']['shipping'][0]['tax_rates'][0]['code'] = $options['pmwi_order']['taxes'][0]['tax_code_xpath'];
+                    } else {
+                        $options['pmwi_order']['shipping'][0]['tax_rates'][0]['code'] = $options['pmwi_order']['taxes'][0]['tax_code'];
+                    }
+                    $options['pmwi_order']['shipping'][0]['tax_rates'][0]['amount_per_unit'] = $options['pmwi_order']['taxes'][0]['shipping_tax_amount'];
+                }
+                if (!empty($options['pmwi_order']['taxes'][0]['tax_code'])) {
+                    $options['pmwi_order']['fees'][0]['tax_rates'][0]['code'] = $options['pmwi_order']['taxes'][0]['tax_code'];
+                }
+                if (!empty($options['pmwi_order']['products_source']) && $options['pmwi_order']['products_source'] == 'existing') {
+                    if (!empty($options['pmwi_order']['products'])) {
+                        $options['pmwi_order']['product_items'][0]['unique_key'] = $options['pmwi_order']['products'][0]['unique_key'];
+                        $options['pmwi_order']['product_items'][0]['sku'] = $options['pmwi_order']['products'][0]['sku'];
+                        $options['pmwi_order']['product_items'][0]['price_per_unit'] = $options['pmwi_order']['products'][0]['price_per_unit'];
+                        $options['pmwi_order']['product_items'][0]['qty'] = $options['pmwi_order']['products'][0]['qty'];
+                        $tax_rates = [];
+                        $tax_amounts = [];
+                        foreach ($options['pmwi_order']['products'] as $product) {
+                            if (!empty($product['tax_rates'])) {
+                                foreach ($product['tax_rates'] as $tax_rate) {
+                                    if ($tax_rate['calculate_logic'] == 'per_unit') {
+                                        $tax_rates[] = $tax_rate['code'];
+                                        $tax_amounts[] = $tax_rate['amount_per_unit'];
+                                    }
+                                }
+                            }
+                        }
+                        $options['pmwi_order']['product_items'][0]['tax_rates'][0]['code'] = implode("|", $tax_rates);
+                        $options['pmwi_order']['product_items'][0]['tax_rates'][0]['amount_per_unit'] = implode("|", $tax_amounts);
+                    }
+                }
+                if (!empty($options['pmwi_order']['products_source']) && $options['pmwi_order']['products_source'] == 'new') {
+                    if (!empty($options['pmwi_order']['manual_products'])) {
+                        $options['pmwi_order']['product_items'][0]['unique_key'] = $options['pmwi_order']['manual_products'][0]['unique_key'];
+                        $options['pmwi_order']['product_items'][0]['sku'] = $options['pmwi_order']['manual_products'][0]['sku'];
+                        $options['pmwi_order']['product_items'][0]['price_per_unit'] = $options['pmwi_order']['manual_products'][0]['price_per_unit'];
+                        $options['pmwi_order']['product_items'][0]['qty'] = $options['pmwi_order']['manual_products'][0]['qty'];
+                        $tax_rates = [];
+                        $tax_amounts = [];
+                        foreach ($options['pmwi_order']['manual_products'] as $product) {
+                            if (!empty($product['tax_rates'])) {
+                                foreach ($product['tax_rates'] as $tax_rate) {
+                                    if ($tax_rate['calculate_logic'] == 'per_unit') {
+                                        $tax_rates[] = $tax_rate['code'];
+                                        $tax_amounts[] = $tax_rate['amount_per_unit'];
+                                    }
+                                }
+                            }
+                        }
+                        $options['pmwi_order']['product_items'][0]['tax_rates'][0]['code'] = implode("|", $tax_rates);
+                        $options['pmwi_order']['product_items'][0]['tax_rates'][0]['amount_per_unit'] = implode("|", $tax_amounts);
+                    }
+                }
+            }
 		}
 
         /**
@@ -367,50 +437,52 @@ else {
 			wp_enqueue_script('pmwi-temp-notice-script', PMWI_ROOT_URL . '/static/js/temporary-beta-notice.js', array('jquery'), PMWI_VERSION);
 
 			// Only process the notice code when on manage import pages.
-			if( 'pmxi-admin-manage' === $page) {
-				// Display a notice if there are order imports.
+			if('pmxi-admin-manage' === $page) {
+
 				global $wpdb;
 
-				$query = "SELECT id FROM {$wpdb->prefix}pmxi_imports WHERE options LIKE '%s:11:\"custom_type\";s:10:\"shop_order\";%'";
+				$query = "SELECT id FROM {$wpdb->prefix}pmxi_imports WHERE options LIKE '%s:11:\"custom_type\";s:10:\"shop_order\";%' AND ((options LIKE '%s:18:\"woo_add_on_version\";%' AND (options LIKE '%s:18:\"woo_add_on_version\";s:5:\"3.3.6\";%' OR options LIKE '%s:18:\"woo_add_on_version\";s:5:\"3.3.7\";%')) OR options NOT LIKE '%s:18:\"woo_add_on_version\";%')";
 
 				$list = $wpdb->get_results($query);
 				$count = count($list);
-				$pmxi_instance = \PMXI_Plugin::getInstance();
-				$term = isset($_GET['id']) ? 'this import' : 'these imports';
-
 				$is_affected_import = false;
 
 				if( isset($_GET['id'])) {
 					foreach ( $list as $import ) {
-
 						if ($import->id == $_GET['id']){
 							$is_affected_import = true;
 							break;
 						}
-					}
 				}
+				}
+
+				// Display a notice if there are order imports.
+				$pmxi_instance = \PMXI_Plugin::getInstance();
+				$term = isset($_GET['id']) ? 'This import was' : 'You have WooCommerce order imports';
+				$term2 = isset($_GET['id']) ? 'this import' : 'these imports';
+				$term3 = isset($_GET['id']) ? 'it' : 'them';
 
 				// Only display the notice if there are WooCommerce Order imports.
 				if ( !empty($count) && (!isset($_GET['id']) || $is_affected_import)) {
 
 					// Workaround code for old versions of WP All Import without the updated notice handling.
-					$oldOptionValue = get_option('wpai_dismiss_warnings_wpai_woocommerce_addon_plugin_33858_notice_ignore', 'not-exists');
-					if( 'not-exists' !== $oldOptionValue && 'not-exists' === get_option('wpai_dismiss_warnings_wpai_woocommerce_addon_plugin_33858', 'not-exists')){
-						update_option('wpai_dismiss_warnings_wpai_woocommerce_addon_plugin_33858', $oldOptionValue, false);
+					$oldOptionValue = get_option('wpai_dismiss_warnings_wpai_woocommerce_addon_plugin_33857_notice_ignore', 'not-exists');
+					if( 'not-exists' !== $oldOptionValue && 'not-exists' === get_option('wpai_dismiss_warnings_wpai_woocommerce_addon_plugin_33857', 'not-exists')){
+						update_option('wpai_dismiss_warnings_wpai_woocommerce_addon_plugin_33857', $oldOptionValue, false);
 					}
 
-					$notice_reference = $this::TEXT_DOMAIN . '_33858';
 
+
+					$notice_reference = $this::TEXT_DOMAIN . '_33857';
 					$notice_text = <<<EOT
-<div id="wpai-wooco-beta-notice" rel="wpai_dismiss_warnings_$notice_reference" style="padding-left:15px;padding-right:15px;margin:0 auto;"><span style="font-weight:600;font-size:14px;">A new version of the WooCommerce Import Add-On is currently in beta.</span><br/> It features a new UI for order imports and while it will be able to map your import settings over, some import configurations will result in different behavior. If you intend to re-run $term in the future, we highly recommend that you test the beta in a testing environment to ensure orders are imported as expected before updating to the new version when it is released.<br/><br/>
+<div id="wpai-wooco-beta-notice" rel="wpai_dismiss_warnings_$notice_reference" style="padding-left:15px;padding-right:15px;margin:0 auto;"><span style="font-weight:600;font-size:14px;">$term created with a previous version of the WooCommerce Import Add-On.</span><br/> The UI has been updated and while we have mapped your import settings over, some import configurations will result in different behavior. We highly recommend that you run $term2 in a testing environment to ensure orders are imported as expected before running $term3 in production.<br/><br/>
 
-You can download the beta version of the WooCommerce Import Add-On at <a target="_blank" href="https://www.wpallimport.com/portal/downloads/">https://www.wpallimport.com/portal/downloads/</a>.<br/><br/>
+We are available at <a target="_blank" href="https://www.wpallimport.com/support/">https://www.wpallimport.com/support/</a> if you encounter any issues. You can also download the previous version of the WooCommerce Import Add-On at <a target="_blank" href="https://www.wpallimport.com/portal/downloads/">https://www.wpallimport.com/portal/downloads/</a>.
 
-We are available at <a target="_blank" href="http://www.wpallimport.com/support/">https://www.wpallimport.com/support/</a> if you encounter any issues.
 </div>
 
 EOT;
-					$pmxi_instance->showDismissibleNotice( $notice_text, $this::TEXT_DOMAIN . '_33858' );
+					$pmxi_instance->showDismissibleNotice( $notice_text, $this::TEXT_DOMAIN . '_33857' );
 				}
 			}
 		}
@@ -592,7 +664,11 @@ EOT;
 				'single_product_featured' => '',
 				'is_product_visibility' => 'visible',
 				'single_product_visibility' => '',
+				// Set defaults for product matching
+				'duplicate_indicator' => 'custom field',
+				'custom_duplicate_name' => '_sku',
 				'single_product_sku' => '',
+				'single_product_global_unique_id' => '',
 				'single_product_url' => '',
 				'single_product_button_text' => '',
 				'single_product_regular_price' => '',
@@ -712,9 +788,11 @@ EOT;
 				'variable_product_files_names_delim' => ',',
 				'variable_image' => '',
 				'variable_sku' => '',
+				'variable_global_unique_id' => '',
 				'is_variable_product_enabled' => 'yes',
 				'single_variable_product_enabled' => '',
 				'link_all_variations' => 0,
+				'block_low_stock_notice' => 1,
 				'variable_stock_use_parent' => 0,
 				'variable_regular_price_use_parent' => 0,
 				'variable_sale_price_use_parent' => 0,
@@ -819,28 +897,36 @@ EOT;
 					'shipping_postcode' => '',
 					'shipping_country' => '',
 					'shipping_state' => '',
-					'shipping_email' => '',
 					'shipping_phone' => '',
 					'copy_from_billing' => 0,
 					'customer_provided_note' => '',
+					'payment_date' => 'now',
 					'payment_method' => '',
 					'payment_method_xpath' => '',
 					'transaction_id' => '',
 					'products_repeater_mode' => 'csv',
+                    'products_repeater_mode_item_separator' => '#',
 					'products_repeater_mode_separator' => '|',
 					'products_repeater_mode_foreach' => '',
 					'products_source' => 'existing',
-					'products' => array(),
-					'manual_products' => array(),
+                    'product_items' => array(),
 					'fees_repeater_mode' => 'csv',
+                    'fees_repeater_mode_item_separator' => '#',
 					'fees_repeater_mode_separator' => '|',
 					'fees_repeater_mode_foreach' => '',
 					'fees' => array(),
+                    'refunds_repeater_mode' => 'csv',
+                    'refunds_repeater_mode_tax_separator' => '@',
+                    'refunds_repeater_mode_item_separator' => '#',
+                    'refunds_repeater_mode_separator' => '|',
+                    'refunds_repeater_mode_foreach' => '',
+                    'refunds' => array(),
 					'coupons_repeater_mode' => 'csv',
 					'coupons_repeater_mode_separator' => '|',
 					'coupons_repeater_mode_foreach' => '',
 					'coupons' => array(),
 					'shipping_repeater_mode' => 'csv',
+                    'shipping_repeater_mode_item_separator' => '#',
 					'shipping_repeater_mode_separator' => '|',
 					'shipping_repeater_mode_foreach' => '',
 					'shipping' => array(),
@@ -848,12 +934,10 @@ EOT;
 					'taxes_repeater_mode_separator' => '|',
 					'taxes_repeater_mode_foreach' => '',
 					'taxes' => array(),
-					'order_total_logic' => 'auto',
-					'order_total_xpath' => '',
-					'order_refund_amount' => '',
-					'order_refund_reason' => '',
-					'order_refund_date' => 'now',
-					'order_refund_issued_source' => 'existing',
+                    'order_total_amount' => '',
+                    'order_total_tax_amount' => '',
+                    'order_refund_type' => 'full',
+					'order_refund_issued_source' => 'blank',
 					'order_refund_issued_match_by' => 'username',
 					'order_refund_issued_username' => '',
 					'order_refund_issued_email' => '',
@@ -864,6 +948,16 @@ EOT;
 					'notes_repeater_mode_separator' => '|',
 					'notes_repeater_mode_foreach' => '',
 					'notes' => array(),
+					'notes_add_auto_order_status_notes' => 0,
+                    // Backwards compatibility settings
+                    'products' => array(),
+                    'manual_products' => array(),
+                    'order_refund_reason' => '',
+                    'order_refund_amount' => '',
+                    'order_refund_date' => '',
+                    'order_total_logic' => 'manually',
+                    'order_total_xpath' => '',
+
 				),
 				'is_update_billing_details' => 1,
 				'is_update_shipping_details' => 1,
@@ -907,7 +1001,56 @@ EOT;
                 'single_product_subscription_limit' => '',
 				'grouped_product_children' => 'xpath',
 				'grouped_product_children_xpath' => '',
-                'woo_add_on_version' => ''
+                'woo_add_on_version' => '',
+				'is_update_status' => 1,
+				'is_update_title' => 1,
+				'is_update_content' => 1,
+				'is_update_excerpt' => 1,
+				'is_update_price' => 1,
+				'is_update_regular_price' => 1,
+				'is_update_sale_price' => 1,
+				'is_update_sale_price_dates_from' => 1,
+				'is_update_sale_price_dates_to' => 1,
+				'is_update_sale_price_dates' => 1,
+				'is_update_sku' => 1,
+				'is_update_weight' => 1,
+				'is_update_length' => 1,
+				'is_update_width' => 1,
+				'is_update_height' => 1,
+				'is_update_up_sells' => 1,
+				'is_update_cross_sells' => 1,
+				'is_update_grouping' => 1,
+				'is_update_shipping_class' => 1,
+				'is_update_stock' => 1,
+				'is_update_stock_status' => 1,
+				'is_update_manage_stock' => 1,
+				'is_update_global_unique_id' => 1,
+				'is_update_backorders' => 1,
+				'is_update_tax_class' => 1,
+				'is_update_tax_status' => 1,
+				'is_update_downloadable' => 1,
+				'is_update_download_limit' => 1,
+				'is_update_download_expiry' => 1,
+				'is_update_downloadable_files' => 1,
+				'is_update_virtual' => 1,
+				'is_update_allow_backorders' => 1,
+				'is_update_sold_individually' => 1,
+				'is_update_woocommerce_general_options' => 1,
+				'is_update_woocommerce_shipping_options' => 1,
+				'is_update_woocommerce_inventory_options' => 1,
+				'is_update_woocommerce_linked_product_options' => 1,
+				'is_update_stock_quantity' => 1,
+				'is_update_slug' => 1,
+				'is_update_author' => 1,
+				'is_update_attachments' => 1,
+				'is_update_menu_order' => 1,
+				'is_update_purchase_note' => 1,
+				'is_update_comment_status' => 1,
+				'is_update_dates' => 1,
+				'is_update_images' => 1,
+				'is_update_custom_fields' => 1,
+				'is_update_categories' => 1,
+				'is_using_new_product_import_options' => 0,
 			);
 		}
 	}
@@ -918,9 +1061,18 @@ EOT;
 		// retrieve our license key from the DB
 		$wpai_woocommerce_addon_options = get_option('PMXI_Plugin_Options');
 
-		if (!empty($wpai_woocommerce_addon_options['info_api_url'])){
+		// Favor new API URL, but fallback to old if needed.
+		if( !empty($wpai_woocommerce_addon_options['info_api_url_new'])){
+			$api_url = $wpai_woocommerce_addon_options['info_api_url_new'];
+		}elseif( !empty($wpai_woocommerce_addon_options['info_api_url'])){
+			$api_url = $wpai_woocommerce_addon_options['info_api_url'];
+		}else{
+			$api_url = null;
+		}
+
+		if (!empty($api_url)){
 			// setup the updater
-			$updater = new PMWI_Updater( $wpai_woocommerce_addon_options['info_api_url'], __FILE__, array(
+			$updater = new PMWI_Updater( $api_url, __FILE__, array(
 					'version' 	=> PMWI_VERSION,		// current version number
 					'license' 	=> false, // license key (used get_option above to retrieve from DB)
 					'item_name' => PMWI_Plugin::getEddName(), 	// name of this plugin
@@ -940,4 +1092,3 @@ EOT;
 		}
 	}
 }
-

@@ -6,14 +6,14 @@
  * @since   4.4.0   Require PHP 7.4
  * @since   4.0.0
  */
-namespace    org\lecklider\charles\wordpress\wp_fail2ban\feature;
+namespace org\lecklider\charles\wordpress\wp_fail2ban\feature;
 
-use          org\lecklider\charles\wordpress\wp_fail2ban\Syslog;
+use org\lecklider\charles\wordpress\wp_fail2ban\Syslog;
 
 use function org\lecklider\charles\wordpress\wp_fail2ban\array_value;
 use function org\lecklider\charles\wordpress\wp_fail2ban\bail;
 
-defined('ABSPATH') or exit;
+defined( 'ABSPATH' ) or exit;
 
 /**
  * Common enumeration handling
@@ -30,13 +30,12 @@ defined('ABSPATH') or exit;
  *
  * @wp-f2b-hard Blocked user enumeration attempt
  */
-function _log_bail_user_enum(): bool
-{
-    Syslog::single(LOG_NOTICE, 'Blocked user enumeration attempt');
+function _log_bail_user_enum(): bool {
+	Syslog::single( LOG_NOTICE, 'Blocked user enumeration attempt' );
 
-    do_action(__FUNCTION__);
+	do_action( __FUNCTION__ );
 
-    return bail();
+	return bail();
 }
 
 /**
@@ -52,51 +51,50 @@ function _log_bail_user_enum(): bool
  * @since  3.5.0    Refactored for unit testing
  * @since  2.1.0
  *
- * @param \WP   $query
+ * @param \WP $query
  *
  * @return \WP|bool
  */
-function parse_request(\WP $query)
-{
-    /**
-     * Is there an author in the query?
-     */
-    if (is_null($author = array_value('author', $query->query_vars))) {
-        return $query;
+function parse_request( \WP $query ) {
+	/**
+	 * Is there an author in the query?
+	 */
+	if ( is_null( $author = array_value( 'author', $query->query_vars ) ) ) {
+		return $query;
 
-    /**
-     * Are they asking about themselves?
-     */
-    } elseif (get_current_user_id() == intval($author)) {
-        return $query;
+		/**
+		 * Are they asking about themselves?
+		 */
+	} elseif ( get_current_user_id() == intval( $author ) ) {
+		return $query;
 
-    /**
-     * Does the user have enough privileges this doesn't matter?
-     */
-    } elseif (current_user_can('edit_others_posts')) {
-        return $query;
+		/**
+		 * Does the user have enough privileges this doesn't matter?
+		 */
+	} elseif ( current_user_can( 'edit_others_posts' ) ) {
+		return $query;
 
-    /**
-     * OK, we have an unprivileged user asking about a different user
-     */
-    } else {
-        global $pagenow;
+		/**
+		 * OK, we have an unprivileged user asking about a different user
+		 */
+	} else {
+		global $pagenow;
 
-        /**
-         * `edit.php` allows Contributors to list posts by other users
-         */
-        if (is_admin() && 'edit.php' == $pagenow && current_user_can('edit_posts')) {
-            return $query;
+		/**
+		 * `edit.php` allows Contributors to list posts by other users
+		 */
+		if ( is_admin() && 'edit.php' == $pagenow && current_user_can( 'edit_posts' ) ) {
+			return $query;
 
-        /**
-         * TODO: is there some other esoteric case to handle?
-         */
-        } else {
-            // noop
-        }
-    }
+			/**
+			 * TODO: is there some other esoteric case to handle?
+			 */
+		} else {
+			// noop
+		}
+	}
 
-    return _log_bail_user_enum();
+	return _log_bail_user_enum();
 }
 
 /**
@@ -116,37 +114,35 @@ function parse_request(\WP $query)
  *
  * @SuppressWarnings(PHPMD.UnusedFormalParameter)
  */
-function rest_user_query(array $prepared_args, \WP_REST_Request $request)
-{
-    /**
-     * ClassicPress and pre-WP 5.4: this is all that's needed
-     */
-    if (current_user_can('edit_others_posts')) {
-        return $prepared_args;
+function rest_user_query( array $prepared_args, \WP_REST_Request $request ) {
+	/**
+	 * ClassicPress and pre-WP 5.4: this is all that's needed
+	 */
+	if ( current_user_can( 'edit_others_posts' ) ) {
+		return $prepared_args;
 
-    /**
-     * >= 5.x WordPress tries to pre-load the list of Authors,
-     * regardless of the current user's role or capabilities.
-     *
-     * Returning 403 seems not to break anything, but we don't
-     * want to trigger fail2ban.
-     */
-    } elseif (is_user_logged_in() &&
-              array_key_exists('who', $prepared_args) &&
-              'authors' == $prepared_args['who'])
-    {
-        Syslog::single(LOG_DEBUG, 'Blocked authors enumeration');
+		/**
+		 * >= 5.x WordPress tries to pre-load the list of Authors,
+		 * regardless of the current user's role or capabilities.
+		 *
+		 * Returning 403 seems not to break anything, but we don't
+		 * want to trigger fail2ban.
+		 */
+	} elseif ( is_user_logged_in() &&
+				array_key_exists( 'who', $prepared_args ) &&
+				'authors' == $prepared_args['who'] ) {
+		Syslog::single( LOG_DEBUG, 'Blocked authors enumeration' );
 
-        return bail();
+		return bail();
 
-    /**
-     * TODO: is there some other esoteric case to handle?
-     */
-    } else {
-        // noop
-    }
+		/**
+		 * TODO: is there some other esoteric case to handle?
+		 */
+	} else {
+		// noop
+	}
 
-    return _log_bail_user_enum();
+	return _log_bail_user_enum();
 }
 
 /**
@@ -157,22 +153,21 @@ function rest_user_query(array $prepared_args, \WP_REST_Request $request)
  * @since  4.4.0    Add type hints, return type
  * @since  4.2.7
  *
- * @param  array    $data   The response data.
- * @param  WP_Post  $post   The post object.
- * @param  int      $width  The requested width.
- * @param  int      $height The calculated height.
+ * @param  array   $data   The response data.
+ * @param  WP_Post $post   The post object.
+ * @param  int     $width  The requested width.
+ * @param  int     $height The calculated height.
  *
  * @return array
  *
  * @codeCoverageIgnore
  * @SuppressWarnings(PHPMD.UnusedFormalParameter)
  */
-function oembed_response_data(array $data, \WP_Post $post, int $width, int $height): array
-{
-    unset($data['author_name']);
-    unset($data['author_url']);
+function oembed_response_data( array $data, \WP_Post $post, int $width, int $height ): array {
+	unset( $data['author_name'] );
+	unset( $data['author_url'] );
 
-    return $data;
+	return $data;
 }
 
 /**
@@ -183,16 +178,15 @@ function oembed_response_data(array $data, \WP_Post $post, int $width, int $heig
  * @since  5.0.0
  *
  * @param  $null    null
- * @param  int      $page_num
+ * @param  int $page_num
  *
  * @return array    Empty array
  *
  * @codeCoverageIgnore
  * @SuppressWarnings(PHPMD.UnusedFormalParameter)
  */
-function wp_sitemaps_users_pre_url_list($null, int $page_num): array
-{
-    return [];
+function wp_sitemaps_users_pre_url_list( $null, int $page_num ): array {
+	return array();
 }
 
 /**
@@ -209,9 +203,8 @@ function wp_sitemaps_users_pre_url_list($null, int $page_num): array
  * @codeCoverageIgnore
  * @SuppressWarnings(PHPMD.UnusedFormalParameter)
  */
-function wp_sitemaps_users_pre_max_num_pages($null): int
-{
-    return 0;
+function wp_sitemaps_users_pre_max_num_pages( $null ): int {
+	return 0;
 }
 
 /**
@@ -224,10 +217,8 @@ function wp_sitemaps_users_pre_max_num_pages($null): int
  *
  * @return bool false
  */
-function wp_sitemaps_add_provider($provider, $name)
-{
-    return ('users' == $name)
-        ? false
-        : $provider;
+function wp_sitemaps_add_provider( $provider, $name ) {
+	return ( 'users' == $name )
+		? false
+		: $provider;
 }
-

@@ -1,4 +1,6 @@
 <?php
+// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fwrite -- false positive; it's actually safe to use native PHP's fwrite()
+// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- using the native PHP fclose() function instead of the WP Filesystem API.
 /*
  * Copyright 2014 Google Inc.
  *
@@ -116,9 +118,9 @@ class Google_Logger_File extends Google_Logger_Abstract
       throw new Google_Logger_Exception(
           sprintf(
               "Logger Error: '%s'",
-              $this->trappedErrorString
+              $this->trappedErrorString // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Error message to be escaped when caught and printed.
           ),
-          $this->trappedErrorNumber
+          $this->trappedErrorNumber // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Error message to be escaped when caught and printed.
       );
     }
 

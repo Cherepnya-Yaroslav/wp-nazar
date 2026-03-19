@@ -10,10 +10,13 @@ namespace com\wp_fail2ban\addons\Blocklist;
 // @codeCoverageIgnoreStart
 
 if (!defined('WP_FAIL2BAN_ADDON_BLOCKLIST_VER')) {
-    define('WP_FAIL2BAN_ADDON_BLOCKLIST_VER', '2.2.1');
+    define('WP_FAIL2BAN_ADDON_BLOCKLIST_VER', '2.2.2');
 }
 if (!defined('WP_FAIL2BAN_ADDON_BLOCKLIST_VER_SHORT')) {
     define('WP_FAIL2BAN_ADDON_BLOCKLIST_VER_SHORT', '2');
+}
+if (!defined('WP_FAIL2BAN_ADDON_BLOCKLIST_VER2')) {
+    define('WP_FAIL2BAN_ADDON_BLOCKLIST_VER2', '2.2');
 }
 if (!defined('WP_FAIL2BAN_ADDON_BLOCKLIST_I18N')) {
     define('WP_FAIL2BAN_ADDON_BLOCKLIST_I18N', 'wp-fail2ban-addon-blocklist');

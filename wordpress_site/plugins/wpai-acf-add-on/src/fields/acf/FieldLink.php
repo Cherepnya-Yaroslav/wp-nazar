@@ -1,13 +1,13 @@
 <?php
 
-namespace wpai_acf_add_on\fields\acf;
+namespace wpai_acf_add_on_pro\fields\acf;
 
-use wpai_acf_add_on\ACFService;
-use wpai_acf_add_on\fields\Field;
+use pmai_acf_add_on\ACFService;
+use pmai_acf_add_on\fields\Field;
 
 /**
  * Class FieldLink
- * @package wpai_acf_add_on\fields\acf
+ * @package pmai_acf_add_on\fields\acf
  */
 class FieldLink extends Field {
 
@@ -33,7 +33,8 @@ class FieldLink extends Field {
         parent::parse($xpath, $parsingData, $args);
         $values = array();
         foreach ($this->keys as $key){
-            $values[$key] = $this->getByXPath($xpath[$key]);
+            $key_xpath = $xpath[$key] ?? '';
+            $values[$key] = $this->getByXPath($key_xpath);
         }
         $this->setOption('values', $values);
     }

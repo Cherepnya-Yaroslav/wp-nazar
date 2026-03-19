@@ -1,13 +1,13 @@
 <?php
 
-namespace wpai_acf_add_on\fields\acf\group;
+namespace wpai_acf_add_on_pro\fields\acf\group;
 
-use wpai_acf_add_on\ACFService;
-use wpai_acf_add_on\fields\Field;
+use pmai_acf_add_on\ACFService;
+use pmai_acf_add_on\fields\Field;
 
 /**
  * Class FieldGroupV5
- * @package wpai_acf_add_on\fields\acf\group
+ * @package pmai_acf_add_on\fields\acf\group
  */
 class FieldGroupV5 extends Field {
 
@@ -33,9 +33,11 @@ class FieldGroupV5 extends Field {
         parent::parse($xpath, $parsingData, $args);
         /** @var Field $subField */
         foreach ($this->getSubFields() as $subField){
-            $subField->parse($xpath[$subField->getFieldKey()], $parsingData, array(
-                'field_path' => $this->getOption('field_path') . "[" . $this->getFieldKey() . "]"
-            ));
+	        if (!empty($subField) && $subField instanceof Field && isset( $xpath[ $subField->getFieldKey() ])) {
+		        $subField->parse( $xpath[ $subField->getFieldKey() ], $parsingData, array(
+			        'field_path' => $this->getOption( 'field_path' ) . "[" . $this->getFieldKey() . "]"
+		        ) );
+	        }
         }
     }
 

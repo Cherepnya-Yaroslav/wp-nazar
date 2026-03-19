@@ -81,7 +81,8 @@ class PMWI_Config implements IteratorAggregate {
 	public function toArray($section = NULL) {
 		return ! is_null($section) ? $this->config[$section]->toArray() : $this->config;
 	}
-	
+
+	#[ReturnTypeWillChange]
 	public function getIterator() {
 		return new ArrayIterator($this->config);
 	}

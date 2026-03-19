@@ -73,7 +73,7 @@ if( ! class_exists('PMWI_Updater') ) {
         public function plugin_row_meta( $links, $file ) {
             if ( $file == $this->name ) {
                 $row_meta = array(
-                    'changelog'    => '<a href="' . admin_url( 'plugin-install.php?tab=plugin-information&plugin=wpai-woocommerce-add-on&section=changelog&TB_iframe=true&width=600&height=800' ) . '" class="thickbox open-plugin-details-modal" title="' . esc_attr( __( 'View WP All Import - WooCommerce Add-On Pro Changelog', PMWI_Plugin::TEXT_DOMAIN ) ) . '">' . __( 'Changelog', PMWI_Plugin::TEXT_DOMAIN ) . '</a>',
+                    'changelog'    => '<a href="' . admin_url( 'plugin-install.php?tab=plugin-information&plugin=wpai-woocommerce-add-on&section=changelog&TB_iframe=true&width=600&height=800' ) . '" class="thickbox open-plugin-details-modal" title="' . esc_attr( __( 'View WP All Import - WooCommerce Add-On Pro Changelog', 'wpai_woocommerce_addon_plugin' ) ) . '">' . __( 'Changelog', 'wpai_woocommerce_addon_plugin' ) . '</a>',
                 );
 
                 return array_merge( $links, $row_meta );
@@ -238,6 +238,10 @@ if( ! class_exists('PMWI_Updater') ) {
                     return;
                 }
 
+	            if(!is_object($update_cache)) {
+		            $update_cache = new stdClass();
+	            }
+
                 if( version_compare( $this->version, $version_info->new_version, '<' ) ) {
 
                     $update_cache->response[ $this->name ] = $version_info;
@@ -369,7 +373,8 @@ if( ! class_exists('PMWI_Updater') ) {
          *
          * @param array   $args
          * @param string  $url
-         * @return object $array
+         *
+         * @return array|object
          */
         function http_request_args( $args, $url ) {
             // If it is an https request and we are performing a package download, disable ssl verification
@@ -397,7 +402,7 @@ if( ! class_exists('PMWI_Updater') ) {
             $data = array_merge( $this->api_data, $_data );        
 
             if ( $data['slug'] != $this->slug )
-                return;
+                return false;
 
             /*if ( empty( $data['license'] ) )
                 return;*/
@@ -422,8 +427,13 @@ if( ! class_exists('PMWI_Updater') ) {
             //     $uploads = wp_upload_dir();
             //     file_put_contents($uploads['basedir'] . "/log.txt", date("d-m-Y H:i:s") . ' - ' .json_encode($api_params) . "\n", FILE_APPEND);
             // }
-            
-            $request = wp_remote_post( $this->api_url, array( 'timeout' => 15, 'sslverify' => true, 'body' => $api_params ) );
+
+	        // Send request based on provided API URL.
+	        if( strpos($this->api_url, 'update.') !== false){
+		        $request = wp_remote_get( esc_url_raw(add_query_arg($api_params, $this->api_url.'check_version/?')), array( 'timeout' => 15, 'sslverify' => true ) );
+	        }else{
+		        $request = wp_remote_post( $this->api_url, array( 'timeout' => 15, 'sslverify' => true, 'body' => $api_params ) );
+	        }
 
             if ( ! is_wp_error( $request ) ) {
                 $request = json_decode( wp_remote_retrieve_body( $request ) );

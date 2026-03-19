@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
 /**
 * OAuth consumer using PHP cURL
 * @author Ben Tadiar <ben@handcraftedbyben.co.uk>
@@ -251,13 +251,24 @@ class Dropbox_Curl extends Dropbox_ConsumerAbstract
 
                         $message = json_encode($correctOffset);
                     } else {
-                        $message = $extract_message;
+                        $message = '';
+                        $property = 'error';
+                        $resp = $response['body'];
+                        while (isset($resp->$property)) {
+                            if (is_string($resp->$property)) $message .= $resp->$property.'/';
+                            if (!is_object($resp->$property) || empty($resp->$property->{'.tag'})) break;
+                            $property = $resp->$property->{'.tag'};
+                            $message .= $property.'/';
+                            $resp = $response['body']->error;
+                        }
                     }
                 } elseif (!empty($response['body']->error)) {
                     $message = $response['body']->error;
                 } elseif (is_string($response['body'])) {
 					// 31 Mar 2017 - This case has been found to exist; though the docs imply that there's always an 'error' property and that what is returned in JSON, we found a case of this being returned just as a simple string, but detectable via an HTTP 400: Error in call to API function "files/upload_session/append_v2": HTTP header "Dropbox-API-Arg": cursor.offset: expected integer, got string
 					$message = $response['body'];
+                } elseif (!empty($response['body']->error_summary)) {
+                    $message = $response['body']->error_summary;
                 } else {
 					$message = "HTTP bad response code: $code";
                 }
@@ -348,3 +359,4 @@ class Dropbox_Curl extends Dropbox_ConsumerAbstract
        return $this->lastResponse;
      }
 }
+// phpcs:enable

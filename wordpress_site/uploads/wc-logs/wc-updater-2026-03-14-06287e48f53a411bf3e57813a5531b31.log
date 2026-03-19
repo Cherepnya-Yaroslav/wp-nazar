@@ -1,0 +1,37 @@
+2026-03-14T07:43:03+00:00 INFO Automatic database update triggered.
+2026-03-14T07:43:03+00:00 INFO Scheduling database updates (from 8.0.2)...
+2026-03-14T07:43:03+00:00 INFO   [8.1.0] Scheduled 'wc_update_810_migrate_transactional_metadata_for_hpos'.
+2026-03-14T07:43:03+00:00 INFO   [8.3.0] Scheduled 'wc_update_830_rename_checkout_template'.
+2026-03-14T07:43:03+00:00 INFO   [8.3.0] Scheduled 'wc_update_830_rename_cart_template'.
+2026-03-14T07:43:03+00:00 INFO   [8.6.0] Scheduled 'wc_update_860_remove_recommended_marketing_plugins_transient'.
+2026-03-14T07:43:03+00:00 INFO   [8.7.0] Scheduled 'wc_update_870_prevent_listing_of_transient_files_directory'.
+2026-03-14T07:43:03+00:00 INFO   [8.9.0] Scheduled 'wc_update_890_update_connect_to_woocommerce_note'.
+2026-03-14T07:43:03+00:00 INFO   [8.9.0] Scheduled 'wc_update_890_update_paypal_standard_load_eligibility'.
+2026-03-14T07:43:04+00:00 INFO   [8.9.1] Scheduled 'wc_update_891_create_plugin_autoinstall_history_option'.
+2026-03-14T07:43:04+00:00 INFO   [9.1.0] Scheduled 'wc_update_910_add_launch_your_store_tour_option'.
+2026-03-14T07:43:04+00:00 INFO   [9.1.0] Scheduled 'wc_update_910_remove_obsolete_user_meta'.
+2026-03-14T07:43:04+00:00 INFO   [9.2.0] Scheduled 'wc_update_920_add_wc_hooked_blocks_version_option'.
+2026-03-14T07:43:04+00:00 INFO   [9.3.0] Scheduled 'wc_update_930_add_woocommerce_coming_soon_option'.
+2026-03-14T07:43:04+00:00 INFO   [9.3.0] Scheduled 'wc_update_930_migrate_user_meta_for_launch_your_store_tour'.
+2026-03-14T07:43:04+00:00 INFO   [9.4.0] Scheduled 'wc_update_940_add_phone_to_order_address_fts_index'.
+2026-03-14T07:43:04+00:00 INFO   [9.4.0] Scheduled 'wc_update_940_remove_help_panel_highlight_shown'.
+2026-03-14T07:43:04+00:00 INFO   [9.5.0] Scheduled 'wc_update_950_tracking_option_autoload'.
+2026-03-14T07:43:04+00:00 INFO   [9.6.1] Scheduled 'wc_update_961_migrate_default_email_base_color'.
+2026-03-14T07:43:04+00:00 INFO   [9.8.0] Scheduled 'wc_update_980_remove_order_attribution_install_banner_dismissed_option'.
+2026-03-14T07:43:04+00:00 INFO   [9.8.5] Scheduled 'wc_update_985_enable_new_payments_settings_page_feature'.
+2026-03-14T07:43:04+00:00 INFO   [9.9.0] Scheduled 'wc_update_990_remove_wc_count_comments_transient'.
+2026-03-14T07:43:04+00:00 INFO   [9.9.0] Scheduled 'wc_update_990_remove_email_notes'.
+2026-03-14T07:43:04+00:00 INFO   [10.0.0] Scheduled 'wc_update_1000_multisite_visibility_setting'.
+2026-03-14T07:43:04+00:00 INFO   [10.0.0] Scheduled 'wc_update_1000_remove_patterns_toolkit_transient'.
+2026-03-14T07:43:04+00:00 INFO   [10.2.0] Scheduled 'wc_update_1020_add_old_refunded_order_items_to_product_lookup_table'.
+2026-03-14T07:43:04+00:00 INFO   [10.3.0] Scheduled 'wc_update_1030_add_comments_date_type_index'.
+2026-03-14T07:43:04+00:00 INFO   [10.4.0] Scheduled 'wc_update_1040_add_idx_date_paid_status_parent'.
+2026-03-14T07:43:04+00:00 INFO   [10.4.0] Scheduled 'wc_update_1040_cleanup_legacy_ptk_patterns_fetching'.
+2026-03-14T07:43:04+00:00 INFO   [10.5.0] Scheduled 'wc_update_1050_migrate_brand_permalink_setting'.
+2026-03-14T07:43:04+00:00 INFO   [10.5.0] Scheduled 'wc_update_1050_enable_autoload_options'.
+2026-03-14T07:43:04+00:00 INFO   [10.5.0] Scheduled 'wc_update_1050_add_idx_user_email'.
+2026-03-14T07:43:04+00:00 INFO   [10.5.0] Scheduled 'wc_update_1050_remove_deprecated_marketplace_option'.
+2026-03-14T07:43:04+00:00 INFO   [10.6.0] Scheduled 'wc_update_1060_add_woo_idx_comment_approved_type_index'.
+2026-03-14T07:43:04+00:00 INFO Database updates scheduled.
+2026-03-14T07:43:12+00:00 INFO During the update to 9.1.0, WooCommerce removed 0 user meta rows associated with the meta keys "_last_order", "_order_count" or "_money_spent".
+2026-03-14T07:43:18+00:00 INFO During the update to 9.4.0, WooCommerce removed 0 user meta rows associated with the meta key "woocommerce_admin_help_panel_highlight_shown".

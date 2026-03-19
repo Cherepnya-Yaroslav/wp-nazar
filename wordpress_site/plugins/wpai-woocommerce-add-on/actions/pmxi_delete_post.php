@@ -41,12 +41,14 @@ function pmwi_pmxi_delete_post($ids, $import) {
                     break;
                 case 'shop_order':
                     // Clean up lookup table if product was deleted via cron.
-                    if (!empty($_GET['import_id'])) {
-                        global $wpdb;
-                        $refunds = $wpdb->get_results( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_type = 'shop_order_refund' AND post_parent = %d", $pid ) );
-                        if ( ! is_null( $refunds ) ) {
+                    if ( ! empty($_GET['import_id']) ) {
+                        /** @var WC_Order $order */
+                        $order = wc_get_order( $pid );
+                        $refunds = $order->get_refunds();
+                        if ( ! empty( $refunds ) ) {
+                            /** @var WC_Order_Refund $refund */
                             foreach ( $refunds as $refund ) {
-                                wp_delete_post( $refund->ID, true );
+                                $refund->delete(true);
                             }
                         }
                     }

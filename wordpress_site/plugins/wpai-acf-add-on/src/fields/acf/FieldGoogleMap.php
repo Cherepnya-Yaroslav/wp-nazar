@@ -1,13 +1,13 @@
 <?php
 
-namespace wpai_acf_add_on\fields\acf;
+namespace wpai_acf_add_on_pro\fields\acf;
 
-use wpai_acf_add_on\ACFService;
-use wpai_acf_add_on\fields\base\BaseGoogleMap;
+use pmai_acf_add_on\ACFService;
+use wpai_acf_add_on_pro\fields\base\BaseGoogleMap;
 
 /**
  * Class FieldGoogleMap
- * @package wpai_acf_add_on\fields\acf
+ * @package pmai_acf_add_on\fields\acf
  */
 class FieldGoogleMap extends BaseGoogleMap {
 
@@ -96,8 +96,8 @@ class FieldGoogleMap extends BaseGoogleMap {
         }
         return array(
             'address' => $values['address'][$this->getPostIndex()],
-            'lat' => $values['lat'][$this->getPostIndex()],
-            'lng' => $values['lng'][$this->getPostIndex()],
+            'lat' => floatval($values['lat'][$this->getPostIndex()]),
+            'lng' => floatval($values['lng'][$this->getPostIndex()]),
             'zoom' => empty($values['zoom'][$this->getPostIndex()]) ? 14 : $values['zoom'][$this->getPostIndex()],
             'street_number' => $values['street_number'][$this->getPostIndex()],
             'street_name' => $values['street_name'][$this->getPostIndex()],

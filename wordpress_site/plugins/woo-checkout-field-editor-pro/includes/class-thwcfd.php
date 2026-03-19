@@ -24,13 +24,16 @@ class THWCFD {
 			$this->version = '1.0.0';
 		}
 		$this->plugin_name = 'woo-checkout-field-editor-pro';
+        $this->load_dependencies();
+		add_action('init', array($this, 'init'));
+        $this->define_blocks();
+	}
 
-		$this->load_dependencies();
-		$this->set_locale();
+    public function init(){
+		$this->define_constants();
+		//$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-
-		add_action('init', array($this, 'init'));
 	}
 
 	private function load_dependencies() {
@@ -49,16 +52,43 @@ class THWCFD {
 		// require_once THWCFD_PATH . 'classes/class-thwcfd-checkout.php';
 	}
 
-	private function set_locale() {
-		add_action('plugins_loaded', array($this, 'load_plugin_textdomain'));
-	}
+    /************ Note: Manual loading of the plugin text domain is intentionally omitted.
+     * Since WordPress 4.6+, translations for plugins hosted on WordPress.org are loaded automatically using Just-In-Time (JIT) loading.
+     * This plugin requires WordPress 4.9 or higher, so no explicit call to load_plugin_textdomain is needed here.
+    */
 
-	public function load_plugin_textdomain(){
+	/*private function set_locale() {
+        // WordPress 4.6+ JIT loading of textdomains. This for backward compatibility logging purpose only.
+        $domain = self::TEXT_DOMAIN;
+        if ( is_textdomain_loaded( $domain ) ) {
+            return;
+        }
+        // Determine locale safely (WP 5.0+)
+        $locale = function_exists( 'determine_locale' )
+            ? determine_locale()
+            : get_locale();
+
+        $mofile = WP_LANG_DIR . '/plugins/' . $domain . '-' . $locale . '.mo';
+        if ( file_exists( $mofile ) ) {
+            load_textdomain( $domain, $mofile );
+            return;
+        }
+        load_plugin_textdomain(
+            $domain,
+            false,
+            dirname( THWCFD_BASE_NAME ) . '/languages/'
+        );
+        //plugins_loaded hook not required as load_plugin_textdomain called in init method
+		//add_action('plugins_loaded', array($this, 'load_plugin_textdomain'));  
+	}*/
+
+	/* plugins_loaded hook not required as load_plugin_textdomain called in init method
+    public function load_plugin_textdomain(){
 		$locale = apply_filters('plugin_locale', get_locale(), self::TEXT_DOMAIN);
 	
 		load_textdomain(self::TEXT_DOMAIN, WP_LANG_DIR.'/woo-checkout-field-editor-pro/'.self::TEXT_DOMAIN.'-'.$locale.'.mo');
 		load_plugin_textdomain(self::TEXT_DOMAIN, false, dirname(THWCFD_BASE_NAME) . '/languages/');
-	}
+	}*/
 
 	private function define_admin_hooks() {
 		$plugin_admin = new THWCFD_Admin( $this->get_plugin_name(), $this->get_version() );
@@ -66,37 +96,41 @@ class THWCFD {
 		add_action('admin_enqueue_scripts', array($plugin_admin, 'enqueue_styles_and_scripts'));
 		add_action('admin_menu', array($plugin_admin, 'admin_menu'));
 		add_action('admin_head', array($plugin_admin,'review_banner_custom_css'));
-		add_action('admin_footer', array($plugin_admin,'review_banner_custom_js'),20);
         add_action('admin_footer', array($plugin_admin,'quick_links'),10);
-        add_action('plugins_loaded', array($plugin_admin,'thwcfd_display_discount_announcement'),10);
+        add_action('admin_footer', array($plugin_admin,'thwcfd_display_discount_announcement'),10);
 		add_filter('woocommerce_screen_ids', array($plugin_admin, 'add_screen_id'));
 		add_filter('plugin_action_links_'.THWCFD_BASE_NAME, array($plugin_admin, 'plugin_action_links'));
 		add_action( 'admin_init', array( $plugin_admin, 'wcfd_notice_actions' ), 20 );
 		add_action( 'admin_notices', array($plugin_admin, 'output_review_request_link'));
 		add_action('admin_footer-plugins.php', array($this, 'thwcfd_deactivation_form'));
         add_action('wp_ajax_thwcfd_deactivation_reason', array($this, 'thwcfd_deactivation_reason'));
-		//add_filter('plugin_row_meta', array($plugin_admin, 'plugin_row_meta'), 10, 2);
+		add_filter('plugin_row_meta', array($plugin_admin, 'plugin_row_meta'), 10, 2);
+        //Landing page added
+        add_action( 'admin_init', array($plugin_admin, 'landing_page' ), 10 );
+		add_action( 'admin_init', array($plugin_admin, 'redirect_to_landing_page'), 10 );
+        add_action( 'admin_head', array($plugin_admin, 'remove_welcome_page_menu'));
 		
 		$themehigh_plugins = new THWCFD_Admin_Settings_Themehigh_Plugins();
 		add_action('wp_ajax_th_activate_plugin', array($themehigh_plugins, 'activate_themehigh_plugins'));
 
 		$general_settings = new THWCFD_Admin_Settings_General();
-		add_action('after_setup_theme', array($general_settings, 'define_admin_hooks'));
-		add_action('wp_ajax_hide_thwcfd_admin_notice', array($this, 'hide_thwcfd_admin_notice'));
+		add_action('init', array($general_settings, 'define_admin_hooks'),20);
 	}
 
 	private function define_public_hooks() {
 		//if(!is_admin() || (defined( 'DOING_AJAX' ) && DOING_AJAX)){
 			$plugin_checkout = new THWCFD_Public_Checkout( $this->get_plugin_name(), $this->get_version() );
 			add_action('wp_enqueue_scripts', array($plugin_checkout, 'enqueue_styles_and_scripts'));
-			add_action('after_setup_theme', array($plugin_checkout, 'define_public_hooks'));
+			add_action('init', array($plugin_checkout, 'define_public_hooks'),20);
 		//}
 	}
 
-	public function init(){
-		$this->define_constants();
-	}
-	
+    private function define_blocks(){
+
+        $plugin_block_checkout = new THWCFD_Block();
+        $plugin_block_checkout->init();
+    }
+
 	private function define_constants(){
 		!defined('THWCFD_ASSETS_URL_ADMIN') && define('THWCFD_ASSETS_URL_ADMIN', THWCFD_URL . 'admin/assets/');
 		!defined('THWCFD_ASSETS_URL_PUBLIC') && define('THWCFD_ASSETS_URL_PUBLIC', THWCFD_URL . 'public/assets/');
@@ -121,20 +155,6 @@ class THWCFD {
 		return $this->version;
 	}
 
-	public function hide_thwcfd_admin_notice(){
-		check_ajax_referer('thwcfd_notice_security', 'thwcfd_review_nonce');
-
-		$capability = THWCFD_Utils::wcfd_capability();
-		
-		if(!current_user_can($capability)){
-			wp_die(-1);
-		}
-
-		$now = time();
-		update_user_meta( get_current_user_id(), 'thwcfd_review_skipped', true );
-		update_user_meta( get_current_user_id(), 'thwcfd_review_skipped_time', $now );
-	}
-
 	public function thwcfd_deactivation_form(){
 		$is_snooze_time = get_user_meta( get_current_user_id(), 'thwcfd_deactivation_snooze', true );
         $now = time();
@@ -152,18 +172,18 @@ class THWCFD {
                     <div class="modal-content">
                         <div class="modal-body">
                             <div class="model-header">
-                                <img class="th-logo" src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/themehigh.svg'); ?>" alt="themehigh-logo">
-                                <span><?php echo __('Quick Feedback', 'woo-checkout-field-editor-pro'); ?></span>
+                                <img class="th-logo" src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/min-logo.svg'); ?>" alt="themehigh-logo">
+                                <span><?php esc_html_e('Quick Feedback', 'woo-checkout-field-editor-pro'); ?></span>
                             </div>
 
                             <!-- <div class="get-support-version-b">
                                 <p>We are sad to see you go. We would be happy to fix things for you. Please raise a ticket to get help</p>
-                                <a class="thwcfd-link thwcfd-right-link thwcfd-active" target="_blank" href="https://help.themehigh.com/hc/en-us/requests/new?utm_source=wcfe_free&utm_medium=feedback_form&utm_campaign=get_support"><?php echo __('Get Support', 'woo-checkout-field-editor-pro'); ?></a>
+                                <a class="thwcfd-link thwcfd-right-link thwcfd-active" target="_blank" href="https://help.themehigh.com/hc/en-us/requests/new?utm_source=wcfe_free&utm_medium=feedback_form&utm_campaign=get_support"><?php esc_html_e('Get Support', 'woo-checkout-field-editor-pro'); ?></a>
                             </div> -->
 
                             <main class="form-container main-full">
-                                <p class="thwcfd-title-text"><?php echo __('If you have a moment, please let us know why you want to deactivate this plugin', 'woo-checkout-field-editor-pro'); ?></p>
-                                <ul class="deactivation-reason" data-nonce="<?php echo wp_create_nonce('thwcfd_deactivate_nonce'); ?>">
+                                <p class="thwcfd-title-text"><?php esc_html_e('If you have a moment, please let us know why you want to deactivate this plugin', 'woo-checkout-field-editor-pro'); ?></p>
+                                <ul class="deactivation-reason" data-nonce="<?php echo esc_attr( wp_create_nonce('thwcfd_deactivate_nonce')); ?>">
                                     <?php 
                                     if($deactivation_reasons){
                                         foreach($deactivation_reasons as $key => $reason){
@@ -181,18 +201,18 @@ class THWCFD {
                                     }
                                     ?>
                                 </ul>
-                                <p class="thwcfd-privacy-cnt"><?php echo __('This form is only for getting your valuable feedback. We do not collect your personal data. To know more read our ', 'woo-checkout-field-editor-pro'); ?> <a class="thwcfd-privacy-link" target="_blank" href="<?php echo esc_url('https://www.themehigh.com/privacy-policy/');?>"><?php echo __('Privacy Policy', 'woo-checkout-field-editor-pro'); ?></a></p>
+                                <p class="thwcfd-privacy-cnt"><?php esc_html_e('This form is only for getting your valuable feedback. We do not collect your personal data. To know more read our ', 'woo-checkout-field-editor-pro'); ?> <a class="thwcfd-privacy-link" target="_blank" href="<?php echo esc_url('https://www.themehigh.com/privacy-policy/');?>"><?php esc_html_e('Privacy Policy', 'woo-checkout-field-editor-pro'); ?></a></p>
                             </main>
                             <footer class="modal-footer">
                                 <div class="thwcfd-left">
-                                    <a class="thwcfd-link thwcfd-left-link thwcfd-deactivate" href="#"><?php echo __('Skip & Deactivate', 'woo-checkout-field-editor-pro'); ?></a>
+                                    <a class="thwcfd-link thwcfd-left-link thwcfd-deactivate" href="#"><?php esc_html_e('Skip & Deactivate', 'woo-checkout-field-editor-pro'); ?></a>
                                 </div>
                                 <div class="thwcfd-right">
                                     
-                                    <a class="thwcfd-link thwcfd-right-link thwcfd-active" target="_blank" href="https://help.themehigh.com/hc/en-us/requests/new?utm_source=wcfe_free&utm_medium=feedback_form&utm_campaign=get_support"><?php echo __('Get Support', 'woo-checkout-field-editor-pro'); ?></a>
+                                    <a class="thwcfd-link thwcfd-right-link thwcfd-active" target="_blank" href="https://help.themehigh.com/hc/en-us/requests/new?utm_source=wcfe_free&utm_medium=feedback_form&utm_campaign=get_support"><?php esc_html_e('Get Support', 'woo-checkout-field-editor-pro'); ?></a>
 
-                                    <a class="thwcfd-link thwcfd-right-link thwcfd-active thwcfd-submit-deactivate" href="#"><?php echo __('Submit and Deactivate', 'woo-checkout-field-editor-pro'); ?></a>
-                                    <a class="thwcfd-link thwcfd-right-link thwcfd-close" href="#"><?php echo __('Cancel', 'woo-checkout-field-editor-pro'); ?></a>
+                                    <a class="thwcfd-link thwcfd-right-link thwcfd-active thwcfd-submit-deactivate" href="#"><?php esc_html_e('Submit and Deactivate', 'woo-checkout-field-editor-pro'); ?></a>
+                                    <a class="thwcfd-link thwcfd-right-link thwcfd-close" href="#"><?php esc_html_e('Cancel', 'woo-checkout-field-editor-pro'); ?></a>
                                 </div>
                             </footer>
                         </div>
@@ -403,23 +423,23 @@ class THWCFD {
                         reason_input += '<input type="checkbox" id="th-snooze" name="th-snooze" class="th-snooze-checkbox">';
                         reason_input += '<label for="th-snooze">Snooze this panel while troubleshooting</label>';
                         reason_input += '<select name="th-snooze-time" class="th-snooze-select" disabled>';
-                        reason_input += '<option value="<?php echo HOUR_IN_SECONDS ?>">1 Hour</option>';
-                        reason_input += '<option value="<?php echo 12*HOUR_IN_SECONDS ?>">12 Hour</option>';
-                        reason_input += '<option value="<?php echo DAY_IN_SECONDS ?>">24 Hour</option>';
-                        reason_input += '<option value="<?php echo WEEK_IN_SECONDS ?>">1 Week</option>';
-                        reason_input += '<option value="<?php echo MONTH_IN_SECONDS ?>">1 Month</option>';
+                        reason_input += '<option value="<?php echo esc_attr(HOUR_IN_SECONDS) ?>">1 Hour</option>';
+                        reason_input += '<option value="<?php echo esc_attr(12*HOUR_IN_SECONDS) ?>">12 Hour</option>';
+                        reason_input += '<option value="<?php echo esc_attr(DAY_IN_SECONDS) ?>">24 Hour</option>';
+                        reason_input += '<option value="<?php echo esc_attr(WEEK_IN_SECONDS) ?>">1 Week</option>';
+                        reason_input += '<option value="<?php echo esc_attr(MONTH_IN_SECONDS) ?>">1 Month</option>';
                         reason_input += '</select>';
                         reason_input += '</div>';
                     }else if('reviewlink' == type){
                         reason_input += '<div class="reason-input wcfe-review-link">';
                         /*
-                        reason_input += '<?php _e('Deactivate and ', 'woo-checkout-field-editor-pro');?>'
+                        reason_input += '<?php esc_html_e('Deactivate and ', 'woo-checkout-field-editor-pro');?>'
                         reason_input += '<a href="#" target="_blank" class="thwcfd-review-and-deactivate">';
-                        reason_input += '<?php _e('leave a review', 'woo-checkout-field-editor-pro'); ?>';
+                        reason_input += '<?php esc_html_e('leave a review', 'woo-checkout-field-editor-pro'); ?>';
                         reason_input += '<span class="wcfe-rating-link"> &#9733;&#9733;&#9733;&#9733;&#9733; </span>';
                         reason_input += '</a>';
                         */
-                        reason_input += '<input type="hidden" value="<?php _e('Upgraded', 'woo-checkout-field-editor-pro');?>">';
+                        reason_input += '<input type="hidden" value="<?php esc_html_e('Upgraded', 'woo-checkout-field-editor-pro');?>">';
                         reason_input += '</div>';
                     }
 
@@ -489,7 +509,7 @@ class THWCFD {
         return array(
         	'upgraded_to_pro' => array(
 				'radio_val'          => 'upgraded_to_pro',
-				'radio_label'        => __('Upgraded to premium.', 'woo-extra-product-options'),
+				'radio_label'        => __('Upgraded to premium.', 'woo-checkout-field-editor-pro'),
 				'reason_type'        => 'reviewlink',
 				'reason_placeholder' => '',
 			),
@@ -556,7 +576,7 @@ class THWCFD {
 
         if($_POST['reason'] === 'temporary'){
 
-            $snooze_period = isset($_POST['th-snooze-time']) && $_POST['th-snooze-time'] ? $_POST['th-snooze-time'] : MINUTE_IN_SECONDS ;
+            $snooze_period = isset($_POST['th-snooze-time']) && $_POST['th-snooze-time'] ? absint($_POST['th-snooze-time']) : MINUTE_IN_SECONDS ;
             $time_now = time();
             $snooze_time = $time_now + $snooze_period;
 
@@ -567,10 +587,10 @@ class THWCFD {
         
         $data = array(
             'plugin'        => 'wcfe',
-            'reason'        => sanitize_text_field($_POST['reason']),
+            'reason'        => sanitize_text_field(wp_unslash($_POST['reason'])),
             'comments'      => isset($_POST['comments']) ? sanitize_textarea_field(wp_unslash($_POST['comments'])) : '',
             'date'          => gmdate("M d, Y h:i:s A"),
-            'software'      => $_SERVER['SERVER_SOFTWARE'],
+            'software'      => isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE'])) : '',
             'php_version'   => phpversion(),
             'mysql_version' => $wpdb->db_version(),
             'wp_version'    => get_bloginfo('version'),

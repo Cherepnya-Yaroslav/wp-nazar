@@ -1,6 +1,7 @@
 <?php
-
-if (!defined('UPDRAFTCENTRAL_CLIENT_DIR')) die('No access.');
+// phpcs:disable WordPress.WP.AlternativeFunctions.rename_rename -- rename() usage is intentional and safe within this context.
+if (!defined('ABSPATH')) exit;
+if (!defined('UPDRAFTPLUS_DIR')) die('No direct access allowed');
 
 /**
  * - A container for all the RPC commands implemented. Commands map exactly onto method names (and hence this class should not implement anything else, beyond the constructor, and private methods)
@@ -98,7 +99,7 @@ abstract class UpdraftCentral_Commands {
 		$request_filesystem_credentials = ('direct' != $filesystem_method && !$filesystem_credentials_are_stored);
 
 		// Do we need to execute a backup process before installing/managing items
-		$automatic_backups = (class_exists('UpdraftPlus_Options') && class_exists('UpdraftPlus_Addon_Autobackup') && UpdraftPlus_Options::get_updraft_option('updraft_autobackup_default', true)) ? true : false;
+		$automatic_backups = (class_exists('UpdraftPlus_Options') && class_exists('UpdraftPlus_Addon_Autobackup') && UpdraftPlus_Options::get_updraft_option('updraft_autobackup_default')) ? true : false;
 		
 		return array(
 			'request_filesystem_credentials' => $request_filesystem_credentials,

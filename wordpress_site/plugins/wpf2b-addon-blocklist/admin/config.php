@@ -26,7 +26,7 @@ function init_tabs(bool $init): bool
 {
     require_once __DIR__.'/config/SettingsFree.php';
 
-    if (class_exists(WP_FAIL2BAN_NS.'\premium\WPf2b') && WPf2b::can_use_premium_code()) {
+    if (class_exists('org\lecklider\charles\wordpress\wp_fail2ban\premium\WPf2b') && WPf2b::can_use_premium_code()) {
         require_once __DIR__.'/config/SettingsPremium.php';
         new TabSettingsPremium();
     } else {

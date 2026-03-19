@@ -41,7 +41,7 @@ class Dropbox_Encrypter
             # Short-cut so that the mbstring extension is not required
             $this->key = $key;
         } elseif (($length = mb_strlen($key, '8bit')) !== self::KEY_SIZE) {
-            throw new Dropbox_Exception('Expecting a ' .  self::KEY_SIZE . ' byte key, got ' . $length);
+            throw new Dropbox_Exception('Expecting a ' .  self::KEY_SIZE . ' byte key, got ' . $length); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- The escaping should happen when the exception is caught and printed
         } else {
             // Set the encryption key
             $this->key = $key;
@@ -58,7 +58,7 @@ class Dropbox_Encrypter
 
         // Encryption: we always use phpseclib for this
         global $updraftplus;
-        $ensure_phpseclib = $updraftplus->ensure_phpseclib('Crypt_AES');
+        $ensure_phpseclib = $updraftplus->ensure_phpseclib();
         
         if (is_wp_error($ensure_phpseclib)) {
             $updraftplus->log("Failed to load phpseclib classes (".$ensure_phpseclib->get_error_code()."): ".$ensure_phpseclib->get_error_message());
@@ -66,14 +66,12 @@ class Dropbox_Encrypter
             return false;
         }
         
-        $updraftplus->ensure_phpseclib('Crypt_Rijndael');
-
-        if (!function_exists('crypt_random_string')) updraft_try_include_file('vendor/phpseclib/phpseclib/phpseclib/Crypt/Random.php', 'require_once');
+        $updraftplus->ensure_phpseclib();
         
-        $iv = crypt_random_string(self::IV_SIZE);
+        $iv = phpseclib_Crypt_Random::string(self::IV_SIZE);
         
         // Defaults to CBC mode
-        $rijndael = new Crypt_Rijndael();
+        $rijndael = new phpseclib_Crypt_Rijndael();
         
         $rijndael->setKey($this->key);
         
@@ -109,9 +107,9 @@ class Dropbox_Encrypter
         
         if (!$decrypted) {
             global $updraftplus;
-            $updraftplus->ensure_phpseclib('Crypt_Rijndael');
+            $updraftplus->ensure_phpseclib();
 
-            $rijndael = new Crypt_Rijndael();
+            $rijndael = new phpseclib_Crypt_Rijndael();
             $rijndael->setKey($this->key);
             $rijndael->setIV($iv);
             $token = $rijndael->decrypt($cipherText);

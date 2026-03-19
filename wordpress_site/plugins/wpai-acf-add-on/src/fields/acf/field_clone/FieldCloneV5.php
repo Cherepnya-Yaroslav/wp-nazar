@@ -1,13 +1,13 @@
 <?php
 
-namespace wpai_acf_add_on\fields\acf\field_clone;
+namespace wpai_acf_add_on_pro\fields\acf\field_clone;
 
-use wpai_acf_add_on\ACFService;
-use wpai_acf_add_on\fields\Field;
+use pmai_acf_add_on\ACFService;
+use pmai_acf_add_on\fields\Field;
 
 /**
  * Class FieldCloneV5
- * @package wpai_acf_add_on\fields\acf\field_clone
+ * @package pmai_acf_add_on\fields\acf\field_clone
  */
 class FieldCloneV5 extends Field {
 
@@ -33,9 +33,11 @@ class FieldCloneV5 extends Field {
         parent::parse($xpath, $parsingData, $args);
         /** @var Field $subField */
         foreach ($this->getSubFields() as $subField){
-            $subField->parse($xpath[$subField->getFieldKey()], $parsingData, array(
-                'field_path' => $this->getOption('field_path') . "[" . $this->getFieldKey() . "]"
-            ));
+            if (!empty($subField) && $subField instanceof Field && isset( $xpath[ $subField->getFieldKey() ])) {
+                $subField->parse($xpath[$subField->getFieldKey()], $parsingData, array(
+                    'field_path' => $this->getOption('field_path') . "[" . $this->getFieldKey() . "]"
+                ));
+            }
         }
     }
 
@@ -53,7 +55,7 @@ class FieldCloneV5 extends Field {
         $field = $this->getData('field');
         $prefix = $this->importData['container_name'];
         if ($field['prefix_name']) {
-            $prefix = $field['name'] . '_' . $prefix;
+			$prefix = $prefix . $field['name'] . '_';
         }
 
         /** @var Field $subField */

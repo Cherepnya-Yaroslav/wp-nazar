@@ -5,14 +5,13 @@
  * @package wp-fail2ban
  * @since   5.0.0
  */
-namespace    org\lecklider\charles\wordpress\wp_fail2ban;
+namespace org\lecklider\charles\wordpress\wp_fail2ban;
 
-defined('ABSPATH') or exit; // @codeCoverageIgnore
+defined( 'ABSPATH' ) or exit; // @codeCoverageIgnore
 
 /**
  * @codeCoverageIgnore
  */
-class InvalidIpException extends \Exception
-{
-}
+class InvalidIpException extends \Exception {
 
+}

@@ -23,11 +23,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @internal
  */
-function cptui_post_type_enqueue_scripts() {
+function cptui_post_type_enqueue_scripts( $hook ) {
 
-	$current_screen = get_current_screen();
-
-	if ( ! is_object( $current_screen ) || 'cpt-ui_page_cptui_manage_post_types' !== $current_screen->base ) {
+	if ( 'cpt-ui_page_cptui_manage_post_types' !== $hook ) {
 		return;
 	}
 
@@ -322,7 +320,7 @@ function cptui_manage_post_types() {
 							$link_text = ( 'new' === $tab ) ?
 								esc_html__( 'Populate additional labels based on chosen labels', 'custom-post-type-ui' ) :
 								esc_html__( 'Populate missing labels based on chosen labels', 'custom-post-type-ui' );
-							echo $ui->get_tr_end(); // phpcs:ignore.
+							echo $ui->get_tr_start( [ 'id' => 'autolabels', 'style' => 'display:none;' ] ); // phpcs:ignore.
 							echo $ui->get_th_start() . esc_html__( 'Auto-populate labels', 'custom-post-type-ui' ) . $ui->get_th_end(); // phpcs:ignore.
 							echo $ui->get_td_start(); // phpcs:ignore.
 						?>
@@ -330,7 +328,14 @@ function cptui_manage_post_types() {
 							<a href="#" id="auto-clear"><?php esc_html_e( 'Clear labels', 'custom-post-type-ui' ); ?></a>
 								<?php
 							echo $ui->get_td_end() . $ui->get_tr_end(); // phpcs:ignore.
-
+							if ( empty( $_GET['action'] ) ||  'edit' !== $_GET['action'] ) { // phpcs:ignore.
+								echo $ui->get_tr_start() . $ui->get_th_start() . $ui->get_label( 'override_validation', esc_html__( 'I\'m trying to migrate things in to CPTUI, let me save this', 'custom-post-type-ui' ) ) . $ui->get_th_end(); // phpcs:ignore.
+								echo $ui->get_td_start(); // phpcs:ignore.
+									?>
+									<input type="checkbox" name="cpt_override_validation" value="1" id="override_validation" />
+									<?php
+								echo $ui->get_td_end() . $ui->get_tr_end(); // phpcs:ignore.
+								}
 								?>
 						</table>
 						<p class="submit">
@@ -774,7 +779,7 @@ function cptui_manage_post_types() {
 									]
 								);
 
-								echo $ui->get_text_input( // phpcs:ignore.Z
+								echo $ui->get_text_input( // phpcs:ignore.
 									[
 										'labeltext' => esc_html__( 'Attributes', 'custom-post-type-ui' ),
 										'helptext'  => esc_html__( 'Used for the title of the post attributes meta box.', 'custom-post-type-ui' ),
@@ -856,6 +861,23 @@ function cptui_manage_post_types() {
 
 								echo $ui->get_text_input( // phpcs:ignore.
 									[
+										'labeltext' => esc_html__( 'Item Trashed', 'custom-post-type-ui' ),
+										'helptext'  => esc_html__( 'Used when an item is moved to Trash. Default "Post trashed." / "Page trashed."', 'custom-post-type-ui' ),
+										'namearray' => 'cpt_labels',
+										'name'      => 'item_trashed',
+										'textvalue' => isset( $current['labels']['item_trashed'] ) ? esc_attr( $current['labels']['item_trashed'] ) : '',
+										// phpcs:ignore.
+										'aftertext' => esc_html__( '(e.g. Movie trashed.)', 'custom-post-type-ui' ),
+										'data'      => [
+											/* translators: Used for autofill */
+											'label'     => sprintf( esc_attr__( '%s trashed.', 'custom-post-type-ui' ), 'item' ),
+											'plurality' => 'singular',
+										],
+									]
+								);
+
+								echo $ui->get_text_input( // phpcs:ignore.
+									[
 										'labeltext' => esc_html__( 'Item Scheduled', 'custom-post-type-ui' ),
 										'helptext'  => esc_html__( 'Used in the editor notice after scheduling a post to be published at a later date. Default "Post scheduled." / "Page scheduled."', 'custom-post-type-ui' ),
 										'namearray' => 'cpt_labels',
@@ -897,6 +919,23 @@ function cptui_manage_post_types() {
 										'data'      => [
 											/* translators: Used for autofill */
 											'label'     => sprintf( esc_attr__( 'Add %s', 'custom-post-type-ui' ), 'item' ),
+											'plurality' => 'singular',
+										],
+									]
+								);
+
+								echo $ui->get_text_input( // phpcs:ignore.
+									[
+										'labeltext' => esc_html__( 'Template name', 'custom-post-type-ui' ),
+										'helptext'  => esc_html__( 'Use by the site editor to display on the templates/add new template screens.', 'custom-post-type-ui' ),
+										'namearray' => 'cpt_labels',
+										'name'      => 'template_name',
+										'textvalue' => isset( $current['labels']['template_name'] ) ? esc_attr( $current['labels']['template_name'] ) : '',
+										// phpcs:ignore.
+										'aftertext' => esc_html__( '(e.g. "Single item: Movie")', 'custom-post-type-ui' ),
+										'data'      => [
+											/* translators: Used for autofill */
+											'label'     => sprintf( esc_attr__( 'Single item: %s', 'custom-post-type-ui' ), 'item' ),
 											'plurality' => 'singular',
 										],
 									]
@@ -1190,6 +1229,11 @@ function cptui_manage_post_types() {
 								]
 							);
 
+							echo $ui->get_tr_start() . $ui->get_th_start(); // phpcs:ignore.
+							echo $ui->get_label( 'hierarchical', esc_html__( 'Hierarchical', 'custom-post-type-ui' ) ); // phpcs:ignore.
+							echo $ui->get_p( esc_html__( '"False" behaves like posts, "True" behaves like pages.', 'custom-post-type-ui' ) ); // phpcs:ignore.
+							echo $ui->get_th_end() . $ui->get_td_start(); // phpcs:ignore.
+
 							$select = [
 								'options' => [
 									[
@@ -1213,8 +1257,10 @@ function cptui_manage_post_types() {
 									'labeltext'  => esc_html__( 'Hierarchical', 'custom-post-type-ui' ),
 									'aftertext'  => esc_html__( '(default: false) Whether or not the post type can have parent-child relationships. At least one published content item is needed in order to select a parent.', 'custom-post-type-ui' ),
 									'selections' => $select, // phpcs:ignore.
+									'wrap' => false,
 								]
 							);
+							echo $ui->get_td_end() . $ui->get_tr_end(); // phpcs:ignore.
 
 							$select = [
 								'options' => [
@@ -1352,7 +1398,7 @@ function cptui_manage_post_types() {
 										'custom-post-type-ui'
 									),
 									sprintf(
-										'<a href="https://developer.wordpress.org/reference/functions/register_post_type/#menu_position" target="_blank" rel="noopener">%s</a>',
+										'<a href="https://developer.wordpress.org/reference/functions/register_post_type/#menu_position" target="_blank">%s</a>',
 										esc_html__( 'Available options', 'custom-post-type-ui' )
 									)
 								)
@@ -1408,7 +1454,8 @@ function cptui_manage_post_types() {
 									'namearray'      => 'cpt_custom_post_type',
 									'name'           => 'show_in_menu_string',
 									'textvalue'      => isset( $current['show_in_menu_string'] ) ? esc_attr( $current['show_in_menu_string'] ) : '', // phpcs:ignore.
-									'helptext'       => esc_attr__( 'The top-level admin menu page file name for which the post type should be in the sub menu of.', 'custom-post-type-ui' ),
+									'helptext'       => $ui->get_label( 'show_in_menu_string', esc_attr__( 'The top-level admin menu page file name for which the post type should be in the sub menu of.', 'custom-post-type-ui' ) ),
+									// phpcs:ignore.
 									'helptext_after' => true,
 									'wrap'           => false,
 								]
@@ -1429,7 +1476,7 @@ function cptui_manage_post_types() {
 									'aftertext' => esc_attr__( '(Full URL for icon or Dashicon class)', 'custom-post-type-ui' ),
 									'helptext'  => sprintf(
 										esc_html__( 'Image URL or %sDashicon class name%s to use for icon. Custom image should be 20px by 20px.', 'custom-post-type-ui' ), // phpcs:ignore.
-										'<a href="https://developer.wordpress.org/resource/dashicons/" target="_blank" rel="noopener">',
+										'<a href="https://developer.wordpress.org/resource/dashicons/" target="_blank">',
 										'</a>'
 									),
 									'wrap'      => false,
@@ -1476,13 +1523,13 @@ function cptui_manage_post_types() {
 
 							echo $ui->get_p( esc_html__( 'Featured images and Post Formats need theme support added, to be used.', 'custom-post-type-ui' ) ); // phpcs:ignore.
 
-							echo $ui->get_p(
+							echo $ui->get_p( // phpcs:ignore.
 								sprintf(
-									'<a href="%s" target="_blank" rel="noopener">%s</a><br/><a href="%s" target="_blank" rel="noopener">%s</a>',
+									'<a href="%s" target="_blank">%s</a><br/><a href="%s" target="_blank">%s</a>',
 									esc_url( 'https://developer.wordpress.org/reference/functions/add_theme_support/#post-thumbnails' ),
 									/* translators: Link text for WordPress Developer site. */
 									esc_html__( 'Theme support for featured images', 'custom-post-type-ui' ),
-									esc_url( 'https://wordpress.org/support/article/post-formats/' ),
+									esc_url( 'https://developer.wordpress.org/advanced-administration/wordpress/post-formats/' ),
 									/* translators: Link text for WordPress Developer site. */
 									esc_html__( 'Theme support for post formats', 'custom-post-type-ui' )
 								)
@@ -1663,7 +1710,7 @@ function cptui_manage_post_types() {
 							echo $ui->get_fieldset_end() . $ui->get_td_end() . $ui->get_tr_end(); // phpcs:ignore.
 
 							echo $ui->get_tr_start() . $ui->get_th_start() . '<label for="custom_supports">' . esc_html__( 'Custom "Supports"', 'custom-post-type-ui' ) . '</label>'; // phpcs:ignore.
-							echo $ui->get_p( sprintf( esc_html__( 'Use this input to register custom "supports" values, separated by commas. Learn about this at %s', 'custom-post-type-ui' ), '<a href="http://docs.pluginize.com/article/28-third-party-support-upon-registration" target="_blank" rel="noopener">' . esc_html__( 'Custom "Supports"', 'custom-post-type-ui' ) . '</a>' ) ); // phpcs:ignore.
+							echo $ui->get_p( sprintf( esc_html__( 'Use this input to register custom "supports" values, separated by commas. Learn about this at %s', 'custom-post-type-ui' ), '<a href="https://docs.pluginize.com/article/third-party-support-upon-registration/" target="_blank">' . esc_html__( 'Custom "Supports"', 'custom-post-type-ui' ) . '</a>' ) ); // phpcs:ignore.
 							echo $ui->get_th_end() . $ui->get_td_start(); // phpcs:ignore.
 							echo $ui->get_text_input( // phpcs:ignore.
 								[
@@ -1709,20 +1756,27 @@ function cptui_manage_post_types() {
 							$add_taxes = apply_filters( 'cptui_get_taxonomies_for_post_types', get_taxonomies( $args, 'objects' ), $args );
 							unset( $add_taxes['nav_menu'], $add_taxes['post_format'] );
 							foreach ( $add_taxes as $add_tax ) {
-
-								$core_label = in_array( $add_tax->name, [ 'category', 'post_tag' ], true ) ? esc_html__( '(WP Core)', 'custom-post-type-ui' ) : '';
-								echo $ui->get_check_input( // phpcs:ignore.
-									[
-										'checkvalue' => esc_attr( $add_tax->name ),
-										'checked'    => ( ! empty( $current['taxonomies'] ) && is_array( $current['taxonomies'] ) && in_array( $add_tax->name, $current['taxonomies'] ) ) ? 'true' : 'false', // phpcs:ignore.
-										'name'       => esc_attr( $add_tax->name ),
-										'namearray'  => 'cpt_addon_taxes',
-										'textvalue'  => esc_attr( $add_tax->name ),
-										'labeltext'  => $add_tax->label . ' ' . $core_label, // phpcs:ignore.
-										'helptext'   => sprintf( esc_attr__( 'Adds %s support', 'custom-post-type-ui' ), $add_tax->label ), // phpcs:ignore.
-										'wrap'       => false,
-									]
-								);
+								if ( false !== $add_tax ) {
+									$core_label = in_array( $add_tax->name, [
+										'category',
+										'post_tag'
+									], true ) ? esc_html__( '(WP Core)', 'custom-post-type-ui' ) : '';
+									echo $ui->get_check_input( // phpcs:ignore.
+										[
+											'checkvalue' => esc_attr( $add_tax->name ),
+											'checked'    => ( ! empty( $current['taxonomies'] ) && is_array( $current['taxonomies'] ) && in_array( $add_tax->name, $current['taxonomies'] ) ) ? 'true' : 'false',
+											// phpcs:ignore.
+											'name'       => esc_attr( $add_tax->name ),
+											'namearray'  => 'cpt_addon_taxes',
+											'textvalue'  => esc_attr( $add_tax->name ),
+											'labeltext'  => esc_html( $add_tax->label . ' ' . $core_label ),
+											// phpcs:ignore.
+											'helptext'   => sprintf( esc_attr__( 'Adds %s support', 'custom-post-type-ui' ), $add_tax->label ),
+											// phpcs:ignore.
+											'wrap'       => false,
+										]
+									);
+								}
 							}
 							echo $ui->get_fieldset_end() . $ui->get_td_end() . $ui->get_tr_end(); // phpcs:ignore.
 							?>
@@ -2085,7 +2139,7 @@ function cptui_update_post_type( $data = [] ) {
 	// We are handling this special because we can't accurately get to exclude the description index
 	// in the cptui_filtered_post_type_post_global() function. So we clean this up from the $_POST
 	// global afterwards here.
-	$description = wp_kses_post( stripslashes_deep( $_POST['cpt_custom_post_type']['description'] ) );
+	$description = cptui_get_saved_description();
 
 	$name                  = trim( $data['cpt_custom_post_type']['name'] );
 	$rest_base             = trim( $data['cpt_custom_post_type']['rest_base'] );
@@ -2188,27 +2242,28 @@ function cptui_update_post_type( $data = [] ) {
 function cptui_reserved_post_types() {
 
 	$reserved = [
-		'post',
-		'page',
-		'attachment',
-		'revision',
-		'nav_menu_item',
 		'action',
-		'order',
-		'theme',
-		'themes',
-		'fields',
+		'attachment',
+		'author',
 		'custom_css',
 		'customize_changeset',
-		'author',
-		'post_type',
+		'fields',
+		'nav_menu_item',
 		'oembed_cache',
+		'order',
+		'page',
+		'post',
+		'post_type',
+		'revision',
+		'sidebars',
+		'theme',
+		'themes',
 		'user_request',
 		'wp_block',
-		'wp_template',
-		'wp_template_part',
 		'wp_global_styles',
 		'wp_navigation',
+		'wp_template',
+		'wp_template_part',
 	];
 
 	/**
@@ -2345,6 +2400,10 @@ function cptui_check_page_slugs( $post_type_slug = '' ) {
  */
 function cptui_process_post_type() {
 
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+
 	if ( wp_doing_ajax() ) {
 		return;
 	}
@@ -2445,6 +2504,24 @@ function cptui_updated_post_type_slug_exists( $slug_exists, $post_type_slug = ''
 add_filter( 'cptui_post_type_slug_exists', 'cptui_updated_post_type_slug_exists', 11, 3 );
 
 /**
+ * Ignores the slug validation for an existing CPT if the override checkbox was previously selected.
+ *
+ * @since 1.15.0
+ *
+ * @param bool   $slug_exists    Current status for exist checks.
+ * @param string $post_type_slug Post type slug being processed.
+ * @param array  $post_types     CPTUI post types.
+ * @return bool
+ */
+function cptui_allow_existing_slug( $slug_exists, $post_type_slug = '', $post_types = [] ) {
+	if ( isset( $_POST['cpt_override_validation'] ) ) { //phpcs:ignore
+		$slug_exists = false;
+	}
+	return $slug_exists;
+}
+add_filter( 'cptui_post_type_slug_exists', 'cptui_allow_existing_slug', 12, 3 );
+
+/**
  * Sanitize and filter the $_POST global and return a reconstructed array of the parts we need.
  *
  * Used for when managing post types.
@@ -2512,3 +2589,26 @@ function cptui_custom_enter_title_here( $text, $post ) {
 	return $cptui_obj['enter_title_here'];
 }
 add_filter( 'enter_title_here', 'cptui_custom_enter_title_here', 10, 2 );
+
+/**
+ * Get saved description value with added nonce check for extra security.
+ *
+ * @since 1.18.2
+ *
+ * @return string
+ */
+function cptui_get_saved_description() {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return '';
+	}
+
+	if ( empty( $_POST['cpt_custom_post_type']['description'] ) ) {
+		return '';
+	}
+
+	if ( ! empty( $_POST['cptui_select_post_type_nonce_field'] ) ) {
+		check_admin_referer( 'cptui_select_post_type_nonce_action', 'cptui_select_post_type_nonce_field' );
+	}
+
+	return wp_kses_post( stripslashes_deep( $_POST['cpt_custom_post_type']['description'] ) );
+}

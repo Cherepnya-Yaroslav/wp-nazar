@@ -3,6 +3,7 @@
 namespace wpai_woocommerce_add_on\actions;
 
 use wpai_woocommerce_add_on\parser\Parser;
+use wpai_woocommerce_add_on\XmlImportWooCommerceService;
 
 /**
  * Created by PhpStorm.
@@ -56,64 +57,16 @@ class OrderActions extends Actions {
             if ($this->getParser()->getImport()->options['pmwi_order']['billing_source'] == 'existing') {
                 $customer = $this->getParser()->get_existing_customer('billing_source', $index);
                 if (empty($customer) && empty($this->getParser()->getImport()->options['pmwi_order']['is_guest_matching'])) {
-                    $this->getParser()->getLogger() and call_user_func($this->getParser()->getLogger(), sprintf(__('<b>SKIPPED</b>: %s Existing customer not found for Order `%s`.', \PMWI_Plugin::TEXT_DOMAIN), $this->getParser()->get_existing_customer_for_logger('billing_source', $index), $order_title));
+                    $this->getParser()->getLogger() and call_user_func($this->getParser()->getLogger(), sprintf(__('<b>SKIPPED</b>: %s Existing customer not found for Order `%s`.', 'wpai_woocommerce_addon_plugin'), $this->getParser()->get_existing_customer_for_logger('billing_source', $index), $order_title));
                     $is_post_to_skip = TRUE;
                 }
             }
         }
 
-        if (empty($post_to_update_id) or $this->getParser()->getImport()->options['update_all_data'] == 'yes' or $this->getParser()->getImport()->options['is_update_products']) {
-            if (!$is_post_to_skip and $this->getParser()->getImport()->options['pmwi_order']['products_source'] == 'existing') {
-                $is_product_founded = FALSE;
-
-                $searching_for_sku = '';
-
-                foreach ($this->getParser()->getData()['pmwi_order']['products'][$index] as $productIndex => $productItem) {
-                    if (empty($productItem['sku'])) {
-                        continue;
-                    }
-
-                    $searching_for_sku = $productItem['sku'];
-
-                    $args = array(
-                        'post_type' => 'product',
-						'post_status' => 'any',
-                        'meta_key' => '_sku',
-                        'meta_value' => $productItem['sku'],
-                        'meta_compare' => '=',
-                    );
-
-                    $product = FALSE;
-
-                    $query = new \WP_Query($args);
-                    while ($query->have_posts()) {
-                        $query->the_post();
-                        $product = WC()->product_factory->get_product($query->post->ID);
-                        break;
-                    }
-                    wp_reset_postdata();
-
-                    if (empty($product)) {
-                        $args['post_type'] = 'product_variation';
-                        $query = new \WP_Query($args);
-                        while ($query->have_posts()) {
-                            $query->the_post();
-                            $product = WC()->product_factory->get_product($query->post->ID);
-                            break;
-                        }
-                        wp_reset_postdata();
-                    }
-                    if ($product) {
-                        $is_product_founded = TRUE;
-                        break;
-                    }
-                }
-                if (!$is_product_founded) {
-                    $this->getParser()->getLogger() and call_user_func($this->getParser()->getLogger(), sprintf(__('<b>SKIPPED</b>: Existing product `%s` not found for Order `%s`.', \PMWI_Plugin::TEXT_DOMAIN), $searching_for_sku, $order_title));
-                    $is_post_to_skip = TRUE;
-                }
-            }
+        if ($is_post_to_skip) {
+            return $is_post_to_skip;
         }
+
         return $is_post_to_skip;
     }
 

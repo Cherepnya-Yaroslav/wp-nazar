@@ -16,16 +16,12 @@ class ImportOrderTotal extends ImportOrderBase {
      */
     public function import() {
         if ($this->isNewOrder() || $this->getImport()->options['update_all_data'] == 'yes' || $this->getImport()->options['is_update_total']) {
-            if ($this->getImport()->options['pmwi_order']['order_total_logic'] !== 'auto') {
-                if (version_compare(WC()->version, '3.0') < 0) {
-                    $this->getOrder()
-                        ->set_total($this->getValue('order_total_xpath'), 'total');
-                } else {
-                    update_post_meta($this->getOrderID(), '_order_total', wc_format_decimal($this->getValue('order_total_xpath'), wc_get_price_decimals()));
-                }
-            } else {
-                $this->getOrder()->calculate_totals();
-            }
+            $this->getOrder()->set_total($this->getValue('order_total_amount'));
+            $this->getOrder()->set_cart_tax($this->getValue('order_total_tax_amount'));
+            // This is required for refunds data import.
+            $this->getOrder()->save();
         }
+        // Update tax lines for the order based on the line item taxes themselves.
+        //$this->getOrder()->update_taxes();
     }
 }

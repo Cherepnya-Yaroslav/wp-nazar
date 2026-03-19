@@ -65,7 +65,9 @@ class THWCFD_Autoloader {
 			} elseif (strpos($class, 'wcfe_checkout_section') === 0){
 				$path = $this->include_path . '/includes/model/';
 
-			} else{
+			} elseif (strpos($class, 'thwcfd_block') === 0){
+				$path = $this->include_path . '/block/';
+			}else{
 				$path = $this->include_path . '/includes/';
 			}
 			$file_path = $path . $file;

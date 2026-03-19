@@ -23,10 +23,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @return void
  */
-function cptui_tools_assets() {
-	$current_screen = get_current_screen();
+function cptui_tools_assets( $hook ) {
 
-	if ( ! is_object( $current_screen ) || 'cpt-ui_page_cptui_tools' !== $current_screen->base ) {
+	if ( 'cpt-ui_page_cptui_tools' !== $hook ) {
 		return;
 	}
 
@@ -397,7 +396,9 @@ function cptui_render_posttypes_taxonomies_section() {
 					$cptui_post_types = cptui_get_post_type_data();
 					if ( ! empty( $cptui_post_types ) ) {
 						foreach ( $cptui_post_types as $type => $values ) {
-							$cptui_post_types[ $type ]['description'] = wp_slash( html_entity_decode( $values['description'] ) );
+							if ( ! empty( $values['description'] ) ) {
+								$cptui_post_types[ $type ]['description'] = wp_slash( html_entity_decode( $values['description'] ) );
+							}
 						}
 						$content = wp_json_encode( $cptui_post_types );
 					} else {
@@ -439,7 +440,9 @@ function cptui_render_posttypes_taxonomies_section() {
 					$cptui_taxonomies = cptui_get_taxonomy_data();
 					if ( ! empty( $cptui_taxonomies ) ) {
 						foreach ( $cptui_taxonomies as $tax => $values ) {
-							$cptui_taxonomies[ $tax ]['description'] = wp_slash( html_entity_decode( $values['description'] ) );
+							if ( ! empty( $values['description'] ) ) {
+								$cptui_taxonomies[ $tax ]['description'] = wp_slash( html_entity_decode( $values['description'] ) );
+							}
 						}
 						$content = wp_json_encode( $cptui_taxonomies );
 					} else {

@@ -9,9 +9,6 @@ namespace    com\wp_fail2ban\addons\Blocklist;
 
 use          com\wp_fail2ban\lib\Activation\VersionCheck;
 
-use function org\lecklider\charles\wordpress\wp_fail2ban\remote_addr;
-use function org\lecklider\charles\wordpress\wp_fail2ban\wf_fs;
-
 defined('ABSPATH') or exit;
 
 /**

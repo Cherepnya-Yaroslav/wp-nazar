@@ -15,6 +15,7 @@ if(!class_exists('THWCFD_Admin')):
 class THWCFD_Admin {
 	private $plugin_name;
 	private $version;
+	private $screen_id;
 
 	/**
 	 * Initialize the class and set its properties.
@@ -40,7 +41,7 @@ class THWCFD_Admin {
 	
 	private function enqueue_styles($suffix) {
 		wp_enqueue_style('woocommerce_admin_styles');
-		wp_enqueue_style('thwcfd-admin-style', THWCFD_ASSETS_URL_ADMIN . 'css/thwcfd-admin'. $suffix .'.css', $this->version);
+		wp_enqueue_style('thwcfd-admin-style', THWCFD_ASSETS_URL_ADMIN . 'css/thwcfd-admin'. $suffix .'.css',[] ,$this->version);
 	}
 
 	private function enqueue_scripts($suffix) {
@@ -53,6 +54,9 @@ class THWCFD_Admin {
 	public function admin_menu() {
 		$capability = THWCFD_Utils::wcfd_capability();
 		$this->screen_id = add_submenu_page('woocommerce', __('WooCommerce Checkout Field Editor', 'woo-checkout-field-editor-pro'), __('Checkout Form', 'woo-checkout-field-editor-pro'), $capability, 'checkout_form_designer', array($this, 'output_settings'));
+
+		// Add setup wizard page admin access.
+		add_dashboard_page( '', '', 'manage_options', 'thwcfd-welcome', );
 	}
 	
 	public function add_screen_id($ids) {
@@ -65,7 +69,7 @@ class THWCFD_Admin {
 	public function plugin_action_links($links) {
 		$settings_link = '<a href="'.esc_url(admin_url('admin.php?page=checkout_form_designer')).'">'. __('Settings', 'woo-checkout-field-editor-pro') .'</a>';
 		array_unshift($links, $settings_link);
-		$pro_link = '<a style="color:green; font-weight:bold" target="_blank" href="https://www.themehigh.com/product/woocommerce-checkout-field-editor-pro/?utm_source=free&utm_medium=plugin_action_link&utm_campaign=wcfe_upgrade_link">'. __('Get Pro', 'woo-checkout-field-editor-pro') .'</a>';
+		$pro_link = '<a style="color:green; font-weight:bold" target="_blank" href="https://www.themehigh.com/product/woocommerce-checkout-field-editor-pro/?utm_source=wcfe_free&utm_medium=referral&utm_campaign=wcfe_settings_upgrade_link">'. __('Get Pro', 'woo-checkout-field-editor-pro') .'</a>';
 		array_push($links,$pro_link);
 
 		if (array_key_exists('deactivate', $links)) {
@@ -77,14 +81,26 @@ class THWCFD_Admin {
 	public function get_current_tab(){
 		return isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'fields';
 	}
+
+	public function plugin_row_meta( $plugin_meta, $plugin_file ) {
+		if ( 'woo-checkout-field-editor-pro/checkout-form-designer.php' === $plugin_file ) {
+			$plugin_meta[] = '<a href="https://www.facebook.com/groups/themehigh/" target="_blank">' . esc_html__( 'Join Community', 'woo-checkout-field-editor-pro' ) . '</a>';
+			$plugin_meta[] = '<a href="https://wordpress.org/support/plugin/woo-checkout-field-editor-pro/reviews/" target="_blank">' . esc_html__( 'Review us', 'woo-checkout-field-editor-pro' ) . '</a>';
+		}
+		return $plugin_meta;
+	}
 	
 	public function output_settings(){
 		echo '<div class="wrap">';
-		echo '<h2></h2>';
-
+		
+		echo '<h2>'. esc_html__('Checkout Form', 'woo-checkout-field-editor-pro') .'</h2>';
 		$tab = $this->get_current_tab();
+		$c_type = isset( $_GET['c_type'] ) ? sanitize_key( $_GET['c_type'] ) : 'classic';
 
 		echo '<div class="thwcfd-wrap">';
+		//Block Compatibility Warning
+		$this->compatibility_warning();
+
 		if($tab === 'advanced_settings'){			
 			$advanced_settings = THWCFD_Admin_Settings_Advanced::instance();	
 			$advanced_settings->render_page();
@@ -95,20 +111,55 @@ class THWCFD_Admin {
 			$themehigh_plugins = THWCFD_Admin_Settings_Themehigh_Plugins::instance();	
 			$themehigh_plugins->render_page();
 		}else{
-			$general_settings = THWCFD_Admin_Settings_General::instance();	
-			$general_settings->init();
+
+			if($c_type === 'block'){
+				$block_settings = THWCFD_Admin_Settings_Block_Fields::instance();	
+				$block_settings->init();
+			}else{
+
+				$general_settings = THWCFD_Admin_Settings_General::instance();	
+				$general_settings->init();
+			}
 		}
 		echo '</div>';
 		echo '</div>';
 	}
 
-	public function wcfd_notice_actions(){
+	public function compatibility_warning(){
 
+		?>
+		<div id="th_block_warning" class="th-block-warning-msg">
+            <div class="th-warning-message-panel__text th-warning-message-panel__text--center">
+                <div class = "th-warning-img">
+					<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/logo.svg'); ?>" alt="Themehigh Logo" />
+				</div>
+				<div class="th-warning">
+             	
+					<span class="th-warning-message-panel__inner-text">
+					<?php
+						
+						printf(
+							/* translators: %s: Support team link */
+							esc_html__("Our Checkout Field Editor now supports WooCommerce Checkout Blocks! Currently, a few field types are available, and more will be added soon. 
+							If you're using Block Checkout, make sure to switch to the Block Checkout Fields tab, otherwise, your changes won’t be reflected. Have questions or need help? 
+							Reach out to our  %s .", 'woo-checkout-field-editor-pro'),
+							'<a href="https://www.themehigh.com/docs/support/" target="_blank" class="quick-widget-support-link">' . esc_html__(' Support team', 'woo-checkout-field-editor-pro') . '</a>'
+						);
+       				?>
+					</span>
+				</div>
+            </div>
+        </div>
+		<?php
+
+	}
+
+	public function wcfd_notice_actions(){
 		if( !(isset($_GET['thwcfd_remind']) || isset($_GET['thwcfd_dissmis']) || isset($_GET['thwcfd_reviewed'])) ) {
 			return;
 		}
 
-		$nonse = isset($_GET['thwcfd_review_nonce']) ? $_GET['thwcfd_review_nonce'] : false;
+		$nonse = isset($_GET['thwcfd_review_nonce']) ? sanitize_text_field( wp_unslash($_GET['thwcfd_review_nonce'])) : false;
 		$capability = THWCFD_Utils::wcfd_capability();
 
 		if(!wp_verify_nonce($nonse, 'thwcfd_notice_security') || !current_user_can($capability)){
@@ -137,7 +188,6 @@ class THWCFD_Admin {
 	}
 
 	public function output_review_request_link(){
-
 		if(!apply_filters('thwcfd_show_dismissable_admin_notice', true)){
 			return;
 		}
@@ -146,9 +196,9 @@ class THWCFD_Admin {
             return;
         }
 		$current_screen = get_current_screen();
-		// if($current_screen->id !== 'woocommerce_page_checkout_form_designer'){
-		// 	return;
-		// }
+		if($current_screen->id !== 'woocommerce_page_checkout_form_designer'){
+			return;
+		}
 
 		$thwcfd_reviewed = get_user_meta( get_current_user_id(), 'thwcfd_reviewed', true );
 		if($thwcfd_reviewed){
@@ -179,160 +229,255 @@ class THWCFD_Admin {
 
 		$thwcfd_since = get_option('thwcfd_since');
 		if(!$thwcfd_since){
-			$now = time();
-			update_option('thwcfd_since', $now, 'no' );
+			update_option('thwcfd_since', $now, 'no');
 		}
 		$thwcfd_since = $thwcfd_since ? $thwcfd_since : $now;
 		$render_time = apply_filters('thwcfd_show_review_banner_render_time' , 7 * DAY_IN_SECONDS);
 		$render_time = $thwcfd_since + $render_time;
-		if($now > $render_time ){
-			$this->render_review_request_notice();
+		if($now < $render_time ){
+			return;
 		}
-		
+
+		$this->render_review_request_notice();
+
 	}
 
 	public function review_banner_custom_css(){
 
 		?>
         <style>
-        	.thwvsf-review-wrapper {
-                padding: 15px 28px 26px 10px !important;
-                margin-top: 35px;
-            }
+			.thwcfd-custom-background {
+			    background: #ffffff;
+			}
 
-            #thwcfd_review_request_notice{
-                margin-bottom: 20px;
-            }
-            .thwcfd-review-wrapper {
-			    padding: 15px 28px 26px 10px !important;
-			    margin-top: 35px;
+			.notice.thpladmin-notice.thwcfd-review-wrapper {
+			    padding: 0;
+			    border: 1px solid transparent;
+			    background-color: transparent;
+			    box-shadow: none;
 			}
-			.thwcfd-review-image {
-			    float: left;
+
+			.thpladmin-notice {
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			    margin-top: 3rem;
 			}
-			.thwcfd-review-content {
-			    padding-right: 180px;
+
+			.thwcfd-content {
+			    display: flex;
+			    align-items: center;
+			    position: relative;
+			    border-radius: 1rem;
+			    gap: 1rem;
+			    padding: 0.5rem 1rem;
+			    width: 100%;
+			    color: #1E2327;
+				border: 1px solid #E7E7E7;
 			}
-			.thwcfd-review-content p {
-			    padding-bottom: 14px;
-    			line-height: 1.4;
+
+			.thwcfd-text-content {
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+				margin-top: -10px;
 			}
-			.thwcfd-notice-action{ 
-			    padding: 8px 18px 8px 18px;
-                background: #fff;
-                color: #007cba;
-                border-radius: 5px;
-                border: 1px solid #007cba;
+
+			.thwcfd-hi-img,
+			.thwcfd-rating-img {
+			    width: 1.2rem; 
+			    height: 1.2rem;
+			    margin-left: 0.2rem;
 			}
-			.thwcfd-notice-action.thwcfd-yes {
-			    background-color: #2271b1;
-			    color: #fff;
+
+			.thwcfd-smile-img {
+			    width: 1.2rem;
+			    height: 1.2rem;
+			    margin-top: -0.1rem;
 			}
-			.thwcfd-notice-action:hover:not(.thwcfd-yes) {
-			    background-color: #f2f5f6;
+
+			.thwcfd-rating-img {
+			    width: 1.2rem;
+			    height: 1.2rem;
+			    margin-top: -0.2rem;
 			}
-			.thwcfd-notice-action.thwcfd-yes:hover {
-			    opacity: .9;
+
+			.thwcfd-main-content-wrapper h1 {
+			    font-weight: 700;
+			    font-size: 16px;
 			}
-			.thwcfd-notice-action .dashicons{
-			    display: none;
-			}
+
 			.thwcfd-themehigh-logo {
+			    width: 2.4rem;
+			    height: 2.4rem;
+			}
+
+			.thwcfd-sub-content-wrapper {
+			    display: flex;
+			    justify-content: center;
+			    flex-direction: column;
+			    align-items: start;
+			}
+
+			.thwcfd-buttons {
+			    display: grid;
+			    grid-template-columns: repeat(2, 1fr);
+			    color: white;
+			    gap: 0.5rem;
+			    margin-top: 0.25rem;
+			}
+
+			.thwcfd-buttons a {
+			    padding: 0.5rem 0.8rem;
+			    border-radius: 2px;
+			    font-size: 13px;
+			    background-color: #6A56F626;
+			    text-decoration: none;
+			    color: #24232B;
+			    text-align: center;
+			}
+
+			.thwcfd-buttons a:hover {
+			    background: #6A56F640;
+			    box-shadow: 0px 0px 0.9px 0px #00000040;
+			    cursor: pointer;
+			}
+
+			.thwcfd-buttons a:first-child {
+			    color: #FFFFFF; 
+			    background-color: #6A56F6;
+			    cursor: pointer;
+			}
+
+			.thwcfd-buttons a:first-child:hover {
+			    background-color: #5036E5;
+			    box-shadow: 0px 0px 6.5px 0px #00000040;
+			}
+
+			.thwcfd-banner {
+			    background-color: white;
+				padding: 2px 10px;
+			}
+
+			.thwcfd-banner h1 {
+			    font-size: 12px;
+			    font-weight: 400;
+				margin-top: -5px;
+				color: #9D9D9D;
+			}
+
+			.thwcfd-banner span {
+			    font-weight: bold;
+				color: #111933;
+			}
+
+			.thwcfd-close a {
 			    position: absolute;
-			    right: 20px;
-			    top: calc(50% - 13px);
+			    top: 2rem;
+			    right: 2rem;
+			    cursor: pointer;
 			}
-			.thwcfd-notice-action {
-			    background-repeat: no-repeat;
-                padding-left: 40px;
-                background-position: 18px 8px;
-                cursor: pointer;
+
+			/* lg */
+			@media (min-width: 1024px) {
+			    .thwcfd-content {
+			        gap: 2rem;
+			        padding: 1.5rem;
+			    }
+
+			    .thwcfd-themehigh-logo {
+			        width: 2.4rem;
+			        height: 2.4rem;
+			    }
+
+			    .thwcfd-sub-content-wrapper {
+			        flex-direction: row;
+			        justify-content: start;
+			    }
+
+			    .thwcfd-buttons {
+			        grid-template-columns: repeat(4, 1fr);
+			        gap: 1rem;
+			    }
 			}
-			.thwcfd-yes{
-			    background-image: url(<?php echo THWCFD_URL; ?>admin/assets/css/tick.svg);
+
+			/* md */
+			@media (min-width: 768px) {
+			    .thwcfd-content {
+			        padding: 0.5rem 1rem;
+			        gap: 2rem;
+			    }
 			}
-			.thwcfd-remind{
-			    background-image: url(<?php echo THWCFD_URL; ?>admin/assets/css/reminder.svg);
-			}
-			.thwcfd-dismiss{
-			    background-image: url(<?php echo THWCFD_URL; ?>admin/assets/css/close.svg);
-			}
-			.thwcfd-done{
-			    background-image: url(<?php echo THWCFD_URL; ?>admin/assets/css/done.svg);
+
+			/* xl */
+			@media (min-width: 1920px) and (max-width: 2560px) {
+				.thwcfd-main-content-wrapper h1 {
+					font-weight: 700;
+					font-size: 17px;
+				}
+
+				.thwcfd-banner h1 {
+			    	font-size: 16px;
+			    	font-weight: 500;
+					margin-top: -5px;
+				}
 			}
         </style>
     <?php    
 	}
 
-	public function review_banner_custom_js(){
-		?>
-		<script type="text/javascript">
-        	(function($, window, document) { 
-        		$( document ).on( 'click', '.thpladmin-notice .notice-dismiss', function() {
-        			var wrapper = $(this).closest('div.thpladmin-notice');
-					var nonce = wrapper.data("nonce");
-					var data = {
-						thwcfd_review_nonce: nonce,
-						action: 'hide_thwcfd_admin_notice',
-					};
-					$.post( ajaxurl, data, function() {
-
-					});
-				});
-			}(window.jQuery, window, document));
-        </script>
-        <?php
-	}
-
 	private function render_review_request_notice(){
-		$current_tab = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'general_settings';
-		$current_section = isset( $_GET['section'] ) ? sanitize_key( $_GET['section'] ) : '';
-
-		
 		$remind_url = add_query_arg(array('thwcfd_remind' => true, 'thwcfd_review_nonce' => wp_create_nonce( 'thwcfd_notice_security')));
 		$dismiss_url = add_query_arg(array('thwcfd_dissmis' => true, 'thwcfd_review_nonce' => wp_create_nonce( 'thwcfd_notice_security')));
 		$reviewed_url= add_query_arg(array('thwcfd_reviewed' => true, 'thwcfd_review_nonce' => wp_create_nonce( 'thwcfd_notice_security')));
 		?>
-
-		<div class="notice notice-info thpladmin-notice is-dismissible thwcfd-review-wrapper" data-nonce="<?php echo wp_create_nonce( 'thwcfd_notice_security'); ?>">
-			<div class="thwcfd-review-image">
-				<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/review-left.png'); ?>" alt="themehigh">
-			</div>
-			<div class="thwcfd-review-content">
-				<h3><?php _e('We heard you!', 'woo-checkout-field-editor-pro'); ?></h3>
-				<p><?php _e('The free version of the WooCommerce Checkout Field Editor plugin is now loaded with more field types. We would love to know how you feel about the improvements we made just for you. Help us to serve you and others best by simply leaving a genuine review.', 'woo-checkout-field-editor-pro'); ?></p>
-				<div class="action-row">
-			        <a class="thwcfd-notice-action thwcfd-yes" onclick="window.open('https://wordpress.org/support/plugin/woo-checkout-field-editor-pro/reviews/?rate=5#new-post', '_blank')" style="margin-right:16px; text-decoration: none">
-			        	<?php _e("Yes, today", 'woo-checkout-field-editor-pro'); ?>
-			        </a>
-
-			        <a class="thwcfd-notice-action thwcfd-done" href="<?php echo esc_url($reviewed_url); ?>" style="margin-right:16px; text-decoration: none">
-			        	<?php _e('Already, Did', 'woo-checkout-field-editor-pro'); ?>
-			        </a>
-
-			        <a class="thwcfd-notice-action thwcfd-remind" href="<?php echo esc_url($remind_url); ?>" style="margin-right:16px; text-decoration: none">
-			        	<?php _e('Maybe later', 'woo-checkout-field-editor-pro'); ?>
-			        </a>
-
-			        <a class="thwcfd-notice-action thwcfd-dismiss" href="<?php echo esc_url($dismiss_url); ?>" style="margin-right:16px; text-decoration: none">
-			        	<?php _e("Nah, Never", 'woo-checkout-field-editor-pro'); ?>
-			        </a>
-				</div>
-			</div>
-			<div class="thwcfd-themehigh-logo">
-				<span class="logo" style="float: right">
-            		<a target="_blank" href="https://www.themehigh.com">
-                		<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/logo.svg'); ?>" style="height:19px;margin-top:4px;" alt="themehigh"/>
-                	</a>
-                </span>
-			</div>
-	    </div>
+		<div class="notice notice-info thpladmin-notice thwcfd-review-wrapper "  data-nonce="<?php echo esc_attr(wp_create_nonce( 'thwcfd_notice_security')); ?>">
+      	   <div class="thwcfd-custom-background thwcfd-content">
+       		<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/logo.svg'); ?>" alt="Themehigh Logo" class="thwcfd-themehigh-logo" />
+        	<div class="thwcfd-main-content-wrapper">
+          		<h1>Redefining your checkout pages with our plugin?</h1>
+          		<div class="thwcfd-sub-content-wrapper">
+            		<div class="thwcfd-text-content">
+              			<p>We'd love to hear from you!</p>
+              			<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/review-notice/smile.png'); ?>" alt="Smile" class="thwcfd-smile-img" />
+            		</div>
+            		<div class="thwcfd-text-content" style="margin-left: 4px;">
+              			<p>Give us a quick 
+							<span style="position: relative;">review</span>
+						</p>
+						<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/review-notice/star.png'); ?>" alt="Star Rating" class="thwcfd-rating-img" />
+            		</div>
+          		</div>
+        	</div>
+        	<div class="thwcfd-buttons action-row">
+			<a class="thwcfd-notice-action thwcfd-yes" onclick="window.open('<?php echo esc_url( 'https://wordpress.org/support/plugin/woo-checkout-field-editor-pro/reviews/?rate=5#new-post' ); ?>', '_blank')">
+          			Yes, Today
+				</a>
+				<a class="thwcfd-notice-action thwcfd-remind" href="<?php echo esc_url($remind_url); ?>" >
+					Maybe Later
+				</a>
+				<a class="thwcfd-notice-action thwcfd-dismiss" href="<?php echo esc_url($dismiss_url); ?>" >
+					No, Never
+				</a>
+				<a class="thwcfd-notice-action thwcfd-done" href="<?php echo esc_url($reviewed_url); ?>">
+					Already Did
+				</a>
+        	</div>
+        	<div class="thwcfd-banner">
+          		<h1>Checkout field editor </br>by <span>themehigh</span></h1>
+        	</div>
+        	<div class="thwcfd-close">
+          		<a href="<?php echo esc_url($dismiss_url); ?>"><img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/close-dark.png'); ?>" alt="Close" /></a>
+        	</div>
+			
+      	   </div>
+    	</div>
 
 		<?php
 	}
 
 	public function thwcfd_discount_popup_actions() {
-		$nonce = isset($_GET['thwcfd_discount_popup_nonce']) ? $_GET['thwcfd_discount_popup_nonce'] : false;
+		$nonce = isset($_GET['thwcfd_discount_popup_nonce']) ? sanitize_text_field( wp_unslash($_GET['thwcfd_discount_popup_nonce'])) : false;
 		if(!wp_verify_nonce($nonce, 'thwcfd_discount_popup_security')){
 			die();
 		}
@@ -349,9 +494,9 @@ class THWCFD_Admin {
 		$now = time();
 
 		// $render_time = apply_filters('thwcfd_show_discount_popup_render_time' , 3 * MONTH_IN_SECONDS);
-		$render_time  = apply_filters('thwcfd_show_discount_popup_render_time', 6 * MONTH_IN_SECONDS);
+		$render_time  = apply_filters('thwcfd_show_discount_popup_render_time', 1.5 * MONTH_IN_SECONDS);
 		$render_time = $thwcfd_since + $render_time;
-		
+
 		if (isset($_GET['thwcfd_discount_popup_dismiss'])) {
 			$this->thwcfd_discount_popup_actions();
 		}
@@ -369,9 +514,9 @@ class THWCFD_Admin {
 		$admin_url  = 'admin.php?page=checkout_form_designer';
         $dismiss_url = $admin_url . '&thwcfd_discount_popup_dismiss=true&thwcfd_discount_popup_nonce=' . wp_create_nonce( 'thwcfd_discount_popup_security');
 
-		$url = "https://www.themehigh.com/?edd_action=add_to_cart&download_id=12&cp=lyCDSy&utm_source=free&utm_medium=premium_tab&utm_campaign=wcfe_upgrade_link";
+		$url = "https://www.themehigh.com/?edd_action=add_to_cart&download_id=12&cp=lyCDSy&utm_source=wcfe_free&utm_medium=referral&utm_campaign=wcfe_premium_tab_upgrade_link";
 
-		$current_page = isset( $_GET['page'] ) ? $_GET['page']  : '';
+		$current_page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash($_GET['page']))  : '';
 		
 		if($current_page !== 'checkout_form_designer'){
 			return;
@@ -382,13 +527,13 @@ class THWCFD_Admin {
 				<div id="thwcfd-discount-popup-wrapper" class="thwcfd-discount-popup-wrapper">
 					<div class="thwcfd-pro-offer">
 						<div class="thwcfd-discount-popup-close">
-							<a id="thwcfd-discount-close-btn" class="thwcfd-discount-close-btn" href="<?php echo esc_url($dismiss_url); ?>"><img class="close-btn-img-popup" src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/close-popup.svg'); ?>"></a>
+							<a id="thwcfd-discount-close-btn" class="thwcfd-discount-close-btn" href="<?php echo esc_url($dismiss_url); ?>"><img class="close-btn-img-popup" src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/close.png'); ?>"></a>
 						</div>
 						<div class="thwcfd-discount-desc">
 							<p class="thwcfd-discount-desc-first">Exclusive offer for you.</p>
 							<p class="thwcfd-discount-desc-middle">Flat 50% off</p>
 							<p class="thwcfd-discount-desc-last">on your plan upgrade.</p>
-							<p class="thwcfd-discount-exp-date">Offer valid till <b>30th June.</b></p>
+							<p class="thwcfd-discount-exp-date">Grab it before the offer Ends.</b></p>
 						</div>
 					</div>
 					<div class="thwcd-pro-claim-offer">
@@ -463,7 +608,7 @@ class THWCFD_Admin {
 									</svg>
 
                     			</div>
-                    			<a href="https://app.loopedin.io/checkout-field-editor-for-woocommerce" target="_blank" class="quick-widget-doc-link">Request a feature</a></li>
+                    			<a href="https://app.loopedin.io/checkout-field-editor-for-woocommerce/boards" target="_blank" class="quick-widget-doc-link">Request a feature</a></li>
                			 	<li>
                			 		<div class="list_icon" style="background-color: rgba(255, 183, 67, 0.15);">
         							<svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -471,7 +616,7 @@ class THWCFD_Admin {
 										<path d="M7.50435 12.0001C5.81732 12.0001 4.12559 12.0001 2.43856 12.0001C2.10491 12.0001 1.87935 11.8454 1.83235 11.5848C1.77596 11.2976 1.98743 11.0281 2.29758 10.9927C2.35397 10.9839 2.41506 10.9839 2.47145 10.9839C5.82671 10.9839 9.17728 10.9839 12.5325 10.9839C12.8991 10.9839 13.1246 11.1297 13.1763 11.3992C13.2327 11.6952 13.0119 11.9692 12.6923 11.9912C12.6218 11.9957 12.5513 11.9957 12.4809 11.9957C10.822 12.0001 9.16318 12.0001 7.50435 12.0001Z" fill="#FFB743"/>
 									</svg>
                     			</div>
-                    			<a href="https://www.themehigh.com/product/woocommerce-checkout-field-editor-pro/?utm_source=free&utm_medium=quicklinks&utm_campaign=wcfe_upgrade_link" target="_blank" class="quick-widget-doc-link">Upgrade to Premium</a></li>
+                    			<a href="https://www.themehigh.com/product/woocommerce-checkout-field-editor-pro/?utm_source=wcfe_free&utm_medium=referral&utm_campaign=wcfe_settings_upgrade_link" target="_blank" class="quick-widget-doc-link">Upgrade to Premium</a></li>
                			 	<li>
 
                			 	<div class="list_icon" style="background-color: rgba(5, 15, 250, 0.15);">
@@ -492,16 +637,18 @@ class THWCFD_Admin {
 				          			</svg>
 
 		              			</div><a href="https://wordpress.org/support/plugin/woo-checkout-field-editor-pro/" target="_blank" class="quick-widget-support-link">Get support</a></li>
-		              		<li>
+		          
+			            	<li>
 		              			<div class="list_icon" style="background-color: rgba(255, 0, 0, 0.15);">
-		              				<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-		              					<path 
-		              					d="M13.9983 7.40916C13.9622 7.67875 13.9348 7.95008 13.8878 8.21793C13.7211 9.17181 13.3549 10.0797 12.8131 10.882C12.7742 10.9427 12.7235 10.9949 12.664 11.0356C12.6046 11.0763 12.5376 11.1047 12.467 11.1191C12.3964 11.1334 12.3236 11.1335 12.253 11.1193C12.1824 11.1051 12.1153 11.0768 12.0558 11.0362C11.9954 10.9969 11.9435 10.9459 11.9032 10.8861C11.8629 10.8264 11.8349 10.7592 11.821 10.6884C11.8071 10.6177 11.8075 10.5449 11.8222 10.4743C11.8368 10.4037 11.8655 10.3368 11.9065 10.2775C12.3466 9.60203 12.6721 8.87731 12.7992 8.07987C13.1801 5.68448 12.404 3.72461 10.4885 2.24601C9.3895 1.3976 8.11206 1.04395 6.72667 1.09883C4.02075 1.20597 1.69089 3.23857 1.20167 5.91182C0.661531 8.86164 2.36682 11.7287 5.22464 12.6272C6.88249 13.1498 8.47853 12.9538 9.9897 12.0924C10.1325 12.0109 10.2757 11.9513 10.4428 11.9861C10.5509 12.0075 10.6501 12.0608 10.7277 12.1391C10.8053 12.2174 10.8576 12.3172 10.878 12.4255C10.898 12.5363 10.8832 12.6505 10.8357 12.7525C10.7881 12.8546 10.7102 12.9393 10.6125 12.9952C10.0244 13.3524 9.38561 13.6186 8.71792 13.7848C6.95193 14.2334 5.08069 13.9747 3.50246 13.0637C1.92422 12.1526 0.763611 10.6613 0.267631 8.90693C-0.831799 5.07692 1.56597 1.03089 5.44705 0.17421C5.77479 0.101913 6.11211 0.0731673 6.44463 0.0235174C6.48468 0.0178556 6.52428 0.00827498 6.56389 0H7.4383C7.47355 0.00783946 7.50837 0.0174192 7.54363 0.0226455C7.90271 0.0783928 8.26701 0.109752 8.62042 0.192502C11.3155 0.80877 13.436 3.06697 13.8921 5.79379C13.9356 6.04858 13.9631 6.30641 13.9979 6.56293L13.9983 7.40916Z" fill="#FF0000"/>
-		              					<path d="M5.84092 4.22803C6.02808 4.29118 6.23046 4.32689 6.39934 4.42227C7.31771 4.94142 8.23172 5.46971 9.14138 6.00715C9.31609 6.10769 9.46115 6.25263 9.56188 6.4273C9.6626 6.60198 9.71542 6.80018 9.71498 7.00185C9.71453 7.20351 9.66085 7.40148 9.55936 7.57571C9.45787 7.74994 9.31218 7.89425 9.13703 7.99402C8.23259 8.52826 7.32366 9.05496 6.41022 9.5741C5.62156 10.0218 4.68535 9.47306 4.6823 8.5676C4.67882 7.51537 4.67882 6.46329 4.6823 5.41135C4.68236 5.26059 4.71211 5.11132 4.76986 4.97208C4.82761 4.83283 4.91221 4.70634 5.01885 4.59984C5.12548 4.49334 5.25206 4.40891 5.39132 4.35139C5.53059 4.29387 5.67981 4.26438 5.83048 4.26461L5.84092 4.22803ZM5.77259 6.99884C5.77259 7.4997 5.77259 8.00055 5.77259 8.5014C5.77259 8.65166 5.7974 8.66603 5.92754 8.59069C6.78961 8.09216 7.6514 7.59319 8.51289 7.09379C8.65043 7.01408 8.65043 6.9836 8.51289 6.9039C7.65169 6.40478 6.7899 5.90596 5.92754 5.40743C5.79696 5.33208 5.77259 5.34602 5.77259 5.49454C5.77085 5.99655 5.77085 6.49799 5.77259 6.99884V6.99884Z" fill="#FF0000"/>
-		              				</svg>
+		              				<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<rect width="23" height="23" rx="8" fill="#FFF3EB"/>
+									<path d="M14.08 14.4439L13.9878 14.4614L14.0796 14.4421C14.0088 14.0718 13.9353 13.6889 13.8532 13.3134C13.8244 13.1821 13.8465 13.1145 13.9473 13.0238C14.3682 12.6446 14.7951 12.249 15.2516 11.8155C15.4922 11.5869 15.5634 11.2887 15.4517 10.9764C15.3434 10.6742 15.1125 10.4924 14.7835 10.4507C14.6631 10.4355 14.5428 10.4199 14.4192 10.4043C13.9638 10.3459 13.4931 10.2853 13.0283 10.2366C12.8949 10.2225 12.8383 10.1831 12.7858 10.0671C12.6176 9.69603 12.4407 9.32203 12.269 8.95917L12.2623 8.94505C12.1907 8.79336 12.1187 8.64205 12.0475 8.49C11.904 8.18403 11.6476 8.01487 11.3043 8H11.2976H11.2927C10.9573 8.0197 10.7062 8.18775 10.566 8.48554C10.4981 8.62978 10.4303 8.77366 10.3621 8.91754C10.1818 9.29972 9.99518 9.69491 9.81529 10.0864C9.76956 10.186 9.72122 10.2217 9.61515 10.2332C9.02449 10.299 8.42558 10.3749 7.84616 10.4478L7.8188 10.4511C7.52984 10.4875 7.31134 10.6463 7.18691 10.9099C7.03175 11.2381 7.10558 11.5783 7.38929 11.8434C7.7742 12.2029 8.19509 12.5921 8.71341 13.068C8.77675 13.126 8.79212 13.1736 8.77525 13.2558C8.68718 13.684 8.60248 14.1186 8.52115 14.5391C8.49192 14.6889 8.46306 14.8391 8.43382 14.989C8.37985 15.2659 8.42783 15.4942 8.58074 15.6872C8.83672 16.0102 9.24786 16.0861 9.63164 15.8786C10.1279 15.6106 10.6406 15.3332 11.1495 15.0418C11.271 14.9722 11.3523 14.9715 11.4711 15.0399C11.9047 15.2882 12.35 15.531 12.7806 15.7656L13.0032 15.8868C13.14 15.9615 13.2783 15.9991 13.4144 15.9991C13.5793 15.9991 13.7367 15.9444 13.8828 15.8366C14.1516 15.6385 14.258 15.3559 14.1913 15.0198C14.1531 14.828 14.1163 14.6358 14.0796 14.4436L14.08 14.4439ZM9.1328 15.1064C9.18077 14.8644 9.22762 14.622 9.27447 14.38C9.33931 14.0461 9.40602 13.7011 9.47461 13.3606C9.53682 13.0513 9.44762 12.7825 9.20926 12.5624L7.93686 11.3857C7.92599 11.3757 7.91362 11.3657 7.90088 11.356C7.89601 11.3523 7.88963 11.3474 7.88514 11.3437C7.88026 11.3326 7.87539 11.321 7.86977 11.308C7.85965 11.285 7.83941 11.2396 7.83566 11.2184C7.84991 11.1939 7.89451 11.1586 7.91362 11.1549C8.24081 11.1054 8.57587 11.0653 8.89968 11.0266L8.9143 11.0247C9.01512 11.0128 9.11556 11.0006 9.21638 10.9883C9.28271 10.9801 9.34905 10.9723 9.41539 10.9645L9.42926 10.963C9.53944 10.95 9.64963 10.9366 9.75982 10.9225C10.0735 10.8824 10.3021 10.7128 10.4389 10.4188C10.6117 10.047 10.7875 9.67372 10.9569 9.3131L11.1784 8.84169C11.1866 8.82459 11.1945 8.80749 11.202 8.79002C11.2354 8.71269 11.2676 8.706 11.3036 8.706C11.3388 8.706 11.3684 8.71232 11.4055 8.79188C11.4808 8.95285 11.5573 9.11383 11.6334 9.27444L11.6352 9.27853C11.8017 9.62948 11.9741 9.9927 12.1337 10.3533C12.2915 10.7091 12.561 10.9009 12.9579 10.9396C13.396 10.9824 13.8412 11.0407 14.2719 11.0972C14.4075 11.1151 14.5432 11.1329 14.6789 11.15C14.7366 11.1575 14.7748 11.1775 14.7835 11.2493C14.7823 11.2508 14.7816 11.2523 14.7805 11.2541C14.7587 11.2872 14.7314 11.3285 14.7006 11.3575L14.5204 11.5266C14.1726 11.8531 13.8131 12.191 13.4515 12.5126C13.1636 12.7684 13.0643 13.0784 13.1483 13.4606C13.2326 13.8435 13.3079 14.2361 13.3806 14.6157L13.3821 14.6224C13.4125 14.7797 13.4425 14.9369 13.4732 15.0938C13.4747 15.1016 13.4769 15.1098 13.4788 15.1183C13.4732 15.1373 13.4687 15.1563 13.4638 15.1756C13.4567 15.2042 13.4451 15.2503 13.435 15.2685C13.4117 15.2734 13.3593 15.27 13.3334 15.2563C13.0325 15.0998 12.7307 14.9325 12.4392 14.7711C12.3372 14.7146 12.2349 14.6581 12.1326 14.6019C12.0831 14.5748 12.0336 14.5477 11.9842 14.5209L11.9756 14.5161C11.8931 14.4711 11.8106 14.4261 11.7286 14.3804C11.4486 14.225 11.1634 14.2261 10.8808 14.3826C10.6046 14.5358 10.3227 14.6901 10.0503 14.8395L10.042 14.844C9.80292 14.9748 9.56343 15.1061 9.32469 15.2381C9.222 15.2949 9.19389 15.2953 9.15641 15.267C9.12643 15.2444 9.10881 15.2243 9.13243 15.1061L9.1328 15.1064Z" fill="#F28505"/>
+									<path d="M7.97437 13.4591C7.74425 13.4123 7.52837 13.474 7.33274 13.6424C6.94408 13.9774 6.62626 14.2465 6.33243 14.4904C6.32231 14.4986 6.31069 14.506 6.29982 14.512C6.29683 14.5008 6.29458 14.4889 6.2942 14.4778C6.28633 14.1268 6.27771 13.6647 6.28296 13.2022C6.28633 12.8873 6.14804 12.6457 5.87182 12.4843C5.4648 12.2464 5.06565 11.9999 4.76358 11.8118C4.7572 11.8077 4.75083 11.8025 4.74484 11.7969C4.75158 11.7928 4.7587 11.7895 4.76507 11.7872L4.81455 11.7698C5.19533 11.6367 5.58885 11.4991 5.97976 11.3802C6.29907 11.2827 6.48909 11.0783 6.56068 10.7545C6.65362 10.334 6.75669 9.92206 6.86313 9.50196C6.86425 9.49749 6.86613 9.49303 6.868 9.4882C6.87475 9.49341 6.88149 9.49935 6.88711 9.50567C6.95308 9.58449 7.01604 9.67 7.07713 9.75253C7.11648 9.80607 7.15584 9.8596 7.19669 9.91202C7.33086 10.0853 7.54561 10.1269 7.70715 10.0105C7.87468 9.89009 7.90091 9.67929 7.77124 9.49824C7.72476 9.43355 7.67454 9.36775 7.62957 9.30901C7.57672 9.23986 7.522 9.16848 7.47216 9.09709C7.28102 8.8231 7.02466 8.70822 6.73008 8.7651C6.42875 8.82347 6.23723 9.02311 6.16153 9.35882C6.11393 9.56925 6.06184 9.78302 6.01124 9.98972C5.96139 10.1938 5.90967 10.4054 5.86207 10.6158C5.85046 10.6675 5.83546 10.6831 5.78187 10.7006C5.58023 10.7664 5.37897 10.834 5.17771 10.9013L5.17209 10.9032C4.95846 10.9745 4.73809 11.0485 4.52071 11.1192C4.21864 11.2177 4.04061 11.4214 4.00576 11.7092C3.97015 12.0006 4.1002 12.243 4.38167 12.4107C4.47799 12.468 4.57393 12.5293 4.66726 12.5884C4.85915 12.7107 5.05778 12.8371 5.26879 12.9379C5.52327 13.0595 5.6046 13.2018 5.57948 13.4825C5.5555 13.7517 5.56487 14.0242 5.57424 14.2878C5.57686 14.3674 5.57986 14.4465 5.58173 14.5257C5.59035 14.8871 5.79499 15.1503 6.1293 15.2295C6.18364 15.2425 6.23798 15.2488 6.29083 15.2488C6.45574 15.2488 6.61465 15.1849 6.76344 15.0585L6.98868 14.8666C7.24916 14.6447 7.51863 14.4149 7.78585 14.1919C7.80347 14.1774 7.83495 14.1644 7.86868 14.151C7.8773 14.1476 7.88555 14.1439 7.89379 14.1406C7.99798 14.1536 8.09055 14.1342 8.16214 14.0829C8.23597 14.0302 8.28095 13.9499 8.29181 13.851C8.3128 13.6654 8.17938 13.5007 7.97512 13.4591H7.97437Z" fill="#F28505"/>
+									<path d="M18.3686 11.588C18.3026 11.3794 18.1407 11.2151 17.9245 11.1378C17.5643 11.0091 17.1959 10.8894 16.8398 10.7742L16.621 10.7032C16.5625 10.6842 16.5453 10.6656 16.5321 10.6087C16.4332 10.1741 16.3245 9.73469 16.2188 9.30901L16.2121 9.28261C16.1439 9.00676 15.9527 8.82347 15.6739 8.76622C15.3999 8.71008 15.1514 8.80377 14.9745 9.03092C14.8539 9.18595 14.7347 9.34507 14.6207 9.50419C14.4952 9.6793 14.518 9.88005 14.6781 10.0035C14.7523 10.0607 14.843 10.086 14.9333 10.0749C15.0326 10.0626 15.1248 10.0076 15.1934 9.9202C15.2354 9.8663 15.2755 9.81165 15.3141 9.75885C15.3692 9.68376 15.4262 9.60606 15.4854 9.53542C15.4936 9.52538 15.5067 9.51534 15.5217 9.50493C15.5333 9.52129 15.5423 9.53616 15.5453 9.54732C15.6563 9.98155 15.7605 10.424 15.8519 10.8143C15.9156 11.0857 16.0839 11.2679 16.3519 11.3556C16.7252 11.4779 17.1659 11.624 17.6078 11.7791C17.6153 11.7817 17.6261 11.7899 17.6385 11.8006C17.6299 11.811 17.622 11.8196 17.6153 11.8237C17.2694 12.0393 16.9118 12.262 16.5434 12.4724C16.2473 12.6416 16.106 12.887 16.1113 13.223C16.118 13.6498 16.1101 14.0744 16.1004 14.47C16.1004 14.4837 16.0966 14.4982 16.0921 14.5109C16.0802 14.5042 16.0682 14.496 16.0573 14.4871C15.717 14.2041 15.3763 13.913 15.057 13.6391C14.8434 13.4558 14.6095 13.4045 14.3423 13.4825L14.2096 13.5212L14.2909 13.7513C14.322 13.8394 14.3513 13.9223 14.3831 14.0052C14.4052 14.0629 14.4498 14.1023 14.4832 14.125C14.5143 14.1461 14.5462 14.1655 14.5746 14.1822C14.6177 14.2079 14.6582 14.2324 14.6908 14.2595C14.8321 14.3774 14.9745 14.4993 15.1125 14.6168L15.12 14.6231C15.2961 14.7733 15.4782 14.9287 15.6623 15.0812C15.7961 15.1919 15.9613 15.2529 16.127 15.2529C16.157 15.2529 16.1873 15.2511 16.2166 15.247C16.3968 15.2224 16.5539 15.1258 16.6584 14.9752C16.7446 14.851 16.8009 14.6715 16.8087 14.4941C16.8267 14.0893 16.8249 13.6785 16.823 13.2807V13.2082C16.8222 13.1438 16.8361 13.1201 16.8934 13.0862C17.2885 12.8535 17.649 12.6349 17.9964 12.4185C18.1209 12.3408 18.2116 12.2613 18.2727 12.175C18.396 12.0021 18.4304 11.7884 18.3671 11.5887L18.3686 11.588Z" fill="#F28505"/>
+									</svg>
 
 			            		</div>
-			            	<a href="https://www.youtube.com/watch?v=-iil462HV_o&list=PL5drprcj2RRKFaHSLdKuCllmPypVWR-tJ" target="_blank" class="quick-widget-youtube-link" >Video Tutorial</a></li>
+			            	<a href="https://wordpress.org/support/plugin/woo-checkout-field-editor-pro/reviews/?rate=5#new-post" target="_blank" class="quick-widget-youtube-link" >Review Us</a></li>
 			       	 	</ul>
 			   		</div>
 				</div>
@@ -534,6 +681,55 @@ class THWCFD_Admin {
             </div>
             </div>
         <?php
+	}
+
+	/**
+	 * Landing page.
+	 *
+	 * @since    2.1.5
+	*/
+	public function redirect_to_landing_page() {
+		if ( ! is_admin() ) {
+			return;
+		}
+		if ( $this->is_existing_user() ) {
+			return;
+		}
+		$transient_value = get_transient('thwcfd_activation_redirect');
+		if ( $transient_value  === false ) {
+			return;
+		}
+		wp_safe_redirect( esc_url_raw( admin_url( 'index.php?page=thwcfd-welcome' ) ) );
+		exit();
+	}
+
+	public function landing_page(){
+		if ( empty( $_GET['page'] ) || 'thwcfd-welcome' !== $_GET['page'] ) {
+			return;
+		}
+		add_filter('deprecated_function_trigger_error', '__return_false');
+		$this->enqueue_landing_page_styles();
+		ob_start();
+		include_once THWCFD_ABSPATH . '/admin/thwcfd-landing-page.php';
+	}
+
+	public function enqueue_landing_page_styles() {
+		wp_enqueue_style( 'thwcfd-landing-page', THWCFD_ASSETS_URL_ADMIN . 'css/landing-page.min.css', array(), $this->version);
+	}
+
+	private function is_existing_user() {
+		
+		$thwcfd_since = get_option('thwcfd_since', false);
+		if ( ! $thwcfd_since ) {
+			$now = time();
+			update_option( 'thwcfd_since', $now, 'no' );
+			return false;
+		}
+		return true;
+	}
+
+	public function remove_welcome_page_menu() {
+		remove_submenu_page( 'index.php', 'thwcfd-welcome' );
 	}
 }
 

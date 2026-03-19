@@ -38,6 +38,7 @@ abstract class ImportBase implements ImportBaseInterface {
 
     /**
      * ImportOrderBase constructor.
+     *
      * @param ImporterIndex $index
      * @param ImporterOptions $options
      * @param array $data
@@ -49,6 +50,13 @@ abstract class ImportBase implements ImportBaseInterface {
         $this->data = $data;
         $this->wpdb = $wpdb;
         $this->importService = XmlImportWooCommerceService::getInstance();
+    }
+
+    /**
+     * @return ImporterIndex
+     */
+    public function getIndexObject() {
+        return $this->index;
     }
 
     /**

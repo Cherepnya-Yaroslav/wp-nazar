@@ -1,5 +1,6 @@
 <?php
-
+// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fwrite, WordPress.WP.AlternativeFunctions.rename_rename -- false positive; it's actually safe to use native PHP's fwrite(), rename() usage is intentional and safe within this context
+// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- using the native PHP fclose() function instead of the WP Filesystem API.
 if (!defined('ABSPATH')) die('No direct access.');
 
 /**
@@ -80,7 +81,7 @@ class UpdraftPlus_Filesystem_Functions {
 			
 			if ($wp_filesystem->errors->get_error_code()) {
 				echo '<div class="restore-credential-errors">';
-				echo '<p class="restore-credential-errors--link"><em><a href="' . apply_filters('updraftplus_com_link', "https://updraftplus.com/faqs/asked-ftp-details-upon-restorationmigration-updates/") . '" target="_blank">' . __('Why am I seeing this?', 'updraftplus') . '</a></em></p>';
+				echo '<p class="restore-credential-errors--link"><em><a href="' . esc_url(apply_filters('updraftplus_com_link', "https://teamupdraft.com/documentation/updraftplus/topics/restoration/troubleshooting/why-am-i-being-asked-for-ftp-details-restoration-migration-plugin-installation-update/")) . '" target="_blank">' . esc_html__('Why am I seeing this?', 'updraftplus') . '</a></em></p>';
 				echo '<div class="restore-credential-errors--list">';
 				foreach ($wp_filesystem->errors->get_error_messages() as $message) show_message($message);
 				echo '</div>';
@@ -154,7 +155,7 @@ class UpdraftPlus_Filesystem_Functions {
 			
 			foreach ($all_jobs as $job) {
 				$nonce = str_replace('updraft_jobdata_', '', $job[$key_column]);
-				$val = maybe_unserialize($job[$value_column]);
+				$val = empty($job[$value_column]) ? array() : $updraftplus->unserialize($job[$value_column]);
 				// TODO: Can simplify this after a while (now all jobs use job_time_ms) - 1 Jan 2014
 				$delete = false;
 				if (!empty($val['next_increment_start_scheduled_for'])) {
@@ -184,25 +185,29 @@ class UpdraftPlus_Filesystem_Functions {
 					delete_site_option('updraftplus_semaphore_'.$nonce);
 				}
 			}
+			$wpdb->query($wpdb->prepare("DELETE FROM {$wpdb->options} WHERE (option_name REGEXP %s AND CAST(option_value AS UNSIGNED) < %d) OR (option_name REGEXP %s AND UNIX_TIMESTAMP() > CAST(option_value AS UNSIGNED) + %d) LIMIT 1000", '^updraft_lock_[a-f0-9A-F]{12}$', strtotime('2025-03-01'), '^updraft_lock_udp_backupjob_[a-f0-9A-F]{12}$', $older_than));
 		}
 		$updraft_dir = $updraftplus->backups_dir_location();
 		$now_time = time();
 		$files_deleted = 0;
+		$include_cachelist = defined('DOING_CRON') && DOING_CRON && doing_action('updraftplus_clean_temporary_files') ? true : $include_cachelist;
 		if ($handle = opendir($updraft_dir)) {
 			while (false !== ($entry = readdir($handle))) {
-				$manifest_match = preg_match("/updraftplus-manifest.json/", $entry);
+				$manifest_match = preg_match("/updraftplus-manifest\.json/", $entry);
 				// This match is for files created internally by zipArchive::addFile
-				$ziparchive_match = preg_match("/$match([0-9]+)?\.zip\.tmp\.([A-Za-z0-9]){6}?$/i", $entry);
+				$ziparchive_match = preg_match("/$match([0-9]+)?\.zip\.tmp\.(?:[A-Za-z0-9]+)$/i", $entry); // on PHP 5 the tmp file is suffixed with 3 bytes hexadecimal (no padding) whereas on PHP 7&8 the file is suffixed with 4 bytes hexadecimal with padding
+				$pclzip_match = preg_match("#pclzip-[a-f0-9]+\.(?:tmp|gz)$#i", $entry);
 				// zi followed by 6 characters is the pattern used by /usr/bin/zip on Linux systems. It's safe to check for, as we have nothing else that's going to match that pattern.
 				$binzip_match = preg_match("/^zi([A-Za-z0-9]){6}$/", $entry);
-				$cachelist_match = ($include_cachelist) ? preg_match("/$match-cachelist-.*.tmp$/i", $entry) : false;
+				$cachelist_match = ($include_cachelist) ? preg_match("/-cachelist-.*(?:info|\.tmp)$/i", $entry) : false;
 				$browserlog_match = preg_match('/^log\.[0-9a-f]+-browser\.txt$/', $entry);
+				$downloader_client_match = preg_match("/$match([0-9]+)?\.zip\.tmp\.(?:[A-Za-z0-9]+)\.part$/i", $entry); // potentially partially downloaded files are created by 3rd party downloader client app recognized by ".part" extension at the end of the backup file name (e.g. .zip.tmp.3b9r8r.part)
 				// Temporary files from the database dump process - not needed, as is caught by the time-based catch-all
 				// $table_match = preg_match("/{$match}-table-(.*)\.table(\.tmp)?\.gz$/i", $entry);
 				// The gz goes in with the txt, because we *don't* want to reap the raw .txt files
-				if ((preg_match("/$match\.(tmp|table|txt\.gz)(\.gz)?$/i", $entry) || $cachelist_match || $ziparchive_match || $binzip_match || $manifest_match || $browserlog_match) && is_file($updraft_dir.'/'.$entry)) {
+				if ((preg_match("/$match\.(tmp|table|txt\.gz)(\.gz)?$/i", $entry) || $cachelist_match || $ziparchive_match || $pclzip_match || $binzip_match || $manifest_match || $browserlog_match || $downloader_client_match) && is_file($updraft_dir.'/'.$entry)) {
 					// We delete if a parameter was specified (and either it is a ZipArchive match or an order to delete of whatever age), or if over 12 hours old
-					if (($match && ($ziparchive_match || $binzip_match || $cachelist_match || $manifest_match || 0 == $older_than) && $now_time-filemtime($updraft_dir.'/'.$entry) >= $older_than) || $now_time-filemtime($updraft_dir.'/'.$entry)>43200) {
+					if (($match && ($ziparchive_match || $pclzip_match || $binzip_match || $cachelist_match || $manifest_match || 0 == $older_than) && $now_time-filemtime($updraft_dir.'/'.$entry) >= $older_than) || $now_time-filemtime($updraft_dir.'/'.$entry)>43200) {
 						$skip_dblog = (0 == $files_deleted % 25) ? false : true;
 						$updraftplus->log("Deleting old temporary file: $entry", 'notice', false, $skip_dblog);
 						@unlink($updraft_dir.'/'.$entry);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise if the file doesn't exist.
@@ -299,7 +304,13 @@ class UpdraftPlus_Filesystem_Functions {
 			$missing = '';
 			if (!function_exists('gzopen')) $missing .= 'gzopen';
 			if (!function_exists('gzread')) $missing .= ($missing) ? ', gzread' : 'gzread';
-			$err[] = sprintf(__("Your web server's PHP installation has these functions disabled: %s.", 'updraftplus'), $missing).' '.sprintf(__('Your hosting company must enable these functions before %s can work.', 'updraftplus'), __('restoration', 'updraftplus'));
+			/* translators: %s: List of disabled PHP functions. */
+			$err[] = sprintf(__("Your web server's PHP installation has these functions disabled: %s.", 'updraftplus'), $missing).' '.
+			sprintf(
+				/* translators: %s: The process that requires the functions. */
+				__('Your hosting company must enable these functions before %s can work.', 'updraftplus'),
+				__('restoration', 'updraftplus')
+			);
 			return false;
 		}
 		if (false === ($dbhandle = gzopen($file, 'r'))) return false;
@@ -439,8 +450,8 @@ class UpdraftPlus_Filesystem_Functions {
 	
 	/**
 	 * Unzips a specified ZIP file to a location on the filesystem via the WordPress
-	 * Filesystem Abstraction. Forked from WordPress core in version 5.1-alpha-44182.
-	 * Forked to allow us to modify the behaviour (eventually, to provide feedback on progress)
+	 * Filesystem Abstraction. Forked from WordPress core in version 5.1-alpha-44182,
+	 * to allow us to provide feedback on progress.
 	 *
 	 * Assumes that WP_Filesystem() has already been called and set up. Does not extract
 	 * a root-level __MACOSX directory, if present.
@@ -461,7 +472,7 @@ class UpdraftPlus_Filesystem_Functions {
 		global $wp_filesystem;
 
 		if (!$wp_filesystem || !is_object($wp_filesystem)) {
-			return new WP_Error('fs_unavailable', __('Could not access filesystem.'));
+			return new WP_Error('fs_unavailable', __('Could not access filesystem.'));// phpcs:ignore WordPress.WP.I18n.MissingArgDomain -- The string exists within the WordPress core.
 		}
 
 		// Unzip can use a lot of memory, but not this much hopefully.
@@ -553,9 +564,10 @@ class UpdraftPlus_Filesystem_Functions {
 		
 			$updraftplus->jobdata_set($jobdata_key, array('index' => $i, 'info' => $info, 'size_written' => $size_written));
 			
-			$updraftplus->log(sprintf(__('Unzip progress: %d out of %d files', 'updraftplus').' (%s, %s)', $i+1, $num_files, UpdraftPlus_Manipulation_Functions::convert_numeric_size_to_text($size_written), $info['name']), 'notice-restore');
-			$updraftplus->log(sprintf('Unzip progress: %d out of %d files (%s, %s)', $i+1, $num_files, UpdraftPlus_Manipulation_Functions::convert_numeric_size_to_text($size_written), $info['name']), 'notice');
-			
+			/* translators: 1: Current file number, 2: Total number of files */
+			$updraftplus->log(sprintf(__('Unzip progress: %1$d out of %2$d files', 'updraftplus').' (%3$s, %4$s)', $i+1, $num_files, UpdraftPlus_Manipulation_Functions::convert_numeric_size_to_text($size_written), $info['name']), 'notice-restore');
+			$updraftplus->log(sprintf('Unzip progress: %1$d out of %2$d files (%3$s, %4$s)', $i+1, $num_files, UpdraftPlus_Manipulation_Functions::convert_numeric_size_to_text($size_written), $info['name']), 'notice');
+
 			do_action('updraftplus_unzip_progress_restore_info', $file, $i, $size_written, $num_files);
 
 			$last_logged_bytes = $size_written;
@@ -589,6 +601,92 @@ class UpdraftPlus_Filesystem_Functions {
 	public static function wp_doing_cron() {
 		if (function_exists('wp_doing_cron')) return wp_doing_cron();
 		return apply_filters('wp_doing_cron', defined('DOING_CRON') && DOING_CRON);
+	}
+	
+	/**
+	 * Log permission failure message when restoring a backup
+	 *
+	 * @param string $path                            full path of file or folder
+	 * @param string $log_message_prefix              action which is performed to path
+	 * @param string $directory_prefix_in_log_message Directory Prefix. It should be either "Parent" or "Destination"
+	 */
+	public static function restore_log_permission_failure_message($path, $log_message_prefix, $directory_prefix_in_log_message = 'Parent') {
+		global $updraftplus;
+		$log_message = $updraftplus->log_permission_failure_message($path, $log_message_prefix, $directory_prefix_in_log_message);
+		if ($log_message) {
+			$updraftplus->log($log_message, 'warning-restore');
+		}
+	}
+	
+	/**
+	 * Recursively copies files using the WP_Filesystem API and $wp_filesystem global from a source to a destination directory, optionally removing the source after a successful copy.
+	 *
+	 * @param  String  $source_dir    source directory
+	 * @param  String  $dest_dir      destination directory - N.B. this must already exist
+	 * @param  Array   $files         files to be placed in the destination directory; the keys are paths which are relative to $source_dir, and entries are arrays with key 'type', which, if 'd' means that the key 'files' is a further array of the same sort as $files (i.e. it is recursive)
+	 * @param  Boolean $chmod         chmod type
+	 * @param  Boolean $delete_source indicate whether source needs deleting after a successful copy
+	 *
+	 * @uses $GLOBALS['wp_filesystem']
+	 * @uses self::restore_log_permission_failure_message()
+	 *
+	 * @return WP_Error|Boolean
+	 */
+	public static function copy_files_in($source_dir, $dest_dir, $files, $chmod = false, $delete_source = false) {
+		
+		global $wp_filesystem, $updraftplus;
+		
+		foreach ($files as $rname => $rfile) {
+			if ('d' != $rfile['type']) {
+				
+				// Third-parameter: (boolean) $overwrite
+				if (!$wp_filesystem->move($source_dir.'/'.$rname, $dest_dir.'/'.$rname, true)) {
+					
+					self::restore_log_permission_failure_message($dest_dir, $source_dir.'/'.$rname.' -> '.$dest_dir.'/'.$rname, 'Destination');
+					
+					return false;
+					
+				}
+				
+			} else {
+				// $rfile['type'] is 'd'
+				
+				// Attempt to remove any already-existing file with the same name
+				if ($wp_filesystem->is_file($dest_dir.'/'.$rname)) @$wp_filesystem->delete($dest_dir.'/'.$rname, false, 'f');// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- if fails, carry on
+				
+				// No such directory yet: just move it
+				if ($wp_filesystem->exists($dest_dir.'/'.$rname) && !$wp_filesystem->is_dir($dest_dir.'/'.$rname) && !$wp_filesystem->move($source_dir.'/'.$rname, $dest_dir.'/'.$rname, false)) {
+					
+					self::restore_log_permission_failure_message($dest_dir, 'Move '.$source_dir.'/'.$rname.' -> '.$dest_dir.'/'.$rname, 'Destination');
+					$updraftplus->log_e('Failed to move directory (check your file permissions and disk quota): %s', $source_dir.'/'.$rname." -&gt; ".$dest_dir.'/'.$rname);
+					
+					return false;
+					
+				} elseif (!empty($rfile['files'])) {
+					
+					if (!$wp_filesystem->exists($dest_dir.'/'.$rname)) $wp_filesystem->mkdir($dest_dir.'/'.$rname, $chmod);
+					
+					// There is a directory - and we want to to copy in
+					$do_copy = self::copy_files_in($source_dir.'/'.$rname, $dest_dir.'/'.$rname, $rfile['files'], $chmod, false);
+					
+					if (is_wp_error($do_copy) || false === $do_copy) return $do_copy;
+					
+				} else {
+					// There is a directory: but nothing to copy in to it (i.e. $file['files'] is empty). Just remove the directory.
+					@$wp_filesystem->rmdir($source_dir.'/'.$rname);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise because of the method.
+				}
+			}
+		}
+		
+		// We are meant to leave the working directory empty. Hence, need to rmdir() once a directory is empty. But not the root of it all in case of others/wpcore.
+		if ($delete_source || false !== strpos($source_dir, '/')) {
+			if (!$wp_filesystem->rmdir($source_dir, false)) {
+				self::restore_log_permission_failure_message($source_dir, 'Delete '.$source_dir);
+			}
+		}
+		
+		return true;
+		
 	}
 	
 	/**
@@ -628,18 +726,18 @@ class UpdraftPlus_Filesystem_Functions {
 		$zopen = $z->open($file, $flags);
 		
 		if (true !== $zopen) {
-			return new WP_Error('incompatible_archive', __('Incompatible Archive.'), array($method.'_error' => $z->last_error));
+			return new WP_Error('incompatible_archive', __('Incompatible Archive.'), array($method.'_error' => $z->last_error));// phpcs:ignore WordPress.WP.I18n.MissingArgDomain -- The string exists within the WordPress core.
 		}
 
 		$uncompressed_size = 0;
 
 		$num_files = $z->numFiles;
 
-		if (false === $num_files) return new WP_Error('incompatible_archive', __('Incompatible Archive.'), array($method.'_error' => $z->last_error));
+		if (false === $num_files) return new WP_Error('incompatible_archive', __('Incompatible Archive.'), array($method.'_error' => $z->last_error));// phpcs:ignore WordPress.WP.I18n.MissingArgDomain -- The string exists within the WordPress core.
 		
 		for ($i = $starting_index; $i < $num_files; $i++) {
 			if (!$info = $z->statIndex($i)) {
-				return new WP_Error('stat_failed_'.$method, __('Could not retrieve file from archive.').' ('.$z->last_error.')');
+				return new WP_Error('stat_failed_'.$method, __('Could not retrieve file from archive.').' ('.$z->last_error.')');// phpcs:ignore WordPress.WP.I18n.MissingArgDomain -- The string exists within the WordPress core.
 			}
 
 			// Skip the OS X-created __MACOSX directory
@@ -663,6 +761,10 @@ class UpdraftPlus_Filesystem_Functions {
 				// Path to a file.
 				$needed_dirs[] = $to . untrailingslashit($dirname);
 			}
+			
+			// Protect against memory over-use
+			if (0 == $i % 500) $needed_dirs = array_unique($needed_dirs);
+			
 		}
 
 		/*
@@ -671,20 +773,21 @@ class UpdraftPlus_Filesystem_Functions {
 		* Require we have enough space to unzip the file and copy its contents, with a 10% buffer.
 		*/
 		if (self::wp_doing_cron()) {
-			$available_space = function_exists('disk_free_space') ? @disk_free_space(WP_CONTENT_DIR) : false;// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise because of the function.
+			$available_space = function_exists('disk_free_space') ? @disk_free_space(WP_CONTENT_DIR) : false;// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Call is speculative
 			if ($available_space && ($uncompressed_size * 2.1) > $available_space) {
-				return new WP_Error('disk_full_unzip_file', __('Could not copy files.', 'updraftplus').' '.__('You may have run out of disk space.'), compact('uncompressed_size', 'available_space'));
+				return new WP_Error('disk_full_unzip_file', __('Could not copy files.').' '.__('You may have run out of disk space.'), compact('uncompressed_size', 'available_space'));// phpcs:ignore WordPress.WP.I18n.MissingArgDomain -- The string exists within the WordPress core.
 			}
 		}
 
 		$needed_dirs = array_unique($needed_dirs);
 		foreach ($needed_dirs as $dir) {
 			// Check the parent folders of the folders all exist within the creation array.
-			if (untrailingslashit($to) == $dir) { // Skip over the working directory, We know this exists (or will exist)
+			if (untrailingslashit($to) == $dir) {
+				// Skip over the working directory, We know this exists (or will exist)
 				continue;
 			}
 			
-			// If the directory is not within the working directory, Skip it
+			// If the directory is not within the working directory then skip it
 			if (false === strpos($dir, $to)) continue;
 
 			$parent_folder = dirname($dir);
@@ -699,7 +802,7 @@ class UpdraftPlus_Filesystem_Functions {
 		foreach ($needed_dirs as $_dir) {
 			// Only check to see if the Dir exists upon creation failure. Less I/O this way.
 			if (!$wp_filesystem->mkdir($_dir, FS_CHMOD_DIR) && !$wp_filesystem->is_dir($_dir)) {
-				return new WP_Error('mkdir_failed_'.$method, __('Could not create directory.'), substr($_dir, strlen($to)));
+				return new WP_Error('mkdir_failed_'.$method, __('Could not create directory.'), substr($_dir, strlen($to)));// phpcs:ignore WordPress.WP.I18n.MissingArgDomain -- The string exists within the WordPress core.
 			}
 		}
 		unset($needed_dirs);
@@ -712,7 +815,7 @@ class UpdraftPlus_Filesystem_Functions {
 		for ($i = $starting_index; $i < $num_files; $i++) {
 
 			if (!$info = $z->statIndex($i)) {
-				return new WP_Error('stat_failed_'.$method, __('Could not retrieve file from archive.'));
+				return new WP_Error('stat_failed_'.$method, __('Could not retrieve file from archive.'));// phpcs:ignore WordPress.WP.I18n.MissingArgDomain -- The string exists within the WordPress core.
 			}
 
 			// directory
@@ -730,7 +833,7 @@ class UpdraftPlus_Filesystem_Functions {
 				if (isset($path[1]) && !in_array($path[1], $folders_to_include)) continue;
 			}
 
-			// PclZip will return (boolean)false for an empty file
+			// N.B. PclZip will return (boolean)false for an empty file
 			if (isset($info['size']) && 0 == $info['size']) {
 				$contents = '';
 			} else {
@@ -774,11 +877,11 @@ class UpdraftPlus_Filesystem_Functions {
 			}
 			
 			if (false === $contents && ('pclzip' !== $method || 0 !== $info['size'])) {
-				return new WP_Error('extract_failed_'.$method, __('Could not extract file from archive.').' '.$z->last_error, json_encode($info));
+				return new WP_Error('extract_failed_'.$method, __('Could not extract file from archive.').' '.$z->last_error, json_encode($info));// phpcs:ignore WordPress.WP.I18n.MissingArgDomain -- The string exists within the WordPress core.
 			}
 
 			if (!$wp_filesystem->put_contents($to . $info['name'], $contents, FS_CHMOD_FILE)) {
-				return new WP_Error('copy_failed_'.$method, __('Could not copy file.'), $info['name']);
+				return new WP_Error('copy_failed_'.$method, __('Could not copy file.'), $info['name']);// phpcs:ignore WordPress.WP.I18n.MissingArgDomain -- The string exists within the WordPress core.
 			}
 
 			if (!empty($info['size'])) $size_written += $info['size'];

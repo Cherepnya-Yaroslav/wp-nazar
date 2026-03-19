@@ -1,6 +1,7 @@
 <?php
 
-if (!defined('UPDRAFTCENTRAL_CLIENT_DIR')) die('No access.');
+if (!defined('ABSPATH')) exit;
+if (!defined('UPDRAFTPLUS_DIR')) die('No direct access allowed');
 
 /**
  * Handles Posts Commands
@@ -213,6 +214,10 @@ class UpdraftCentral_Posts_Commands extends UpdraftCentral_Commands {
 
 		if (!function_exists('get_page_templates')) {
 			require_once(ABSPATH.'wp-admin/includes/theme.php');
+		}
+
+		if (!function_exists('get_block_editor_server_block_settings')) {
+			require_once(ABSPATH.'wp-admin/includes/post.php');
 		}
 
 		$templates = ('post' == $type) ? get_page_templates(null, 'post') : get_page_templates();
@@ -584,7 +589,16 @@ class UpdraftCentral_Posts_Commands extends UpdraftCentral_Commands {
 			require_once($resolver);
 		}
 
-		if (class_exists('WP_Theme_JSON_Resolver') && WP_Theme_JSON_Resolver::theme_has_support()) {
+		$theme_has_support = false;
+		if (function_exists('wp_theme_has_theme_json')) {
+			$theme_has_support = wp_theme_has_theme_json();
+		} else {
+			if (class_exists('WP_Theme_JSON_Resolver')) {
+				$theme_has_support = WP_Theme_JSON_Resolver::theme_has_support();
+			}
+		}
+
+		if (class_exists('WP_Theme_JSON_Resolver') && $theme_has_support) {
 			$theme_json = ABSPATH.WPINC.'/class-wp-theme-json.php';
 			if (!class_exists('WP_Theme_JSON') && file_exists($theme_json)) require_once($theme_json);
 
@@ -1085,6 +1099,8 @@ class UpdraftCentral_Posts_Commands extends UpdraftCentral_Commands {
 					'permalink_template' => get_permalink($post->ID, true),
 					'author_name' => get_the_author_meta('display_name', $post->post_author),
 					'publish_month_year' => date('F Y', strtotime($post->post_date)),
+					'publish_month_year_date' => date('d F Y', strtotime($post->post_date)),
+					'post_status_object' => get_post_status_object(get_post_status($post->ID)),
 					'published_date' => $published_date,
 					'format' => get_post_format($post->ID),
 					'post_type_name' => $post_type_obj->name,
@@ -1387,14 +1403,14 @@ class UpdraftCentral_Posts_Commands extends UpdraftCentral_Commands {
 		if (!empty($params['password'])) {
 			if (!empty($params['sticky'])) {
 				return $this->_generic_error_response('post_save_failed', array(
-					'message' => __('A post can not be sticky and have a password.'),
+					'message' => __('A post can not be sticky and have a password.'),// phpcs:ignore WordPress.WP.I18n.MissingArgDomain -- The string exists within the WordPress core.
 					'args' => $params
 				));
 			}
 
 			if (!isset($params['sticky']) && is_sticky($post->ID)) {
 				return $this->_generic_error_response('post_save_failed', array(
-					'message' => __('A sticky post can not be password protected.'),
+					'message' => __('A sticky post can not be password protected.'),// phpcs:ignore WordPress.WP.I18n.MissingArgDomain -- The string exists within the WordPress core.
 					'args' => $params
 				));
 			}
@@ -1403,7 +1419,7 @@ class UpdraftCentral_Posts_Commands extends UpdraftCentral_Commands {
 		if (!empty($params['sticky'])) {
 			if (!isset($params['password']) && post_password_required($post->ID)) {
 				return $this->_generic_error_response('post_save_failed', array(
-					'message' => __('A password protected post can not be set to sticky.'),
+					'message' => __('A password protected post can not be set to sticky.'),// phpcs:ignore WordPress.WP.I18n.MissingArgDomain -- The string exists within the WordPress core.
 					'args' => $params
 				));
 			}

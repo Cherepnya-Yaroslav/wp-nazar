@@ -65,17 +65,17 @@ function get_list_item(string $direction, string $singular, string $plural, arra
     $lifetime_total     = __('Lifetime total', 'wpf2b-addon-blocklist');
 
     return <<< HTML
-    <li class="${direction}load wp-clearfix">
+    <li class="{$direction}load wp-clearfix">
       <div class="info">
-        <div class="dashicons"><span class="dashicons-${direction}load"></span></div>
+        <div class="dashicons"><span class="dashicons-{$direction}load"></span></div>
         <div>
-          <span class="last" title="${last_polled}"><span class="num last-entries">{$args['last']['entries']}</span> $what</span><br>
-          <span class="total"><span title="${lifetime_total}"><span class="num total-entries">{$args['total']['entries']}</span> ${total}</span>${pending}</span>
+          <span class="last" title="{$last_polled}"><span class="num last-entries">{$args['last']['entries']}</span> $what</span><br>
+          <span class="total"><span title="{$lifetime_total}"><span class="num total-entries">{$args['total']['entries']}</span> {$total}</span>{$pending}</span>
         </div>
       </div>
       <div class="date-time">
-        <span class="dt last-dt" title="${last_polled_time}">{$args['last']['dt']}</span><br>
-        <span class="total" title="${lifetime_total}"><span class="num total-requests">{$args['total']['requests']}</span> ${total}</span>
+        <span class="dt last-dt" title="{$last_polled_time}">{$args['last']['dt']}</span><br>
+        <span class="total" title="{$lifetime_total}"><span class="num total-requests">{$args['total']['requests']}</span> {$total}</span>
       </div>
     </li>
 
@@ -94,7 +94,7 @@ HTML;
  */
 function dashboard_widget_queued(array $opt): string
 {
-    if (class_exists(WP_FAIL2BAN_NS.'\premium\WPf2b') && WPf2b::can_use_premium_code()) {
+    if (class_exists('org\lecklider\charles\wordpress\wp_fail2ban\premium\WPf2b') && WPf2b::can_use_premium_code()) {
         global $wpdb;
 
         $addrField = (class_exists(WP_FAIL2BAN_NS.'\IP'))

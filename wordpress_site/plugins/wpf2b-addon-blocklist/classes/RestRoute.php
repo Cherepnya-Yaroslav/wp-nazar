@@ -155,13 +155,13 @@ abstract class RestRoute
             self::handleGetFree($request, $last_id, $inet4, $inet6, $cur_time);
         }
 
-        self::update_stats('GET', intval($last_id), intval(strlen($inet4 ?? '')/16), intval(strlen($inet6 ?? '')/24));
+        self::update_stats('GET', intval($last_id), intval(strlen($inet4)/16), intval(strlen($inet6)/24));
 
         $rv = [
             'last_id' => intval($last_id),
             'events' => [
-                'ip4' => $inet4 ?? '',
-                'ip6' => $inet6 ?? ''
+                'ip4' => $inet4,
+                'ip6' => $inet6
             ],
             'time' => intval($cur_time) ?? time()
         ];

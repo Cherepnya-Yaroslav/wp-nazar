@@ -1,10 +1,10 @@
 <?php
 
-namespace wpai_acf_add_on\fields\acf;
+namespace wpai_acf_add_on_pro\fields\acf;
 
 /**
  * Class FieldGoogleMapExtended
- * @package wpai_acf_add_on\fields\acf
+ * @package pmai_acf_add_on\fields\acf
  */
 class FieldGoogleMapExtended extends FieldGoogleMap {
 
@@ -22,8 +22,8 @@ class FieldGoogleMapExtended extends FieldGoogleMap {
         $values = $this->getOption('values');
         return array(
             'address' => $values['address'][$this->getPostIndex()],
-            'lat' => $values['lat'][$this->getPostIndex()],
-            'lng' => $values['lng'][$this->getPostIndex()],
+            'lat' => floatval($values['lat'][$this->getPostIndex()]),
+            'lng' => floatval($values['lng'][$this->getPostIndex()]),
             'zoom' => $values['zoom'][$this->getPostIndex()],
             'center_lat' => $values['center_lat'][$this->getPostIndex()],
             'center_lng' => $values['center_lng'][$this->getPostIndex()]

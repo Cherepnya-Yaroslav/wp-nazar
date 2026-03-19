@@ -1,13 +1,13 @@
 <?php
 
-namespace wpai_acf_add_on\fields\acf;
+namespace wpai_acf_add_on_pro\fields\acf;
 
-use wpai_acf_add_on\ACFService;
-use wpai_acf_add_on\fields\Field;
+use pmai_acf_add_on\ACFService;
+use pmai_acf_add_on\fields\Field;
 
 /**
  * Class FieldGallery
- * @package wpai_acf_add_on\fields\acf
+ * @package pmai_acf_add_on\fields\acf
  */
 class FieldGallery extends Field {
 
@@ -72,7 +72,7 @@ class FieldGallery extends Field {
 		            $value = $values[$this->getPostIndex()];
 	            } else {
 		            $value = explode($parent['delimiter'], $values[$this->getPostIndex()]);
-		            $value = $value[$parent['index']];
+		            $value = $value[$parent['index']] ?? '';
 	            }
             }
             $values[$this->getPostIndex()] = $value;
@@ -80,7 +80,7 @@ class FieldGallery extends Field {
 
         foreach ($values as $i => $value) {
             $imgs = array();
-            $line_imgs = explode("\n", $value);
+            $line_imgs = !empty($value) ? explode("\n", $value) : '';
             if (!empty($line_imgs)) {
                 foreach ($line_imgs as $line_img) {
                     $imgs = array_merge($imgs, empty($xpath['delim']) ? array($line_img) : str_getcsv($line_img, $xpath['delim']));
@@ -90,15 +90,26 @@ class FieldGallery extends Field {
         }
 
         $gallery_ids = $is_append_new ? ACFService::get_post_meta($this, $this->getPostID(), $this->getFieldName()) : array();
-        if (empty($gallery_ids)){
+        if (empty($gallery_ids) || ! is_array( $gallery_ids ) ) {
             $gallery_ids = array();
         }
         if (!empty($values[$this->getPostIndex()])) {
             $search_in_gallery = empty($xpath['search_in_media']) ? 0 : 1;
             $search_in_files = empty($xpath['search_in_files']) ? 0 : 1;
             foreach ($values[$this->getPostIndex()] as $url) {
-                if ("" != $url and $attid = ACFService::import_image(trim($url), $this->getPostID(), $parsingData['logger'], $search_in_gallery, $search_in_files, $this->importData) and !in_array($attid, $gallery_ids)) {
-                    $gallery_ids[] = $attid;
+                if (!empty($url)) {
+                    $ext = pmxi_getExtensionFromStr($url);
+                    if (empty($ext) || !in_array($ext, ['jpeg', 'jpg', 'png', 'gif', 'svg', 'webp'])) {
+                        $ext = pmxi_get_remote_image_ext($url);
+                    }
+                    if (empty($ext) || !in_array($ext, ['jpeg', 'jpg', 'png', 'gif', 'svg', 'webp'])) {
+                        $attid = ACFService::import_file(trim($url), $this->getPostID(), $parsingData['logger'], $search_in_gallery, $search_in_files, $this->importData);
+                    } else {
+                        $attid = ACFService::import_image(trim($url), $this->getPostID(), $parsingData['logger'], $search_in_gallery, $search_in_files, $this->importData);
+                    }
+                    if ($attid && !in_array($attid, $gallery_ids)) {
+                        $gallery_ids[] = $attid;
+                    }
                 }
             }
         }

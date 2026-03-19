@@ -56,6 +56,7 @@ abstract class THWCFD_Admin_Form {
 	}
 
 	public function render_form_field_element($field, $args = array(), $render_cell = true){
+
 		if($field && is_array($field)){
 			$defaults = array(
 			    'label_cell_props' => 'class="label"',
@@ -93,6 +94,8 @@ abstract class THWCFD_Admin_Form {
 
 			}else if($ftype == 'number'){
 				$field_html = $this->render_form_field_element_number($field, $args);
+			}else if($ftype == 'hidden'){
+				$field_html = $this->render_form_field_element_hidden($field, $args);
 			}
 
 			if($render_cell){
@@ -100,22 +103,21 @@ abstract class THWCFD_Admin_Form {
 
 				$label_cell_props = !empty($args['label_cell_props']) ? $args['label_cell_props'] : '';
 				$input_cell_props = !empty($args['input_cell_props']) ? $args['input_cell_props'] : '';
-
 				?>
-				<td <?php echo $label_cell_props ?> >
-					<?php echo $flabel; echo $required_html;
+				<td <?php echo wp_kses($label_cell_props, array('class' => true)) ?> >
+					<?php echo esc_html($flabel); echo wp_kses($required_html, array('abbr' => array('class' => true, 'title' => true)) );
 					if($sub_label){
 						?>
-						<br/><span class="thpladmin-subtitle"><?php echo $sub_label; ?></span>
+						<br/><span class="thpladmin-subtitle"><?php echo esc_html($sub_label); ?></span>
 						<?php
 					}
 					?>
 				</td>
 				<?php $this->render_form_fragment_tooltip($tooltip); ?>
-				<td <?php echo $input_cell_props ?> ><?php echo $field_html; ?></td>
+				<td <?php echo wp_kses($input_cell_props, array('class' => true)) ?> ><?php echo wp_kses($field_html, THWCFD_Utils::get_allowed_html()); ?></td>
 				<?php
 			}else{
-				echo $field_html;
+				echo wp_kses($field_html, THWCFD_Utils::get_allowed_html());
 			}
 		}
 	}
@@ -173,7 +175,7 @@ abstract class THWCFD_Admin_Form {
 		$field_html = '';
 		if($field && is_array($field)){
 			$field_props = $this->prepare_form_field_props($field, $atts);
-			$field_html = '<input type="text" '. $field_props .' />';
+			$field_html = '<input type="text" '. wp_kses_post($field_props) .' />';
 		}
 		return $field_html;
 	}
@@ -188,7 +190,7 @@ abstract class THWCFD_Admin_Form {
 
 			$fvalue = isset($field['value']) ? $field['value'] : '';
 			$field_props = $this->prepare_form_field_props($field, $args);
-			$field_html = '<textarea '. $field_props .' rows="'.$args['rows'].'" cols="'.$args['cols'].'" >'.$fvalue.'</textarea>';
+			$field_html = '<textarea '. wp_kses_post($field_props) .' rows="'.esc_attr($args['rows']).'" cols="'.esc_attr($args['cols']).'" >'.esc_html($fvalue).'</textarea>';
 		}
 		return $field_html;
 	}
@@ -199,14 +201,24 @@ abstract class THWCFD_Admin_Form {
 			$fvalue = isset($field['value']) ? $field['value'] : '';
 			$field_props = $this->prepare_form_field_props($field, $atts);
 
-			$field_html = '<select '. $field_props .' >';
+			$field_html = '<select '. wp_kses_post($field_props) .' >';
 			foreach($field['options'] as $value => $label){
 				$selected = $value === $fvalue ? 'selected' : '';
-				$field_html .= '<option value="'. trim($value) .'" '.$selected.'>'. __($label, 'woo-checkout-field-editor-pro') .'</option>';
+				$label = THWCFD_Utils::translate_dynamic_text($label, 'option');
+				$field_html .= '<option value="'. esc_attr(trim($value)) .'" '.esc_attr($selected).'>'. esc_html($label) .'</option>';
 			}
 			$field_html .= '</select>';
 		}
 		return $field_html;
+	}
+
+	private function render_form_field_element_hidden($field, $atts = array()){
+
+		$field_props = $this->prepare_form_field_props($field, $atts);
+		$field_html = '<input type="hidden" '. $field_props .' value="set"  />';
+		$field_html .= isset($field['note'])  ? '<p>'.$field['note'] .'</p>' : '';
+		return $field_html;
+
 	}
 
 	private function render_form_field_element_multiselect($field, $atts = array()){
@@ -214,10 +226,11 @@ abstract class THWCFD_Admin_Form {
 		if($field && is_array($field)){
 			$field_props = $this->prepare_form_field_props($field, $atts);
 
-			$field_html = '<select multiple="multiple" '. $field_props .'>';
+			$field_html = '<select multiple="multiple" '. wp_kses_post($field_props) .'>';
 			foreach($field['options'] as $value => $label){
 				//$selected = $value === $fvalue ? 'selected' : '';
-				$field_html .= '<option value="'. trim($value) .'" >'. __($label, 'woo-checkout-field-editor-pro') .'</option>';
+				$label = THWCFD_Utils::translate_dynamic_text($label, 'option');
+				$field_html .= '<option value="'. esc_attr(trim($value)) .'" >'. esc_html($label) .'</option>';
 			}
 			$field_html .= '</select>';
 		}
@@ -229,17 +242,17 @@ abstract class THWCFD_Admin_Form {
 		if($field && is_array($field)){
 			$field_props = $this->prepare_form_field_props($field, $atts);
 
-			$field_html = '<select multiple="multiple" '. $field_props .'>';
+			$field_html = '<select multiple="multiple" '. wp_kses_post($field_props) .'>';
 			foreach($field['options'] as $group_label => $fields){
-				$field_html .= '<optgroup label="'. $group_label .'">';
+				$field_html .= '<optgroup label="'. esc_attr($group_label) .'">';
 
 				foreach($fields as $value => $label){
 					$value = trim($value);
 					if(isset($field['glue']) && !empty($field['glue'])){
 						$value = $value.$field['glue'].trim($label);
 					}
-
-					$field_html .= '<option value="'. $value .'">'. __($label, 'woo-checkout-field-editor-pro') .'</option>';
+					$label = THWCFD_Utils::translate_dynamic_text($label, 'option');
+					$field_html .= '<option value="'. esc_attr($value) .'">'. esc_html($label) .'</option>';
 				}
 
 				$field_html .= '</optgroup>';
@@ -265,6 +278,7 @@ abstract class THWCFD_Admin_Form {
 	}
 
 	private function render_form_field_element_checkbox($field, $atts = array(), $render_cell = true){
+
 		$field_html = '';
 		if($field && is_array($field)){
 			$args = shortcode_atts( array(
@@ -276,19 +290,20 @@ abstract class THWCFD_Admin_Form {
 			), $atts );
 
 			$fid 	= $args['id_prefix']. $field['name'];
-			$flabel = isset($field['label']) && !empty($field['label']) ? __($field['label'], 'woo-checkout-field-editor-pro') : '';
+			$flabel = isset($field['label']) && !empty($field['label']) ? THWCFD_Utils::translate_dynamic_text($field['label'], 'label') : '';
 
 			$field_props  = $this->prepare_form_field_props($field, $atts);
 			$field_props .= isset($field['checked']) && $field['checked'] === 1 ? ' checked' : '';
 			$field_props .= $args['input_props'];
 
-			$field_html  = '<input type="checkbox" id="'. $fid .'" '. $field_props .' />';
-			$field_html .= '<label for="'. $fid .'" '. $args['label_props'] .' > '. $flabel .'</label>';
+			$field_html  = '<input type="checkbox" id="'. esc_attr($fid).'" '. wp_kses_post($field_props) .' />';
+			$field_html .= '<label for="'. esc_attr($fid) .'" '. wp_kses_post($args['label_props']) .' > '. esc_html($flabel) .'</label>';
 		}
 		if(!$render_cell && $args['render_input_cell']){
-			return '<td '. $args['cell_props'] .' >'. $field_html .'</td>';
+			return '<td '.wp_kses_post($args['cell_props']) .' >'. wp_kses_post($field_html) .'</td>';
 		}else{
-			return $field_html;
+			
+			return wp_kses($field_html, THWCFD_Utils::get_allowed_html());
 		}
 	}
 
@@ -297,8 +312,8 @@ abstract class THWCFD_Admin_Form {
 		if($field && is_array($field)){
 			$field_props = $this->prepare_form_field_props($field, $atts);
 
-			$field_html  = '<span class="thpladmin-colorpickpreview '.$field['name'].'_preview" style=""></span>';
-            $field_html .= '<input type="text" '. $field_props .' >';
+			$field_html  = '<span class="thpladmin-colorpickpreview '.esc_attr($field['name']).'_preview" style=""></span>';
+            $field_html .= '<input type="text" '. wp_kses_post($field_props) .' >';
 		}
 		return $field_html;
 	}
@@ -307,7 +322,7 @@ abstract class THWCFD_Admin_Form {
 		$field_html = '';
 		if($field && is_array($field)){
 			$field_props = $this->prepare_form_field_props($field, $atts);
-			$field_html = '<input type="number" '. $field_props .' />';
+			$field_html = '<input type="number" '. wp_kses_post($field_props) .' />';
 		}
 		return $field_html;
 	}
@@ -316,7 +331,9 @@ abstract class THWCFD_Admin_Form {
 		if($tooltip){
 			?>
 			<td class="tip" style="width: 26px; padding:0px;">
-				<a href="javascript:void(0)" title="<?php echo $tooltip; ?>" class="thwcfd_tooltip"><img src="<?php echo THWCFD_ASSETS_URL_ADMIN; ?>/css/help.png" title=""/></a>
+			<a href="javascript:void(0)" title="<?php echo esc_attr($tooltip); ?>" class="thwcfd_tooltip">
+    			<img src="<?php echo esc_url(THWCFD_ASSETS_URL_ADMIN . '/images/help.png'); ?>" title=""/>
+			</a>
 			</td>
 			<?php
 		}else{
@@ -327,10 +344,10 @@ abstract class THWCFD_Admin_Form {
 	}
 
 	public function render_form_fragment_h_spacing($padding = 5){
-		$style = $padding ? 'padding-top:'.$padding.'px;' : '';
+		$style = $padding ? 'padding-top:' . esc_attr($padding) . 'px;' : '';
 		?>
-        <tr><td colspan="3" style="<?php echo $style ?>"></td></tr>
-        <?php
+		<tr><td colspan="3" style="<?php echo esc_attr($style); ?>"></td></tr>
+		<?php
 	}
 
 	public function render_form_fragment_h_separator($atts = array()){
@@ -343,25 +360,25 @@ abstract class THWCFD_Admin_Form {
 			'content'	   => '',
 		), $atts );
 
-		$style  = $args['padding-top'] ? 'padding-top:'.$args['padding-top'].';' : '';
-		$style .= $args['border-style'] ? ' border-bottom:'.$args['border-width'].' '.$args['border-style'].' '.$args['border-color'].';' : '';
+		$style  = $args['padding-top'] ? 'padding-top:'.esc_attr($args['padding-top']).';' : '';
+		$style .= $args['border-style'] ? ' border-bottom:'.esc_attr($args['border-width']).' '.esc_attr($args['border-style']).' '.esc_attr($args['border-color']).';' : '';
 
 		?>
-        <tr><td colspan="<?php echo $args['colspan']; ?>" style="<?php echo $style; ?>"><?php echo $args['content']; ?></td></tr>
+        <tr><td colspan="<?php echo esc_attr($args['colspan']); ?>" style="<?php echo esc_attr($style); ?>"><?php echo esc_attr($args['content']); ?></td></tr>
         <?php
 	}
 
 	public function render_form_field_blank($colspan = 3){
 		?>
-        <td colspan="<?php echo $colspan; ?>">&nbsp;</td>
+        <td colspan="<?php echo esc_attr($colspan); ?>">&nbsp;</td>
         <?php
 	}
 
 	public function render_form_section_separator($props, $atts=array()){
 		?>
-		<tr valign="top"><td colspan="<?php echo $props['colspan']; ?>" style="height:10px;"></td></tr>
-		<tr valign="top"><td colspan="<?php echo $props['colspan']; ?>" class="thpladmin-form-section-title" ><?php echo $props['title']; ?></td></tr>
-		<tr valign="top"><td colspan="<?php echo $props['colspan']; ?>" style="height:0px;"></td></tr>
+		<tr valign="top"><td colspan="<?php echo esc_attr($props['colspan']); ?>" style="height:10px;"></td></tr>
+		<tr valign="top"><td colspan="<?php echo esc_attr($props['colspan']); ?>" class="thpladmin-form-section-title" ><?php echo esc_html($props['title']); ?></td></tr>
+		<tr valign="top"><td colspan="<?php echo esc_attr($props['colspan']); ?>" style="height:0px;"></td></tr>
 		<?php
 	}
 
@@ -372,8 +389,8 @@ abstract class THWCFD_Admin_Form {
 			<button class="device-mobile btn--back Button">
 				<i class="button-icon button-icon-before i-arrow-back"></i>
 			</button>
-			<span class="device-mobile main-title-icon text-primary"><i class="i-check drishy"></i><?php echo $title; ?></span>
-			<span class="device-desktop"><?php echo $title; ?></span>
+			<span class="device-mobile main-title-icon text-primary"><i class="i-check drishy"></i><?php echo esc_html($title); ?></span>
+			<span class="device-desktop"><?php echo esc_html($title); ?></span>
 		</main-title>
 		<?php
 	}
@@ -397,8 +414,12 @@ abstract class THWCFD_Admin_Form {
 		<?php
 	}
 
-	public function render_form_elm_row_cb($field, $args=array()){
+	public function render_form_elm_row_cb($field, $args=array(), $section = ''){
 		$row_class = $this->prepare_settings_row_class( $field );
+		if($section === 'address'){
+			$row_class .= ' cb_disable';
+			$field['checked'] = 1;
+		}
 		?>
 		<tr class="<?php echo esc_attr( $row_class ); ?>">
 			<td colspan="2"></td>

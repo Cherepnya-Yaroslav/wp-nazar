@@ -2,6 +2,7 @@
 
 require_once WPCF7_PLUGIN_DIR . '/includes/l10n.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/capabilities.php';
+require_once WPCF7_PLUGIN_DIR . '/includes/filesystem.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/functions.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/formatting.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/pipe.php';
@@ -14,6 +15,7 @@ require_once WPCF7_PLUGIN_DIR . '/includes/contact-form-functions.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/contact-form-template.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/contact-form.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/mail.php';
+require_once WPCF7_PLUGIN_DIR . '/includes/mail-tag.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/special-mail-tags.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/file.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/validation-functions.php';
@@ -63,6 +65,7 @@ class WPCF7 {
 		self::load_module( 'submit' );
 		self::load_module( 'text' );
 		self::load_module( 'textarea' );
+		self::load_module( 'turnstile' );
 	}
 
 
@@ -110,10 +113,14 @@ class WPCF7 {
 	 * @param mixed $value Option value.
 	 */
 	public static function update_option( $name, $value ) {
-		$option = get_option( 'wpcf7' );
-		$option = ( false === $option ) ? array() : (array) $option;
-		$option = array_merge( $option, array( $name => $value ) );
-		update_option( 'wpcf7', $option );
+		$old_option = get_option( 'wpcf7' );
+		$old_option = ( false === $old_option ) ? array() : (array) $old_option;
+
+		update_option( 'wpcf7',
+			array_merge( $old_option, array( $name => $value ) )
+		);
+
+		do_action( 'wpcf7_update_option', $name, $value, $old_option );
 	}
 }
 
@@ -153,7 +160,7 @@ function wpcf7_upgrade() {
 	$old_ver = WPCF7::get_option( 'version', '0' );
 	$new_ver = WPCF7_VERSION;
 
-	if ( $old_ver == $new_ver ) {
+	if ( $old_ver === $new_ver ) {
 		return;
 	}
 

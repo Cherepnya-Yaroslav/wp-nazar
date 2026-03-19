@@ -1,5 +1,6 @@
 <?php
-
+// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fwrite -- false positive; it's actually safe to use native PHP's fwrite()
+// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- using the native PHP fclose() function instead of the WP Filesystem API.
 if (!defined('ABSPATH')) die('No direct access allowed');
 
 if (class_exists('ZipArchive')) :
@@ -459,7 +460,7 @@ class UpdraftPlus_BinZip extends UpdraftPlus_PclZip {
 		// Loop over each destination directory name
 		foreach ($this->addfiles as $rdirname => $files) {
 
-			$process = function_exists('proc_open') ? proc_open($exec, $descriptorspec, $pipes, $rdirname) : false;
+			$process = function_exists('proc_open') ? proc_open($exec, $descriptorspec, $pipes, $rdirname) : false;// phpcs:ignore Generic.PHP.ForbiddenFunctions.Found -- This function is intentionally used and reviewed for safety.
 
 			if (!is_resource($process)) {
 				$updraftplus->log('BinZip error: proc_open failed');
@@ -485,7 +486,7 @@ class UpdraftPlus_BinZip extends UpdraftPlus_PclZip {
 				$write = array($pipes[0]);
 			}
 
-			while ((!feof($pipes[1]) || !feof($pipes[2]) || (is_array($files) && count($files)>0)) && false !== ($changes = @stream_select($read, $write, $except, 0, 200000))) {// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged, VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+			while ((!feof($pipes[1]) || !feof($pipes[2]) || (is_array($files) && count($files)>0)) && false !== @stream_select($read, $write, $except, 0, 200000)) {// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged  -- Silenced to suppress errors that may arise because of the call being interrupted by an incoming signal
 
 				if (is_array($write) && in_array($pipes[0], $write) && is_array($files) && count($files)>0) {
 					$file = array_pop($files);

@@ -1,4 +1,5 @@
 <?php
+// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fwrite -- false positive; it's actually safe to use native PHP's fwrite()
 /*
  * Copyright 2008 Google Inc.
  *
@@ -151,7 +152,7 @@ class Google_Cache_File extends Google_Cache_Abstract
             'File cache creation failed',
             array('dir' => $storageDir)
         );
-        throw new Google_Cache_Exception("Could not create storage directory: $storageDir");
+        throw new Google_Cache_Exception("Could not create storage directory: $storageDir"); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Error message to be escaped when caught and printed.
       }
     }
     return $storageDir;

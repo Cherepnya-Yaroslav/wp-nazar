@@ -68,7 +68,7 @@ class ImportOrderDetails extends ImportOrderBase {
 
 		// End Store order data for internal use.
 
-		$order = wc_get_order( $this->getOrderID() );
+		$order = $this->getOrder();
 
 		try {
 
@@ -91,21 +91,6 @@ class ImportOrderDetails extends ImportOrderBase {
 		} catch ( \WC_Data_Exception $e ) {
 			self::getLogger() && call_user_func( self::getLogger(), '<b>ERROR:</b> ' . $e->getMessage() );
 		}
-
-        return $order->save();
 	}
 
-    /**
-     * @return mixed
-     */
-    public function getOrderData() {
-        return $this->order_data;
-    }
-
-    /**
-     * @param mixed $order_data
-     */
-    public function setOrderData($order_data) {
-        $this->order_data = $order_data;
-    }
 }

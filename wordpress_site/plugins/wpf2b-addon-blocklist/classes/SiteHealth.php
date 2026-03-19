@@ -11,7 +11,6 @@ namespace    com\wp_fail2ban\addons\Blocklist;
 use          org\lecklider\charles\wordpress\wp_fail2ban\Config;
 
 use function com\wp_fail2ban\addons\Blocklist\Freemius\wpf2b_addon_blocklist_fs;
-use function org\lecklider\charles\wordpress\wp_fail2ban\get_fail2ban_path;
 
 defined('ABSPATH') or exit;
 
@@ -73,13 +72,17 @@ class SiteHealth
      */
     public function get_test_blocklist_maxretry(): array
     {
+        $jail_d = false;
         $results = [];
 
         /**
          * WPf2b5 simplifies this
          */
-        if (function_exists(WP_FAIL2BAN_NS.'\get_fail2ban_path')) {
-            $jail_d = get_fail2ban_path('jail.d');
+        if (function_exists($get_fail2ban_path = WP_FAIL2BAN_NS.'\get_fail2ban_path')) {
+            $jail_d = $get_fail2ban_path('jail.d');
+
+        } elseif (function_exists($get_fail2ban_path = WP_FAIL2BAN_NS.'\SiteHealth::get_fail2ban_path')) {
+            $jail_d = $get_fail2ban_path('jail.d');
 
         } elseif (defined('WP_FAIL2BAN_INSTALL_PATH')) {
             $filter = trailingslashit(WP_FAIL2BAN_INSTALL_PATH).'jail.d';
@@ -118,7 +121,7 @@ class SiteHealth
 
                 $merged_ini = [];
                 foreach ($jails as $jail) {
-                    if (is_array($ini = parse_ini_file($jail, true))) {
+                    if (is_array($ini = parse_ini_file($jail, true, INI_SCANNER_RAW))) {
                         $merged_ini = array_merge($merged_ini, $ini);
                     }
                 }
@@ -134,7 +137,7 @@ class SiteHealth
                             '<p><a href="%s" target="_blank">%s</a> <span class="dashicons dashicons-external"></span></p>',
                             sprintf(
                                 'https://docs.wp-fail2ban.com/projects/wp-fail2ban-blocklist/en/%s/configuration/fail2ban.html#custom-jail',
-                                WP_FAIL2BAN_ADDON_BLOCKLIST_VER_SHORT
+                                WP_FAIL2BAN_ADDON_BLOCKLIST_VER2
                             ),
                             __('Read more about Custom Jails', 'wpf2b-addon-blocklist')
                         );
@@ -219,7 +222,7 @@ class SiteHealth
                         '<p><a href="%s" target="_blank">%s</a> <span class="dashicons dashicons-external"></span></p>',
                         sprintf(
                             'https://docs.wp-fail2ban.com/projects/wp-fail2ban-blocklist/en/%s/configuration/fail2ban.html#custom-jail',
-                            WP_FAIL2BAN_ADDON_BLOCKLIST_VER_SHORT
+                            WP_FAIL2BAN_ADDON_BLOCKLIST_VER2
                         ),
                         __('Read more about Custom Jails', 'wpf2b-addon-blocklist')
                     );

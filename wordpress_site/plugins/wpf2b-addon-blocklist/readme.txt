@@ -1,11 +1,11 @@
 === WP fail2ban Blocklist ===
 Contributors: invisnet
-Author URI: https://invis.net/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=wp-fail2ban-addon-blocklist-2.2.1
-Plugin URI: https://addons.wp-fail2ban.com/blocklist/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=wp-fail2ban-addon-blocklist-2.2.1
+Author URI: https://invis.net/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=wp-fail2ban-addon-blocklist-2.2.2
+Plugin URI: https://addons.wp-fail2ban.com/blocklist/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=wp-fail2ban-addon-blocklist-2.2.2
 Tags: fail2ban, security, blocklist
 Requires at least: 4.9
-Tested up to: 6.1
-Stable tag: 2.2.1
+Tested up to: 6.8
+Stable tag: 2.2.2
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -49,7 +49,7 @@ Therefore, unlike the core *WP fail2ban* plugin, you *must* opt into Freemius fo
 1. The Blocklist Network Service (BNS) uses the WordPress REST API to communicate. If there is another security plugin installed be sure it allows access to the blocklist endpoint: `/wp-json/wp-fail2ban/v1/blocklist`
 1. **Important:** ensure you set `maxretry = 1` in your `wordpress‑hard` or `wpf2b‑blocklist‑hard` jail; the add-on will not work otherwise.
 
-Details of the configuration steps can be found [here](https://docs.wp-fail2ban.com/projects/wp-fail2ban-blocklist/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=wp-fail2ban-addon-blocklist-2.2.1).
+Details of the configuration steps can be found [here](https://docs.wp-fail2ban.com/projects/wp-fail2ban-blocklist/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=wp-fail2ban-addon-blocklist-2.2.2).
 
 == Screenshots ==
 
@@ -57,14 +57,19 @@ Details of the configuration steps can be found [here](https://docs.wp-fail2ban.
 
 == Changelog ==
 
+= 2.2.2 =
+* Fix issue with parsing jails which use journald.
+* Fix harmless warning with PHP 8.3.
+* Fix documentation links in Site Health checks.
+
 = 2.2.1 =
 * Fix issue with opting into Freemius (h/t @Nyanchovy).
 * Fix Site Health passing test reported as failing (h/t @Patmos).
 * Improve debug code.
 
 = 2.2.0 =
-* Add [`WP_FAIL2BAN_ADDON_BLOCKLIST_DEBUG`](https://docs.wp-fail2ban.com/projects/wp-fail2ban-blocklist/en/2.2/defines/constants/WP_FAIL2BAN_ADDON_BLOCKLIST_DEBUG.html?utm_source=wordpress.org&utm_medium=readme&utm_campaign=wp-fail2ban-addon-blocklist-2.2.1).
-* Add [`WP_FAIL2BAN_ADDON_BLOCKLIST_DEBUG_TRY_ALL_KEYS`](https://docs.wp-fail2ban.com/projects/wp-fail2ban-blocklist/en/2.2/defines/constants/WP_FAIL2BAN_ADDON_BLOCKLIST_DEBUG_TRY_ALL_KEYS.html?utm_source=wordpress.org&utm_medium=readme&utm_campaign=wp-fail2ban-addon-blocklist-2.2.1).
+* Add [`WP_FAIL2BAN_ADDON_BLOCKLIST_DEBUG`](https://docs.wp-fail2ban.com/projects/wp-fail2ban-blocklist/en/2.2/defines/constants/WP_FAIL2BAN_ADDON_BLOCKLIST_DEBUG.html?utm_source=wordpress.org&utm_medium=readme&utm_campaign=wp-fail2ban-addon-blocklist-2.2.2).
+* Add [`WP_FAIL2BAN_ADDON_BLOCKLIST_DEBUG_TRY_ALL_KEYS`](https://docs.wp-fail2ban.com/projects/wp-fail2ban-blocklist/en/2.2/defines/constants/WP_FAIL2BAN_ADDON_BLOCKLIST_DEBUG_TRY_ALL_KEYS.html?utm_source=wordpress.org&utm_medium=readme&utm_campaign=wp-fail2ban-addon-blocklist-2.2.2).
 * Improve i18n.
 
 = 2.1.1 =
@@ -107,6 +112,9 @@ Details of the configuration steps can be found [here](https://docs.wp-fail2ban.
 * First WordPress directory release.
 
 == Upgrade Notice ==
+
+= 2.2.2 =
+This is a bug-fix release. You do not need to update your filters from 2.0.0.
 
 = 2.2.1 =
 This is a bug-fix release. You do not need to update your filters from 2.0.0.

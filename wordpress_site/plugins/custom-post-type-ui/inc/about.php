@@ -21,10 +21,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.6.0
  */
-function cptui_about_assets() {
-	$current_screen = get_current_screen();
+function cptui_about_assets( $hook ) {
 
-	if ( ! is_object( $current_screen ) || 'toplevel_page_cptui_main_menu' !== $current_screen->base ) {
+	if ( 'toplevel_page_cptui_main_menu' !== $hook ) {
 		return;
 	}
 
@@ -87,26 +86,6 @@ function cptui_settings() {
 		do_action( 'cptui_main_page_before_changelog' );
 		?>
 
-		<h2>
-			<?php
-			printf(
-			// translators: Placeholder will hold the plugin version.
-				esc_html__( "What's new in version %s", 'custom-post-type-ui' ),
-				esc_html( CPTUI_VERSION )
-			);
-			?>
-		</h2>
-		<div class="changelog about-integrations">
-			<div class="cptui-feature feature-section col three-col">
-				<div class="col">
-					<h2><?php esc_html_e( 'Scroll to top', 'custom-post-type-ui' ); ?></h2>
-					<p><?php esc_html_e( 'Our settings pages can get pretty long. We now offer handy "scroll to top" links.', 'custom-post-type-ui' ); ?></p>
-					<h2><?php esc_html_e( 'Remembered toggle state for panels.', 'custom-post-type-ui' ); ?></h2>
-					<p><?php esc_html_e( 'When you toggle closed any of our settings panels, they now remember the state when you navigate away and return to the settings page.', 'custom-post-type-ui' ); ?></p>
-				</div>
-			</div>
-		</div>
-
 		<div class="extranotes">
 			<?php
 
@@ -144,7 +123,7 @@ function cptui_pluginize_content() {
 
 			// Escaping $the_ad breaks the html.
 			printf(
-				'<p><a href="%s">%s</a></p>',
+				'<p><a href="%s" target="_blank">%s</a></p>',
 				esc_url( $ad['url'] ),
 				$the_ad // phpcs:ignore
 			);

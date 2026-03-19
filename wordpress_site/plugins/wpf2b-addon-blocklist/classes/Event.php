@@ -10,7 +10,7 @@ namespace    com\wp_fail2ban\addons\Blocklist;
 use          org\lecklider\charles\wordpress\wp_fail2ban\IP;
 use          org\lecklider\charles\wordpress\wp_fail2ban\IpRangeList;
 
-use function org\lecklider\charles\wordpress\wp_fail2ban\remote_addr as remote_addr_legacy;
+use function org\lecklider\charles\wordpress\wp_fail2ban\remote_addr as remote_addr_legacy; // @phpstan-ignore function.notFound
 use function org\lecklider\charles\wordpress\wp_fail2ban\core\remote_addr;
 
 defined('ABSPATH') or exit;
@@ -41,18 +41,23 @@ abstract class Event
             if (function_exists(WP_FAIL2BAN_NS.'\core\remote_addr')) {
                 $ip = remote_addr();
                 if (null === ($enc = Encoder::encode46($t, $ip, $id))) {
-                    echo __LINE__."\n";
                     return false;
 
                 } else {
                     return self::write_db($enc, $ip->getVersion());
                 }
 
-            } elseif (null === ($enc = Encoder::encode4($t, remote_addr_legacy(), $id))) {
-                return false;
+            } elseif (function_exists('org\lecklider\charles\wordpress\wp_fail2ban\remote_addr')) {
+                if (null === ($enc = Encoder::encode4($t, remote_addr_legacy(), $id))) {
+                    return false;
+
+                } else {
+                    return self::write_db($enc, 4);
+                }
 
             } else {
-                return self::write_db($enc, 4);
+                // No idea...
+                return false;
             }
         } catch (\Exception $e) {
             return false;

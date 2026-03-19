@@ -1,21 +1,29 @@
 <?php declare(strict_types=1);
 /*
- * Plugin Name: WP fail2ban
- * Plugin URI: https://wp-fail2ban.com/
- * Description: Write a myriad of WordPress events to syslog for integration with fail2ban.
- * Text Domain: wp-fail2ban
- * Version: 5.2.0
- * Author: Charles Lecklider
- * Author URI: https://invis.net/
- * License: GPLv3
- * SPDX-License-Identifier: GPL-3.0
- * Requires PHP: 7.4
- * Network: true
+ * WP fail2ban
  *
-   */
+ * @author   Charles Lecklider
+ * @license  GPLv3
+ * @link     https://wp-fail2ban.com
+ * @package  wp-fail2ban
+ */
 
 /*
- *  Copyright 2012-23  Charles Lecklider  (email : wordpress@invis.net)
+ * Plugin Name:       WP fail2ban
+ * Plugin URI:        https://wp-fail2ban.com/
+ * Description:       Write a myriad of WordPress events to syslog for integration with fail2ban.
+ * Version:           5.4.1
+ * Author:            Charles Lecklider
+ * Author URI:        https://invis.net/
+ * License:           GPLv3
+ * Text Domain:       wp-fail2ban
+ * Network:           true
+ * Requires PHP:      7.4
+ *
+ */
+
+/*
+ *  Copyright 2012-25  Charles Lecklider  (email : wordpress@invis.net)
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -40,19 +48,9 @@
  *  <https://wp-fail2ban.com/license/> for more information.
  */
 
-/**
- * WP fail2ban
- *
- * @package wp-fail2ban
- */
 namespace org\lecklider\charles\wordpress\wp_fail2ban;
 
-// @codeCoverageIgnoreStart
+defined( 'ABSPATH' ) or exit;
 
-defined('ABSPATH') or exit;
-
-require_once __DIR__.'/constants.php';
-require_once __DIR__.'/freemius.php';
-
-// @codeCoverageIgnoreEnd
-
+require_once __DIR__ . '/constants.php';
+require_once __DIR__ . '/freemius.php';

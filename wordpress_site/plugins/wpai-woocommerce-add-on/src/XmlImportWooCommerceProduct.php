@@ -4,7 +4,7 @@ namespace wpai_woocommerce_add_on;
 
 use wpai_woocommerce_add_on\helpers\ImporterOptions;
 use wpai_woocommerce_add_on\importer\ImporterIndex;
-use wpai_woocommerce_add_on\importer\ImportProductBase;
+use wpai_woocommerce_add_on\importer\products\ImportProductBase;
 use wpai_woocommerce_add_on\actions\ProductsActions;
 use wpai_woocommerce_add_on\importer\ProductsImporter;
 use wpai_woocommerce_add_on\parser\ParserFactory;

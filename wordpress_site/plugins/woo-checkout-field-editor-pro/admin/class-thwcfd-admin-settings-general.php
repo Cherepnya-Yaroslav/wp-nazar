@@ -25,10 +25,12 @@ class THWCFD_Admin_Settings_General extends THWCFD_Admin_Settings{
 	public function __construct() {
 		parent::__construct();
 		$this->page_id    = 'fields';
+		$this->c_type     = 'classic';
 		$this->section_id = 'billing';
 
 		$this->tabs = array(
 			'fields' => __('Checkout Fields', 'woo-checkout-field-editor-pro'),
+			//'block_fields' => __('Block Checkout Fields', 'woo-checkout-field-editor-pro'),
 			'advanced_settings' => __('Advanced Settings', 'woo-checkout-field-editor-pro'),
 			'pro' => __('Premium Features', 'woo-checkout-field-editor-pro'),
 			'themehigh_plugins' => __('Other Free Plugins', 'woo-checkout-field-editor-pro'),
@@ -62,7 +64,7 @@ class THWCFD_Admin_Settings_General extends THWCFD_Admin_Settings{
 	}
 
 	public function reset_to_default() {
-		$nonse = isset($_REQUEST['thwcfd_security_manage_fields']) ? $_REQUEST['thwcfd_security_manage_fields'] : false;
+		$nonse = isset($_REQUEST['thwcfd_security_manage_fields']) ? sanitize_text_field(wp_unslash($_REQUEST['thwcfd_security_manage_fields'])) : false;
 		$capability = THWCFD_Utils::wcfd_capability();
 		if(!wp_verify_nonce($nonse, 'thwcfd_section_fields') || !current_user_can($capability)){
 			die();
@@ -72,11 +74,12 @@ class THWCFD_Admin_Settings_General extends THWCFD_Admin_Settings{
 		delete_option('wc_fields_shipping');
 		delete_option('wc_fields_additional');
 
-		return $this->print_notices(__('Checkout fields successfully reset', 'woo-checkout-field-editor-pro'), 'updated', true);
+		$this->print_notices(__('Checkout fields successfully reset', 'woo-checkout-field-editor-pro'), 'updated');
 	}
 
 	public function render_page(){
 		$this->output_tabs();
+		$this->render_checkout_types();
 		$this->output_sections();
 		$this->output_content();
 	}
@@ -85,48 +88,48 @@ class THWCFD_Admin_Settings_General extends THWCFD_Admin_Settings{
 		?>
 		<th class="sort"></th>
 		<th class="check-column"><input type="checkbox" style="margin:0px 4px -1px -1px;" onclick="thwcfdSelectAllCheckoutFields(this)"/></th>
-		<th class="name"><?php _e('Name', 'woo-checkout-field-editor-pro'); ?></th>
-		<th class="id"><?php _e('Type', 'woo-checkout-field-editor-pro'); ?></th>
-		<th><?php _e('Label', 'woo-checkout-field-editor-pro'); ?></th>
-		<th><?php _e('Placeholder', 'woo-checkout-field-editor-pro'); ?></th>
-		<th><?php _e('Validations', 'woo-checkout-field-editor-pro'); ?></th>
-        <th class="status"><?php _e('Required', 'woo-checkout-field-editor-pro'); ?></th>
-		<th class="status"><?php _e('Enabled', 'woo-checkout-field-editor-pro'); ?></th>	
-        <th class="action"><?php _e('Edit', 'woo-checkout-field-editor-pro'); ?></th>	
+		<th class="name"><?php esc_html_e('Name', 'woo-checkout-field-editor-pro'); ?></th>
+		<th class="id"><?php esc_html_e('Type', 'woo-checkout-field-editor-pro'); ?></th>
+		<th><?php esc_html_e('Label', 'woo-checkout-field-editor-pro'); ?></th>
+		<th><?php esc_html_e('Placeholder', 'woo-checkout-field-editor-pro'); ?></th>
+		<th><?php esc_html_e('Validations', 'woo-checkout-field-editor-pro'); ?></th>
+        <th class="status"><?php esc_html_e('Required', 'woo-checkout-field-editor-pro'); ?></th>
+		<th class="status"><?php esc_html_e('Enabled', 'woo-checkout-field-editor-pro'); ?></th>	
+        <th class="action"><?php esc_html_e('Edit', 'woo-checkout-field-editor-pro'); ?></th>	
         <?php
 	}
 	
 	public function render_actions_row($section){
 		?>
         <th colspan="6">
-            <button type="button" class="button button-primary" onclick="thwcfdOpenNewFieldForm('<?php echo $section; ?>')">+ <?php _e( 'Add field', 'woo-checkout-field-editor-pro' ); ?></button>
-            <button type="button" class="button" onclick="thwcfdRemoveSelectedFields()"><?php _e('Remove', 'woo-checkout-field-editor-pro'); ?></button>
-            <button type="button" class="button" onclick="thwcfdEnableSelectedFields()"><?php _e('Enable', 'woo-checkout-field-editor-pro'); ?></button>
-            <button type="button" class="button" onclick="thwcfdDisableSelectedFields()"><?php _e('Disable', 'woo-checkout-field-editor-pro'); ?></button>
+            <button type="button" class="button button-primary" onclick="thwcfdOpenNewFieldForm('<?php echo esc_js($section); ?>')">+ <?php esc_html_e( 'Add field', 'woo-checkout-field-editor-pro' ); ?></button>
+            <button type="button" class="button" onclick="thwcfdRemoveSelectedFields()"><?php esc_html_e('Remove', 'woo-checkout-field-editor-pro'); ?></button>
+            <button type="button" class="button" onclick="thwcfdEnableSelectedFields()"><?php esc_html_e('Enable', 'woo-checkout-field-editor-pro'); ?></button>
+            <button type="button" class="button" onclick="thwcfdDisableSelectedFields()"><?php esc_html_e('Disable', 'woo-checkout-field-editor-pro'); ?></button>
         </th>
         <th colspan="4">
-        	<input type="submit" name="save_fields" class="button-primary" value="<?php _e( 'Save changes', 'woo-checkout-field-editor-pro' ) ?>" style="float:right" />
-            <input type="submit" name="reset_fields" class="button" value="<?php _e( 'Reset to default fields', 'woo-checkout-field-editor-pro' ) ?>" style="float:right; margin-right: 5px;" 
-			onclick="return confirm('<?php _e('Are you sure you want to reset to default fields? all your changes will be deleted.', 'woo-checkout-field-editor-pro' ); ?>')"/>
+        	<input type="submit" name="save_fields" class="button-primary" value="<?php esc_attr_e( 'Save changes', 'woo-checkout-field-editor-pro' ) ?>" style="float:right" />
+            <input type="submit" name="reset_fields" class="button" value="<?php esc_attr_e( 'Reset to default fields', 'woo-checkout-field-editor-pro' ) ?>" style="float:right; margin-right: 5px;" 
+			onclick="return confirm('<?php esc_html_e('Are you sure you want to reset to default fields? all your changes will be deleted.', 'woo-checkout-field-editor-pro' ); ?>')"/>
         </th>  
     	<?php 
 	}
 
 	public function output_content() {
 		$section = $this->get_current_section();
-		$action = isset($_POST['f_action']) ? $_POST['f_action'] : false;
+		$action = isset($_POST['f_action']) ? sanitize_text_field(wp_unslash($_POST['f_action'])) : false;
 
 		if($action === 'new')
-			echo $this->save_or_update_field($section, $action);	
+			echo esc_html($this->save_or_update_field($section, $action));	
 			
 		if($action === 'edit')
-			echo $this->save_or_update_field($section, $action);
+			echo esc_html($this->save_or_update_field($section, $action));
 		
 		if(isset($_POST['save_fields']))
-			echo $this->save_fields($section);
+			echo esc_html($this->save_fields($section));
 
 		if(isset($_POST['reset_fields']))
-			echo $this->reset_to_default();
+			$this->reset_to_default();
 
 		$fields = THWCFD_Utils::get_fields($section);	
 	
@@ -149,6 +152,8 @@ class THWCFD_Admin_Settings_General extends THWCFD_Admin_Settings{
 						$type = isset($field['type']) ? $field['type'] : '';
 						$label = isset($field['label']) ? $field['label'] : '';
 						$placeholder = isset($field['placeholder']) ? $field['placeholder'] : '';
+						$label = THWCFD_Utils::translate_dynamic_text($label, 'label');
+						$placeholder = THWCFD_Utils::translate_dynamic_text($placeholder, 'placeholder');
 						$validate = isset($field['validate']) ? $field['validate'] : '';
 						$required = isset($field['required']) && $field['required'] ? 1 : 0;
 						$enabled = isset($field['enabled']) && $field['enabled'] ? 1 : 0;
@@ -168,27 +173,32 @@ class THWCFD_Admin_Settings_General extends THWCFD_Admin_Settings{
 							$options_json = THWCFD_Utils::prepare_options_json($options);
 						}
 					?>
-						<tr class="row_<?php echo $i; echo $enabled ? '' : ' thpladmin-disabled' ?>">
+						<tr class="row_<?php echo esc_attr($i); echo ($enabled ? '' : ' thpladmin-disabled') ?>">
 	                    	<td width="1%" class="sort ui-sortable-handle">
-	                    		<input type="hidden" name="f_name[<?php echo $i; ?>]" class="f_name" value="<?php echo esc_attr($name); ?>" />
-	                    		<input type="hidden" name="f_name_new[<?php echo $i; ?>]" class="f_name_new" value="" />
-								<input type="hidden" name="f_order[<?php echo $i; ?>]" class="f_order" value="<?php echo $i; ?>" />
-								<input type="hidden" name="f_deleted[<?php echo $i; ?>]" class="f_deleted" value="0" />
-								<input type="hidden" name="f_enabled[<?php echo $i; ?>]" class="f_enabled" value="<?php echo $enabled; ?>" />
-								<input type="hidden" name="f_props[<?php echo $i; ?>]" class="f_props" value='<?php echo $props_json; ?>' />
-								<input type="hidden" name="f_options[<?php echo $i; ?>]" class="f_options" value='<?php echo $options_json; ?>' />
+	                    		<input type="hidden" name="f_name[<?php echo esc_attr($i); ?>]" class="f_name" value="<?php echo esc_attr($name); ?>" />
+	                    		<input type="hidden" name="f_name_new[<?php echo esc_attr($i); ?>]" class="f_name_new" value="" />
+								<input type="hidden" name="f_order[<?php echo esc_attr($i); ?>]" class="f_order" value="<?php echo esc_attr($i); ?>" />
+								<input type="hidden" name="f_deleted[<?php echo esc_attr($i); ?>]" class="f_deleted" value="0" />
+								<input type="hidden" name="f_enabled[<?php echo esc_attr($i); ?>]" class="f_enabled" value="<?php echo esc_attr($enabled); ?>" />
+								<input type="hidden" name="f_props[<?php echo esc_attr($i); ?>]" class="f_props" value='<?php echo esc_attr($props_json); ?>' />
+								<input type="hidden" name="f_options[<?php echo esc_attr($i); ?>]" class="f_options" value='<?php echo esc_attr($options_json); ?>' />
 	                        </td>
 	                        <td class="td_select"><input type="checkbox" name="select_field"/></td>
-	                        <td class="td_name"><?php echo esc_attr( $name ); ?></td>
-	                        <td class="td_type"><?php echo esc_attr($type); ?></td>
-	                        <td class="td_label"><?php echo esc_html_e($label, 'woo-checkout-field-editor-pro'); ?></td>
-	                        <td class="td_placeholder"><?php echo esc_html_e($placeholder, 'woo-checkout-field-editor-pro'); ?></td>
+	                        <td class="td_name"><?php echo esc_html( $name ); ?></td>
+	                        <td class="td_type"><?php echo esc_html($type); ?></td>
+							<?php /*
+							// The following lines were removed because they violate WordPress i18n rules.
+							<td class="td_placeholder"><?php echo esc_html_e($placeholder, 'woo-checkout-field-editor-pro'); ?></td> 
+	                        <td class="td_placeholder"><?php echo esc_html_e($placeholder, 'woo-checkout-field-editor-pro'); ?></td> 
+							*/ ?>
+							<td class="td_label"><?php echo esc_html($label); ?></td>
+							<td class="td_placeholder"><?php echo esc_html($placeholder); ?></td>
 	                        <td class="td_validate"><?php echo esc_html($validate); ?></td>
-	                        <td class="td_required status"><?php echo $required_status; ?></td>
-	                        <td class="td_enabled status"><?php echo $enabled_status; ?></td>
+	                        <td class="td_required status"><?php echo wp_kses($required_status, array('span' => array('class' => true))); ?></td>
+	                        <td class="td_enabled status"><?php echo wp_kses($enabled_status, array('span' => array('class' => true))); ?></td>
 	                        <td class="td_edit action">
 	                        	<button type="button" class="button action-btn f_edit_btn" <?php echo($enabled ? '' : 'disabled') ?> 
-	                            onclick="thwcfdOpenEditFieldForm(this, <?php echo $i; ?>)"><?php _e('Edit', 'woo-checkout-field-editor-pro'); ?></button>
+	                            onclick="thwcfdOpenEditFieldForm(this, <?php echo esc_js($i); ?>)"><?php esc_html_e('Edit', 'woo-checkout-field-editor-pro'); ?></button>
 	                        </td>
 	                	</tr>
 	                <?php 
@@ -221,7 +231,7 @@ class THWCFD_Admin_Settings_General extends THWCFD_Admin_Settings{
 	}
 
 	private function save_or_update_field($section, $action) {
-		$nonse = isset($_REQUEST['thwcfd_security_manage_field']) ? $_REQUEST['thwcfd_security_manage_field'] : false;
+		$nonse = isset($_REQUEST['thwcfd_security_manage_field']) ? sanitize_text_field(wp_unslash($_REQUEST['thwcfd_security_manage_field'])) : false;
 		$capability = THWCFD_Utils::wcfd_capability();
 		if(!wp_verify_nonce($nonse, 'thwcfd_field_form') || !current_user_can($capability)){
 			die();
@@ -250,7 +260,8 @@ class THWCFD_Admin_Settings_General extends THWCFD_Admin_Settings{
 			}
 			
 			$result = THWCFD_Utils::update_fields($section, $fields);
-			
+			THWCFD_Utils::setup_advanced_settings();
+
 			if($result == true) {
 				$this->print_notices(__('Your changes were saved.', 'woo-checkout-field-editor-pro' ), 'updated');
 			}else {
@@ -262,7 +273,7 @@ class THWCFD_Admin_Settings_General extends THWCFD_Admin_Settings{
 	}
 	
 	private function save_fields($section) {
-		$nonse = isset($_REQUEST['thwcfd_security_manage_fields']) ? $_REQUEST['thwcfd_security_manage_fields'] : false;
+		$nonse = isset($_REQUEST['thwcfd_security_manage_fields']) ? sanitize_text_field(wp_unslash($_REQUEST['thwcfd_security_manage_fields'])) : false;
 		$capability = THWCFD_Utils::wcfd_capability();
 		if(!wp_verify_nonce($nonse, 'thwcfd_section_fields') || !current_user_can($capability)){
 			die();
@@ -311,6 +322,8 @@ class THWCFD_Admin_Settings_General extends THWCFD_Admin_Settings{
 			$fields = THWCFD_Utils::sort_fields($fields);
 			$result = THWCFD_Utils::update_fields($section, $fields);
 
+			THWCFD_Utils::setup_advanced_settings();
+			
 			if($result == true) {
 				$this->print_notices(__('Your changes were saved.', 'woo-checkout-field-editor-pro'), 'updated');
 			}else {
@@ -454,28 +467,33 @@ class THWCFD_Admin_Settings_General extends THWCFD_Admin_Settings{
 
 					if(!empty($value)){
 						$value = THWCFD_Utils::get_option_text($field, $value);
-						$label = isset($field['label']) && $field['label'] ? esc_html($field['label'], 'woo-checkout-field-editor-pro') : $name;
-						$html .= '<p><strong>'. $label .':</strong><br/> '. wptexturize($value) .'</p>';
+						$label = isset($field['label']) && $field['label'] ? esc_html(THWCFD_Utils::translate_dynamic_text($field['label'], 'label')) : $name;
+						$html .= '<p><strong>'. esc_html($label) .':</strong><br/> '. wp_kses_post(wptexturize($value)) .'</p>';
 					}
 				}
 			}
-
 			if($html){
-				echo '<div style="clear:both; padding:5px 0 0;">'.$prefix_html.$html.'</div>';
+				echo '<div style="clear:both; padding:5px 0 0;">'.wp_kses_post($prefix_html.$html).'</div>';
 			}
 		}
 	}
 
 	/******* TABS & SECTIONS *******/
 	/*******************************/
+	
 	public function get_current_tab(){
 		return isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'fields';
+	}
+
+	public function get_current_c_type(){
+		return isset( $_GET['c_type'] ) ? sanitize_key( $_GET['c_type'] ) : 'classic';
 	}
 	
 	public function get_current_section(){
 		$tab = $this->get_current_tab();
+		$c_type = $this->get_current_c_type();
 		$section = '';
-		if($tab === 'fields'){
+		if($tab === 'fields' && $c_type === 'classic'){
 			$section = isset( $_GET['section'] ) ? sanitize_key( $_GET['section'] ) : 'billing';
 		}
 		return $section;
@@ -492,17 +510,42 @@ class THWCFD_Admin_Settings_General extends THWCFD_Admin_Settings{
 		foreach( $this->tabs as $id => $label ){
 			$active = ( $current_tab == $id ) ? 'nav-tab-active' : '';
 			//$label  = __($label, 'woo-checkout-field-editor-pro');
-			echo '<a class="nav-tab '.$active.'" href="'. esc_url($this->get_admin_url($id)) .'">'.$label.'</a>';
+			echo '<a class="nav-tab '.esc_attr($active).'" href="'. esc_url($this->get_admin_url($id)) .'">'. esc_html($label).'</a>';
 		}
 		echo '</h2>';	
 	}
+
+	public function render_checkout_types(){
+		$selected_checkout = $this->get_current_c_type();
+		$c_url = $this->get_admin_url($this->page_id, 'classic');
+		$b_url = $this->get_admin_url($this->page_id, 'block');
+		$tt_content = esc_html("You're on the Classic Checkout Field Editor right now. If your store is not using Classic Checkout, fields you add here won’t appear on the checkout page. Unsure which checkout type your store is using?", 'woo-checkout-field-editor-pro');
+		if ( !empty( $_GET['c_type'] ) && 'block' == sanitize_key($_GET['c_type'] )) {
+			$tt_content = esc_html("You're on the Block Checkout Field Editor right now. If your store is not using Block Checkout, fields you add here won’t appear on the checkout page. Unsure which checkout type your store is using?", 'woo-checkout-field-editor-pro');
+		}
+		?>
+		<div class="th-ct-wrap">
+			<div class="th-ct-tabs">
+				<a href="<?php echo esc_url($c_url); ?>" class="ct-tab <?php echo $selected_checkout === 'classic' ? 'active' : ''; ?>">Classic Checkout</a>
+				<a href="<?php echo esc_url($b_url); ?>" class="ct-tab <?php echo $selected_checkout === 'block' ? 'active' : ''; ?>">Block Checkout</a>
+			</div>
+			<div class="ct-info" id="th_info_container">
+				<img src="<?php echo esc_url(THWCFD_ASSETS_URL_ADMIN . 'images/info.svg'); ?>" alt="Block Checkout">
+				<div class="ct-info-box" id="infoBox" style="display: none;">
+					<p> <?php echo esc_html($tt_content); ?> <a href="https://www.themehigh.com/docs/classic-vs-block-checkout/" target="_blank" rel="noopener noreferrer">Click here to find out!</a>.</p>
+				</div>
+			</div>
+		</div>
+		
+		<?php
+	}
 	
 	public function output_sections() {
-		$result = false;
+		
+		//$result = false;
 
 		$current_tab = $this->get_current_tab();
 		$current_section = $this->get_current_section();
-
 		if(empty($this->sections)){
 			return;
 		}
@@ -512,20 +555,23 @@ class THWCFD_Admin_Settings_General extends THWCFD_Admin_Settings{
 		echo '<ul class="thpladmin-sections">';
 		foreach( $this->sections as $id => $label ){
 			// $label = __($label, 'woo-checkout-field-editor-pro');
-			$url = $this->get_admin_url($current_tab, sanitize_title($id));	
-			echo '<li><a href="'.esc_url($url) .'" class="'. ( $current_section == $id ? 'current' : '' ) .'">'. $label .'</a> '. (end( $array_keys ) == $id ? '' : '|') .' </li>';
+			$url = $this->get_admin_url($current_tab, $this->c_type, sanitize_title($id));	
+			echo '<li><a href="'.esc_url($url) .'" class="'. ( $current_section == $id ? 'current' : '' ) .'">'. esc_html($label) .'</a> '. (end( $array_keys ) == $id ? '' : '|') .' </li>';
 		}		
 		echo '</ul>';
 
-		if($result){
-			echo $result;
-		}
+		// if($result){
+		// 	echo $result;
+		// }
 	}	
 	
-	public function get_admin_url($tab = false, $section = false){
+	public function get_admin_url($tab = false, $c_type = false, $section = false){
 		$url = 'admin.php?page=checkout_form_designer';
 		if($tab && !empty($tab)){
 			$url .= '&tab='. $tab;
+		}
+		if($c_type && !empty($c_type)){
+			$url .= '&c_type='. $c_type;
 		}
 		if($section && !empty($section)){
 			$url .= '&section='. $section;

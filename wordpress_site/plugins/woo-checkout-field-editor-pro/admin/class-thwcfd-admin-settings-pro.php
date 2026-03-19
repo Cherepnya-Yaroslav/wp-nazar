@@ -45,9 +45,9 @@ class THWCFD_Admin_Settings_Pro extends THWCFD_Admin_Settings{
 		$render_time = $thwcfd_since + $render_time;
 
 		if($now > $render_time){
-			$url = "https://www.themehigh.com/?edd_action=add_to_cart&download_id=12&cp=lyCDSy&utm_source=free&utm_medium=premium_tab&utm_campaign=wcfe_upgrade_link";
+			$url = "https://www.themehigh.com/?edd_action=add_to_cart&download_id=12&cp=lyCDSy&utm_source=wcfe_free&utm_medium=referral&utm_campaign=wcfe_premium_tab_upgrade_link";
 		}else{
-			$url = "https://www.themehigh.com/product/woocommerce-checkout-field-editor-pro/?utm_source=free&utm_medium=premium_tab&utm_campaign=wcfe_upgrade_link";
+			$url = "https://www.themehigh.com/product/woocommerce-checkout-field-editor-pro/?utm_source=wcfe_free&utm_medium=referral&utm_campaign=wcfe_premium_tab_upgrade_link";
 		}
 
 		?>
@@ -65,7 +65,7 @@ class THWCFD_Admin_Settings_Pro extends THWCFD_Admin_Settings{
 				</div>
 				<div class="th-ad-terms">
 					<div class="th-ad-guarantee">
-						<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/guarantee.svg'); ?>">
+						<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/guarantee.svg'); ?>">
 					</div>
 					<p class="th-ad-term-head"> 30 DAYS RISK-FREE MONEY BACK GUARANTEE
 					<span class="th-ad-term-desc">100% refund if you are not satisfied</span></p>
@@ -75,7 +75,7 @@ class THWCFD_Admin_Settings_Pro extends THWCFD_Admin_Settings{
 				<div class="th-try-demo">
 					<h3 class="trydemo-heading">The Golden Perks that Come with the Checkout Field Editor Pro</h3>
 					<p class="try-demo-desc">The numerous advanced features that accompany the Checkout Field Editor Pro for WooCommerce plugin lets you create an organized and flawless checkout page. Why wait? Go pro and advance your checkout page to the next level now.</p>
-					<div class="th-pro-btn"><a class="btn-get-pro" onclick="this.classList.add('clicked')" href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener noreferrer" >Get Pro</a><a class="btn-try-demo" href="https://flydemos.com/wcfe/?utm_source=free&utm_medium=banner&utm_campaign=trydemo"
+					<div class="th-pro-btn"><a class="btn-get-pro" onclick="this.classList.add('clicked')" href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener noreferrer" >Get Pro</a><a class="btn-try-demo" href="https://flydemos.com/wcfe/?utm_source=wcfe_free&utm_medium=referral&utm_campaign=premium_tab_try_demo"
 						target="_blank" rel="noopener noreferrer" onclick="this.classList.add('clicked')" >Try Demo</a></div>
 					<!-- <img class="vedio" src="" alt="no img">  ADD vedio tutorial-->
 				</div>
@@ -111,7 +111,7 @@ class THWCFD_Admin_Settings_Pro extends THWCFD_Admin_Settings{
 					</div>
 					<div class="th-get-pro">
 						<div class="th-get-pro-img">
-							<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/rocket.png'); ?>">
+							<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/rocket.png'); ?>">
 						</div>
 						<div class='th-wrapper-get-pro'>
 							<div class="th-get-pro-desc">
@@ -129,12 +129,12 @@ class THWCFD_Admin_Settings_Pro extends THWCFD_Admin_Settings{
 					<div class="th-user-star">
 						<p class="th-user-star-desc">2 Million+ Users & 1000+</p>
 						<div class="th-user-star-img">
-							<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/star.svg'); ?>">
+							<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/star.svg'); ?>">
 						</div>
 					</div>
 					<div class="th-pro-support">
 						<div class="th-pro-support-img">
-							<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/support.svg'); ?>">
+							<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/support.svg'); ?>">
 						</div>
 						<p class="th-pro-support-desc">Enjoy the <em>Premium Support</em> experience with our dedicated support team.</p>
 					</div>
@@ -159,22 +159,22 @@ class THWCFD_Admin_Settings_Pro extends THWCFD_Admin_Settings{
 								<li>Radio</li>
 								<li>Checkbox</li>
 								<li>Checkbox Group</li>
-								<li>Date Picker <span class="th-crown"><img src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/crown.svg'); ?>"></span></li>
+								<li>Date Picker <span class="th-crown"><img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/crown.svg'); ?>"></span></li>
 								<li>Datetime local</li>
 								<li>Date</li>
-								<li>Time Picker <span class="th-crown"><img src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/crown.svg'); ?>"></span></li>
+								<li>Time Picker <span class="th-crown"><img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/crown.svg'); ?>"></span></li>
 								<li>Time</li>
 								<li>Month</li>
 								<li>Week <span class="th-new-rec"><p>NEW</p></span></li>
-								<li>File Upload <span class="th-new-rec"><p>NEW</p></span><span class="th-crown"><img src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/crown.svg'); ?>"></span></li>
+								<li>File Upload <span class="th-new-rec"><p>NEW</p></span><span class="th-crown"><img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/crown.svg'); ?>"></span></li>
 								<li>Heading</li>
 								<li>Paragraph</li>
-								<li>Label <span class="th-crown"><img src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/crown.svg'); ?>"></span></li>
+								<li>Label <span class="th-crown"><img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/crown.svg'); ?>"></span></li>
 								<li>URL</li>
 							</ul>
 						</div>
 						<div class="th-fields-img">
-							<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/fields.png'); ?>">
+							<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/fields.png'); ?>">
 						</div>
 					</div>
 				</section>
@@ -182,7 +182,7 @@ class THWCFD_Admin_Settings_Pro extends THWCFD_Admin_Settings{
 					<div class="th-section-function">	
 						<section class="th-display-rule-section">
 							<div class="th-cfe-pro">
-								<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/pro.svg'); ?>">
+								<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/pro.svg'); ?>">
 							</div>
 							<div class="th-display-rule-section-head">Display Sections Conditionally</div>
 							<p class="th-display-rule-section-desc">Display the custom sections on your checkout page based on the condition you set. Following are the positions where these checkout sections can be displayed:</p>
@@ -204,14 +204,14 @@ class THWCFD_Admin_Settings_Pro extends THWCFD_Admin_Settings{
 								<li>Inside a custom step created using WooCommerce Multistep Checkout</li>
 							</ul>
 							<div class="display-section-img">
-								<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/display-section.png'); ?>">
+								<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/display-section.png'); ?>">
 							</div>
 						</section>
 					</div>
 					<div class="th-fields-function">
 						<section class="th-display-rule-fields">
 							<div class="th-cfe-pro">
-								<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/pro.svg'); ?>">
+								<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/pro.svg'); ?>">
 							</div>
 							<h3 class="th-display-rule-fields-head">Display Fields Conditionally</h3>
 							<p class="th-display-rule-fields-desc">Display the custom and default checkout fields based on the conditions you provide. Conditions on which field can be displayed are:</p>
@@ -235,7 +235,7 @@ class THWCFD_Admin_Settings_Pro extends THWCFD_Admin_Settings{
 
 						<section class="th-price-fields">
 							<div class="th-cfe-pro">
-								<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/pro.svg'); ?>">
+								<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/pro.svg'); ?>">
 							</div>
 							<h3 class="th-price-fields-head">Add price fields and choose the price type </h3>
 							<p class="th-price-fields-desc">With the premium version of the Checkout Page Editor Plugin, add an extra price value to the total price by creating a field with price into the checkout form. The available price types that can be added to WooCommerce checkout fields are:</p>
@@ -255,7 +255,7 @@ class THWCFD_Admin_Settings_Pro extends THWCFD_Admin_Settings{
 				<div class="th-review-section">
 					<div class="review-image-section">
 						<div class="review-quote-img">
-							<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/reviewquotes.png'); ?>">
+							<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/reviewquotes.png'); ?>">
 						</div>
 					</div>
 					<div id="indicator" class="th-review-navigator" style="text-align:center">
@@ -269,7 +269,7 @@ class THWCFD_Admin_Settings_Pro extends THWCFD_Admin_Settings{
 					</div>
 					<div class="th-user-review-section">
 						<div class="th-review-quote">
-						<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/quotes.svg'); ?>">
+						<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/quotes.svg'); ?>">
 						</div>
 						<div class="th-user-review">
 							<h3 class="th-review-heading">Great plugin, even better support (free & pro versions)</h3>
@@ -288,8 +288,8 @@ class THWCFD_Admin_Settings_Pro extends THWCFD_Admin_Settings{
 		                <button class="accordion" onclick="thwcfdAccordionexpand(this)">
 		                	<div class="accordion-qstn">
 		                		<p>How to upgrade to the premium version of the plugin and how can I apply the license key to activate the pro plugin?</p>
-		                		<img class="accordion-img" src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/accordion.svg'); ?>">
-		                		<img class="accordion-img-opn" src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/accordion-open.svg'); ?>">
+		                		<img class="accordion-img" src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/accordion.svg'); ?>">
+		                		<img class="accordion-img-opn" src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/accordion-open.svg'); ?>">
 		                	</div>
 		                	<div class="panel">
 		                		<p>Please follow the steps given in the below links to purchase the plugin and activate the license.</p>
@@ -307,8 +307,8 @@ class THWCFD_Admin_Settings_Pro extends THWCFD_Admin_Settings{
 		                <button class="accordion" onclick="thwcfdAccordionexpand(this)">
 		                	<div class="accordion-qstn">
 		                		<p>Do I have to keep both the free version and the pro version after buying the pro version?</p>
-		                		<img class="accordion-img" src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/accordion.svg'); ?>">
-		                		<img class="accordion-img-opn" src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/accordion-open.svg'); ?>">
+		                		<img class="accordion-img" src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/accordion.svg'); ?>">
+		                		<img class="accordion-img-opn" src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/accordion-open.svg'); ?>">
 		                	</div>
 		                	<div class="panel">
 			                	<p class="th-faq-answer">Please note that free and premium versions are different plugins entirely. So, you can deactivate and remove the free version of the plugin from your website, if you start using the premium version.</p>
@@ -318,8 +318,8 @@ class THWCFD_Admin_Settings_Pro extends THWCFD_Admin_Settings{
 		                <button class="accordion" onclick="thwcfdAccordionexpand(this)">
 		                	<div class="accordion-qstn">
 		                		<p>How to migrate our configuration from the free version to the pro version?</p>
-		                		<img class="accordion-img" src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/accordion.svg'); ?>">
-		                		<img class="accordion-img-opn" src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/accordion-open.svg'); ?>">
+		                		<img class="accordion-img" src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/accordion.svg'); ?>">
+		                		<img class="accordion-img-opn" src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/accordion-open.svg'); ?>">
 		                	</div>
 		                	<div class="panel">
 			                	<p class="th-faq-answer">At the time when you upgrade the plugin from the free to the premium version, the free plugin settings will get automatically migrated to the premium version.
@@ -330,8 +330,8 @@ class THWCFD_Admin_Settings_Pro extends THWCFD_Admin_Settings{
 		                <button class="accordion" onclick="thwcfdAccordionexpand(this)">
 		                	<div class="accordion-qstn">
 		                		<p>Will I get a refund if the pro plugin doesn't meet my requirements?</p>
-		                		<img class="accordion-img" src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/accordion.svg'); ?>">
-		                		<img class="accordion-img-opn" src="<?php echo esc_url(THWCFD_URL .'admin/assets/css/accordion-open.svg'); ?>">
+		                		<img class="accordion-img" src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/accordion.svg'); ?>">
+		                		<img class="accordion-img-opn" src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/premium/accordion-open.svg'); ?>">
 		                	</div>
 		                	
 		                	<div class="panel">

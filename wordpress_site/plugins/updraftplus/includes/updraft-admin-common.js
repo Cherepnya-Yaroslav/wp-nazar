@@ -137,6 +137,34 @@ function updraft_remote_storage_tab_activation(the_method){
 }
 
 /**
+ * Scroll to a specific remote storage configuration by adding the #remote-storage-{method_name} anchor hash to the URL.
+ */
+function updraft_scroll_to_remote_storage_config() {
+	var url_hash_match = window.location.hash.match(/#remote-storage-([A-Za-z]+)/);
+	if (url_hash_match && updraftlion.remote_storage_methods[url_hash_match[1]]) {
+		if (jQuery('.updraft_servicecheckbox').hasClass('multi')) {
+			updraft_remote_storage_tab_activation(url_hash_match[1]);
+		}
+		
+		document.getElementById('remote-storage-'+url_hash_match[1]).scrollIntoView();
+	}
+}
+
+/**
+ * Set up the remote storage configuration link to handle the click event. When it is clicked from the UDP settings page, we need to reopen the settings tab before scrolling to the remote storage configuration section.
+ */
+function updraft_setup_remote_storage_config_link() {
+	jQuery('.updraftplus-remote-storage-link').on('click', function(e) {
+		if ('settings' == updraftlion.tab) {
+			e.preventDefault();
+			updraft_open_main_tab('settings');
+			window.location.href = jQuery(this).attr('href');
+			updraft_scroll_to_remote_storage_config();
+		}
+	});
+}
+
+/**
  * Set the email report's setting to a different interface when email storage is selected
  *
  * @param {boolean} value True to set the email report setting to another interface, false otherwise
@@ -336,6 +364,7 @@ function updraft_remote_storage_test(method, result_callback, instance_id) {
 			result_callback = result_callback.call(this, response, status, data);
 		}
 		if ('undefined' !== typeof result_callback && false === result_callback) {
+			response.output = response.output.replaceAll('&quot;', '"');
 			alert(updraftlion.settings_test_result.replace('%s', method_label)+' '+response.output);
 			if (response.hasOwnProperty('data')) {
 				console.log(response.data);
@@ -446,14 +475,14 @@ function updraft_delete_old_dirs() {
 }
 
 function updraft_initiate_restore(whichset) {
-	jQuery('#updraft-navtab-backups-content .updraft_existing_backups button[data-backup_timestamp="'+whichset+'"]').trigger('click');
+	jQuery('#updraft-navtab-backups-content .updraft_existing_backups .restore-button button[data-backup_timestamp="'+whichset+'"]').trigger('click');
 }
 
 function updraft_restore_setoptions(entities) {
 	var howmany = 0;
 	jQuery('input[name="updraft_restore[]"]').each(function(x,y) {
 		var entity = jQuery(y).val();
-		var epat = entity+'=([0-9,]+)';
+		var epat = '\/'+entity+'=([0-9,]+)';
 		var eregex = new RegExp(epat);
 		var ematch = entities.match(eregex);
 		if (ematch) {
@@ -544,9 +573,14 @@ function update_file_entities_checkboxes(incremental, entities) {
 			var name = jQuery(this).attr('name');
 			if (name.substring(0, 16) != 'updraft_include_') { return; }
 			var entity = name.substring(16);
-			jQuery('#backupnow_files_updraft_include_' + entity).prop('disabled', false);
-			if (jQuery('#updraft_include_' + entity).is(':checked')) {
-				jQuery('#backupnow_files_updraft_include_' + entity).prop('checked', true);
+			if (typeof jQuery('#backupnow_files_updraft_include_' + entity).data('force_disabled') == 'undefined') {
+				jQuery('#backupnow_files_updraft_include_' + entity).prop('disabled', false);
+				if (jQuery('#updraft_include_' + entity).is(':checked')) {
+					jQuery('#backupnow_files_updraft_include_' + entity).prop('checked', true);
+				}
+			} else {
+				jQuery('#backupnow_files_updraft_include_' + entity).prop('disabled', true);
+				jQuery('#backupnow_files_updraft_include_' + entity).prop('checked', false);
 			}
 		});
 	}
@@ -579,13 +613,15 @@ function load_save_button() {
 	if (updraft_settings_form_changed && !save_button_added) {
 		save_button_added = true;
 		jQuery('#updraft-navtab-settings-content').prepend('<input style="position:fixed;top:46px; right:20px;z-index: 999999;" type="button" class="button-primary" id="updraftplus-floating-settings-save" value="'+updraftlion.save_changes+'">');
-		jQuery("#updraft-navtab-settings-content").on('click', '#updraftplus-floating-settings-save', function() {
+		
+		// The click event for the save button will be registered every time the button is created. We need to use the 'one' method instead of the 'on' method to make sure the click event is executed only once.
+		jQuery("#updraft-navtab-settings-content").one('click', '#updraftplus-floating-settings-save', function() {
 			jQuery("#updraftplus-settings-save").trigger('click');
 			jQuery("#updraftplus-floating-settings-save").remove();
 			save_button_added = false;
 		});
 		
-		jQuery("#updraftplus-settings-save").on('click', function() {
+		jQuery("#updraftplus-settings-save").one('click', function() {
 			jQuery("#updraftplus-floating-settings-save").remove();
 			save_button_added = false;
 		});
@@ -929,7 +965,7 @@ function updraft_show_success_modal(args) {
 			'border-radius': '10px',
 			left: 'calc(50% - 150px)'
 		},
-		message: '<div class="updraft_success_popup '+data.classes+'"><span class="dashicons dashicons-'+data.icon+'"></span><div class="updraft_success_popup--message">'+data.message+'</div><button class="button updraft-close-overlay"><span class="dashicons dashicons-no-alt"></span>'+data.close+'</button></div>'
+		message: '<div class="updraft_success_popup '+data.classes+'"><span class="dashicons udp-dashicons-'+data.icon+'"></span><div class="updraft_success_popup--message">'+data.message+'</div><button class="udp-button updraft-close-overlay"><span class="udp-dashicons udp-dashicons-no-alt"></span>'+data.close+'</button></div>'
 	});
 	// close success popup
 	setTimeout(jQuery.unblockUI, 5000);
@@ -1714,10 +1750,10 @@ function updraft_restorer_checkstage2(doalert) {
 			}
 			var report = resp.m;
 			if (resp.w != '') {
-				report = report + '<div class="notice notice-warning"><p><span class="dashicons dashicons-warning"></span> <strong>' + updraftlion.warnings +'</strong></p>' + resp.w + '</div>';
+				report = report + '<div class="udp-notice notice-warning"><p><span class="dashicons dashicons-warning"></span> <strong>' + updraftlion.warnings +'</strong></p>' + resp.w + '</div>';
 			}
 			if (resp.e != '') {
-				report = report + '<div class="notice notice-error"><p><span class="dashicons dashicons-dismiss"></span> <strong>' + updraftlion.errors+'</strong></p>' + resp.e + '</div>';
+				report = report + '<div class="udp-notice notice-error"><p><span class="dashicons dashicons-dismiss"></span> <strong>' + updraftlion.errors+'</strong></p>' + resp.e + '</div>';
 			} else {
 				updraft_restore_stage = 3;
 			}
@@ -1847,7 +1883,7 @@ function updraft_downloader_status_update(download_status, response_raw) {
 				} else if (dstatus.p < 100 || dstatus.base != 'uddlstatus_') {
 					jQuery(stid_selector + ' .raw').html(dstatus.m);
 				} else {
-					var file_ready_actions = updraftlion.fileready + ' ' + updraftlion.actions + ': \
+					var file_ready_actions = updraftlion.fileready + ' ' + '(size: ' + convert_numeric_size_to_text(dstatus.s) + '). ' + updraftlion.actions + ':\
 				<button class="button" type="button" onclick="updraftplus_downloadstage2(\''+ dstatus.timestamp + '\', \'' + dstatus.what + '\', \'' + dstatus.findex + '\')\">' + updraftlion.downloadtocomputer + '</button> \
 				<button class="button" id="uddownloaddelete_'+ dstatus.timestamp + '_' + dstatus.what + '" type="button" onclick="updraftplus_deletefromserver(\'' + dstatus.timestamp + '\', \'' + dstatus.what + '\', \'' + dstatus.findex + '\')\">' + updraftlion.deletefromserver + '</button>';
 
@@ -1868,6 +1904,24 @@ function updraft_downloader_status_update(download_status, response_raw) {
 	});
 
 	return cancel_repeat;
+}
+
+/**
+ * Converts a number of bytes into a suitable textual unit value
+ *
+ * @param {long} bytes
+ * @returns string
+ */
+function convert_numeric_size_to_text(bytes) {
+	if (1024 > bytes) {
+		return bytes + " b";
+	} else if (1024 * 1024 >bytes) {
+		return (bytes / 1024).toFixed(2) + " KB";
+	} else if (1024 * 1024 * 1024 > bytes ) {
+		return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+	} else {
+		return (bytes / (1024 * 1024 * 1024)).toFixed(2) + " GB";
+	}
 }
 
 /**
@@ -1993,55 +2047,52 @@ jQuery(function($) {
 	
 	// Update WebDAV URL as user edits
 	$('#updraft-navtab-settings-content #remote-storage-holder').on('change keyup paste', '.updraft_webdav_settings', function() {
-		var updraft_webdav_settings = [];
-		$('.updraft_webdav_settings').each(function(index, item) {
-			
-			var id = $(item).attr('id');
-			
-			if (id && 'updraft_webdav_' == id.substring(0, 15)) {
-				var which_one = id.substring(15);
-				id_split = which_one.split('_');
-				which_one = id_split[0];
-				var instance_id = id_split[1];
-				if ('undefined' == typeof updraft_webdav_settings[instance_id]) updraft_webdav_settings[instance_id] = [];
-				updraft_webdav_settings[instance_id][which_one] = this.value;
-			}
-		});
-
-		var updraft_webdav_url = "";
-		var host = "@";
-		var slash = "/";
-		var colon = ":";
-		var colon_port = ":";
-
-		for (var instance_id in updraft_webdav_settings) {
-			
-			if (updraft_webdav_settings[instance_id]['host'].indexOf("@") >= 0 || "" === updraft_webdav_settings[instance_id]['host']) {
-				host = "";
-			}
-			if (updraft_webdav_settings[instance_id]['host'].indexOf("/") >= 0) {
+		var attr_id = $(this).attr('id');
+		if ('string' !== typeof attr_id) return;
+		var parsed_attr_id = attr_id.match(/updraft_webdav_(.+)_(s-[^_]+)$/i);
+		if (!parsed_attr_id || !parsed_attr_id[1] || !parsed_attr_id[2]) return;
+		var instance_id = parsed_attr_id[2],
+			webdav_input = parsed_attr_id[1].toLowerCase(),
+			masked_password = '';
+		
+		if ('host' === webdav_input) {
+			$('.webdav-'+instance_id+' .updraft_webdav_host_error').hide();
+			if ($(this).val().indexOf("@") >= 0) {
+				$(this).val($(this).val().replaceAll('@', encodeURIComponent('@')));
+			} else if ($(this).val().indexOf("/") >= 0) {
+				$(this).val($(this).val().replaceAll('/', ''));
 				$('.webdav-'+instance_id+' .updraft_webdav_host_error').show();
-			} else {
-				$('.webdav-'+instance_id+' .updraft_webdav_host_error').hide();
 			}
-			
-			if (0 == updraft_webdav_settings[instance_id]['path'].indexOf("/") || "" === updraft_webdav_settings[instance_id]['path']) {
-				slash = "";
-			}
-			
-			if ("" === updraft_webdav_settings[instance_id]['user'] || "" === updraft_webdav_settings[instance_id]['pass']) {
-				colon = "";
-			}
-			
-			if ("" === updraft_webdav_settings[instance_id]['host'] || "" === updraft_webdav_settings[instance_id]['port']) {
-				colon_port = "";
-			}
-			
-			updraft_webdav_url = updraft_webdav_settings[instance_id]['webdav'] + updraft_webdav_settings[instance_id]['user'] + colon + updraft_webdav_settings[instance_id]['pass'] + host +encodeURIComponent(updraft_webdav_settings[instance_id]['host']) + colon_port + updraft_webdav_settings[instance_id]['port'] + slash + updraft_webdav_settings[instance_id]['path'];
-			masked_webdav_url = updraft_webdav_settings[instance_id]['webdav'] + updraft_webdav_settings[instance_id]['user'] + colon + updraft_webdav_settings[instance_id]['pass'].replace(/./gi,'*') + host +encodeURIComponent(updraft_webdav_settings[instance_id]['host']) + colon_port + updraft_webdav_settings[instance_id]['port'] + slash + updraft_webdav_settings[instance_id]['path'];
-			$('#updraft_webdav_url_' + instance_id).val(updraft_webdav_url);
-			$('#updraft_webdav_masked_url_' + instance_id).val(masked_webdav_url);
+		} else if ('path' === webdav_input && 0 == $(this).val().indexOf('/')) {
+			$(this).val($(this).val().replace(/^[\/]+/, ''));
 		}
+
+		var	webdav = $('#updraft_webdav_webdav_' + instance_id).val(),
+			host = $('#updraft_webdav_host_' + instance_id).val() || '',
+			user = $('#updraft_webdav_user_' + instance_id).val() || '',
+			password = $('#updraft_webdav_pass_' + instance_id).val() || '',
+			port = $('#updraft_webdav_port_' + instance_id).val() || '',
+			path = $('#updraft_webdav_path_' + instance_id).val() || '';
+
+		if (password) {
+			masked_password = password.replace(/./gi,'*');
+		}
+		if (user && password) {
+			user += ':';
+		}
+		if ((user || password) && host) {
+			masked_password += '@';
+			password += '@';
+		}
+		if (host && port) {
+			host += ':';
+		}
+		if (path) {
+			path = '/' + path;
+		}
+
+		$('#updraft_webdav_url_' + instance_id).val(webdav + user + password + host + port + path);
+		$('#updraft_webdav_masked_url_' + instance_id).val(webdav + user + masked_password + host + port + path);
 	});
 	
 	$('div.ud-phpseclib-notice').on('click', 'button.notice-dismiss', function (event) {
@@ -2960,7 +3011,9 @@ jQuery(function($) {
 			operator_options: updraftlion.conditional_logic.operator_options,
 		};
 		var html = template(context);
-		jQuery(html).hide().insertAfter(jQuery('.' + method + '_add_instance_container').first()).show('slow');
+		jQuery(html).hide().insertAfter(jQuery('.' + method + '_add_instance_container').first()).show('slow', function() {
+			initialize_remote_storage_select2_elements(this);
+		});
 	}
 
 	/**
@@ -3168,11 +3221,17 @@ jQuery(function($) {
 		}, { json_parse: false });
 	});
 	
-	jQuery("#updraft-navtab-settings-content form input:not('.udignorechange'), #updraft-navtab-settings-content form select").on('change', function(e) {
+	jQuery("#updraft-navtab-settings-content").on('input', "form input:not('.udignorechange'), form textarea:not('.udignorechange')", function(e) {
 		updraft_settings_form_changed = true;
 		load_save_button();
 	});
-	jQuery("#updraft-navtab-settings-content form input[type='submit']").on('click', function (e) {
+
+	jQuery("#updraft-navtab-settings-content").on('change', "form select", function(e) {
+		updraft_settings_form_changed = true;
+		load_save_button();
+	});
+
+	jQuery("#updraft-navtab-settings-content").on('click', "form input[type='submit']", function (e) {
 		updraft_settings_form_changed = false;
 	});
 	
@@ -3434,57 +3493,59 @@ jQuery(function($) {
 					// whichselected.push([ 'wpcore', 0 ]);
 					// }
 					$('.updraft-restore--stages li').removeClass('active').eq(1).addClass('active');
-					$('#updraft-restore-modal-stage1').slideUp('slow');
-					$('#updraft-restore-modal-stage2').show();
-					updraft_restore_stage = 2;
-					var pretty_date = $('.updraft_restore_date').first().text();
-					// Create the downloader active widgets
-	
-					// See if we some are already known to be downloaded - in which case, skip creating the download widget. (That saves on HTTP round-trips, as each widget creates a new POST request. Of course, this is at the expense of one extra one here).
-					var which_to_download = whichselected;
-					var backup_timestamp = $('#updraft_restore_timestamp').val();
-	
-					try {
-						$('.updraft-restore--next-step').prop('disabled', true);
-						$('#updraft-restore-modal-stage2a').html('<span class="dashicons dashicons-update rotate"></span> '+updraftlion.maybe_downloading_entities);
-						updraft_send_command('whichdownloadsneeded', {
-							downloads: whichselected,
-							timestamp: backup_timestamp
-						}, function(response) {
-							$('.updraft-restore--next-step').prop('disabled', false);
-							if (response.hasOwnProperty('downloads')) {
-								console.log('UpdraftPlus: items which still require downloading follow');
-								which_to_download = response.downloads;
-								console.log(which_to_download);
-							}
-	
-							// Kick off any downloads, if needed
-							if (0 == which_to_download.length) {
-								updraft_restorer_checkstage2(0);
-							} else {
-								for (var i=0; i<which_to_download.length; i++) {
-									// updraft_downloader(base, backup_timestamp, what, whicharea, set_contents, prettydate, async)
-									updraft_downloader('udrestoredlstatus_', backup_timestamp, which_to_download[i][0], '#ud_downloadstatus2', which_to_download[i][1], pretty_date, false);
-								}
-							}
-
-						}, { alert_on_error: false, error_callback: function(response, status, error_code, resp) {
-								if (typeof resp !== 'undefined' && resp.hasOwnProperty('fatal_error')) {
-								console.error(resp.fatal_error_message);
-								$('#updraft-restore-modal-stage2a').html('<p style="color:red;">'+resp.fatal_error_message+'</p>');
-								} else {
-								var error_message = "updraft_send_command: error: "+status+" ("+error_code+")";
-								$('#updraft-restore-modal-stage2a').html('<p style="color:red; margin: 5px;">'+error_message+'</p>');
-								console.log(error_message);
-								console.log(response);
-								}
+					$('#updraft-restore-modal-stage1').slideUp('slow', function() {
+						$('#updraft-restore-modal-stage2').show(100, function() {
+							updraft_restore_stage = 2;
+							var pretty_date = $('.updraft_restore_date').first().text();
+							// Create the downloader active widgets
+			
+							// See if we some are already known to be downloaded - in which case, skip creating the download widget. (That saves on HTTP round-trips, as each widget creates a new POST request. Of course, this is at the expense of one extra one here).
+							var which_to_download = whichselected;
+							var backup_timestamp = $('#updraft_restore_timestamp').val();
+			
+							try {
+								$('.updraft-restore--next-step').prop('disabled', true);
+								$('#updraft-restore-modal-stage2a').html('<span class="dashicons dashicons-update rotate"></span> '+updraftlion.maybe_downloading_entities);
+								updraft_send_command('whichdownloadsneeded', {
+									downloads: whichselected,
+									timestamp: backup_timestamp
+								}, function(response) {
+									$('.updraft-restore--next-step').prop('disabled', false);
+									if (response.hasOwnProperty('downloads')) {
+										console.log('UpdraftPlus: items which still require downloading follow');
+										which_to_download = response.downloads;
+										console.log(which_to_download);
+									}
+			
+									// Kick off any downloads, if needed
+									if (0 == which_to_download.length) {
+										updraft_restorer_checkstage2(0);
+									} else {
+										for (var i=0; i<which_to_download.length; i++) {
+											// updraft_downloader(base, backup_timestamp, what, whicharea, set_contents, prettydate, async)
+											updraft_downloader('udrestoredlstatus_', backup_timestamp, which_to_download[i][0], '#ud_downloadstatus2', which_to_download[i][1], pretty_date, true);
+										}
+									}
+		
+								}, { alert_on_error: false, error_callback: function(response, status, error_code, resp) {
+										if (typeof resp !== 'undefined' && resp.hasOwnProperty('fatal_error')) {
+										console.error(resp.fatal_error_message);
+										$('#updraft-restore-modal-stage2a').html('<p style="color:red;">'+resp.fatal_error_message+'</p>');
+										} else {
+										var error_message = "updraft_send_command: error: "+status+" ("+error_code+")";
+										$('#updraft-restore-modal-stage2a').html('<p style="color:red; margin: 5px;">'+error_message+'</p>');
+										console.log(error_message);
+										console.log(response);
+										}
+									}
+								});
+							} catch (err) {
+								console.log("UpdraftPlus: error (follows) when looking for items needing downloading");
+								console.log(err);
+								alert(updraftlion.jsonnotunderstood);
 							}
 						});
-					} catch (err) {
-						console.log("UpdraftPlus: error (follows) when looking for items needing downloading");
-						console.log(err);
-						alert(updraftlion.jsonnotunderstood);
-					}
+					});
 	
 					// Make sure all are downloaded
 				} else if (2 == updraft_restore_stage) {
@@ -3583,7 +3644,7 @@ jQuery(function($) {
 					var restore_options = $('#updraft_restoreoptions_ui select, #updraft_restoreoptions_ui input').serialize();
 
 					// jQuery serialize does not pick up unchecked checkboxes, but we want to include these so that we have a list of table/plugins/themes the user does not want to restore we prepend these with udp-skip-{entity}- and check this on the backend
-					var entities = ['table', 'plugins', 'themes'];
+					var entities = ['tables', 'plugins', 'themes'];
 
 					jQuery.each(entities, function(i, entity) {
 						jQuery.each(jQuery('input[name="updraft_restore_' + entity + '_options[]').filter(function(idx) {
@@ -3597,7 +3658,7 @@ jQuery(function($) {
 
 					if (typeof php_max_input_vars !== 'undefined') {
 						var restore_options_length = restore_options.split("&").length;
-						var warning_template_start = '<div class="notice notice-warning"><p><span class="dashicons dashicons-warning"></span> <strong>' + updraftlion.warnings +'</strong></p><ul id="updraft_restore_warnings">';
+						var warning_template_start = '<div class="udp-notice notice-warning"><p><span class="dashicons dashicons-warning"></span> <strong>' + updraftlion.warnings +'</strong></p><ul id="updraft_restore_warnings">';
 						var warning_template_end = '</ul></div>';
 
 						// If we can't detect the php_max_input_vars assume the PHP default of 1000
@@ -4342,8 +4403,8 @@ jQuery(function($) {
 	
 	function updraft_restore_setup(entities, key, show_data) {
 		updraft_restore_setoptions(entities);
-		jQuery('#updraft_restore_timestamp').val(key);
-		jQuery('.updraft_restore_date').html(show_data);
+		if (key.toString().match(/^[0-9]+$/i)) jQuery('#updraft_restore_timestamp').val(key);
+		jQuery('.updraft_restore_date').text(show_data);
 		
 		updraft_restore_stage = 1;
 		
@@ -4576,7 +4637,17 @@ jQuery(function($) {
 
 		updraft_send_command('db_size', 1, function (response) {
 			$total_size.html(response.size);
-			$table_body.html(response.html);
+			var html = '';
+			$.each(response.tables, function(i, table) {
+			html += '<tr>' +
+						'<td>' + table.name + '</td>' +
+						'<td>' + table.records + '</td>' +
+						'<td>' + convert_numeric_size_to_text(table.data_length) + '</td>' +
+						'<td>' + convert_numeric_size_to_text(table.index_length) + '</td>' +
+						'<td>' + table.type + '</td>' +
+					'</tr>';
+			});
+			$table_body.html(html);
 			apply_search_on_db_size();
 		});
 	});
@@ -4589,6 +4660,38 @@ jQuery(function($) {
 		e.preventDefault();
 		jQuery('.db-search').val('');
 		apply_search_on_db_size();
+	});
+
+	jQuery('.updraft_restore_main').on('click', 'button#updraft_restore_abort', function(e) {
+		e.preventDefault();
+		jQuery('#updraft_restore_continue_action').val('updraft_restore_abort');
+		jQuery(this).parent('form').trigger('submit');
+	});
+
+	jQuery('#cron_events.advanced_tools_button').on('click', function(e) {
+		e.preventDefault();
+
+		var $table_body = jQuery('.advanced_settings_content .advanced_tools.cron_events tbody');
+		$table_body.html('');
+
+		updraft_send_command('get_cron_events', 1, function (response) {
+			$.each(response, function(index, item) {
+				var first_column = '<td>';
+				if (item.overdue) first_column = '<td style="border-left:4px solid #DB6A03;">';
+
+				$table_body.append($('<tr>').append(
+					$(first_column).text(item.hook),
+					$('<td>').text(item.name)
+				));
+				if (item.overdue) {
+					$table_body.find('tr:last').append('<td><span></span><br><span class="dashicons dashicons-warning" aria-hidden="true" style="color:#DB6A03"></span> <span></span></td>');
+				} else {
+					$table_body.find('tr:last').append('<td><span></span><br><span></span></td>');
+				}
+				$table_body.find('tr:last td:last span').not('.dashicons').first().text(item.time);
+				$table_body.find('tr:last td:last span').last().text(item.interval);
+			});
+		});
 	});
 });
 
@@ -5120,8 +5223,11 @@ jQuery(function($) {
 		$('#remote-storage-holder').append(html).ready(function () {
 			$('.updraftplusmethod').not('.none').hide();
 			updraft_remote_storage_tabs_setup();
+			updraft_setup_remote_storage_config_link();
+			updraft_scroll_to_remote_storage_config();
 			// Displays warning to the user of their mistake if they try to enter a URL in the OneDrive settings and saved
 			$('#remote-storage-holder .updraftplus_onedrive_folder_input').trigger('keyup');
+			initialize_remote_storage_select2_elements(jQuery('#remote-storage-holder'));
 		});
 	}
 
@@ -5395,6 +5501,8 @@ jQuery(function($) {
 		$('.updraftmessage').remove();
 		
 		$('#updraft_backup_started').before(resp.messages);
+
+		updraft_setup_remote_storage_config_link();
 		
 		console.log(resp);
 		// $('#updraft-next-backup-inner').html(resp.scheduled);
@@ -5813,6 +5921,7 @@ jQuery(function($) {
 
 			updraft_html_modal(form_template.html(), updraftlion.updraftcentral_cloud, 520, 400);
 
+			var modal = jQuery('#updraft-iframe-modal');
 			var consent_container = modal.find('.updraftcentral-data-consent');
 			var name = consent_container.find('input').attr('name');
 
@@ -6110,5 +6219,177 @@ function updraft_process_status_check(resp, response_raw, original_parameters) {
 	} catch (err) {
 		console.log(updraftlion.unexpectedresponse+' '+response_raw);
 		console.log(err);
+	}
+}
+
+/**
+ * Creates an instance of the updraft_js_tree class.
+ *
+ * @constructor
+ * @param {string} remote_storage - The remote storage identifier.
+ */
+function updraft_js_tree(remote_storage) {
+
+	var self = this; // Store a reference to the object
+	self.remote_storage = remote_storage;
+
+	/**
+	 * Hides the jstree and related elements.
+	 *
+	 * @param {jQuery} parent - The parent element containing the jstree.
+	 */
+	this.hide_jstree = function(parent) {
+		parent.find('[id^="updraft_' + self.remote_storage + '_folder"]').removeAttr('readonly');
+			
+		parent.find('.updraft_' + self.remote_storage + '_select_folder').show();
+		parent.find('.updraft_' + self.remote_storage + '_container').hide();
+
+		// hide action buttons
+		parent.find('.updraft_jstree_cancel').hide();
+		parent.find('.updraft_jstree_confirm').hide();
+	};
+
+	/**
+	 * Gets the structured folder path based on the selected node in the jstree.
+	 *
+	 * @param {Object} selected_node - The selected node in the jstree.
+	 * @returns {string} The structured folder path.
+	 */
+	this.get_structured_folder = function(selected_node) {
+		var level = selected_node.node.parents.length;
+		var selected_id = selected_node.node.id;
+		var parent = jQuery("#" + selected_id);
+		var parents =  selected_node.node.text + '/';
+
+		for (var ln = 0; ln <= level -1; ln++) {
+			var parent = parent.parent().parent();
+			if (parent.children()[1] != undefined) {
+				parents = parent.children()[1].text + '/' + parents;
+			}
+		}
+		if (parents.length > 0) {
+			parents = parents.substring(0, parents.length - 1);
+		}
+
+		return parents;
+	};
+
+	/**
+	 * Lists folders from the remote storage and initializes the jstree.
+	 *
+	 * @param {string} entity - The entity type.
+	 * @param {jQuery} parent - The parent element where the jstree will be displayed.
+	 * @param {string} instance_id - The instance identifier.
+	 */
+	this.list_folders = function(entity, parent, instance_id) {
+		parent.find('[id^="updraft_' + self.remote_storage + '_folder"]').prop('readOnly', true);
+		parent.find('[id^="updraft_' + self.remote_storage + '_folder"]').attr('previous-value', parent.find('[id^="updraft_' + self.remote_storage + '_folder"]').val());
+
+		parent.find('.updraft_' + self.remote_storage + '_select_folder').hide();
+		parent.find('.updraft_' + self.remote_storage + '_container').show();
+
+		// show action buttons
+		parent.find('.updraft_jstree_cancel').show();
+		parent.find('.updraft_jstree_confirm').show();
+
+		// init jstree
+		parent.find('.updraft_' + self.remote_storage + '_jstree_container').jstree({
+			"core": {
+				"multiple": false,
+				"data": function (nodeid, callback) {
+					updraft_send_command('get_jstree_directory_nodes', {entity:entity, node:nodeid, instance_id:instance_id}, function(response) {
+						if (response.hasOwnProperty('error')) {
+							jQuery('.updraft_include_' + self.remote_storage + '_paths_error').text(response.error);
+						} else {
+							jQuery('.updraft_include_' + self.remote_storage + '_paths_error').text('');
+							callback.call(this, response.nodes);
+						}
+					});
+				}
+			},
+			'plugins' : ['sort','types'],
+			'sort' : function(a, b) {
+				a1 = this.get_node(a);
+				b1 = this.get_node(b);
+				if (a1.icon == b1.icon) {
+					return (a1.text > b1.text) ? 1 : -1;
+				} else {
+					return (a1.icon < b1.icon) ? 1 : -1;
+				}
+			},
+		});
+
+		// Detect change on the tree and update the input that has been marked as editing
+		parent.find('.updraft_' + self.remote_storage + '_jstree_container').on("changed.jstree", function (e, data) {
+			parent.find('[id^="updraft_' + self.remote_storage + '_folder"]').val(self.get_structured_folder(data));
+		});
+
+		parent.find('.updraft_' + self.remote_storage + '_jstree_confirm, .updraft_' + self.remote_storage + '_jstree_cancel').on('click', function(e) {
+			e.preventDefault();
+
+			if (jQuery(this).hasClass('updraft_' + self.remote_storage + '_jstree_cancel')) {
+				parent.find('[id^="updraft_' + self.remote_storage + '_folder"]').val(parent.find('[id^="updraft_' + self.remote_storage + '_folder"]').attr('previous-value'));
+			}
+			
+			self.hide_jstree(parent);
+		});
+	};
+
+	/**
+	 * Initializes the updraft_js_tree instance by setting up event handlers.
+	 */
+	this.init = function() {
+	  jQuery(function() {
+		jQuery('.updraft_' + self.remote_storage + '_select_folder').on('click', function(e) {
+		  e.preventDefault();
+		  var $parent = jQuery(this).closest('tr');
+		  var instance_id = $parent.find('[id^="updraft_' + self.remote_storage + '_folder_"]').attr('id').replace('updraft_' + self.remote_storage + '_folder_', '');
+		  self.list_folders(self.remote_storage, $parent, instance_id);
+		});
+	  });
+	};
+
+}
+
+/**
+ * Initializes Select2 dynamic input for all <select> elements matching the given object of remote storage.
+ *
+ * @param {string} remote_storage_elements - An object of HTML elements of the remote storage template
+ * @returns {void}
+ */
+function initialize_remote_storage_select2_elements(remote_storage_elements) {
+	// <select> tag added to any remote storage configuration should have `select2` defined in its class attribute
+	var select_element = jQuery(remote_storage_elements).find('select.select2-storage-config');
+	for (var i=0; i < select_element.length; i++) {
+		// Initialize select2 text input.
+		jQuery(select_element[i]).select2({
+			tags: true
+		});
+		// any specific actions applied to remote storage should be implemented by first checking the remote storage ID
+		if ('dreamobjects' === jQuery(select_element[i]).data('storage-id')) {
+			if ('endpoint' === jQuery(select_element[i]).data('field-id')) {
+				jQuery(select_element[i]).on('change', function(e) {
+					validate_dreamobjects_endpoint(e.target);
+				});
+				validate_dreamobjects_endpoint(select_element[i]);
+			}
+		}
+	}
+}
+
+/**
+ * Validate selected DreamObjects endpoint.
+ *
+ * @param {HTMLSelectElement} select_element - The <select> element for DreamObjects endpoint.
+ *
+ * @returns {void}
+ */
+function validate_dreamobjects_endpoint(select_element) {
+	var endpoint = select_element.value.trim();
+	// Show or hide error message depending on endpoint validity.
+	if (updraftlion.dreamobject_endpoints.includes(endpoint) || new RegExp(updraftlion.dreamobject_endpoint_regex, 'i').test(endpoint)) {
+		select_element.classList.remove('updraft-input--invalid');
+	} else {
+		select_element.classList.add('updraft-input--invalid');
 	}
 }

@@ -11,23 +11,26 @@ use wpai_woocommerce_add_on\importer\orders\ImportOrderItemsBase;
 class ImportOrderCouponItems extends ImportOrderItemsBase {
 
     /**
-     *  Importing coupons items
+     *  Importing coupons items.
      */
     public function import() {
         if ($this->isNewOrder() || $this->getImport()->options['update_all_data'] == 'yes' || $this->getImport()->options['is_update_coupons']) {
-            $this->_import_coupons_items();
-            if ($this->getImport()->options['pmwi_order']['products_source'] == 'existing') {
-                $this->getOrder()->recalculate_coupons();
+            if (!$this->isNewOrder() && ($this->getImport()->options['update_all_data'] == 'yes' || $this->getImport()->options['is_update_coupons'])) {
+                $previously_updated_order = get_option('wp_all_import_previously_updated_order_' . $this->getImport()->id, FALSE);
+                if (empty($previously_updated_order) || $previously_updated_order != $this->getArticleData('ID')) {
+                    $this->getOrder()->remove_order_items('coupon');
+                    $this->wpdb->query($this->wpdb->prepare("DELETE FROM {$this->wpdb->prefix}pmxi_posts WHERE import_id = %d AND post_id = %d AND unique_key LIKE %s;", $this->getImport()->id, $this->getOrderID(), '%' . $this->wpdb->esc_like('coupon-item') . '%'));
+                }
             }
+            $this->import_coupons_items();
         }
     }
 
     /**
-     *  Import order coupon items
+     *  Import order coupon items.
      */
-    protected function _import_coupons_items() {
+    protected function import_coupons_items() {
         $total_discount_amount = 0;
-        $total_discount_amount_tax = 0;
 
         $coupons = $this->getValue('coupons');
         if (!empty($coupons)) {
@@ -36,26 +39,22 @@ class ImportOrderCouponItems extends ImportOrderItemsBase {
                     continue;
                 }
 
-                $coupon += array(
-                    'code' => '',
+                $coupon += [
+                    'code'   => '',
                     'amount' => '',
-                    'amount_tax' => ''
-                );
+                ];
 
                 $order_item = new \PMXI_Post_Record();
-                $order_item->getBy(array(
-                    'import_id' => $this->getImport()->id,
-                    'post_id' => $this->getOrderID(),
+                $order_item->getBy( [
+                    'import_id'  => $this->getImport()->id,
+                    'post_id'    => $this->getOrderID(),
                     'unique_key' => 'coupon-item-' . $couponIndex
-                ));
+                ] );
 
-                $absAmount = abs($coupon['amount']);
+                $absAmount = abs((float)$coupon['amount']);
 
-                if (!empty($absAmount)) {
+                if ( ! empty($absAmount) ) {
                     $total_discount_amount += $absAmount;
-                }
-                if (!empty($coupon['amount_tax'])) {
-                    $total_discount_amount_tax += $coupon['amount_tax'];
                 }
 
                 if ($order_item->isEmpty()) {
@@ -65,69 +64,55 @@ class ImportOrderCouponItems extends ImportOrderItemsBase {
                         foreach ($order_items as $order_item_id => $order_item_coupon) {
                             if ($order_item_coupon['name'] == $coupon['code']) {
                                 $item_id = $order_item_id;
-                                break(2);
+                                break;
                             }
                         }
                     }
 
-                    if (!$item_id) {
-                        if (version_compare(\WC()->version, '3.0') < 0) {
-                            $item_id = $this->getOrder()
-                                ->add_coupon($coupon['code'], $absAmount, $coupon['amount_tax']);
-                        } else {
-                            $item = new \WC_Order_Item_Coupon();
-                            $item->set_props(array(
-                                'code' => $coupon['code'],
-                                'discount' => isset($coupon['amount']) ? $absAmount : 0,
-                                'discount_tax' => 0,
-                                'order_id' => $this->getOrderID(),
-                            ));
-                            $item_id = $item->save();
-                        }
+                    if ( ! $item_id ) {
+                        $item = new \WC_Order_Item_Coupon();
+                        $item->set_props( [
+                            'code'          => $coupon['code'],
+                            'discount'      => isset($coupon['amount']) ? $absAmount : 0,
+                            'discount_tax'  => 0,
+                            'order_id'      => $this->getOrderID(),
+                        ] );
+                        $item_id = $item->save();
                     }
 
-                    if (!$item_id) {
-                        $this->getLogger() and call_user_func($this->getLogger(), __('- <b>WARNING</b> Unable to create order coupon line.', \PMWI_Plugin::TEXT_DOMAIN));
+                    if ( ! $item_id ) {
+                        $this->getLogger() and call_user_func($this->getLogger(), __('- <b>WARNING</b> Unable to create order coupon line.', 'wpai_woocommerce_addon_plugin'));
                     } else {
-                        $order_item->set(array(
-                            'import_id' => $this->getImport()->id,
-                            'post_id' => $this->getOrderID(),
-                            'unique_key' => 'coupon-item-' . $couponIndex,
+                        $order_item->set( [
+                            'import_id'   => $this->getImport()->id,
+                            'post_id'     => $this->getOrderID(),
+                            'unique_key'  => 'coupon-item-' . $couponIndex,
                             'product_key' => 'coupon-item-' . $item_id,
-                            'iteration' => $this->getImport()->iteration
-                        ))->save();
+                            'iteration'   => $this->getImport()->iteration
+                        ] )->save();
                     }
                 } else {
+
                     $item_id = str_replace('coupon-item-', '', $order_item->product_key);
-                    if (version_compare(\WC()->version, '3.0') < 0) {
-                        $is_updated = $this->getOrder()
-                            ->update_coupon($item_id, array(
-                                'code' => $coupon['code'],
-                                'discount_amount' => $absAmount,
-                                // 'discount_amount_tax' => empty($coupon['amount_tax']) ? NULL : $coupon['amount_tax']
-                            ));
 
-                    } else {
+                    $item = new \WC_Order_Item_Coupon($item_id);
 
-                        $item = new \WC_Order_Item_Coupon($item_id);
-
-                        if (isset($coupon['code'])) {
-                            $item->set_code($coupon['code']);
-                        }
-                        if (isset($coupon['amount'])) {
-                            $item->set_discount($absAmount);
-                        }
-                        $is_updated = $item->save();
+                    if (isset($coupon['code'])) {
+                        $item->set_code($coupon['code']);
                     }
+                    if (isset($coupon['amount'])) {
+                        $item->set_discount($absAmount);
+                    }
+                    $is_updated = $item->save();
+
                     if ($is_updated) {
-                        $order_item->set(array(
+                        $order_item->set( [
                             'iteration' => $this->getImport()->iteration
-                        ))->save();
+                        ] )->save();
                     }
                 }
             }
         }
-        update_post_meta($this->getOrderID(), '_cart_discount', $total_discount_amount);
-        update_post_meta($this->getOrderID(), '_cart_discount_tax', $total_discount_amount_tax);
+        $this->getOrder()->set_discount_total($total_discount_amount);
     }
 }

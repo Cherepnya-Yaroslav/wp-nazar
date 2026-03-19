@@ -89,7 +89,7 @@ class THWCFD_Admin_Settings_Advanced extends THWCFD_Admin_Settings{
 	}
 	
 	private function reset_settings(){
-		$nonse = isset($_REQUEST['thwcfd_security_advanced_settings']) ? $_REQUEST['thwcfd_security_advanced_settings'] : false;
+		$nonse = isset($_REQUEST['thwcfd_security_advanced_settings']) ? sanitize_text_field(wp_unslash($_REQUEST['thwcfd_security_advanced_settings'])) : false;
 		$capability = THWCFD_Utils::wcfd_capability();
 		if(!wp_verify_nonce($nonse, 'thwcfd_advanced_settings') || !current_user_can($capability)){
 			die();
@@ -100,7 +100,7 @@ class THWCFD_Admin_Settings_Advanced extends THWCFD_Admin_Settings{
 	}
 	
 	private function save_settings(){
-		$nonse = isset($_REQUEST['thwcfd_security_advanced_settings']) ? $_REQUEST['thwcfd_security_advanced_settings'] : false;
+		$nonse = isset($_REQUEST['thwcfd_security_advanced_settings']) ? sanitize_text_field(wp_unslash($_REQUEST['thwcfd_security_advanced_settings'])) : false;
 		$capability = THWCFD_Utils::wcfd_capability();
 		if(!wp_verify_nonce($nonse, 'thwcfd_advanced_settings') || !current_user_can($capability)){
 			die();
@@ -167,7 +167,7 @@ class THWCFD_Admin_Settings_Advanced extends THWCFD_Admin_Settings{
                 <p class="submit">
 					<input type="submit" name="save_settings" class="btn btn-small btn-primary" value="Save changes">
                     <input type="submit" name="reset_settings" class="btn btn-small" value="Reset to default" 
-					onclick="return confirm(<?php _e('Are you sure you want to reset to default settings? all your changes will be deleted.', 'woo-checkout-field-editor-pro'); ?>)">
+					onclick="return confirm('<?php esc_html_e('Are you sure you want to reset to default settings? all your changes will be deleted.', 'woo-checkout-field-editor-pro'); ?>')">
             	</p>
             	<?php wp_nonce_field( 'thwcfd_advanced_settings', 'thwcfd_security_advanced_settings' ); ?>
             </form>
@@ -203,23 +203,24 @@ class THWCFD_Admin_Settings_Advanced extends THWCFD_Admin_Settings{
 	}
 	
 	public function render_import_export_settings(){
+
+		$plugin_settings = $this->prepare_plugin_settings();
 		/*
 		if(isset($_POST['save_plugin_settings'])) 
 			$result = $this->save_plugin_settings(); 
 		*/
 
-		if(isset($_POST['import_settings'])){			   
-		} 
+		// if(isset($_POST['import_settings'])){			   
+		// } 
 		
-		$plugin_settings = $this->prepare_plugin_settings();
-		if(isset($_POST['export_settings']))
-			echo $this->export_settings($plugin_settings);
+		// if(isset($_POST['export_settings']))
+		// 	echo $this->export_settings($plugin_settings);
 		
 		$imp_exp_fields = array(
-			'section_import_export' => array('title'=>__('Backup and Import Settings', 'woo-checkout-field-editor'), 'type'=>'separator', 'colspan'=>'3'),
+			'section_import_export' => array('title'=>__('Backup and Import Settings', 'woo-checkout-field-editor-pro'), 'type'=>'separator', 'colspan'=>'3'),
 			'settings_data' => array(
-				'name'=>'settings_data', 'label'=>__('Plugin Settings Data', 'woo-checkout-field-editor'), 'type'=>'textarea', 'value' => $plugin_settings,
-				'sub_label'=>__('You can transfer the saved settings data between different installs by copying the text inside the text box. To import data from another install, replace the data in the text box with the one from another install and click "Import Settings".', 'woo-checkout-field-editor'),
+				'name'=>'settings_data', 'label'=>__('Plugin Settings Data', 'woo-checkout-field-editor-pro'), 'type'=>'textarea', 'value' => $plugin_settings,
+				'sub_label'=>__('You can transfer the saved settings data between different installs by copying the text inside the text box. To import data from another install, replace the data in the text box with the one from another install and click "Import Settings".', 'woo-checkout-field-editor-pro'),
 			),
 		);
 		?>
@@ -236,7 +237,7 @@ class THWCFD_Admin_Settings_Advanced extends THWCFD_Admin_Settings{
 						<tr valign="top">
 							<td colspan="2">&nbsp;</td>
 							<td class="submit">
-								<input type="submit" name="save_plugin_settings" class="btn btn-small btn-primary" value="<?php _e('Import Settings', 'woo-checkout-field-editor'); ?>">
+								<input type="submit" name="save_plugin_settings" class="btn btn-small btn-primary" value="<?php esc_attr_e('Import Settings', 'woo-checkout-field-editor-pro'); ?>">
 								<?php wp_nonce_field( 'import_wcfd_settings', 'import_wcfd_nonce' ); ?>
 							</td>
 						</tr>
@@ -267,6 +268,12 @@ class THWCFD_Admin_Settings_Advanced extends THWCFD_Admin_Settings{
 
 			// $settings = unserialize($base64_decoded, ['allowed_classes' => false]);
 			$settings = json_decode($base64_decoded,true);
+			// Clear cache if necessary
+			if (apply_filters('thwcfe_disable_settings_cache', false)) {
+				wp_cache_delete(THWCFD_Utils::OPTION_KEY_BILLING_FIELDS, 'options');
+				wp_cache_delete(THWCFD_Utils::OPTION_KEY_SHIPPING_FIELDS, 'options');
+				wp_cache_delete(THWCFD_Utils::OPTION_KEY_ADDITIONAL_FIELDS, 'options');
+			}
 
 			if($settings){
 				foreach($settings as $key => $value){
@@ -308,7 +315,7 @@ class THWCFD_Admin_Settings_Advanced extends THWCFD_Admin_Settings{
 	public function render_form_elm_row_title($title=''){
 		?>
 		<tr>
-			<td colspan="3" class="section-title" ><?php echo $title; ?></td>
+			<td colspan="3" class="section-title" ><?php echo  esc_html($title); ?></td>
 		</tr>
 		<?php
 	}
