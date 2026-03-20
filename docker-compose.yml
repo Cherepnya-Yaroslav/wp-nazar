@@ -4,28 +4,28 @@ services:
     container_name: wp_mysql
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
-      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-wordpress}
+      MYSQL_USER: ${MYSQL_USER:-wordpress}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-wordpress}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
     volumes:
       - db_data:/var/lib/mysql
     networks:
       - wordpress-network
 
   wordpress:
-    image: wordpress:6.3-php8.0-apache
+    image: wordpress:${WORDPRESS_IMAGE_TAG:-6.9.4-php8.3-apache}
     container_name: wp_site
     restart: unless-stopped
     depends_on:
       - db
     ports:
-      - "127.0.0.1:8080:80"
+      - "${WORDPRESS_BIND_IP:-127.0.0.1}:${WORDPRESS_PORT:-8080}:80"
     environment:
-      WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
-      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST:-db:3306}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD:-wordpress}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME:-wordpress}
     volumes:
       - ./wordpress_site/plugins:/var/www/html/wp-content/plugins
       - ./wordpress_site/themes:/var/www/html/wp-content/themes

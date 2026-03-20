@@ -1,0 +1,10 @@
+.DS_Store
+.venv/
+.local-*/
+local-db-before-prod-sync.sql.gz
+prod-db-sync.sql.gz
+docker-compose.override.yml
+
+wordpress_site/uploads/wc-logs/*.log
+wordpress_site/uploads/wc-imports/*.csv
+
